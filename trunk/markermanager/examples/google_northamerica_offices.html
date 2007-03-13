@@ -72,20 +72,18 @@ images[1] + ".png";
     function createMarker(posn, title, icon) {
       var marker = new GMarker(posn, {title: title, icon: icon, draggable:true });
       GEvent.addListener(marker, 'mouseover', function() { GLog.write("mouseover works") }); 
-      GEvent.addListener(marker, 'dblclick', function() { mgr.deleteMarker(marker) } ); 
+      GEvent.addListener(marker, 'dblclick', function() { mgr.removeMarker(marker) } ); 
 
       return marker;
     }
 
     function deleteMarker() {
-      GLog.write("deleteMarker called");
       var markerNum = parseInt(document.getElementById("markerNum").value);
-      mgr.deleteMarker(allmarkers[markerNum]);
-      GLog.write("deleteMarker end");
+      mgr.removeMarker(allmarkers[markerNum]);
     }
    
     function clearMarkers() {
-      mgr.clearAllMarkers();
+      mgr.clearMarkers();
     }
    
     function reloadMarkers() {

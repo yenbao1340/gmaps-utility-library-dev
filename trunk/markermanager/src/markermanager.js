@@ -1,8 +1,8 @@
 /* Copyright 2006 Google Inc.
  * All Rights Reserved
  *
- * Author: Doug Ricket <dricket@google.com>
- *
+ * Author: Doug Ricket <dricket@google.com> + Various
+ * 
  * Marker manager is an interface between the map and the user, designed
  * to manage adding and removing many points when the viewport changes.
  *
@@ -79,7 +79,7 @@ function MarkerManager(map, opt_opts) {
 
   GEvent.bind(map, "moveend", me, me.onMapMoveEnd_);
 
-  // NOTE(dricket): These two closures provide easy access to the map.
+  // NOTE: These two closures provide easy access to the map.
   // They are used as callbacks, not as methods.
   me.removeOverlay_ = function(marker) {
     map.removeOverlay(marker);
@@ -121,7 +121,7 @@ MarkerManager.prototype.resetManager_ = function() {
  * Removes all currently displayed markers
  * and calls resetManager to clear arrays
  */
-MarkerManager.prototype.clearAllMarkers = function() {
+MarkerManager.prototype.clearMarkers = function() {
   var me = this;
   me.processAll_(me.shownBounds_, me.removeOverlay_);
   me.resetManager_();
@@ -260,7 +260,7 @@ MarkerManager.prototype.onMarkerMoved_ = function(marker, oldPoint, newPoint) {
  * Also removes marker with removeOverlay if visible.
  * @param {GMarker} marker The marker to delete.
  */
-MarkerManager.prototype.deleteMarker = function(marker) {
+MarkerManager.prototype.removeMarker = function(marker) {
   var me = this;
   var zoom = me.maxZoom_;
   var changed = false;
