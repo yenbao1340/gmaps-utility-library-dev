@@ -22,7 +22,7 @@
 <td>
         Creates a new marker manager that controlls visibility of
         markers for the specified map.
-       (Since 2.67)</td>
+</td>
 </tr>
 </tbody></table>
 <h3>Methods</h3>
@@ -42,10 +42,9 @@
         placed on a map, the markers are shown if they fall within the map's
         current viewport and the map's zoom level is greater than or equal
         to the specified <code><span class="nomatch">minZoom</span></code>. If the <code><span class="nomatch">maxZoom</span></code>
-
         was given, the markers are automatically removed if the map's zoom
         is greater than the one specified.
-       (Since 2.67)</td>
+</td>
 </tr>
 <tr class="even">
 <td class="code">addMarker(<span class="type" title="type:  GMarker">marker</span>, <span class="type" title="type:  Number"> minZoom</span>, <span class="type" title="type:  Number"> maxZoom?</span>)</td>
@@ -59,8 +58,27 @@
         <code><span class="nomatch">addMarkers</span></code> method, the <code><span class="nomatch">minZoom</span></code> and the
         optional <code><span class="nomatch">maxZoom</span></code> parameters specify the range of zoom
         levels at which the marker is shown.
-       (Since 2.67)</td>
+</td>
 </tr>
+
+<tr class="even">
+<td class="code">removeMarker(<span class="type" title="type:  GMarker">marker</span>)</td>
+<td>
+        Removes marker from the MarkerManager by
+        searching at every zoom level to find grid cell
+        that marker would be in, removing from that array if found.
+        Also calls removeOverlay on marker if currently visible.
+</td>
+</tr>
+
+<tr class="odd">
+<td class="code">clearMarkers()</td>
+<td class="code"><span class="void">none</span></td>
+<td>
+	Removes all currently displayed markers and clears grid arrays.
+</td>
+</tr>
+
 <tr class="odd">
 <td class="code">refresh()</td>
 
@@ -69,8 +87,9 @@
         Forces the manager to update markers shown on the map. This method must
         be called if markers were added using the <code><span class="nomatch">addMarkers</span></code>
         method.
-       (Since 2.67)</td>
+</td>
 </tr>
+
 <tr class="even">
 <td class="code">getMarkerCount(<span class="type" title="type:  Number">zoom</span>)</td>
 <td class="code"><span class="nomatch">Number</span></td>
@@ -78,7 +97,7 @@
 <td>
         Returns the total number of markers potentially visible at the given
         zoom level. This may include markers at lower zoom levels.
-       (Since 2.67)</td>
+</td>
 </tr>
 </tbody></table>
 <h3>Events</h3>
@@ -99,7 +118,7 @@
         prepared to accept two arguments. The fist one is the rectangle
         definining the bounds of the visible grid. The second one carries the
         number of markers currently shown on the map.
-      </td>
+</td>
 </tr>
 </tbody></table>
 <h2>
@@ -124,7 +143,7 @@
         viewport monitored by a manager. Markers that fall within this
         padding are added to the map, even if they are not fully
         visible.
-       (Since 2.67)</td>
+</td>
 </tr>
 <tr class="even">
 <td class="code">maxZoom</td>
@@ -135,7 +154,7 @@
         given, the manager assumes the maximum map zoom level. This value is also
         used when markers are added to the manager without the optional
         <code><span class="nomatch">maxZoom</span></code> parameter.
-       (Since 2.67)</td>
+</td>
 </tr>
 <tr class="odd">
 <td class="code">trackMarkers</td>
@@ -145,8 +164,7 @@
         movements. If you wish to move managed markers using the
         <code><span class="nomatch">setPoint</span></code> method, this option should be set to
         <code><span class="nomatch">true</span></code>. The default value is <code><span class="nomatch">false</span></code>.
-       (Since 2.67)</td>
-
+</td>
 </tr>
 </tbody></table>
 <h2>
