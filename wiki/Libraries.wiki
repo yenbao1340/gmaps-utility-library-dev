@@ -1,0 +1,16 @@
+#summary List of libraries here and quick links to relevant source and examples files.
+
+= Libraries =
+
+Below is a list of the libraries being worked on in this project.
+
+== MarkerManager ==
+
+This is the open-source version of GMarkerManager, with improvements.
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ "Development Version"]
+
+== LabeledMarker ==
+
+This class extends the Maps API's standard GMarker class with the ability to support markers with textual labels. 
+
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ "Development Version"]
