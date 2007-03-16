@@ -1,8 +1,6 @@
 #summary This page has a few tips for getting started with the svn used on google code.
 
-= Getting Started =
-
-These instructions are for using SVN from the command-line, like on a Linux server with svn installed. If you're not sure if you have svn installed, just try typing "svn" and see if the command is recognized. If it's not, you'll need to use a pc/mac client like !TortoiseSVN or !ZigVersion.
+These instructions are for using SVN from the command-line, like on a Linux server with svn installed. If you're not sure if you have svn installed, just try typing "svn" and see if the command is recognized. If it's not, you'll need to use a pc/mac client like TortoiseSVN or ZigVersion.
 
 == Code Checkout ==
 
