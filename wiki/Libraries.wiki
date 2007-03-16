@@ -2,7 +2,8 @@
 
 = Libraries =
 
-Below is a list of the libraries being worked on in this project.
+Below is a list of the libraries being worked on in this project. Each project should have the following folders: docs (for documentation), src (for javascript source), examples. 
+
 
 == MarkerManager ==
 
