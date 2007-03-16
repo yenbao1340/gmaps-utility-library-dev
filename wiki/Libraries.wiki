@@ -7,6 +7,9 @@ Below is a list of the libraries being worked on in this project.
 == MarkerManager ==
 
 This is the open-source version of GMarkerManager, with improvements.
+
+[http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/ Link to Release (1.0) Version]
+
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ Link to Development Version]
 
 == LabeledMarker ==
