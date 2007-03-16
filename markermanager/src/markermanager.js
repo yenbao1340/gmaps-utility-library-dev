@@ -1,7 +1,19 @@
-/* Copyright 2006 Google Inc.
- * All Rights Reserved
+/* Copyright (c) 2007 Google Inc.
  *
- * Author: Doug Ricket <dricket@google.com> + Various
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ *
+ *
+ * Author: Doug Ricket, others
  * 
  * Marker manager is an interface between the map and the user, designed
  * to manage adding and removing many points when the viewport changes.
@@ -66,9 +78,7 @@ function MarkerManager(map, opt_opts) {
   me.nePadding_ = new GSize(padding, -padding);
   me.borderPadding_ = padding;
 
-  // NOTE(dricket): grid height is not used now, but may be later:
   me.gridWidth_ = [];
-  // me.gridHeight_ = [];
 
   me.grid_ = [];
   me.grid_[maxZoom] = [];
@@ -158,7 +168,7 @@ MarkerManager.prototype.getTilePoint_ = function(latlng, zoom, padding) {
  */
 MarkerManager.prototype.addMarkerBatch_ = function(marker, minZoom, maxZoom) {
   var mPoint = marker.getPoint();
-  // NOTE(majewski): Tracking markers is expensive, so we do this only if the
+  // Tracking markers is expensive, so we do this only if the
   // user explicitly requested it when creating marker manager.
   if (this.trackMarkers_) {
     GEvent.bind(marker, "changed", this, this.onMarkerMoved_);
@@ -210,7 +220,7 @@ MarkerManager.prototype.isGridPointVisible_ = function(point) {
  * @param {LatLng} newPoint The new position of the marker.
  */
 MarkerManager.prototype.onMarkerMoved_ = function(marker, oldPoint, newPoint) {
-  // NOTE(majewski): We do not know the minimum or maximum zoom the marker was
+  // NOTE: We do not know the minimum or maximum zoom the marker was
   // added at, so we start at the absolute maximum. Whenever we successfully
   // remove a marker at a given zoom, we add it at the new grid coordinates.
   var me = this;
@@ -389,8 +399,7 @@ MarkerManager.prototype.getGridCellCreate_ = function(x, y, z) {
 /**
  * Get a cell in the grid, returning undefined if it does not exist.
  *
- * NOTE(dricket): Optimized for speed -- otherwise could combine with
- * getGridCellCreate_.
+ * NOTE: Optimized for speed -- otherwise could combine with getGridCellCreate_.
  *
  * @param {Number} x The x coordinate of the cell.
  * @param {Number} y The y coordinate of the cell.
@@ -458,7 +467,7 @@ MarkerManager.prototype.getMapGridBounds_ = function() {
 
 /**
  * Event listener for map:movend.
- * NOTE(dricket): Use a timeout so that the user is not blocked
+ * NOTE: Use a timeout so that the user is not blocked
  * from moving the map.
  *
  */
