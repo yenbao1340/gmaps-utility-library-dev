@@ -68,7 +68,7 @@ function setupWeatherMarkers() {
 }
 </pre>
 
-<p><a href="../weather_map.html">View example (weather_map.html)</a></p>
+<p><a href="../examples/weather_map.html">View example (weather_map.html)</a></p>
 
 <h2><a name="Marker_Manager_Offices" id="Marker_Manager_Offices"></a>Clustering Example: Google Offices</h2>
 
@@ -87,19 +87,48 @@ var officeLayer = [
 };
 
 function setupOfficeMarkers() {
-  var mgr = new GMarkerManager(map);
+  allmarkers.length = 0;
   for (var i in officeLayer) {
     var layer = officeLayer[i];
     var markers = [];
     for (var j in layer["places"]) {
       var place = layer["places"][j];
       var icon = getIcon(place["icon"]);
+      var title = place["name"];
       var posn = new GLatLng(place["posn"][0], place["posn"][1]);
-      markers.push(new GMarker(posn, { title: place["name"], icon: icon }));
+      var marker = createMarker(posn,title,icon); 
+      markers.push(marker);
+      allmarkers.push(marker);
     }
     mgr.addMarkers(markers, layer["zoom"][0], layer["zoom"][1]);
   }
   mgr.refresh();
+}
+</pre>
+
+<p>The marker manager now has functions to let you delete individual markers or all the markers in the manager, using <code>deleteMarker</code> and <code>clearMarkers</code>m respectively.
+In the Google Offices example, you can delete a marker by double clicking on it, or entering an integer index in the text box and clicking the delete button.
+You can clear all the markers by clicking the clear button, and reload them again by clicking the reload button. The relevant code snippets are shown below.
+</p>
+
+<pre class="prettyprint">
+function createMarker(posn, title, icon) {
+  var marker = new GMarker(posn, {title: title, icon: icon, draggable:true });
+  GEvent.addListener(marker, 'dblclick', function() { mgr.removeMarker(marker) } ); 
+  return marker;
+}
+
+function deleteMarker() {
+  var markerNum = parseInt(document.getElementById("markerNum").value);
+  mgr.removeMarker(allmarkers[markerNum]);
+}
+   
+function clearMarkers() {
+  mgr.clearMarkers();
+}
+   
+function reloadMarkers() {
+  setupOfficeMarkers();
 }
 </pre>
 
