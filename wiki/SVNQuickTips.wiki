@@ -56,5 +56,7 @@ There are no fine-grained permissions in googlecode SVN, so please be very caref
 
 
 == Additional Resources ==
+
 [http://svnbook.red-bean.com/ Version Control with Subversion (Online book)]
+
 [http://subversion.tigris.org/ SVN Official Site]
