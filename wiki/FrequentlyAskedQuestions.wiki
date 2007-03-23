@@ -20,9 +20,10 @@ To join the project, follow these steps:
   #4 If you haven't used SVN or a versioning system in the past, read up on SVN (check [http://code.google.com/p/gmaps-utility-library-dev/wiki/SVNQuickTips SVNQuickTips] page here).
   #5 Start contributing!
 
+
 == Why must I sign a CLA to start contributing? ==
 
-The Google CLA (Contributor License Agreement) ensures that the code you contribute will always be under an open-source license.
+We want to guarantee we have the right to use the code you contribute, and that we can release it under the same license (Apache 2) as the existing code. This protects us, and others who then use the code, from claims of copyright or patent infringement. It's important to note that our CLA does *not* assign copyright, or take away any of your rights to the code you contribute.  You are free to sell or license it to others differently than the license we use for the project. The Google CLA simply says that you give us the right to use your code as well. If you do have particular concerns about the CLA or Apache License, please contact us for further clarification.
 
 
 == I want to use a library here in my maps mashup. What do I link to in my script include? ==
@@ -46,3 +47,5 @@ We decided the best solution was to have a separate project that will only hold 
 == Where can project contributors discuss code revisions/project ideas? ==
 
 Though many developers are active in the Google Maps API forum, we want to keep that as a forum primarily focused on using the core API. We've created another [http://groups.google.com/group/google-maps-utility-library Google Group] to be solely for contributors to this open-source project, so that we can have an active, focused discussion there. If you're a contributor, *please* join this group so that everyone can keep abreast of what everyone else is working on. There will likely be some individual javascript files that multiple people want to work on. Though it is possible to merge changes in SVN, it may also be best in some cases to create different versions for each contributor. Such discussions should take place in the forum.
+
+Also, developers that aren't formal members of this project are welcome to contribute to the discussion in the forum. We welcome your participation.
