@@ -9,6 +9,15 @@ With the open source project, a developer can include the javascript file for th
 
 Additionally, skilled developers can join the project and we can harness the combined skills of the developer community in creating and improving API extensions.
 
+
+== I want to use a library here in my maps mashup. What do I link to in my script include? ==
+
+If you want to use a stable release, you should link to the code in the release project here:
+http://gmaps-utility-library.googlecode.com/svn/trunk/ 
+
+Links to the release versions of each library are listed on the [http://code.google.com/p/gmaps-utility-library-dev/wiki/Libraries Libraries] page.
+
+
 == How do I contribute? ==
 
 We welcome developers with previous experience programming with the Maps API to join the project, and we especially love for developers who have already written API extensions to open-source them in our project.
@@ -24,14 +33,6 @@ To join the project, follow these steps:
 == Why must I sign a CLA to start contributing? ==
 
 We want to guarantee we have the right to use the code you contribute, and that we can release it under the same license (Apache 2) as the existing code. This protects us, and others who then use the code, from claims of copyright or patent infringement. It's important to note that our CLA does *not* assign copyright, or take away any of your rights to the code you contribute.  You are free to sell or license it to others differently than the license we use for the project. The Google CLA simply says that you give us the right to use your code as well. If you do have particular concerns about the CLA or Apache License, please contact us for further clarification.
-
-
-== I want to use a library here in my maps mashup. What do I link to in my script include? ==
-
-If you want to use a stable release, you should link to the code in the release project here:
-http://gmaps-utility-library.googlecode.com/svn/trunk/ 
-
-Links to the release versions of each library are listed on the [http://code.google.com/p/gmaps-utility-library-dev/wiki/Libraries Libraries] page.
 
 
 == Why are there 2 separate projects (gmaps-utility-library-dev, gmaps-utility-library)? ==
