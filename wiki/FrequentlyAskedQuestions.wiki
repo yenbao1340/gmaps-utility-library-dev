@@ -14,11 +14,11 @@ Additionally, skilled developers can join the project and we can harness the com
 We welcome developers with previous experience programming with the Maps API to join the project, and we especially love for developers who have already written API extensions to open-source them in our project.
 
 To join the project, follow these steps:
-1) Sign the Google CLA and fax to the number shown. 
-2) Email Pamela (api.pamelafox@google.com) with links to code you've developed, and a brief paragraph about why you'd like to contribute to the library.
-3) Wait for Pamela to respond that she's added you to the project (or to indicate she's missing something).
-4) Read up on SVN (check the wiki page here for some tips) if you haven't used it in the past. 
-5) Start contributing!
+#1) Sign the Google CLA and fax to the number shown. 
+#2) Email Pamela (api.pamelafox@google.com) with links to code you've developed, and a brief paragraph about why you'd like to contribute to the library.
+#3) Wait for Pamela to respond that she's added you to the project (or to indicate she's missing something).
+#4) Read up on SVN (check the wiki page here for some tips) if you haven't used it in the past. 
+#5) Start contributing!
 
 == Why must I sign a CLA to start contributing? ==
 
