@@ -9,6 +9,9 @@ Below is a list of the libraries being worked on in this project. Each project s
 This is the open-source version of GMarkerManager, with improvements.
 
 [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/ Link to Release (1.0) Version]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/docs/examples.html Examples]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/docs/reference.html Reference]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/src/markermanager/js Javascript include]
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ Link to Development Version]
 
