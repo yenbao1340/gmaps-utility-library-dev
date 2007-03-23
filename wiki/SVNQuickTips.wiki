@@ -11,7 +11,7 @@ If you're not a member of the project and just want to checkout the code to have
 
 If you're a member of the project and want to checkout the code so that you're able to commit changes to the codebase after editing it on your local machine, then you need to use the gmail username that's registered as a member:
 
-`svn checkout https://gmaps-utility-library-dev.googlecode.com/svn/trunk/ gmaps-utility-library-dev --username gmail.user
+`svn checkout https://gmaps-utility-library-dev.googlecode.com/svn/trunk/ gmaps-utility-library-dev --username gmail.user`
 
 
 It will prompt you for a password, which is NOT your gmail password, since it doesn't want to compromise the security of that password. It's a special google SVN password, which will be listed for you at the following URL, if you're signed in:
@@ -53,3 +53,8 @@ Those are the most common mime-types we'll use in this project.
 
 == Code Conflicts ==
 There are no fine-grained permissions in googlecode SVN, so please be very careful to not commit changes to something that someone else is also working on. If you're both working on the same file, you may want to create separate versions or merge your changes.
+
+
+== Additional Resources ==
+[http://svnbook.red-bean.com/ Version Control with Subversion (Online book)]
+[http://subversion.tigris.org/ SVN Official Site]
