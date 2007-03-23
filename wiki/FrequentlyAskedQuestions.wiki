@@ -1,7 +1,7 @@
 #summary Answers to common questions about this project.
 #labels Featured
 
-= What's the purpose of this project? =
+== What's the purpose of this project? ==
 
 We've realized that there are many possibly useful extensions of the Google Maps API for adventurous developers, but that the common user needs a reliable and quick-loading API.  
 Adding custom controls/functionality to the core API adds to the file size and forces developers wanting to tweak the code to overwrite obfuscated JS functions. 
@@ -9,7 +9,7 @@ With the open source project, a developer can include the javascript file for th
 Additionally, skilled developers can join the project and we can harness the combined skills of the developer community
 in creating and improving API extensions.
 
-= How do I contribute? =
+== How do I contribute? ==
 
 We welcome developers with previous experience programming with the Maps API to join the project, and we especially love for developers who have already written API extensions to open-source them in our project.
 To join the project, follow these steps:
@@ -19,12 +19,12 @@ To join the project, follow these steps:
 4) Read up on SVN (check the wiki page here for some tips) if you haven't used it in the past. 
 5) Start contributing.
 
-= Why must I sign a CLA to start contributing? =
+== Why must I sign a CLA to start contributing? ==
 
 ...
 
 
-= I want to use a library here in my maps mashup. What do I link to in my script include? =
+== I want to use a library here in my maps mashup. What do I link to in my script include? ==
 
 You should link to the code in the release project here: gmaps-utility-library.googlecode.com,
 if you want to use a stable release.
@@ -37,4 +37,3 @@ Since our project is currently all javascript code, we'd like to have an online 
 Google project hosting offers an online version of each project repository's latest version that can be linked to, but we need a way of guaranteeing that the "release" folder in a project won't be accidentally overwritten with non stable code.
 The googlecode implementation of SVN gives all members the same permissions to change every directory/file, which means we can't just restrict the permissions so that only Google employees can modify the release directory.
 We decided the best solution was to have a separate project that will only hold release versions (and previous release versions) of each library.  New versions will be released only when the developer community has decided that it's bug-free, and a Google employee (Pamela or Chris) will commit the new versions to the release project.
-
