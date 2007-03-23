@@ -30,7 +30,7 @@ The Google CLA (Contributor License Agreement) ensures that the code you contrib
 If you want to use a stable release, you should link to the code in the release project here:
 http://gmaps-utility-library.googlecode.com/svn/trunk/ 
 
-Links to the release versions of each library are listed on the [http://code.google.com/p/gmaps-utility-library-dev/wiki/SVNQuickTips Libraries] page.
+Links to the release versions of each library are listed on the [http://code.google.com/p/gmaps-utility-library-dev/wiki/Libraries Libraries] page.
 
 
 == Why are there 2 separate projects (gmaps-utility-library-dev, gmaps-utility-library)? ==
