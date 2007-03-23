@@ -6,18 +6,19 @@
 We've realized that there are many possibly useful extensions of the Google Maps API for adventurous developers, but that the common user needs a reliable and quick-loading API.  
 Adding custom controls/functionality to the core API adds to the file size and forces developers wanting to tweak the code to overwrite obfuscated JS functions. 
 With the open source project, a developer can include the javascript file for the particular library they're interested or even download it to their server and tweak it for their use. 
-Additionally, skilled developers can join the project and we can harness the combined skills of the developer community
-in creating and improving API extensions.
+
+Additionally, skilled developers can join the project and we can harness the combined skills of the developer community in creating and improving API extensions.
 
 == How do I contribute? ==
 
 We welcome developers with previous experience programming with the Maps API to join the project, and we especially love for developers who have already written API extensions to open-source them in our project.
+
 To join the project, follow these steps:
 1) Sign the Google CLA and fax to the number shown. 
 2) Email Pamela (api.pamelafox@google.com) with links to code you've developed, and a brief paragraph about why you'd like to contribute to the library.
 3) Wait for Pamela to respond that she's added you to the project (or to indicate she's missing something).
 4) Read up on SVN (check the wiki page here for some tips) if you haven't used it in the past. 
-5) Start contributing.
+5) Start contributing!
 
 == Why must I sign a CLA to start contributing? ==
 
@@ -31,9 +32,11 @@ if you want to use a stable release.
 Links to the release versions of each library are listed here [link].
 
 
-= Why are there 2 separate projects (gmaps-utility-library-dev, gmaps-utility-library)? =
+== Why are there 2 separate projects (gmaps-utility-library-dev, gmaps-utility-library)? ==
  
 Since our project is currently all javascript code, we'd like to have an online link to the latest stable release of the code for each library that API users can reliably include in their Maps mashups.
+
 Google project hosting offers an online version of each project repository's latest version that can be linked to, but we need a way of guaranteeing that the "release" folder in a project won't be accidentally overwritten with non stable code.
 The googlecode implementation of SVN gives all members the same permissions to change every directory/file, which means we can't just restrict the permissions so that only Google employees can modify the release directory.
+
 We decided the best solution was to have a separate project that will only hold release versions (and previous release versions) of each library.  New versions will be released only when the developer community has decided that it's bug-free, and a Google employee (Pamela or Chris) will commit the new versions to the release project.
