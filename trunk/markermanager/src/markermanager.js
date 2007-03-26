@@ -85,8 +85,6 @@ function MarkerManager(map, opt_opts) {
   me.numMarkers_ = [];
   me.numMarkers_[maxZoom] = 0;
 
-  me.shownBounds_ = me.getMapGridBounds_();
-
   GEvent.bind(map, "moveend", me, me.onMapMoveEnd_);
 
   // NOTE: These two closures provide easy access to the map.
@@ -103,6 +101,7 @@ function MarkerManager(map, opt_opts) {
   me.resetManager_();
   me.shownMarkers_ = 0;
 
+  me.shownBounds_ = me.getMapGridBounds_();
 };
 
 // Static constants:
@@ -534,7 +533,7 @@ MarkerManager.prototype.updateMarkers_ = function() {
   var me = this;
   me.mapZoom_ = this.map_.getZoom();
   var newBounds = me.getMapGridBounds_();
-
+  
   // If the move does not include new grid sections,
   // we have no work to do:
   if (newBounds.equals(me.shownBounds_) && newBounds.z == me.shownBounds_.z) {
