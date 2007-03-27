@@ -22,7 +22,7 @@
 *       http://googlemapsbook.com/2007/03/06/clickable-labeledmarker/
 */
 
-// Constructor
+/* Constructor */
 function LabeledMarker(latlng, options){
     this.latlng = latlng;
     this.labelText = options.labelText || "";
@@ -40,16 +40,16 @@ function LabeledMarker(latlng, options){
 }
 
 
-// It's a limitation of JavaScript inheritance that we can't conveniently
-// extend GMarker without having to run its constructor. In order for the
-// constructor to run, it requires some dummy GLatLng.
+/* It's a limitation of JavaScript inheritance that we can't conveniently
+   extend GMarker without having to run its constructor. In order for the
+   constructor to run, it requires some dummy GLatLng. */
 LabeledMarker.prototype = new GMarker(new GLatLng(0, 0));
 
 
 // Creates the text div that goes over the marker.
 LabeledMarker.prototype.initialize = function(map) {
 	// Do the GMarker constructor first.
-	GMarker.prototype.initialize.call(this, map);
+	GMarker.prototype.initialize.apply(this, arguments);
 	
 	var div = document.createElement("div");
 	div.className = this.labelClass;
@@ -73,17 +73,15 @@ LabeledMarker.prototype.initialize = function(map) {
 	this.div = div;
 }
 
-
 function newEventPassthru(obj, event) {
 	return function() { 
 		GEvent.trigger(obj, event);
 	};
 }
 
-
 // Redraw the rectangle based on the current projection and zoom level
 LabeledMarker.prototype.redraw = function(force) {
-	GMarker.prototype.redraw.call(this, map);
+	GMarker.prototype.redraw.apply(this, arguments);
 	
 	// We only need to do anything if the coordinate system has changed
 	if (!force) return;
@@ -99,11 +97,11 @@ LabeledMarker.prototype.redraw = function(force) {
 	this.div.style.zIndex = z + 1; // in front of the marker
 }
 
-
 // Remove the main DIV from the map pane, destroy event handlers
 LabeledMarker.prototype.remove = function() {
 	GEvent.clearInstanceListeners(this.div);
 	this.div.parentNode.removeChild(this.div);
 	this.div = null;
-	GMarker.prototype.remove.call(this);
+	GMarker.prototype.remove.apply(this, arguments);
 }
+
