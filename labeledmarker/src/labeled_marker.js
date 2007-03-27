@@ -22,18 +22,29 @@
 *       http://googlemapsbook.com/2007/03/06/clickable-labeledmarker/
 */
 
-/* Constructor */
-function LabeledMarker(latlng, options){
+/**
+ * Constructor for LabeledMarker, which picks up on strings from the GMarker
+ * options array, and then calls the GMarker constructor.
+ *
+ * @param {GLatLng} latlng
+ * @param {GMarkerOptions} Named optional arguments:
+ *   opt_opts.labelText {String} text to place in the overlay div.
+ *   opt_opts.labelClass {String} class to use for the overlay div.
+ *     (default "markerLabel")
+ *   opt_opts.labelOffset {GSize} label offset, the x- and y-distance between
+ *     the marker's latlng and the upper-left corner of the text div.
+ */
+function LabeledMarker(latlng, opt_opts){
   this.latlng_ = latlng;
-  this.labelText_ = options.labelText || "";
-  this.labelClass_ = options.labelClass || "markerLabel";
-  this.labelOffset_ = options.labelOffset || new GSize(0, 0);
+  this.labelText_ = opt_opts.labelText || "";
+  this.labelClass_ = opt_opts.labelClass || "markerLabel";
+  this.labelOffset_ = opt_opts.labelOffset || new GSize(0, 0);
   
-  this.clickable_ = options.clickable || true;
+  this.clickable_ = opt_opts.clickable || true;
   
-  if (options.draggable) {
+  if (opt_opts.draggable) {
   	// This version of LabeledMarker doesn't support dragging.
-  	options.draggable = false;
+  	opt_opts.draggable = false;
   }
   
   GMarker.apply(this, arguments);
@@ -41,12 +52,16 @@ function LabeledMarker(latlng, options){
 
 
 // It's a limitation of JavaScript inheritance that we can't conveniently
-// extend GMarker without having to run its constructor. In order for the
-// constructor to run, it requires some dummy GLatLng.
+// inherit from GMarker without having to run its constructor. In order for 
+// the constructor to run, it requires some dummy GLatLng.
 LabeledMarker.prototype = new GMarker(new GLatLng(0, 0));
 
-
-// Creates the text div that goes over the marker.
+/**
+ * Is called by GMap2's addOverlay method. Creates the text div and adds it
+ * to the relevant parent div.
+ *
+ * @param {GMap2} map the map that has had this labeledmarker added to it.
+ */
 LabeledMarker.prototype.initialize = function(map) {
   // Do the GMarker constructor first.
   GMarker.prototype.initialize.apply(this, arguments);
@@ -60,10 +75,15 @@ LabeledMarker.prototype.initialize = function(map) {
   map.getPane(G_MAP_MARKER_PANE).appendChild(this.div_);
 
   if (this.clickable_) {
-    // Creates a closure for passing events through to the source marker
-    // This is located in here to avoid cluttering the global namespace.
-    // The downside is that the local variables from initialize() continue
-    // to occupy space on the stack.
+    /**
+     * Creates a closure for passing events through to the source marker
+     * This is located in here to avoid cluttering the global namespace.
+     * The downside is that the local variables from initialize() continue
+     * to occupy space on the stack.
+     *
+     * @param {Object} object to receive event trigger.
+     * @param {GEventListener} event to be triggered.
+     */
     function newEventPassthru(obj, event) {
       return function() { 
         GEvent.trigger(obj, event);
@@ -79,7 +99,12 @@ LabeledMarker.prototype.initialize = function(map) {
   }
 }
 
-// Redraw the rectangle based on the current projection and zoom level
+/**
+ * Move the text div based on current projection and zoom level, call the redraw()
+ * handler in GMarker.
+ *
+ * @param {Boolean} force will be true when pixel coordinates need to be recomputed.
+ */
 LabeledMarker.prototype.redraw = function(force) {
   GMarker.prototype.redraw.apply(this, arguments);
   
@@ -97,8 +122,11 @@ LabeledMarker.prototype.redraw = function(force) {
   this.div_.style.zIndex = z; // in front of the marker
 }
 
-// Remove the main DIV from the map pane, destroy event handlers
-LabeledMarker.prototype.remove = function() {
+/**
+ * Remove the text div from the map pane, destroy event passthrus, and calls the
+ * default remove() handler in GMarker.
+ */
+ LabeledMarker.prototype.remove = function() {
   GEvent.clearInstanceListeners(this.div_);
   this.div_.parentNode.removeChild(this.div_);
   this.div_ = null;
