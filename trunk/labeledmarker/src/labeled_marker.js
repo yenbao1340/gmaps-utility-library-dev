@@ -92,8 +92,8 @@ LabeledMarker.prototype.redraw = function(force) {
   var z = GOverlay.getZIndex(this.latlng_.lat());
   
   // Now position our div based on the div coordinates of our bounds
-  this.div_.style.left = (p.x + this.labelOffset.width) + "px";
-  this.div_.style.top = (p.y + this.labelOffset.height) + "px";
+  this.div_.style.left = (p.x + this.labelOffset_.width) + "px";
+  this.div_.style.top = (p.y + this.labelOffset_.height) + "px";
   this.div_.style.zIndex = z; // in front of the marker
 }
 
