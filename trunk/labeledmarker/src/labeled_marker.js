@@ -88,8 +88,8 @@ LabeledMarker.prototype.redraw = function(force) {
   
   // Calculate the DIV coordinates of two opposite corners of our bounds to
   // get the size and position of our rectangle
-  var p = this.map_.fromLatLngToDivPixel(this.latlng);
-  var z = GOverlay.getZIndex(this.latlng.lat());
+  var p = this.map_.fromLatLngToDivPixel(this.latlng_);
+  var z = GOverlay.getZIndex(this.latlng_.lat());
   
   // Now position our div based on the div coordinates of our bounds
   this.div_.style.left = (p.x + this.labelOffset.width) + "px";
