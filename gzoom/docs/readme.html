@@ -1,3 +1,10 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	  <head>
+		<title>GZoom documentation</title>
+	  </head>
+<body>
 <h2>How to add GZoom to your map</h2>
 You can add GZoom to any Google map with a couple of lines of code.
 <ol>
@@ -5,7 +12,7 @@ You can add GZoom to any Google map with a couple of lines of code.
     <pre class="code">&lt;script src=&quot;/javascripts/gzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
 
     <li>Add GZoom to your map like any other control. Example:</li>
-    <pre class="code">oMap = new GMap2($id(&quot;large-google-map&quot;));<br />oMap.addControl(new GSmallMapControl());<br /><strong>oMap.addControl(new GZoomControl());
+    <pre class="code">map = new GMap2($id(&quot;large-google-map&quot;));<br />map.addControl(new GSmallMapControl());<br /><strong>map.addControl(new GZoomControl());
 </strong></pre>
 		<li><strong>Important!</strong> Make sure your and doctype and namespaces 
 		  are set correctly:</li>
@@ -208,3 +215,5 @@ FF1.4/OS10.4, FF1.4.1/XP, FF2/XP.</p>
     <li>if you're seeing wierdness on IE, check your doctype. I tested with mostly with XHTML 1.0 Transitional, and noticed some potential problems with border widths and scrolling on other doctypes.</li>
     <li>like any GMaps application, <strong>make sure you register GUnload() on document unload</strong>. See Google's documentation if you're not sure how.</li>
 </ul>
+</body>
+</html>
