@@ -118,7 +118,7 @@ MarkerManager.MERCATOR_ZOOM_LEVEL_ZERO_RANGE = 256;
 MarkerManager.prototype.resetManager_ = function() {
   var me = this;
   var mapWidth = MarkerManager.MERCATOR_ZOOM_LEVEL_ZERO_RANGE;
-  for (var zoom = 0; zoom < me.maxZoom_; ++zoom) {
+  for (var zoom = 0; zoom <= me.maxZoom_; ++zoom) {
     me.grid_[zoom] = [];
     me.numMarkers_[zoom] = 0;
     me.gridWidth_[zoom] = Math.ceil(mapWidth/me.tileSize_);
@@ -357,9 +357,9 @@ MarkerManager.prototype.addMarker = function(marker, minZoom, opt_maxZoom) {
   var maxZoom = this.getOptMaxZoom_(opt_maxZoom);
   me.addMarkerBatch_(marker, minZoom, maxZoom);
   var gridPoint = me.getTilePoint_(marker.getPoint(), me.mapZoom_, GSize.ZERO);
-  if (me.shownBounds_.containsPoint(gridPoint) &&
-      minZoom <= me.shownBounds_.z &&
-      me.shownBounds_.z <= maxZoom) {
+  if(me.isGridPointVisible_(gridPoint) && 
+     minZoom <= me.shownBounds_.z &&
+     me.shownBounds_.z <= maxZoom ) {
     me.addOverlay_(marker);
     me.notifyListeners_();
   }
@@ -447,12 +447,11 @@ MarkerManager.prototype.getGridBounds_ = function(bounds, zoom, swPadding,
   var sw = this.getTilePoint_(bl, zoom, swPadding);
   var ne = this.getTilePoint_(tr, zoom, nePadding);
   var gw = this.gridWidth_[zoom];
-
+  
   // Crossing the prime meridian requires correction of bounds.
   if (tr.lng() < bl.lng() || ne.x < sw.x) {
     sw.x -= gw;
   }
-
   if (ne.x - sw.x  + 1 >= gw) {
     // Computed grid bounds are larger than the world; truncate.
     sw.x = 0;
