@@ -108,9 +108,6 @@ LabeledMarker.prototype.initialize = function(map) {
 LabeledMarker.prototype.redraw = function(force) {
   GMarker.prototype.redraw.apply(this, arguments);
   
-  // We only need to do anything if the coordinate system has changed
-  if (!force) return;
-  
   // Calculate the DIV coordinates of two opposite corners of our bounds to
   // get the size and position of our rectangle
   var p = this.map_.fromLatLngToDivPixel(this.latlng_);
