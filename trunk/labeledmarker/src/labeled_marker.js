@@ -36,6 +36,8 @@
  */
 function LabeledMarker(latlng, opt_opts){
   this.latlng_ = latlng;
+  this.opts_ = opt_opts;
+
   this.labelText_ = opt_opts.labelText || "";
   this.labelClass_ = opt_opts.labelClass || "markerLabel";
   this.labelOffset_ = opt_opts.labelOffset || new GSize(0, 0);
@@ -130,3 +132,11 @@ LabeledMarker.prototype.redraw = function(force) {
   GMarker.prototype.remove.apply(this, arguments);
 }
 
+/**
+ * Return a copy of this overlay, for the parent Map to duplicate itself in full. This
+ * is part of the Overlay interface and is used, for example, to copy everything in the 
+ * main view into the mini-map.
+ */
+LabeledMarker.prototype.copy = function() {
+  return new LabeledMarker(this.latlng_, this.opt_opts_);
+}
