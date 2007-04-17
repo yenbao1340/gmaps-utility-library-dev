@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2005-2006, Andre Lewis, andre@earthcode.com
+Copyright (c) 2005-2007, Andre Lewis, andre@earthcode.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided 
@@ -30,5 +30,404 @@ Or with options:
 
 More info at http://earthcode.com
 */
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('b 6(2a,28,1y){6.G.5={1k:.2,1Q:"#4f",1U:"4e 2Z 4d"};7 5=6.G.5;15(7 s 1C 2a){5[s]=2a[s]};7 29=5.1U.2d(\' \');5.21=1O(29[0].4c(/\\D/g,\'\'));5.2B=29[2];5.1K=\'2K(17=\'+(5.1k*2J)+\')\';6.G.A={2v:M,27:\'2q ...\',2X:{E:\'4b\',2u:\'12 2Z 4a\',49:\'1n 2Y 12 2Y\'},26:{1a:\'#48\'},2U:\'47 a 46 45 44 24\',2T:{1a:\'#43\'},2A:42,2w:M};15(7 s 1C 28){6.G.A[s]=28[s]};h(1y==y){1y={}};6.G.J=1y}6.9=K 41();6.G={1c:M,F:y,z:y,v:y,w:y,19:y,I:y,O:0,Z:0,1o:0,c:0,f:0,1d:0};6.9.2S=b(2W){7 G=6.G;7 q=x.2R(\'B\');q.1x=G.A.27;q.m=\'u-22\';j.5([q],{2Q:\'40\',2P:3Z});j.5([q],G.A.2X);j.5([q],G.A.26);2W.2O(q);C q};6.9.1J=b(2V){7 G=6.G;h(2V==\'2s\'){G.q.1x=G.A.2U;j.5([G.q],G.A.2T)}16{G.q.1x=G.A.27;j.5([G.q],G.A.26)}};6.9.3Y=b(p){7 G=6.G;7 25=p.1S();7 q=23.2S(25);7 o=x.2R("B");o.m=\'u-24-2M\';o.1x=\'<B m="u-2N" 5="14:13;n:L;"></B><B m="u-F" 5="14:13;n:L;"></B><B m="u-w" 5="14:13;n:L;"></B><B m="u-z" 5="14:13;n:L;"></B><B m="u-v" 5="14:13;n:L;"></B>\';j.5([o],{14:\'13\',n:\'L\',3X:\'3W\',2Q:\'3V\',2P:3U});25.2O(o);1w.1v(q,\'3T\',6.9.2t);1w.1v(o,\'3S\',6.9.2L);1w.1v(x,\'3R\',6.9.2G);1w.1v(x,\'3Q\',6.9.2E);G.19=j.1F(p.1S());G.I=$m("u-2N");G.q=$m("u-22");G.P=$m("u-24-2M");G.F=$m("u-F");G.z=$m("u-z");G.v=$m("u-v");G.w=$m("u-w");G.p=p;G.1d=G.5.21*2;23.1R();23.1T();H("3P 3O u 22");C q};6.9.3N=b(){C K 3M(3L,K 3K(3,3J))};6.9.2L=b(e){7 G=6.G;7 r=6.9.1l(e);H("3I 2H 2C "+r.l+", "+r.d);G.c=r.l;G.f=r.d;j.5([G.P],{1a:\'3H\',17:1,1L:\'2K(17=2J)\'});j.5([G.I],{l:G.c+\'k\',d:G.f+\'k\',n:\'N\',E:\'12\',R:\'12\'});G.1c=1i;G.F.5.d=(G.f-G.Z)+\'k\';G.F.5.n=\'N\';G.w.5.l=(G.c-G.O)+\'k\';G.w.5.d=(G.f)+\'k\';G.w.5.n=\'N\';G.z.5.l=(G.c)+\'k\';G.z.5.d=(G.f)+\'k\';G.z.5.n=\'N\';G.v.5.l=(G.c)+\'k\';G.v.5.d=(G.f)+\'k\';G.v.5.E=\'1n\';G.v.5.n=\'N\';h(G.J.2I!=y){G.J.2I(G.c,G.f)};H("2D 2H 1j");C M};6.9.2G=b(e){7 G=6.G;h(G.1c){7 r=6.9.1l(e);8=6.9.1P(G.c,G.f,r,G.1o);h(8.l)10=-8.Q;16 10=0;h(8.d)11=-8.U;16 11=0;j.5([G.I],{l:G.c+10+\'k\',d:G.f+11+\'k\',n:\'N\',E:\'12\',R:\'12\'});G.I.5.E=8.Q+"k";G.I.5.R=8.U+"k";G.F.5.R=((G.f+11)-(G.f-G.Z))+\'k\';G.w.5.d=(G.f+11)+\'k\';G.w.5.E=((G.c+10)-(G.c-G.O))+\'k\';G.z.5.d=G.w.5.d;G.z.5.l=(G.c+10+8.Q+G.1d)+\'k\';G.v.5.d=(G.f+11+8.U+G.1d)+\'k\';G.v.5.l=(G.c-G.O+((G.c+10)-(G.c-G.O)))+\'k\';G.v.5.E=(8.Q+G.1d)+\'k\';h(G.J.2F!=y){G.J.2F(G.c,G.f,8.W,8.V)};C M}};6.9.2E=b(e){7 G=6.G;h(G.1c){7 r=6.9.1l(e);G.1c=M;7 8=6.9.1P(G.c,G.f,r,G.1o);H("2D 3G 2C "+8.W+", "+8.V+". 3F/E="+8.Q+","+8.U);h(8.l)8.W=8.c-8.Q;h(8.d)8.V=8.f-8.U;6.9.1M();7 1Z=K 1u(8.c,8.f);7 1Y=K 1u(8.W,8.f);7 1X=K 1u(8.W,8.V);7 1W=K 1u(8.c,8.V);7 1b=G.p.1t(1Z);7 1r=G.p.1t(1Y);7 1q=G.p.1t(1X);7 1p=G.p.1t(1W);7 20=K 3E([1b,1r,1q,1p,1b],G.5.2B,G.5.21+1,.4);3D{G.p.3C(20);3B(b(){G.p.3A(20)},G.A.2A)}3z(e){1z.1A("1A 3y 3x 3w:"+e.3v)}S=K 3u();S.1s(1b);S.1s(1r);S.1s(1q);S.1s(1p);2y=G.p.3t(S);2z=S.3s();G.p.3r(2z,2y);h(G.J.2x!=y){G.J.2x(1b,1r,1q,1p,1Z,1Y,1X,1W)};h(G.A.2w){6.9.1m()}}};6.9.1R=b(){7 G=6.G;h(G.A.2v){G.p.3q()};7 1V=G.p.3p();G.O=1V.E;G.Z=1V.R;G.1o=G.Z/G.O;j.5([G.P,G.F,G.z,G.v,G.w],{E:G.O+\'k\',R:G.Z+\'k\'})};6.9.1T=b(){7 G=6.G;j.5([G.P,G.F,G.z,G.v,G.w],{1L:G.5.1K,17:G.5.1k,1a:G.5.1Q});G.I.5.2u=G.5.1U;H("1j 1T")};6.9.2t=b(){h(6.G.P.5.n==\'N\'){6.9.1M()}16{6.9.1m()}};6.9.1m=b(){7 G=6.G;G.19=j.1F(G.p.1S());6.9.1R();6.9.1J(\'2s\');j.5([G.P],{n:\'N\',1a:G.5.1Q});j.5([G.I],{E:\'1n\',R:\'1n\'});h(6.G.J[\'2r\']!=y){6.G.J.2r()};H("1j 1m")};6.9.1l=b(e){7 r=j.2n(e);7 G=6.G;C{d:(r.d-G.19.d),l:(r.l-G.19.l)}};6.9.1P=b(c,f,r,1N){7 l=M;7 d=M;7 Y=r.l-c;7 X=r.d-f;h(Y<0){Y=Y*-1;l=1i}h(X<0){X=X*-1;d=1i}18=Y>X?Y:X;C{c:c,f:f,W:c+18,V:f+1O(18*1N),Q:18,U:1O(18*1N),l:l,d:d}};6.9.1M=b(){7 G=6.G;j.5([G.P,G.F,G.z,G.v,G.w],{n:\'L\',17:G.5.1k,1L:G.5.1K});G.I.5.n=\'L\';6.9.1J(\'3o\');H("1j 3n 3m 3l 2q")};b $m(2p){C x.3k(2p)}h(!1I[\'2o\']){7 j={};1I[\'2o\']=1i}j.2n=b(e){7 1g=0;7 1f=0;h(!e)7 e=1I.3j;h(e.2m||e.2l){1g=e.2m;1f=e.2l}16 h(e.2k||e.2j){1g=e.2k+(x.1h.1H?x.1h.1H:x.2i.1H);1f=e.2j+(x.1h.1G?x.1h.1G:x.2i.1G)}C{l:1g,d:1f}};j.1F=b(1e){7 1E=1e.2h;7 1D=1e.2g;7 T=1e.2f;3i(T!=y){1E+=T.2h;1D+=T.2g;T=T.2f}C{l:1E,d:1D}};j.5=b(a,o){h(3h(a)==\'3g\'){a=j.2e(a)}15(7 i=0;i<a.1B;i++){15(7 s 1C o){a[i].5[s]=o[s]}}};j.2e=b(s){t=s.2d(\',\');a=[];15(7 i=0;i<t.1B;i++){a[a.1B]=$m(t[i])};C a};7 1z={H:b(){},3f:b(){},3e:b(){},1A:b(){},2c:b(){}};7 H=b(){};h(3d.3c.3b(/3a/)){x.39(\'<2b 38="2c/37" 36="35://34.33/32/31/1z.30"></2b>\')};',62,264,'|||||style|GZoomControl|var|oRec|prototype||function|nStartX|top||nStartY||if||acl|px|left|id|display||oMap|oButton|oPos|||gzoom|mcb|mcl|document|null|mcr|options|div|return||width|mct||debug|oOutline|callbacks|new|none|false|block|nMapWidth|mc|nWidth|height|oBounds|eParElement|nHeight|nEndY|nEndX|dY|dX|nMapHeight|addX|addY|1px|absolute|position|for|else|opacity|delta|oMapPos|background|nw|bDragging|nBorderCorrect|eElement|posy|posx|documentElement|true|done|nOpacity|getRelPos_|initCover_|0px|nMapRatio|sw|se|ne|extend|fromContainerPixelToLatLng|GPoint|addDomListener|GEvent|innerHTML|oCallbacks|jslog|error|length|in|nTopPos|nLeftPos|getElementPosition|scrollTop|scrollLeft|window|setButtonMode_|sIEAlpha|filter|resetDragZoom_|nRatio|parseInt|getRectangle_|sColor|setDimensions_|getContainer|initStyles_|sBorder|oSize|swpx|sepx|nepx|nwpx|oZoomArea|nOutlineWidth|control|this|map|oMC|oButtonStyle|sButtonHTML|oOptions|aStyle|oBoxStyle|script|text|split|getManyElements|offsetParent|offsetTop|offsetLeft|body|clientY|clientX|pageY|pageX|getMousePosition|acldefined|sId|zoom|buttonClick|zooming|buttonClick_|border|bForceCheckResize|bStickyZoom|dragEnd|nZoom|oCenter|nOverlayRemoveMS|sOutlineColor|at|mouse|mouseup_|dragging|drag_|down|dragStart|100|alpha|coverMousedown_|cover|outline|appendChild|zIndex|cursor|createElement|initButton_|oButtonZoomingStyle|sButtonZoomingHTML|sMode|oMapContainer|oButtonStartingStyle|5px|solid|js|scripts|includes|com|earthcode|http|src|javascript|type|write|enablejslog|match|href|location|warning|info|string|typeof|while|event|getElementById|drag|reset|with|normal|getSize|checkResize|setCenter|getCenter|getBoundsZoomLevel|GLatLngBounds|message|overlay|zoomarea|adding|catch|removeOverlay|setTimeout|addOverlay|try|GPolyline|Height|up|transparent|Mouse|120|GSize|G_ANCHOR_TOP_LEFT|GControlPosition|getDefaultPosition|Initializing|Finished|mouseup|mousemove|mousedown|click|101|crosshair|hidden|overflow|initialize|200|pointer|GControl|6000|FF0|the|on|region|Drag|FFF|padding|black|52px|replace|blue|2px|000'.split('|'),0,{}))
 
+// base definition and inheritance
+function GZoomControl(oBoxStyle,oOptions,oCallbacks) {
+  //box style options
+  GZoomControl.G.style = {
+    nOpacity:.2,
+    sColor:"#000",
+    sBorder:"2px solid blue"
+  };
+  var style=GZoomControl.G.style;
+  for (var s in oBoxStyle) {style[s]=oBoxStyle[s]};
+  var aStyle=style.sBorder.split(' ');
+  style.nOutlineWidth=parseInt(aStyle[0].replace(/\D/g,''));
+  style.sOutlineColor=aStyle[2];
+  style.sIEAlpha='alpha(opacity='+(style.nOpacity*100)+')';
+
+  // Other options
+  GZoomControl.G.options={
+    bForceCheckResize:false,
+    sButtonHTML:'zoom ...',
+    oButtonStartingStyle:{width:'52px',border:'1px solid black',padding:'0px 5px 1px 5px'},
+    oButtonStyle:{background:'#FFF'},
+    sButtonZoomingHTML:'Drag a region on the map',
+    oButtonZoomingStyle:{background:'#FF0'},
+    nOverlayRemoveMS:6000,
+    bStickyZoom:false
+  };
+	
+  for (var s in oOptions) {
+    GZoomControl.G.options[s]=oOptions[s]
+  }
+
+  // callbacks: buttonClick, dragStart,dragging, dragEnd
+  if (oCallbacks == null) {
+    oCallbacks={}
+  }
+  GZoomControl.G.callbacks=oCallbacks;
+}
+
+GZoomControl.prototype = new GControl();
+
+//class globals
+GZoomControl.G={
+  bDragging:false,
+  mct:null,
+  mcr:null,
+  mcb:null,
+  mcl:null,
+  oMapPos:null,
+  oOutline:null,
+  nMapWidth:0,
+  nMapHeight:0,
+  nMapRatio:0,
+  nStartX:0,
+  nStartY:0,
+  nBorderCorrect:0
+};
+
+GZoomControl.prototype.initButton_=function(oMapContainer) {
+  var G=GZoomControl.G;
+  var oButton = document.createElement('div');
+  oButton.innerHTML=G.options.sButtonHTML;
+  oButton.id='gzoom-control';
+  acl.style([oButton],{cursor:'pointer',zIndex:200});
+  acl.style([oButton],G.options.oButtonStartingStyle);
+  acl.style([oButton],G.options.oButtonStyle);
+  oMapContainer.appendChild(oButton);
+  return oButton;
+};
+
+GZoomControl.prototype.setButtonMode_=function(sMode){
+  var G=GZoomControl.G;
+  if (sMode=='zooming') {
+    G.oButton.innerHTML=G.options.sButtonZoomingHTML;
+    acl.style([G.oButton],G.options.oButtonZoomingStyle);
+  } else {
+    G.oButton.innerHTML=G.options.sButtonHTML;
+    acl.style([G.oButton],G.options.oButtonStyle);
+  }
+};
+
+// ******************************************************************************************
+// Methods required by Google maps -- initialize and getDefaultPosition
+// ******************************************************************************************
+GZoomControl.prototype.initialize = function(oMap) {
+  var G=GZoomControl.G;
+  var oMC=oMap.getContainer();
+  //DOM:button
+  var oButton=this.initButton_(oMC);
+
+  //DOM:map covers
+  var o = document.createElement("div");
+  o.id='gzoom-map-cover';
+  o.innerHTML='<div id="gzoom-outline" style="position:absolute;display:none;"></div><div id="gzoom-mct" style="position:absolute;display:none;"></div><div id="gzoom-mcl" style="position:absolute;display:none;"></div><div id="gzoom-mcr" style="position:absolute;display:none;"></div><div id="gzoom-mcb" style="position:absolute;display:none;"></div>';
+  acl.style([o],{position:'absolute',display:'none',overflow:'hidden',cursor:'crosshair',zIndex:101});
+  oMC.appendChild(o);
+
+  // add event listeners
+  GEvent.addDomListener(oButton, 'click', GZoomControl.prototype.buttonClick_);
+  GEvent.addDomListener(o, 'mousedown', GZoomControl.prototype.coverMousedown_);
+  GEvent.addDomListener(document, 'mousemove', GZoomControl.prototype.drag_);
+  GEvent.addDomListener(document, 'mouseup', GZoomControl.prototype.mouseup_);
+
+  // get globals
+  G.oMapPos=acl.getElementPosition(oMap.getContainer());
+  G.oOutline=$id("gzoom-outline");	
+  G.oButton=$id("gzoom-control");
+  G.mc=$id("gzoom-map-cover");
+  G.mct=$id("gzoom-mct");
+  G.mcr=$id("gzoom-mcr");
+  G.mcb=$id("gzoom-mcb");
+  G.mcl=$id("gzoom-mcl");
+  G.oMap = oMap;
+
+  G.nBorderCorrect = G.style.nOutlineWidth*2;	
+  this.setDimensions_();
+
+  //styles
+  this.initStyles_();
+
+  debug("Finished Initializing gzoom control");  
+  return oButton;
+};
+
+// Default location for the control
+GZoomControl.prototype.getDefaultPosition = function() {
+  return new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(3, 120));
+};
+
+// ******************************************************************************************
+// Private methods
+// ******************************************************************************************
+GZoomControl.prototype.coverMousedown_ = function(e){
+  var G=GZoomControl.G;
+  var oPos = GZoomControl.prototype.getRelPos_(e);
+  debug("Mouse down at "+oPos.left+", "+oPos.top);
+  G.nStartX=oPos.left;
+  G.nStartY=oPos.top;
+  
+  acl.style([G.mc],{background:'transparent',opacity:1,filter:'alpha(opacity=100)'});
+  acl.style([G.oOutline],{left:G.nStartX+'px',top:G.nStartY+'px',display:'block',width:'1px',height:'1px'});
+  G.bDragging=true;
+
+  G.mct.style.top=(G.nStartY-G.nMapHeight)+'px';
+  G.mct.style.display='block';
+  G.mcl.style.left=(G.nStartX-G.nMapWidth)+'px';
+  G.mcl.style.top=(G.nStartY)+'px';
+  G.mcl.style.display='block';
+
+  G.mcr.style.left=(G.nStartX)+'px';
+  G.mcr.style.top=(G.nStartY)+'px';
+  G.mcr.style.display='block';
+  G.mcb.style.left=(G.nStartX)+'px';
+  G.mcb.style.top=(G.nStartY)+'px';
+  G.mcb.style.width='0px';
+  G.mcb.style.display='block';
+
+  // invoke the callback if provided
+  if (G.callbacks.dragStart !=null){G.callbacks.dragStart(G.nStartX,G.nStartY)};
+
+  debug("mouse down done");
+  return false;
+};
+
+GZoomControl.prototype.drag_=function(e){
+  var G=GZoomControl.G;
+  if(G.bDragging) {
+    var oPos=GZoomControl.prototype.getRelPos_(e);
+    oRec = GZoomControl.prototype.getRectangle_(G.nStartX,G.nStartY,oPos,G.nMapRatio);
+
+    if (oRec.left) {
+      addX = -oRec.nWidth;			
+    } else { 
+      addX = 0;
+    }
+
+    if (oRec.top) {
+      addY = -oRec.nHeight;
+    } else {
+      addY = 0;
+    }
+
+    acl.style([G.oOutline],{left:G.nStartX+addX+'px',top:G.nStartY+addY+'px',display:'block',width:'1px',height:'1px'});	// <---
+	
+    G.oOutline.style.width=oRec.nWidth+"px";
+    G.oOutline.style.height=oRec.nHeight+"px";
+
+    G.mct.style.height=((G.nStartY+addY)-(G.nStartY-G.nMapHeight))+'px';
+    G.mcl.style.top=(G.nStartY+addY)+'px';
+    G.mcl.style.width=((G.nStartX+addX)-(G.nStartX-G.nMapWidth))+'px';
+    G.mcr.style.top=G.mcl.style.top;
+    G.mcr.style.left=(G.nStartX+addX+oRec.nWidth+G.nBorderCorrect)+'px';
+    G.mcb.style.top=(G.nStartY+addY+oRec.nHeight+G.nBorderCorrect)+'px';
+    G.mcb.style.left=(G.nStartX-G.nMapWidth+((G.nStartX+addX)-(G.nStartX-G.nMapWidth)))+'px';
+    G.mcb.style.width=(oRec.nWidth+G.nBorderCorrect)+'px';
+		
+    // invoke callback if provided
+    if (G.callbacks.dragging !=null) {
+      G.callbacks.dragging(G.nStartX,G.nStartY,oRec.nEndX,oRec.nEndY)
+    }
+		
+    return false;
+  }  
+};
+GZoomControl.prototype.mouseup_=function(e){
+  var G=GZoomControl.G;
+  if (G.bDragging) {
+    var oPos = GZoomControl.prototype.getRelPos_(e);
+    G.bDragging=false;
+    
+    var oRec = GZoomControl.prototype.getRectangle_(G.nStartX,G.nStartY,oPos,G.nMapRatio);
+    debug("mouse up at "+oRec.nEndX+", "+oRec.nEndY+". Height/width="+oRec.nWidth+","+oRec.nHeight); 
+
+    if (oRec.left) oRec.nEndX = oRec.nStartX - oRec.nWidth;
+    if (oRec.top) oRec.nEndY = oRec.nStartY - oRec.nHeight;
+	
+    GZoomControl.prototype.resetDragZoom_();
+
+    var nwpx=new GPoint(oRec.nStartX,oRec.nStartY);
+    var nepx=new GPoint(oRec.nEndX,oRec.nStartY);
+    var sepx=new GPoint(oRec.nEndX,oRec.nEndY);
+    var swpx=new GPoint(oRec.nStartX,oRec.nEndY);
+    var nw = G.oMap.fromContainerPixelToLatLng(nwpx); 
+    var ne = G.oMap.fromContainerPixelToLatLng(nepx); 
+    var se = G.oMap.fromContainerPixelToLatLng(sepx); 
+    var sw = G.oMap.fromContainerPixelToLatLng(swpx); 
+
+    var oZoomArea = new GPolyline([nw,ne,se,sw,nw],G.style.sOutlineColor,G.style.nOutlineWidth+1,.4);
+
+    try{
+      G.oMap.addOverlay(oZoomArea);
+      setTimeout (function(){G.oMap.removeOverlay(oZoomArea)},G.options.nOverlayRemoveMS);  
+    }catch(e){
+      jslog.error("error adding zoomarea overlay:"+e.message);
+    }
+
+    oBounds=new GLatLngBounds();
+    oBounds.extend(nw);
+    oBounds.extend(ne);
+    oBounds.extend(se);
+    oBounds.extend(sw);
+    nZoom=G.oMap.getBoundsZoomLevel(oBounds);
+    oCenter=oBounds.getCenter();
+    G.oMap.setCenter(oCenter,nZoom);
+
+    // invoke callback if provided
+    if (G.callbacks.dragEnd !=null) {
+      G.callbacks.dragEnd(nw,ne,se,sw,nwpx,nepx,sepx,swpx)
+    }
+		
+    //re-init if sticky
+    if (G.options.bStickyZoom) {
+      GZoomControl.prototype.initCover_()
+    }
+  }
+};
+
+// set the cover sizes according to the size of the map
+GZoomControl.prototype.setDimensions_=function() {
+  var G=GZoomControl.G;
+  if (G.options.bForceCheckResize) {
+    G.oMap.checkResize()
+  };
+  var oSize = G.oMap.getSize();
+  G.nMapWidth  = oSize.width;
+  G.nMapHeight = oSize.height;
+  G.nMapRatio  = G.nMapHeight/G.nMapWidth;
+  acl.style([G.mc,G.mct,G.mcr,G.mcb,G.mcl],{width:G.nMapWidth+'px', height:G.nMapHeight+'px'});
+};
+
+GZoomControl.prototype.initStyles_=function(){
+  var G=GZoomControl.G;
+  acl.style([G.mc,G.mct,G.mcr,G.mcb,G.mcl],{filter:G.style.sIEAlpha,opacity:G.style.nOpacity,background:G.style.sColor});
+  G.oOutline.style.border=G.style.sBorder;  
+  debug("done initStyles_");	
+};
+
+// The zoom button's click handler.
+GZoomControl.prototype.buttonClick_=function(){
+  if (GZoomControl.G.mc.style.display=='block'){ // reset if clicked before dragging
+    GZoomControl.prototype.resetDragZoom_();
+  } else {
+    GZoomControl.prototype.initCover_();
+  }
+};
+
+// Shows the cover over the map
+GZoomControl.prototype.initCover_=function(){
+  var G=GZoomControl.G;
+  G.oMapPos=acl.getElementPosition(G.oMap.getContainer());
+  GZoomControl.prototype.setDimensions_();
+  GZoomControl.prototype.setButtonMode_('zooming');
+  acl.style([G.mc],{display:'block',background:G.style.sColor});
+  acl.style([G.oOutline],{width:'0px',height:'0px'});
+  //invoke callback if provided
+  if(GZoomControl.G.callbacks['buttonClick'] !=null){GZoomControl.G.callbacks.buttonClick()};
+  debug("done initCover_");
+};
+
+GZoomControl.prototype.getRelPos_=function(e) {
+  var oPos=acl.getMousePosition (e);
+  var G=GZoomControl.G;
+  return {top:(oPos.top-G.oMapPos.top),left:(oPos.left-G.oMapPos.left)};
+};
+
+GZoomControl.prototype.getRectangle_=function(nStartX,nStartY,oPos,nRatio){
+  var left = false;
+  var top = false;
+  var dX=oPos.left-nStartX;
+  var dY=oPos.top-nStartY;	
+  if (dX <0) {
+    dX = dX*-1;
+    left = true;
+  }
+  if (dY <0) {
+    dY = dY*-1;
+    top = true;
+  }
+  delta = dX > dY ? dX : dY;
+
+  return {
+    nStartX:nStartX,
+    nStartY:nStartY,
+    nEndX:nStartX+delta,
+    nEndY:nStartY+parseInt(delta*nRatio),
+    nWidth:delta,
+    nHeight:parseInt(delta*nRatio),
+		left:left,
+		top:top
+  }
+};
+
+GZoomControl.prototype.resetDragZoom_=function() {
+  var G=GZoomControl.G;
+  acl.style([G.mc,G.mct,G.mcr,G.mcb,G.mcl],{display:'none',opacity:G.style.nOpacity,filter:G.style.sIEAlpha});
+  G.oOutline.style.display='none';	
+  GZoomControl.prototype.setButtonMode_('normal');
+  debug("done with reset drag zoom");
+};
+
+/* alias get element by id */
+function $id(sId) { 
+  return document.getElementById(sId); 
+}
+
+/* utility functions in acl namespace */
+if (!window['acldefined']) {var acl={};window['acldefined']=true;}//only set the acl namespace once, then set a flag
+
+/* A general-purpose function to get the absolute position of
+the mouse */
+acl.getMousePosition=function(e) {
+  var posx = 0;
+  var posy = 0;
+  if (!e) var e = window.event;
+  if (e.pageX || e.pageY) {
+    posx = e.pageX;
+    posy = e.pageY;
+  } else if (e.clientX || e.clientY){
+    posx = e.clientX + (document.documentElement.scrollLeft?document.documentElement.scrollLeft:document.body.scrollLeft);
+    posy = e.clientY + (document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop);
+  }	
+  return {left:posx, top:posy};  
+};
+
+/*
+To Use: 
+	var pos = acl.getElementPosition(element);
+	var left = pos.left;
+	var top = pos.top;
+*/
+acl.getElementPosition=function(eElement) {
+  var nLeftPos = eElement.offsetLeft;          // initialize var to store calculations
+  var nTopPos = eElement.offsetTop;            // initialize var to store calculations
+  var eParElement = eElement.offsetParent;     // identify first offset parent element  
+  while (eParElement != null ) {                // move up through element hierarchy
+    nLeftPos += eParElement.offsetLeft;      // appending left offset of each parent
+    nTopPos += eParElement.offsetTop;  
+    eParElement = eParElement.offsetParent;  // until no more offset parents exist
+  }
+  return {left:nLeftPos, top:nTopPos};
+};
+//elements is either a coma-delimited list of ids or an array of DOM objects. o is a hash of styles to be applied
+//example: style('d1,d2',{color:'yellow'});  
+acl.style=function(a,o){
+  if (typeof(a)=='string') {a=acl.getManyElements(a);}
+  for (var i=0;i<a.length;i++){
+    for (var s in o) { a[i].style[s]=o[s];}
+  }
+};
+acl.getManyElements=function(s){		
+  t=s.split(',');
+  a=[];
+  for (var i=0;i<t.length;i++){a[a.length]=$id(t[i])};
+  return a;
+};
+	
+var jslog = {debug:function(){},info:function(){}, 
+	warning:function(){}, error:function(){},
+	text:function(){}}; var debug=function(){};
+if (location.href.match(/enablejslog/)){
+		document.write('<script type="text/javascript" src="http://earthcode.com/includes/scripts/jslog.js"></script>');};	
