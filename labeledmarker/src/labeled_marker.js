@@ -30,7 +30,7 @@
  * @param {GMarkerOptions} Named optional arguments:
  *   opt_opts.labelText {String} text to place in the overlay div.
  *   opt_opts.labelClass {String} class to use for the overlay div.
- *     (default "markerLabel")
+ *     (default "LabeledMarker_markerLabel")
  *   opt_opts.labelOffset {GSize} label offset, the x- and y-distance between
  *     the marker's latlng and the upper-left corner of the text div.
  */
