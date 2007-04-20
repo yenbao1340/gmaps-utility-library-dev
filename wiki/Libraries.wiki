@@ -21,3 +21,10 @@ This is the open-source version of GMarkerManager, with improvements.
 This class extends the Maps API's standard GMarker class with the ability to support markers with textual labels. 
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Link to Development Version]
+
+
+== GZoom ==
+
+This is a control created by Andre Lewis that allows you to select an area on the map by dragging a rectangle and the map will then zoom to that area.
+
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/gzoom/ Link to Development Version]
