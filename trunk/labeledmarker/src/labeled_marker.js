@@ -39,7 +39,7 @@ function LabeledMarker(latlng, opt_opts){
   this.opts_ = opt_opts;
 
   this.labelText_ = opt_opts.labelText || "";
-  this.labelClass_ = opt_opts.labelClass || "markerLabel";
+  this.labelClass_ = opt_opts.labelClass || "LabeledMarker_markerLabel";
   this.labelOffset_ = opt_opts.labelOffset || new GSize(0, 0);
   
   this.clickable_ = opt_opts.clickable || true;

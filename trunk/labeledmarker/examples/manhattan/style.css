@@ -71,12 +71,12 @@ body { margin: 10px; }
 }
 
 
-div.markerLabel {
+div.LabeledMarker_markerLabel {
 	display: block;
 	padding-top: 9px;
 }
 
-div.markerLabel,
+div.LabeledMarker_markerLabel,
 #sidebar ul#sidebar-list li div.label {
 	text-align: center;
 	color: white;
