@@ -12,6 +12,8 @@
 
 <p>To create a labeled marker, create a new LabeledMarker, and specify the relevant options. The most important options are icon, labelText and labelOffset. Then you can assign it event listeners and add it to the map just as you would with a GMarker object.</p>
 <pre class="prettyprint">
+var latlng = new GLatLng(48.25, 11.00);
+
 var icon = new GIcon();
 icon.image = 'red_marker.png';
 icon.iconSize = new GSize(32, 32);
@@ -21,8 +23,8 @@ icon.infoWindowAnchor = new GPoint(25, 7);
 opts = { 
   "icon": icon,
   "clickable": true,
-  "labelText": "ABC",
-  "labelOffset": new GSize(-16, -16)
+  "labelText": "A",
+  "labelOffset": new GSize(-6, -10)
 };
 var marker = new LabeledMarker(latlng, opts);
 
@@ -32,104 +34,27 @@ GEvent.addListener(marker, "click", function() {
 
 map.addOverlay(marker);
 </pre>
+<p><a href="../examples/simplelabeledmarker.html">View example (simplelabeledmarker.html)</a>. </p>
 
-
-<h2><a name="Marker_Manager_Weather" id="Marker_Manager_Weather"></a>Zoom Level Example: Weather Map</h2>
-
-<p>The following example creates a mock weather map for Europe. At zoom level 3, 20 randomly distributed weather icons are displayed. At level 6, when all 200 cities with population over 300,000 are easily distinguished, an additional 200 markers are shown. Finally, at level 8, 1000 markers are shown. (Note: to simplify the example, markers will be added at random locations.)</p>
-
-<pre class="prettyprint">
-function setupMap() {
-  if (GBrowserIsCompatible()) {
-    map = new GMap2(document.getElementById("map"));
-    map.addControl(new GLargeMapControl());
-    map.setCenter(new GLatLng(41, -98), 4);
-    window.setTimeout(setupWeatherMarkers, 0);
-  }
-}
-
-function getWeatherMarkers(n) {
-  var batch = [];
-  for (var i = 0; i &lt; n; ++i) {
-    batch.push(new GMarker(getRandomPoint(), { icon: getWeatherIcon() }));
-  }
-  return batch;
-}
-
-function setupWeatherMarkers() {
-  mgr = new GMarkerManager(map);
-  mgr.addMarkers(getWeatherMarkers(20), 3);
-  mgr.addMarkers(getWeatherMarkers(200), 6);
-  mgr.addMarkers(getWeatherMarkers(1000), 8);
-  mgr.refresh();
-}
-</pre>
-
-<p><a href="../examples/weather_map.html">View example (weather_map.html)</a></p>
-
-<h2><a name="Marker_Manager_Offices" id="Marker_Manager_Offices"></a>Clustering Example: Google Offices</h2>
-
-<p>The marker manager can also perform simple clustering of markers. While it does not do so automatically, you can achieve the desired effect by setting both the minimum and maximum zoom at which a given marker is shown. In this example we create a map of Google offices in North America. At the highest level we show flags of countries in which offices are located. For zoom levels 3 to 7 we show icons over population centers where one or more offices are located. Finally, at levels 8 or higher, we show individual markers for each office.</p>
-
-<pre class="prettyprint">
-var officeLayer = [
-  {
-    "zoom": [0, 3],
-    "places": [
-      { "name": "US Offices", "icon": ["us", "flag-shadow"], "posn": [40, -97] },
-      { "name": "Canadian Offices", "icon": ["ca", "flag-shadow"], "posn": [58, -101] }
-    ]
-  },
-  ...
-};
-
-function setupOfficeMarkers() {
-  allmarkers.length = 0;
-  for (var i in officeLayer) {
-    var layer = officeLayer[i];
-    var markers = [];
-    for (var j in layer["places"]) {
-      var place = layer["places"][j];
-      var icon = getIcon(place["icon"]);
-      var title = place["name"];
-      var posn = new GLatLng(place["posn"][0], place["posn"][1]);
-      var marker = createMarker(posn,title,icon); 
-      markers.push(marker);
-      allmarkers.push(marker);
-    }
-    mgr.addMarkers(markers, layer["zoom"][0], layer["zoom"][1]);
-  }
-  mgr.refresh();
-}
-</pre>
-
-<p>The marker manager now has functions to let you delete individual markers or all the markers in the manager, using <code>deleteMarker</code> and <code>clearMarkers</code> respectively.
-In the Google Offices example, you can delete a marker by double clicking on it, or entering an integer index in the text box and clicking the delete button.
-You can clear all the markers by clicking the clear button, and reload them again by clicking the reload button. The relevant code snippets are shown below.
+<h2><a name="LabeledMarker_Manhattan" id="LabeledMarker_Manhattan"></a>Multiple Labeled Marker Examples (Manhattan Subways)</h2>
+<p>
+Most likely, you'll want to use LabeledMarker to display multiple markers with different text for each marker, and you'll also want to tweak the style of the marker text.
+The default CSS classname used by LabeledMarker is LabeledMarker_markerLabel. If you define that in a CSS file, it will automatically be picked up by the marker label div. Alternatively, you can use an alternate classname and pass that in LabeledMarkerOptions in the labelClass property. The following example defines the default LabeledMarker_markerLabel:
 </p>
-
 <pre class="prettyprint">
-function createMarker(posn, title, icon) {
-  var marker = new GMarker(posn, {title: title, icon: icon, draggable:true });
-  GEvent.addListener(marker, 'dblclick', function() { mgr.removeMarker(marker) } ); 
-  return marker;
-}
-
-function deleteMarker() {
-  var markerNum = parseInt(document.getElementById("markerNum").value);
-  mgr.removeMarker(allmarkers[markerNum]);
-}
-   
-function clearMarkers() {
-  mgr.clearMarkers();
-}
-   
-function reloadMarkers() {
-  setupOfficeMarkers();
+div.LabeledMarker_markerLabel {
+  text-align: center;
+  color: white;
+  width: 32px;
+  letter-spacing: 0px;
+  font-size: 12px;
+  font-family: Arial;
 }
 </pre>
 
-<p><a href="../examples/google_northamerica_offices.html">View example (google_northamerica_offices.html)</a>
+<p>This example also creates multiple markers based on information stored in JSON format. You could also choose to represent your data in XML format, using very similar code.
+</p>
+<p><a href="../examples/manhattan/index.html">View example (manhattan/index.html)</a>. </p>
 
 
 </body>
