@@ -48,17 +48,7 @@ div.LabeledMarker_markerLabel  {
 }
 </pre>
 
-<p> You can assign an event listener to your LabeledMarker just as you'd assign a click listener to a GMarker. The following code causes an info window to pop up when the marker is clicked.
-</p>
-<pre class="prettyprint">
-  var marker = new LabeledMarker(newPoint, markerOpts);
-
-  GEvent.addListener(marker, "click", function() {
-    marker.openInfoWindowHtml(html);
-  });
-</pre>
-
-<p> This example of the most popular Airports in the world defines the LabeledMarker style and click listener as shown above, and also uses Google Spreadsheets as the data source for the markers. <a href="../examples/airportmap.html">View example (airportmap.html)</a>. </p>
+<p> This example of the most popular Airports in the world defines the LabeledMarker style as shown above, and uses Google Spreadsheets as the data source for the markers. <a href="../examples/airportmap.html">View example (airportmap.html)</a>. </p>
 
 <h2><a name="LabeledMarker_Manhattan" id="LabeledMarker_Manhattan"></a>Multiple Labeled Marker & Sidebar (Manhattan Subways) Example</h2>
 
