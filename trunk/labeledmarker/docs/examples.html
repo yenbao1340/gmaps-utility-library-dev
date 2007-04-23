@@ -40,6 +40,7 @@ map.addOverlay(marker);
 <p>
 Most likely, you'll want to use LabeledMarker to display multiple markers with different text for each marker, and you'll also want to tweak the style of the marker text.
 The default CSS classname used by LabeledMarker is LabeledMarker_markerLabel. If you define that in a CSS file, it will automatically be picked up by the marker label div. Alternatively, you can use an alternate classname and pass that in LabeledMarkerOptions in the labelClass property. The following example defines the default LabeledMarker_markerLabel:
+</p>
 <pre class="prettyprint">
 div.LabeledMarker_markerLabel  {
   color: white;
@@ -47,7 +48,17 @@ div.LabeledMarker_markerLabel  {
 }
 </pre>
 
-<p> The following example defines the LabeledMarker style as shown above, and also uses Google Spreadsheets as the data source for the markers. <a href="../examples/airportmap.html">View example (airportmap.html)</a>. </p>
+<p> You can assign an event listener to your LabeledMarker just as you'd assign a click listener to a GMarker. The following code causes an info window to pop up when the marker is clicked.
+</p>
+<pre class="prettyprint">
+  var marker = new LabeledMarker(newPoint, markerOpts);
+
+  GEvent.addListener(marker, "click", function() {
+    marker.openInfoWindowHtml(html);
+  });
+</pre>
+
+<p> This example of the most popular Airports in the world defines the LabeledMarker style and click listener as shown above, and also uses Google Spreadsheets as the data source for the markers. <a href="../examples/airportmap.html">View example (airportmap.html)</a>. </p>
 
 <h2><a name="LabeledMarker_Manhattan" id="LabeledMarker_Manhattan"></a>Multiple Labeled Marker & Sidebar (Manhattan Subways) Example</h2>
 
