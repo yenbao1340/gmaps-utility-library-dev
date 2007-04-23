@@ -64,6 +64,7 @@ function cm_load() {
  */
 function cm_markerClicked(markerNum) {
   cm_mapMarkers[markerNum].openInfoWindowHtml(cm_mapHTMLS[markerNum]);
+  cm_mapMarkers[markerNum].setImage('http://gmaps-samples.googlecode.com/svn/trunk/markers/circular/yellowcircularmarker.png');
 }
 
 /** 
@@ -163,6 +164,10 @@ function cm_createMarker(point, title, html, rank) {
   });
 
   GEvent.addListener(marker, "mouseout", function() {
+    marker.setImage('http://gmaps-samples.googlecode.com/svn/trunk/markers/circular/greencirclemarker.png');
+  });
+
+  GEvent.addListener(marker, 'infowindowclose', function() {
     marker.setImage('http://gmaps-samples.googlecode.com/svn/trunk/markers/circular/greencirclemarker.png');
   });
 
