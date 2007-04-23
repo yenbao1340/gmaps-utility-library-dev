@@ -35,7 +35,13 @@
 
         GEvent.addListener(marker, "click", function() {
           marker.openInfoWindowHtml("I'm a Labeled Marker!");
-          marker.setImage('http://imagine-it.org/google/gmaps-samples/markers/circular/bluecirclemarker.png');
+        });
+
+        GEvent.addListener(marker, "mouseover", function() {
+          marker.setImage('http://imagine-it.org/google/gmaps-samples/markers/circular/yellowcirclemarker.png');
+        });
+        GEvent.addListener(marker, "mouseout", function() {
+          marker.setImage('http://imagine-it.org/google/gmaps-samples/markers/circular/greencirclemarker.png');
         });
 
         map.addOverlay(marker);
