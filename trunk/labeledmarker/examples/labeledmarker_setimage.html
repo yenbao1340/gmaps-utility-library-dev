@@ -9,6 +9,7 @@
         font-family: Arial, sans serif;
         font-size: 11px;
         text-align: center;
+        width: 32px;
       }
     </style>
     <script src="http://maps.google.com/maps?file=api&amp;v=2&key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxT8bemrB74QmF-ljSt0r6xw5vxKjRRisAno3SZU83rSdUS3zR_JADzEUA" type="text/javascript"></script>
@@ -27,7 +28,7 @@
         var latlng = new GLatLng(48.25, 11.00);
 
         var icon = new GIcon();
-        icon.image = 'http://imagine-it.org/google/gmaps-samples/markers/circular/greencirclemarker.png';
+        icon.image = 'http://gmaps-samples.googlecode.com/svn/trunk/markers/circular/greencirclemarker.png';
         icon.iconSize = new GSize(32, 32);
         icon.iconAnchor = new GPoint(16, 16);
         icon.infoWindowAnchor = new GPoint(25, 7);
@@ -36,7 +37,7 @@
           "icon": icon,
           "clickable": true,
           "labelText": "A",
-          "labelOffset": new GSize(-4, -10)
+          "labelOffset": new GSize(-16, -10)
         };
         var marker = new LabeledMarker(latlng, opts);
 
@@ -45,7 +46,7 @@
         });
 
         GEvent.addListener(marker, "mouseover", function() {
-          marker.setImage('http://imagine-it.org/google/gmaps-samples/markers/circular/yellowcirclemarker.png');
+          marker.setImage('http://gmaps-samples.googlecode.com/svn/trunk/markers/circular/yellowcirclemarker.png');
         });
         GEvent.addListener(marker, "mouseout", function() {
           marker.setImage('http://imagine-it.org/google/gmaps-samples/markers/circular/greencirclemarker.png');
