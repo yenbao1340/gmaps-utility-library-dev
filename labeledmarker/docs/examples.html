@@ -36,23 +36,23 @@ map.addOverlay(marker);
 </pre>
 <p><a href="../examples/simplelabeledmarker.html">View example (simplelabeledmarker.html)</a>. </p>
 
-<h2><a name="LabeledMarker_Manhattan" id="LabeledMarker_Manhattan"></a>Multiple Labeled Marker Examples (Manhattan Subways)</h2>
+<h2><a name="LabeledMarker_AirportMap" id="LabeledMarker_AirportMap"></a>Multiple Markers with Styling (Airpot Map) Example </a></h2>
 <p>
 Most likely, you'll want to use LabeledMarker to display multiple markers with different text for each marker, and you'll also want to tweak the style of the marker text.
 The default CSS classname used by LabeledMarker is LabeledMarker_markerLabel. If you define that in a CSS file, it will automatically be picked up by the marker label div. Alternatively, you can use an alternate classname and pass that in LabeledMarkerOptions in the labelClass property. The following example defines the default LabeledMarker_markerLabel:
-</p>
 <pre class="prettyprint">
-div.LabeledMarker_markerLabel {
-  text-align: center;
+div.LabeledMarker_markerLabel  {
   color: white;
-  width: 32px;
-  letter-spacing: 0px;
-  font-size: 12px;
   font-family: Arial;
 }
 </pre>
 
-<p>This example also creates multiple markers based on information stored in JSON format. You could also choose to represent your data in XML format, using very similar code.
+<p> The following example defines the LabeledMarker style as shown above, and also uses Google Spreadsheets as the data source for the markers. <a href="../examples/airportmap.html">View example (airportmap.html)</a>. </p>
+
+<h2><a name="LabeledMarker_Manhattan" id="LabeledMarker_Manhattan"></a>Multiple Labeled Marker & Sidebar (Manhattan Subways) Example</h2>
+
+<p>The following example creates multiple markers based on information stored in JSON format. You could also choose to represent your data in XML format, using very similar code. 
+It also uses more CSS to create a sidebar with a style similar to the markers on the map.
 </p>
 <p><a href="../examples/manhattan/index.html">View example (manhattan/index.html)</a>. </p>
 
