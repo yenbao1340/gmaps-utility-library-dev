@@ -20,7 +20,7 @@
         var latlng = new GLatLng(48.25, 11.00);
 
         var icon = new GIcon();
-        icon.image = 'manhattan/red_marker.png';
+        icon.image = 'http://imagine-it.org/google/gmaps-samples/markers/circular/greencirclemarker.png';
         icon.iconSize = new GSize(32, 32);
         icon.iconAnchor = new GPoint(16, 16);
         icon.infoWindowAnchor = new GPoint(25, 7);
@@ -35,7 +35,7 @@
 
         GEvent.addListener(marker, "click", function() {
           marker.openInfoWindowHtml("I'm a Labeled Marker!");
-          marker.setImage('http://www.wvdot.com/6_motorists/6_IMAGES/6c6_circle.gif');
+          marker.setImage('http://imagine-it.org/google/gmaps-samples/markers/circular/greencirclemarker.png');
         });
 
         map.addOverlay(marker);
