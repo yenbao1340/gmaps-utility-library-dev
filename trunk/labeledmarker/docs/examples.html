@@ -48,7 +48,19 @@ div.LabeledMarker_markerLabel  {
 }
 </pre>
 
-<p> This example of the most popular Airports in the world defines the LabeledMarker style as shown above, and uses Google Spreadsheets as the data source for the markers. <a href="../examples/airportmap.html">View example (airportmap.html)</a>. </p>
+<p>You can also use LabeledMarker with the GMarker.setImage property, if you'd like to implement image-change on mouseovers or other marker events. The following code will achieve a mouse-over effect:</p>
+
+<pre class="prettyprint">
+  GEvent.addListener(marker, "mouseover", function() {
+    marker.setImage('http://gmaps-samples.googlecode.com/svn/trunk/markers/circular/yellowcirclemarker.png');
+  });
+
+  GEvent.addListener(marker, "mouseout", function() {
+    marker.setImage('http://gmaps-samples.googlecode.com/svn/trunk/markers/circular/greencirclemarker.png');
+  });
+</pre>
+
+<p> This example of the most popular Airports in the world defines the LabeledMarker style and implements a mouse-over effect as shown above, and uses Google Spreadsheets as the data source for the markers. <a href="../examples/airportmap.html">View example (airportmap.html)</a>. </p>
 
 <h2><a name="LabeledMarker_Manhattan" id="LabeledMarker_Manhattan"></a>Multiple Labeled Marker & Sidebar (Manhattan Subways) Example</h2>
 
