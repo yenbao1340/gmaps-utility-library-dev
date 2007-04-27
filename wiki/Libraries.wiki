@@ -23,7 +23,8 @@ This class extends the Maps API's standard GMarker class with the ability to sup
 [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/ Link to Release (1.0) Version]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/docs/examples.html Examples]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/src/markermanager.js Javascript include]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/src/labeledmarker.js Javascript include]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/src/labeledmarker_packed.js Javascript include (packed)]
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Link to Development Version]
 
