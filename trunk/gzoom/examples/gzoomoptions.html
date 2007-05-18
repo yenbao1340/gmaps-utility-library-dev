@@ -48,17 +48,17 @@
 
 
      if (el("opt_stickyZoomEnabled").checked) {
-       opts.push("otherOpts.stickyZoomEnabled = true;"); 
+       code.push("otherOpts.stickyZoomEnabled = true;"); 
      }
      if (el("opt_buttonHTML").value != 'zoom...') {
-       opts.push("otherOpts.buttonHTML = '" + el("opt_buttonHTML").value + "';");
+       code.push("otherOpts.buttonHTML = '" + el("opt_buttonHTML").value + "';");
      }
      if (el("opt_buttonZoomingHTML").value != 'Drag a region on the map') {
-       opts.push("otherOpts.buttonZoomingHTML = '" + el("opt_buttonZoomingHTML").value + "';");
+       code.push("otherOpts.buttonZoomingHTML = '" + el("opt_buttonZoomingHTML").value + "';");
      }
      var val_overlayRemoveTime = parseInt(el("opt_overlayRemoveTime").value);
      if(val_overlayRemoveTime != 6000) {
-       opts.push("otherOpts.overlayRemoveTime = " + val_overlayRemoveTime + ";");
+       code.push("otherOpts.overlayRemoveTime = " + val_overlayRemoveTime + ";");
      }
 
      code.push("zcontrol = new GZoomControl(styleOpts, otherOpts, {});");
