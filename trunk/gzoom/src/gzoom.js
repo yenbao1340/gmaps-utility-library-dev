@@ -206,7 +206,7 @@ GZoomControl.prototype.getDefaultPosition = function() {
  * @param {Object} e 
  */
 GZoomControl.prototype.coverMousedown_ = function(e){
-  var G = GZoomControl.globals.
+  var G = GZoomControl.globals;
   var pos = GZoomControl.prototype.getRelPos_(e);
   G.startX = pos.left;
   G.startY = pos.top;
