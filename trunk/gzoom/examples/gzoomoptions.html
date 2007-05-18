@@ -42,8 +42,8 @@
      var val_border = el("opt_border").value;
      code.push("styleOpts.border = '" + val_border + "';");
 
-     var val_color = el("opt_color").value;
-     code.push("styleOpts.color = '" + val_color + "';");
+     var val_fillColor = el("opt_fillColor").value;
+     code.push("styleOpts.fillColor = '" + val_fillColor + "';");
 
      code.push("zcontrol = new GZoomControl(styleOpts,{},{});");
      
@@ -132,6 +132,8 @@
  </head>
 
  <body onload="load()" onunload="GUnload()">
+
+<!--
    clickable:<input type="checkbox" id="opt_clickable" onclick="updateCode()" CHECKED/>
    &nbsp;
 
@@ -140,8 +142,8 @@
    bouncy:<input type="checkbox" id="opt_bouncy" onclick="updateCode()" />
    &nbsp;
    dragCrossMove:<input type="checkbox" id="opt_dragCrossMove" onclick="updateCode()"/>
-
-   color: <input type="text" id="opt_color" onblur="updateCode()" value="#FF0000"/>
+-->
+   fillColor: <input type="text" id="opt_fillColor" onblur="updateCode()" value="#FF0000"/>
 
    border: <input type="text" id="opt_border" onblur="updateCode()" value="2px solid black"/>
 
@@ -155,21 +157,6 @@
        <option value="0.2">0.2</option>
        <option value="0.0">0.0</option>
   </select>
-
-   &nbsp;
-   <br/><br/>
-   title:<input type="text" id="opt_title" size="10" value=""
-       onkeyup="updateCode()" onkeypress="updateCode()"/>
-   &nbsp;
-   icon:
-   <select id="opt_icon" onchange="updateCode()">
-
-     <option value="default" SELECTED>default</option>
-     <option value="iconBlue">blue</option>
-
-     <option value="iconRed">red</option>
-   </select>
-   &nbsp;
    <br/><br/>
 
     <div id="map" style="width: 500px; height: 250px"></div>
