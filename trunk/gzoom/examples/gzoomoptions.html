@@ -68,7 +68,7 @@
        code.push("otherOpts.buttonStyle = " + el("opt_buttonStyle").value + ";");
      }
 
-     if (el("opt_buttonStartingStyle").value != "{width: '52px', border: '1px solid black', padding: '5px'}") {
+     if (el("opt_buttonStartingStyle").value != "{width: '52px', border: '1px solid black', padding: '2px'}") {
        code.push("otherOpts.buttonStartingStyle = " + el("opt_buttonStartingStyle").value + ";");
      }
 
@@ -80,7 +80,7 @@
      
      code.push("map.addControl(zcontrol);");
      
-     var codeHTML = code.join("<br/><br/>");
+     var codeHTML = code.join("<br/>");
      el("code").innerHTML = codeHTML;
 
      var codeJS = codeHTML.replace(/<br\/>/g,"\n");
@@ -102,6 +102,7 @@
 
 
    <br/>
+   <div style="border:1px solid black">
    fillColor: <input type="text" id="opt_fillColor" onblur="updateCode()" value="#FF0000"/>
 
    border: <input type="text" id="opt_border" onblur="updateCode()" value="2px solid black"/>
@@ -116,8 +117,10 @@
        <option value="0.2">0.2</option>
        <option value="0.0">0.0</option>
   </select>
-   <br/><br/>
+   </div>
+   <br/>
  
+   <div style="1px solid black">
    buttonHTML: <input type="text" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
    &nbsp;
 
@@ -142,7 +145,8 @@
 
    buttonZoomingStyle: <input type="text" id="opt_buttonZoomingStyle" onblur="updateCode()" value="{background: '#FF0'}"/>
    &nbsp;
-   <br/><br/>
+   </div>
+   <br/>
     <div id="map" style="width: 500px; height: 250px"></div>
 
     <pre class="prettyprint" id="code" style="width:500px; overflow:auto;"></pre>
