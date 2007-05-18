@@ -24,6 +24,7 @@
    function load() {
      if (GBrowserIsCompatible()) {
        map = new GMap2(document.getElementById("map"));
+       map.addControl(new GSmallMapControl());
        map.setCenter(new GLatLng(40.713955826286046,-35.15625), 2);
        updateCode();
      }
@@ -129,13 +130,14 @@
 
  <body onload="load()" onunload="GUnload()">
 
-   stickyZoomEnabled:<input type="checkbox" id="opt_stickyZoomEnabled" onclick="updateCode()"/>
-   &nbsp;
 
    buttonHTML: <input type="text" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
    &nbsp;
 
    buttonZoomingHTML: <input type="text" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
+   &nbsp;
+   <br/>
+   stickyZoomEnabled:<input type="checkbox" id="opt_stickyZoomEnabled" onclick="updateCode()"/>
    &nbsp;
 
    overlayRemoveTime: <input type="text" id="opt_overlayRemoveTime" onblur="updateCode()" value="6000"/>
