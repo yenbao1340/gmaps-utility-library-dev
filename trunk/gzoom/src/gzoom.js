@@ -121,7 +121,7 @@ GZoomControl.globals = {
  * Creates a new button to control gzoom and appends to map div.
  * @param {DOM Node} map The div returned by map.getContainer()
  */
-GZoomControl.prototype.initButton_ = function(map) {
+GZoomControl.prototype.initButton_ = function(mapDiv) {
   var G = GZoomControl.globals;
   var buttonDiv = document.createElement('div');
   buttonDiv.innerHTML = G.options.buttonHTML;
@@ -129,7 +129,7 @@ GZoomControl.prototype.initButton_ = function(map) {
   GZUtil.style([buttonDiv], {cursor: 'pointer', zIndex:200});
   GZUtil.style([buttonDiv], G.options.buttonStartingStyle);
   GZUtil.style([buttonDiv], G.options.buttonStyle);
-  map.appendChild(buttonDiv);
+  mapDiv.appendChild(buttonDiv);
   return buttonDiv;
 };
 
