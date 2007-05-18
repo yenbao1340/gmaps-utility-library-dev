@@ -35,7 +35,10 @@
        map.removeControl(zcontrol);
      }
      var code = [];
-     code.push("zcontrol = new GZoomControl({},{},{});");
+     code.push("var styleOpts = {};");
+     var val_opacity = parseFloat(el("opt_opacity").value);
+     code.push("styleOpts.opacity = " + val_opacity + ";");
+     code.push("zcontrol = new GZoomControl(styleOpts,{},{});");
 
      /*
      var opts = [];
