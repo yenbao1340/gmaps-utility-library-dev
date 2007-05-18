@@ -41,14 +41,19 @@
      code.push("var styleOpts = {};");
      code.push("var otherOpts = {};");
      var val_opacity = parseFloat(el("opt_opacity").value);
-     code.push("styleOpts.opacity = " + val_opacity + ";");
-
+     if (val_opacity != .2) {
+       code.push("styleOpts.opacity = " + val_opacity + ";");
+     }
+     
      var val_border = el("opt_border").value;
-     code.push("styleOpts.border = '" + val_border + "';");
-
+     if (val_border != "2px solid blue") {
+       code.push("styleOpts.border = '" + val_border + "';");
+     }
+ 
      var val_fillColor = el("opt_fillColor").value;
-     code.push("styleOpts.fillColor = '" + val_fillColor + "';");
-
+     if (val_fillColor != "#00") {
+       code.push("styleOpts.fillColor = '" + val_fillColor + "';");
+     }
 
      if (el("opt_stickyZoomEnabled").checked) {
        code.push("otherOpts.stickyZoomEnabled = true;"); 
@@ -102,18 +107,18 @@
 
 
    <br/>
-   fillColor: <input type="text" id="opt_fillColor" onblur="updateCode()" value="#FF0000"/>
+   fillColor: <input type="text" id="opt_fillColor" onblur="updateCode()" value="#00"/>
 
-   border: <input type="text" id="opt_border" onblur="updateCode()" value="2px solid black"/>
+   border: <input type="text" id="opt_border" onblur="updateCode()" value="2px solid blue"/>
 
    &nbsp;
    opacity:
      <select id="opt_opacity" onchange="updateCode()">
-       <option value="1.0" SELECTED>1.0</option>
+       <option value="1.0">1.0</option>
        <option value="0.8">0.8</option>
        <option value="0.6">0.6</option>
        <option value="0.4">0.4</option>
-       <option value="0.2">0.2</option>
+       <option value="0.2" SELECTED>0.2</option>
        <option value="0.0">0.0</option>
   </select>
    <br/><br/>
