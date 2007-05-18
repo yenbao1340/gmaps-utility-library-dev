@@ -36,6 +36,7 @@
      }
      var code = [];
      code.push("var styleOpts = {};");
+     code.push("var otherOpts = {};");
      var val_opacity = parseFloat(el("opt_opacity").value);
      code.push("styleOpts.opacity = " + val_opacity + ";");
 
@@ -45,7 +46,22 @@
      var val_fillColor = el("opt_fillColor").value;
      code.push("styleOpts.fillColor = '" + val_fillColor + "';");
 
-     code.push("zcontrol = new GZoomControl(styleOpts,{},{});");
+
+     if (el("opt_stickyZoomEnabled").checked) {
+       opts.push("otherOpts.stickyZoomEnabled = true;"); 
+     }
+     if (el("opt_buttonHTML").value != 'zoom...') {
+       opts.push("otherOpts.buttonHTML = '" + el("opt_buttonHTML").value + "';";
+     }
+     if (el("opt_buttonZoomingHTML").value != 'Drag a region on the map') {
+       opts.push("otherOpts.buttonZoomingHTML = '" + el("opt_buttonZoomingHTML").value + "';";
+     }
+     var val_overlayRemoveTime = parseInt(el("opt_overlayRemoveTime").value);
+     if(val_overlayRemoveTime != 6000) {
+       opts.push("otherOpts.overlayRemoveTime = " + val_overlayRemoveTime + ";");
+     }
+
+     code.push("zcontrol = new GZoomControl(styleOpts, otherOpts, {});");
      
      /*
      var opts = [];
@@ -56,28 +72,6 @@
      }
 
      var val_icon = el("opt_icon").value;
-     if (val_icon != "default") {
-       // TODO insert code for creating blue or red icons into code
-       opts.push("icon: " + val_icon);
-
-       if(val_icon == "iconBlue") {
-         code.push("var iconBlue = new GIcon(); <br/>" 
-           + "iconBlue.image = 'http://labs.google.com/ridefinder/images/mm_20_blue.png';<br/>"
-           + "iconBlue.shadow = 'http://labs.google.com/ridefinder/images/mm_20_shadow.png';<br/>"
-           + "iconBlue.iconSize = new GSize(12, 20);<br/>"
-           + "iconBlue.shadowSize = new GSize(22, 20);<br/>"
-           + "iconBlue.iconAnchor = new GPoint(6, 20);<br/>"
-           + "iconBlue.infoWindowAnchor = new GPoint(5, 1);<br/>");
-       } else if(val_icon == "iconRed") {
-         code.push("var iconRed = new GIcon(); <br/>" 
-           + "iconRed.image = 'http://labs.google.com/ridefinder/images/mm_20_red.png';<br/>"
-           + "iconRed.shadow = 'http://labs.google.com/ridefinder/images/mm_20_shadow.png';<br/>"
-           + "iconRed.iconSize = new GSize(12, 20);<br/>"
-           + "iconRed.shadowSize = new GSize(22, 20);<br/>"
-           + "iconRed.iconAnchor = new GPoint(6, 20);<br/>"
-           + "iconRed.infoWindowAnchor = new GPoint(5, 1);<br/>");
-       }
-     }
 
      if (el("opt_clickable").checked) {
 
@@ -133,16 +127,19 @@
 
  <body onload="load()" onunload="GUnload()">
 
-<!--
-   clickable:<input type="checkbox" id="opt_clickable" onclick="updateCode()" CHECKED/>
+   stickyZoomEnabled:<input type="checkbox" id="opt_stickyZoomEnabled" onclick="updateCode()"/>
    &nbsp;
 
-   draggable:<input type="checkbox" id="opt_draggable" onclick="updateCode()" CHECKED/>
+   buttonHTML: <input type="text" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
    &nbsp;
-   bouncy:<input type="checkbox" id="opt_bouncy" onclick="updateCode()" />
+
+   buttonZoomingHTML: <input type="text" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
    &nbsp;
-   dragCrossMove:<input type="checkbox" id="opt_dragCrossMove" onclick="updateCode()"/>
--->
+
+   overlayRemoveTime: <input type="text" id="opt_overlayRemoveTime" onblur="updateCode()" value="6000"/>
+   &nbsp;
+
+   <br/>
    fillColor: <input type="text" id="opt_fillColor" onblur="updateCode()" value="#FF0000"/>
 
    border: <input type="text" id="opt_border" onblur="updateCode()" value="2px solid black"/>
