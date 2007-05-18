@@ -40,10 +40,10 @@
      code.push("styleOpts.opacity = " + val_opacity + ";");
 
      var val_border = el("opt_border").value;
-     code.push("styleOpts.border = " + val_border + ";");
+     code.push("styleOpts.border = '" + val_border + "';");
 
      var val_color = el("opt_color").value;
-     code.push("styleOpts.color = " + val_color + ";");
+     code.push("styleOpts.color = '" + val_color + "';");
 
      code.push("zcontrol = new GZoomControl(styleOpts,{},{});");
      
