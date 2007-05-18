@@ -1,386 +1,472 @@
 /*
-Copyright (c) 2005-2007, Andre Lewis, andre@earthcode.com
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met:
-
-    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-    * Neither the name of "Andre Lewis" nor the names of contributors to this software may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR 
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
-FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR 
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-/*
-GZoom custom map control. Version 0.3 Released 4/1/07
-
-To use:
-  oMap = new GMap2($id("large-google-map"));	
-  oMap.addControl(new GMapTypeControl());
-
-Or with options:
-  oMap.addControl(new GZoomControl({sColor:'#000',nOpacity:.3,sBorder:'1px solid yellow'}), new GControlPosition(G_ANCHOR_TOP_RIGHT,new GSize(10,10)));
-
-More info at http://earthcode.com
+* GZoomControl Class 
+*  Copyright (c) 2005-2007, Andre Lewis, andre@earthcode.com
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+* 
+*       http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* This class lets you add a control to the map which will let the user
+*  zoom by dragging a rectangle.
+*  More info on original GZoom at http://earthcode.com
 */
 
-// base definition and inheritance
-function GZoomControl(oBoxStyle,oOptions,oCallbacks) {
+/**
+ * Constructor for GZoomControl, which takes 3 option hashes and
+ *  uses them to customize the control.
+ * @param {opts_boxStyle} Named optional arguments:
+ *   opts_boxStyle.opacity {Number} Opacity from 0-1
+ *   opts_boxStyle.fillColor {String} Hex value of fill color
+ *   opts_boxStyle.border {String} CSS-style declaration of border
+ * @param {opts_other} Named optional arguments:
+ *   opts_other.buttonHTML {String} The zoom button HTML in non-activated state
+ *   opts_other.buttonStartingStyle {Object} A hash of css styles for the 
+ *     zoom button which are common to both un-activated and activated state
+ *   opts_other.buttonStyle {Object} A hash of css styles for the zoom button 
+ *     which will be applied when the button is in un-activated state.
+ *   opts_other.buttonZoomingHTML {String} HTML which is placed in the 
+ *     zoom button when the button is activated. 
+ *   opts_other.buttonZoomingStyle {Object} A hash of css styles for the 
+ *    zoom button which will be applied when the button is activated.
+ *   opts_other.overlayRemoveTime {Number} The number of milliseconds to wait before
+ *     removing the rectangle indicating the zoomed-in area after the zoom has happened.
+ *   opts_other.stickyZoomEnabled {Boolean} Whether or not the control stays in 
+ *     "zoom mode" until turned off. When true, the user can zoom repeatedly, 
+ *     until clicking on the zoom button again to turn zoom mode off.
+ *   opts_other.forceCheckResizeEnabled {Boolean} 
+ * @param {opts_callbacks} Named optional arguments:
+ *   opts_callbacks.buttonclick {Function} Called when the GZoom is activated 
+ *     by clicking on the "zoom" button. 
+ *   opts_callbacks.dragStart {Function} Called when user starts to drag a rectangle.
+ *     Callback args are x,y -- the PIXEL values, relative to the upper-left-hand 
+ *     corner of the map, where the user began dragging.
+ *   opts_callbacks.dragging {Function} Called repeatedly while the user is dragging.
+ *     Callback args are startX,startY, currentX,currentY -- the PIXEL values of the 
+ *     start of the drag, and the current drag point, respectively.
+ *   opts_callbacks.dragend {Function} Called when the user releases the mouse button 
+ *     after dragging the rectangle. Callback args are: NW {GLatLng}, NE {GLatLng}, 
+ *     SE {GLatLng}, SW {GLatLng}, NW {GPoint}, NE {GPoint}, SE {GPoint}, SW {GPoint}.
+ *     The first 4 are the latitudes/longitudes; the last 4 are the pixel coords on the map.
+ */ 
+function GZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
   //box style options
-  GZoomControl.G.style = {
-    nOpacity:.2,
-    sColor:"#000",
-    sBorder:"2px solid blue"
+  GZoomControl.globals.style = {
+    opacity: .2,
+    fillColor: "#000",
+    border: "2px solid blue"
   };
-  var style=GZoomControl.G.style;
-  for (var s in oBoxStyle) {style[s]=oBoxStyle[s]};
-  var aStyle=style.sBorder.split(' ');
-  style.nOutlineWidth=parseInt(aStyle[0].replace(/\D/g,''));
-  style.sOutlineColor=aStyle[2];
-  style.sIEAlpha='alpha(opacity='+(style.nOpacity*100)+')';
+  var style = GZoomControl.globals.style;
+  for (var s in opts_boxStyle) {
+    style[s]=opts_boxStyle[s];
+  }
+
+  var borderStyleArray = style.border.split(' ');
+  style.outlineWidth = parseInt(borderStyleArray[0].replace(/\D/g,''));
+  style.outlineColor = borderStyleArray[2];
+  style.alphaIE = 'alpha(opacity=' + (style.opacity * 100) + ')';
 
   // Other options
-  GZoomControl.G.options={
-    bForceCheckResize:false,
-    sButtonHTML:'zoom ...',
-    oButtonStartingStyle:{width:'52px',border:'1px solid black',padding:'0px 5px 1px 5px'},
-    oButtonStyle:{background:'#FFF'},
-    sButtonZoomingHTML:'Drag a region on the map',
-    oButtonZoomingStyle:{background:'#FF0'},
-    nOverlayRemoveMS:6000,
-    bStickyZoom:false
+  GZoomControl.globals.options={
+    forceCheckResizeEnabled: false,
+    buttonHTML: 'zoom ...',
+    buttonStartingStyle: 
+      {width: '52px', border: '1px solid black', padding: '0px 5px 1px 5px'},
+    buttonStyle: {background: '#FFF'},
+    buttonZoomingHTML: 'Drag a region on the map',
+    buttonZoomingStyle: {background: '#FF0'},
+    overlayRemoveTime: 6000,
+    stickyZoomEnabled: false
   };
 	
-  for (var s in oOptions) {
-    GZoomControl.G.options[s]=oOptions[s]
+  for (var s in opts_other) {
+    GZoomControl.globals.options[s] = opts_other[s]
   }
 
-  // callbacks: buttonClick, dragStart,dragging, dragEnd
-  if (oCallbacks == null) {
-    oCallbacks={}
+  // callbacks: buttonclick, dragstart, dragging, dragend
+  if (opts_callbacks == null) {
+    opts_callbacks = {}
   }
-  GZoomControl.G.callbacks=oCallbacks;
+  GZoomControl.globals.callbacks = opts_callbacks;
 }
 
 GZoomControl.prototype = new GControl();
 
-//class globals
-GZoomControl.G={
-  bDragging:false,
-  mct:null,
-  mcr:null,
-  mcb:null,
-  mcl:null,
-  oMapPos:null,
-  oOutline:null,
-  nMapWidth:0,
-  nMapHeight:0,
-  nMapRatio:0,
-  nStartX:0,
-  nStartY:0,
-  nBorderCorrect:0
+// Holds all information needed globally
+// Not all globals are initialized here
+GZoomControl.globals = {
+  draggingOn: false,
+  cornerTopDiv: null,
+  cornerRightDiv: null,
+  cornerBottomDiv: null,
+  cornerLeftDiv: null,
+  mapPosition: null,
+  outlineDiv: null,
+  mapWidth: 0,
+  mapHeight: 0,
+  mapRatio: 0,
+  startX: 0,
+  startY: 0,
+  borderCorrection: 0
 };
 
-GZoomControl.prototype.initButton_=function(oMapContainer) {
-  var G=GZoomControl.G;
-  var oButton = document.createElement('div');
-  oButton.innerHTML=G.options.sButtonHTML;
-  oButton.id='gzoom-control';
-  acl.style([oButton],{cursor:'pointer',zIndex:200});
-  acl.style([oButton],G.options.oButtonStartingStyle);
-  acl.style([oButton],G.options.oButtonStyle);
-  oMapContainer.appendChild(oButton);
-  return oButton;
+/**
+ * Creates a new button to control gzoom and appends to map div.
+ * @param {DOM Node} mapDiv The div returned by map.getContainer()
+ */
+GZoomControl.prototype.initButton_ = function(mapDiv) {
+  var G = GZoomControl.globals;
+  var buttonDiv = document.createElement('div');
+  buttonDiv.innerHTML = G.options.buttonHTML;
+  buttonDiv.id = 'gzoom-control';
+  GZUtil.style([buttonDiv], {cursor: 'pointer', zIndex:200});
+  GZUtil.style([buttonDiv], G.options.buttonStartingStyle);
+  GZUtil.style([buttonDiv], G.options.buttonStyle);
+  mapDiv.appendChild(buttonDiv);
+  return buttonDiv;
 };
 
-GZoomControl.prototype.setButtonMode_=function(sMode){
-  var G=GZoomControl.G;
-  if (sMode=='zooming') {
-    G.oButton.innerHTML=G.options.sButtonZoomingHTML;
-    acl.style([G.oButton],G.options.oButtonZoomingStyle);
+/**
+ * Sets button mode to zooming or otherwise, changes CSS & HTML.
+ * @param {String} mode Either "zooming" or not.
+ */
+GZoomControl.prototype.setButtonMode_ = function(mode){
+  var G = GZoomControl.globals;
+  if (mode == 'zooming') {
+    G.buttonDiv.innerHTML = G.options.buttonZoomingHTML;
+    GZUtil.style([G.buttonDiv], G.options.buttonZoomingStyle);
   } else {
-    G.oButton.innerHTML=G.options.sButtonHTML;
-    acl.style([G.oButton],G.options.oButtonStyle);
+    G.buttonDiv.innerHTML = G.options.buttonHTML;
+    GZUtil.style([G.buttonDiv], G.options.buttonStyle);
   }
 };
 
-// ******************************************************************************************
-// Methods required by Google maps -- initialize and getDefaultPosition
-// ******************************************************************************************
-GZoomControl.prototype.initialize = function(oMap) {
-  var G=GZoomControl.G;
-  var oMC=oMap.getContainer();
+/**
+ * Is called by GMap2's addOverlay method. Creates the zoom control
+ * divs and appends to the map div.
+ * @param {GMap2} map The map that has had this GZoomControl added to it.
+ * @return {DOM Object} Div that holds the gzoomcontrol button
+ */ 
+GZoomControl.prototype.initialize = function(map) {
+  var G = GZoomControl.globals;
+  var mapDiv = map.getContainer();
   //DOM:button
-  var oButton=this.initButton_(oMC);
+  var buttonDiv = this.initButton_(mapDiv);
 
   //DOM:map covers
-  var o = document.createElement("div");
-  o.id='gzoom-map-cover';
-  o.innerHTML='<div id="gzoom-outline" style="position:absolute;display:none;"></div><div id="gzoom-mct" style="position:absolute;display:none;"></div><div id="gzoom-mcl" style="position:absolute;display:none;"></div><div id="gzoom-mcr" style="position:absolute;display:none;"></div><div id="gzoom-mcb" style="position:absolute;display:none;"></div>';
-  acl.style([o],{position:'absolute',display:'none',overflow:'hidden',cursor:'crosshair',zIndex:101});
-  oMC.appendChild(o);
+  var zoomDiv = document.createElement("div");
+  zoomDiv.id ='gzoom-map-cover';
+  zoomDiv.innerHTML ='<div id="gzoom-outline" style="position:absolute;display:none;"></div><div id="gzoom-cornerTopDiv" style="position:absolute;display:none;"></div><div id="gzoom-cornerLeftDiv" style="position:absolute;display:none;"></div><div id="gzoom-cornerRightDiv" style="position:absolute;display:none;"></div><div id="gzoom-cornerBottomDiv" style="position:absolute;display:none;"></div>';
+  GZUtil.style([zoomDiv], {position: 'absolute', display: 'none', overflow: 'hidden', cursor: 'crosshair', zIndex: 101});
+  mapDiv.appendChild(o);
 
   // add event listeners
-  GEvent.addDomListener(oButton, 'click', GZoomControl.prototype.buttonClick_);
-  GEvent.addDomListener(o, 'mousedown', GZoomControl.prototype.coverMousedown_);
+  GEvent.addDomListener(buttonDiv, 'click', GZoomControl.prototype.buttonclick_);
+  GEvent.addDomListener(zoomDiv, 'mousedown', GZoomControl.prototype.coverMousedown_);
   GEvent.addDomListener(document, 'mousemove', GZoomControl.prototype.drag_);
   GEvent.addDomListener(document, 'mouseup', GZoomControl.prototype.mouseup_);
 
   // get globals
-  G.oMapPos=acl.getElementPosition(oMap.getContainer());
-  G.oOutline=$id("gzoom-outline");	
-  G.oButton=$id("gzoom-control");
-  G.mc=$id("gzoom-map-cover");
-  G.mct=$id("gzoom-mct");
-  G.mcr=$id("gzoom-mcr");
-  G.mcb=$id("gzoom-mcb");
-  G.mcl=$id("gzoom-mcl");
-  G.oMap = oMap;
+  G.mapPosition = GZUtil.getElementPosition(mapDiv);
+  G.outlineDiv = GZUtil.gE("gzoom-outline");	
+  G.buttonDiv = GZUtil.gE("gzoom-control");
+  G.mc = GZUtil.gE("gzoom-map-cover");
+  G.cornerTopDiv = GZUtil.gE("gzoom-cornerTopDiv");
+  G.cornerRightDiv = GZUtil.gE("gzoom-cornerRightDiv");
+  G.cornerBottomDiv = GZUtil.gE("gzoom-cornerBottomDiv");
+  G.cornerLeftDiv = GZUtil.gE("gzoom-cornerLeftDiv");
+  G.mapDiv = mapDiv;
 
-  G.nBorderCorrect = G.style.nOutlineWidth*2;	
+  G.borderCorrection = G.style.outlineWidth * 2;	
   this.setDimensions_();
 
   //styles
   this.initStyles_();
 
-  debug("Finished Initializing gzoom control");  
-  return oButton;
+  return buttonDiv;
 };
 
-// Default location for the control
+/**
+ * Required by GMaps API for controls. 
+ * @return {GControlPosition} Default location for control
+ */
 GZoomControl.prototype.getDefaultPosition = function() {
   return new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(3, 120));
 };
 
-// ******************************************************************************************
-// Private methods
-// ******************************************************************************************
+/**
+ * Function called when mousedown event is captured.
+ * @param {Object} e 
+ */
 GZoomControl.prototype.coverMousedown_ = function(e){
-  var G=GZoomControl.G;
-  var oPos = GZoomControl.prototype.getRelPos_(e);
-  debug("Mouse down at "+oPos.left+", "+oPos.top);
-  G.nStartX=oPos.left;
-  G.nStartY=oPos.top;
+  var G = GZoomControl.globals.
+  var pos = GZoomControl.prototype.getRelPos_(e);
+  G.startX = pos.left;
+  G.startY = pos.top;
   
-  acl.style([G.mc],{background:'transparent',opacity:1,filter:'alpha(opacity=100)'});
-  acl.style([G.oOutline],{left:G.nStartX+'px',top:G.nStartY+'px',display:'block',width:'1px',height:'1px'});
-  G.bDragging=true;
+  GZUtil.style([G.mc], {background: 'transparent', opacity: 1, filter: 'alpha(opacity=100)'});
+  GZUtil.style([G.outlineDiv], {left: G.startX + 'px', top: G.startY + 'px', display: 'block', width: '1px', height: '1px'});
+  G.draggingOn = true;
 
-  G.mct.style.top=(G.nStartY-G.nMapHeight)+'px';
-  G.mct.style.display='block';
-  G.mcl.style.left=(G.nStartX-G.nMapWidth)+'px';
-  G.mcl.style.top=(G.nStartY)+'px';
-  G.mcl.style.display='block';
+  G.cornerTopDiv.style.top = (G.startY - G.mapHeight) + 'px';
+  G.cornerTopDiv.style.display ='block';
+  G.cornerLeftDiv.style.left = (G.startX - G.mapWidth) +'px';
+  G.cornerLeftDiv.style.top = G.startY + 'px';
+  G.cornerLeftDiv.style.display = 'block';
 
-  G.mcr.style.left=(G.nStartX)+'px';
-  G.mcr.style.top=(G.nStartY)+'px';
-  G.mcr.style.display='block';
-  G.mcb.style.left=(G.nStartX)+'px';
-  G.mcb.style.top=(G.nStartY)+'px';
-  G.mcb.style.width='0px';
-  G.mcb.style.display='block';
+  G.cornerRightDiv.style.left = G.startX + 'px';
+  G.cornerRightDiv.style.top = G.startY + 'px';
+  G.cornerRightDiv.style.display = 'block';
+  G.cornerBottomDiv.style.left = G.startX + 'px';
+  G.cornerBottomDiv.style.top = G.startY + 'px';
+  G.cornerBottomDiv.style.width = '0px';
+  G.cornerBottomDiv.style.display = 'block';
 
   // invoke the callback if provided
-  if (G.callbacks.dragStart !=null){G.callbacks.dragStart(G.nStartX,G.nStartY)};
+  if (G.callbacks.dragstart != null) {
+    G.callbacks.dragstart(G.startX, G.startY);
+  }
 
-  debug("mouse down done");
   return false;
 };
 
-GZoomControl.prototype.drag_=function(e){
-  var G=GZoomControl.G;
-  if(G.bDragging) {
-    var oPos=GZoomControl.prototype.getRelPos_(e);
-    oRec = GZoomControl.prototype.getRectangle_(G.nStartX,G.nStartY,oPos,G.nMapRatio);
+/**
+ * Function called when drag event is captured
+ * @param {Object} e 
+ */
+GZoomControl.prototype.drag_ = function(e){
+  var G=GZoomControl.globals;
+  if(G.draggingOn) {
+    var pos = GZoomControl.prototype.getRelPos_(e);
+    rect = GZoomControl.prototype.getRectangle_(G.startX, G.startY, pos, G.mapRatio);
 
-    if (oRec.left) {
-      addX = -oRec.nWidth;			
+    if (rect.left) {
+      addX = -rect.width;			
     } else { 
       addX = 0;
     }
 
-    if (oRec.top) {
-      addY = -oRec.nHeight;
+    if (rect.top) {
+      addY = -rect.height;
     } else {
       addY = 0;
     }
 
-    acl.style([G.oOutline],{left:G.nStartX+addX+'px',top:G.nStartY+addY+'px',display:'block',width:'1px',height:'1px'});	// <---
+    GZUtil.style([G.outlineDiv], {left: G.startX + addX + 'px', top: G.startY + addY + 'px', display: 'block', width: '1px', height: '1px'});	
 	
-    G.oOutline.style.width=oRec.nWidth+"px";
-    G.oOutline.style.height=oRec.nHeight+"px";
+    G.outlineDiv.style.width = rect.width + "px";
+    G.outlineDiv.style.height = rect.height + "px";
 
-    G.mct.style.height=((G.nStartY+addY)-(G.nStartY-G.nMapHeight))+'px';
-    G.mcl.style.top=(G.nStartY+addY)+'px';
-    G.mcl.style.width=((G.nStartX+addX)-(G.nStartX-G.nMapWidth))+'px';
-    G.mcr.style.top=G.mcl.style.top;
-    G.mcr.style.left=(G.nStartX+addX+oRec.nWidth+G.nBorderCorrect)+'px';
-    G.mcb.style.top=(G.nStartY+addY+oRec.nHeight+G.nBorderCorrect)+'px';
-    G.mcb.style.left=(G.nStartX-G.nMapWidth+((G.nStartX+addX)-(G.nStartX-G.nMapWidth)))+'px';
-    G.mcb.style.width=(oRec.nWidth+G.nBorderCorrect)+'px';
+    G.cornerTopDiv.style.height = ((G.startY + addY) - (G.startY - G.mapHeight)) + 'px';
+    G.cornerLeftDiv.style.top = (G.startY + addY) + 'px';
+    G.cornerLeftDiv.style.width = ((G.startX + addX) - (G.startX - G.mapWidth)) + 'px';
+    G.cornerRightDiv.style.top = G.cornerLeftDiv.style.top;
+    G.cornerRightDiv.style.left = (G.nStar: tX + addX + rect.width + G.borderCorrection) + 'px';
+    G.cornerBottomDiv.style.top = (G.startY + addY + rect.height + G.borderCorrection) + 'px';
+    G.cornerBottomDiv.style.left = (G.startX - G.mapWidth + ((G.startX + addX) - (G.startX - G.mapWidth))) + 'px';
+    G.cornerBottomDiv.style.width = (rect.width + G.borderCorrection) + 'px';
 		
     // invoke callback if provided
-    if (G.callbacks.dragging !=null) {
-      G.callbacks.dragging(G.nStartX,G.nStartY,oRec.nEndX,oRec.nEndY)
+    if (G.callbacks.dragging != null) {
+      G.callbacks.dragging(G.startX, G.startY, rect.endX, rect.endY)
     }
 		
     return false;
   }  
 };
-GZoomControl.prototype.mouseup_=function(e){
-  var G=GZoomControl.G;
-  if (G.bDragging) {
-    var oPos = GZoomControl.prototype.getRelPos_(e);
-    G.bDragging=false;
-    
-    var oRec = GZoomControl.prototype.getRectangle_(G.nStartX,G.nStartY,oPos,G.nMapRatio);
-    debug("mouse up at "+oRec.nEndX+", "+oRec.nEndY+". Height/width="+oRec.nWidth+","+oRec.nHeight); 
 
-    if (oRec.left) oRec.nEndX = oRec.nStartX - oRec.nWidth;
-    if (oRec.top) oRec.nEndY = oRec.nStartY - oRec.nHeight;
+/** 
+ * Function called when mouseup event is captured
+ * @param {Event} e
+ */
+GZoomControl.prototype.mouseup_ = function(e){
+  var G = GZoomControl.globals;
+  if (G.draggingOn) {
+    var pos = GZoomControl.prototype.getRelPos_(e);
+    G.draggingOn = false;
+    
+    var rect = GZoomControl.prototype.getRectangle_(G.startX, G.startY, pos, G.mapRatio);
+
+    if (rect.left) rect.endX = rect.startX - rect.width;
+    if (rect.top) rect.endY = rect.startY - rect.height;
 	
     GZoomControl.prototype.resetDragZoom_();
 
-    var nwpx=new GPoint(oRec.nStartX,oRec.nStartY);
-    var nepx=new GPoint(oRec.nEndX,oRec.nStartY);
-    var sepx=new GPoint(oRec.nEndX,oRec.nEndY);
-    var swpx=new GPoint(oRec.nStartX,oRec.nEndY);
-    var nw = G.oMap.fromContainerPixelToLatLng(nwpx); 
-    var ne = G.oMap.fromContainerPixelToLatLng(nepx); 
-    var se = G.oMap.fromContainerPixelToLatLng(sepx); 
-    var sw = G.oMap.fromContainerPixelToLatLng(swpx); 
+    var nwpx = new GPoint(rect.startX, rect.startY);
+    var nepx = new GPoint(rect.endX, rect.startY);
+    var sepx = new GPoint(rect.endX, rect.endY);
+    var swpx = new GPoint(rect.startX, rect.endY);
+    var nw = G.mapDiv.fromContainerPixelToLatLng(nwpx); 
+    var ne = G.mapDiv.fromContainerPixelToLatLng(nepx); 
+    var se = G.mapDiv.fromContainerPixelToLatLng(sepx); 
+    var sw = G.mapDiv.fromContainerPixelToLatLng(swpx); 
 
-    var oZoomArea = new GPolyline([nw,ne,se,sw,nw],G.style.sOutlineColor,G.style.nOutlineWidth+1,.4);
+    var zoomAreaPoly = new GPolyline([nw, ne, se, sw, nw], G.style.outlineColor, G.style.outlineWidth + 1,.4);
 
     try{
-      G.oMap.addOverlay(oZoomArea);
-      setTimeout (function(){G.oMap.removeOverlay(oZoomArea)},G.options.nOverlayRemoveMS);  
-    }catch(e){
-      jslog.error("error adding zoomarea overlay:"+e.message);
-    }
+      G.mapDiv.addOverlay(zoomAreaPoly);
+      setTimeout (function() {G.mapDiv.removeOverlay(zoomAreaPoly)}, G.options.overlayRemoveTime);  
+    }catch(e) {}
 
-    oBounds=new GLatLngBounds();
+    oBounds = new GLatLngBounds();
     oBounds.extend(nw);
     oBounds.extend(ne);
     oBounds.extend(se);
     oBounds.extend(sw);
-    nZoom=G.oMap.getBoundsZoomLevel(oBounds);
-    oCenter=oBounds.getCenter();
-    G.oMap.setCenter(oCenter,nZoom);
+    zoomLevel = G.mapDiv.getBoundsZoomLevel(oBounds);
+    center = oBounds.getCenter();
+    G.mapDiv.setCenter(center, zoomLevel);
 
     // invoke callback if provided
-    if (G.callbacks.dragEnd !=null) {
-      G.callbacks.dragEnd(nw,ne,se,sw,nwpx,nepx,sepx,swpx)
+    if (G.callbacks.dragend != null) {
+      G.callbacks.dragend(nw, ne, se, sw, nwpx, nepx, sepx, swpx);
     }
 		
     //re-init if sticky
-    if (G.options.bStickyZoom) {
-      GZoomControl.prototype.initCover_()
+    if (G.options.stickyZoomEnabled) {
+      GZoomControl.prototype.initCover_();
     }
   }
 };
 
-// set the cover sizes according to the size of the map
-GZoomControl.prototype.setDimensions_=function() {
-  var G=GZoomControl.G;
-  if (G.options.bForceCheckResize) {
-    G.oMap.checkResize()
-  };
-  var oSize = G.oMap.getSize();
-  G.nMapWidth  = oSize.width;
-  G.nMapHeight = oSize.height;
-  G.nMapRatio  = G.nMapHeight/G.nMapWidth;
-  acl.style([G.mc,G.mct,G.mcr,G.mcb,G.mcl],{width:G.nMapWidth+'px', height:G.nMapHeight+'px'});
+/**
+ * Set the cover sizes according to the size of the map
+ */
+GZoomControl.prototype.setDimensions_ = function() {
+  var G = GZoomControl.globals;
+  if (G.options.forceCheckResizeEnabled) {
+    G.mapDiv.checkResize();
+  }
+  var mapSize = G.mapDiv.getSize();
+  G.mapWidth  = mapSize.width;
+  G.mapHeight = mapSize.height;
+  G.mapRatio  = G.mapHeight / G.mapWidth;
+  GZUtil.style([G.mc, G.cornerTopDiv, G.cornerRightDiv, G.cornerBottomDiv, G.cornerLeftDiv], 
+    {width: G.mapWidth + 'px', height: G.mapHeight +'px'});
 };
 
-GZoomControl.prototype.initStyles_=function(){
-  var G=GZoomControl.G;
-  acl.style([G.mc,G.mct,G.mcr,G.mcb,G.mcl],{filter:G.style.sIEAlpha,opacity:G.style.nOpacity,background:G.style.sColor});
-  G.oOutline.style.border=G.style.sBorder;  
-  debug("done initStyles_");	
+/**
+ * Initializes styles based on global parameters
+ */
+GZoomControl.prototype.initStyles_ = function(){
+  var G = GZoomControl.globals;
+  GZUtil.style([G.mc, G.cornerTopDiv, G.cornerRightDiv, G.cornerBottomDiv, G.cornerLeftDiv], 
+    {filter: G.style.alphaIE, opacity: G.style.opacity, background:G.style.fillColor});
+  G.outlineDiv.style.border = G.style.border;  
 };
 
-// The zoom button's click handler.
-GZoomControl.prototype.buttonClick_=function(){
-  if (GZoomControl.G.mc.style.display=='block'){ // reset if clicked before dragging
+/**
+ * Function called when the zoom button's click event is captured.
+ */
+GZoomControl.prototype.buttonclick_ = function(){
+  if (GZoomControl.globals.mc.style.display == 'block') { // reset if clicked before dragging
     GZoomControl.prototype.resetDragZoom_();
   } else {
     GZoomControl.prototype.initCover_();
   }
 };
 
-// Shows the cover over the map
-GZoomControl.prototype.initCover_=function(){
-  var G=GZoomControl.G;
-  G.oMapPos=acl.getElementPosition(G.oMap.getContainer());
+/**
+ * Shows the cover over the map
+ */
+GZoomControl.prototype.initCover_ = function(){
+  var G = GZoomControl.globals;
+  G.mapPosition = GZUtil.getElementPosition(G.mapDiv.getContainer());
   GZoomControl.prototype.setDimensions_();
   GZoomControl.prototype.setButtonMode_('zooming');
-  acl.style([G.mc],{display:'block',background:G.style.sColor});
-  acl.style([G.oOutline],{width:'0px',height:'0px'});
+  GZUtil.style([G.mc], {display: 'block', background: G.style.fillColor});
+  GZUtil.style([G.outlineDiv], {width: '0px', height: '0px'});
+
   //invoke callback if provided
-  if(GZoomControl.G.callbacks['buttonClick'] !=null){GZoomControl.G.callbacks.buttonClick()};
-  debug("done initCover_");
+  if(GZoomControl.globals.callbacks['buttonclick'] != null){
+    GZoomControl.G.callbacks.buttonclick();
+  }
 };
 
-GZoomControl.prototype.getRelPos_=function(e) {
-  var oPos=acl.getMousePosition (e);
-  var G=GZoomControl.G;
-  return {top:(oPos.top-G.oMapPos.top),left:(oPos.left-G.oMapPos.left)};
+/**
+ * Gets position of the mouse relative to the map
+ * @param {Object} e
+ */
+GZoomControl.prototype.getRelPos_ = function(e) {
+  var pos = GZUtil.getMousePosition(e);
+  var G = GZoomControl.globals;
+  return {top: (pos.top - G.mapPosition.top), 
+          left: (pos.left - G.mapPosition.left)};
 };
 
-GZoomControl.prototype.getRectangle_=function(nStartX,nStartY,oPos,nRatio){
+/**
+ * Figures out the rectangle the user's trying to draw
+ * @param {Number} startX 
+ * @param {Number} startY
+ * @param {Object} pos
+ * @param {Number} ratio
+ * @return {Object} Describes the rectangle
+ */
+GZoomControl.prototype.getRectangle_ = function(startX, startY, pos, ratio){
   var left = false;
   var top = false;
-  var dX=oPos.left-nStartX;
-  var dY=oPos.top-nStartY;	
-  if (dX <0) {
-    dX = dX*-1;
+  var dX = pos.left - startX;
+  var dY = pos.top - startY;	
+  if (dX < 0) {
+    dX = dX * -1;
     left = true;
   }
-  if (dY <0) {
-    dY = dY*-1;
+  if (dY < 0) {
+    dY = dY * -1;
     top = true;
   }
   delta = dX > dY ? dX : dY;
 
   return {
-    nStartX:nStartX,
-    nStartY:nStartY,
-    nEndX:nStartX+delta,
-    nEndY:nStartY+parseInt(delta*nRatio),
-    nWidth:delta,
-    nHeight:parseInt(delta*nRatio),
-		left:left,
-		top:top
+    startX: startX,
+    startY: startY,
+    endX: startX + delta,
+    endY: startY + parseInt(delta * ratio),
+    width: delta,
+    height: parseInt(delta * ratio),
+    left:left,
+    top:top
   }
 };
 
-GZoomControl.prototype.resetDragZoom_=function() {
-  var G=GZoomControl.G;
-  acl.style([G.mc,G.mct,G.mcr,G.mcb,G.mcl],{display:'none',opacity:G.style.nOpacity,filter:G.style.sIEAlpha});
-  G.oOutline.style.display='none';	
+/** 
+ * Resets CSS and button display when drag zoom done
+ */
+GZoomControl.prototype.resetDragZoom_ = function() {
+  var G = GZoomControl.globals;
+  GZUtil.style([G.mc, G.cornerTopDiv, G.cornerRightDiv, G.cornerBottomDiv, G.cornerLeftDiv], 
+    {display: 'none', opacity: G.style.opacity, filter: G.style.alphaIE});
+  G.outlineDiv.style.display = 'none';	
   GZoomControl.prototype.setButtonMode_('normal');
-  debug("done with reset drag zoom");
 };
 
-/* alias get element by id */
-function $id(sId) { 
-  return document.getElementById(sId); 
+
+/* utility functions in GZUtil.namespace */
+var GZUtil={};
+
+/**
+ * Alias function for getting element by id
+ * @param {String} sId
+ * @return {Object} DOM object with sId id
+ */
+GZUtil.gE = function(sId) {
+  return document.getElementById(sId);
 }
 
-/* utility functions in acl namespace */
-if (!window['acldefined']) {var acl={};window['acldefined']=true;}//only set the acl namespace once, then set a flag
-
-/* A general-purpose function to get the absolute position of
-the mouse */
-acl.getMousePosition=function(e) {
+/**
+ * A general-purpose function to get the absolute position
+ * of the mouse.
+ * @param {Object} e  Mouse event
+ * @return {Object} Describes position
+ */
+GZUtil.getMousePosition = function(e) {
   var posx = 0;
   var posy = 0;
   if (!e) var e = window.event;
@@ -388,19 +474,20 @@ acl.getMousePosition=function(e) {
     posx = e.pageX;
     posy = e.pageY;
   } else if (e.clientX || e.clientY){
-    posx = e.clientX + (document.documentElement.scrollLeft?document.documentElement.scrollLeft:document.body.scrollLeft);
-    posy = e.clientY + (document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop);
+    posx = e.clientX + 
+      (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
+    posy = e.clientY + 
+      (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
   }	
-  return {left:posx, top:posy};  
+  return {left: posx, top: posy};  
 };
 
-/*
-To Use: 
-	var pos = acl.getElementPosition(element);
-	var left = pos.left;
-	var top = pos.top;
-*/
-acl.getElementPosition=function(eElement) {
+/**
+ * Gets position of element
+ * @param {Object} eElement
+ * @return {Object} Describes position
+ */
+GZUtil.getElementPosition = function(eElement) {
   var nLeftPos = eElement.offsetLeft;          // initialize var to store calculations
   var nTopPos = eElement.offsetTop;            // initialize var to store calculations
   var eParElement = eElement.offsetParent;     // identify first offset parent element  
@@ -409,25 +496,37 @@ acl.getElementPosition=function(eElement) {
     nTopPos += eParElement.offsetTop;  
     eParElement = eParElement.offsetParent;  // until no more offset parents exist
   }
-  return {left:nLeftPos, top:nTopPos};
+  return {left: nLeftPos, top: nTopPos};
 };
-//elements is either a coma-delimited list of ids or an array of DOM objects. o is a hash of styles to be applied
-//example: style('d1,d2',{color:'yellow'});  
-acl.style=function(a,o){
-  if (typeof(a)=='string') {a=acl.getManyElements(a);}
-  for (var i=0;i<a.length;i++){
-    for (var s in o) { a[i].style[s]=o[s];}
+
+/**
+ * Applies styles to DOM objects 
+ * @param {String/Object} a Either comma-delimited list of ids 
+ *   or an array of DOM objects
+ * @param {Object} o Hash of styles to be applied
+ */
+GZUtil.style = function(a, o){
+  if (typeof(a) == 'string') {
+    a=GZUtil.getManyElements(a);
+  }
+  for (var i = 0; i < a.length; i++){
+    for (var s in o) { 
+      a[i].style[s] = o[s];
+    }
   }
 };
-acl.getManyElements=function(s){		
-  t=s.split(',');
-  a=[];
-  for (var i=0;i<t.length;i++){a[a.length]=$id(t[i])};
+
+/**
+ * Gets DOM elements array according to list of IDs
+ * @param {String} s Comma-delimited list of IDs
+ * @return {Array} Array of DOM elements corresponding to s
+ */
+GZUtil.getManyElements = function(s){		
+  t = s.split(',');
+  a = [];
+  for (var i = 0; i < t.length; i++){
+    a[a.length] = GZUtil.gE(t[i])
+  };
   return a;
 };
 	
-var jslog = {debug:function(){},info:function(){}, 
-	warning:function(){}, error:function(){},
-	text:function(){}}; var debug=function(){};
-if (location.href.match(/enablejslog/)){
-		document.write('<script type="text/javascript" src="http://earthcode.com/includes/scripts/jslog.js"></script>');};	
