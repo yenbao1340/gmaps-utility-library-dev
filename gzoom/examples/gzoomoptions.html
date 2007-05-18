@@ -117,31 +117,53 @@
        <option value="0.0">0.0</option>
   </select>
    <br/><br/>
- 
-   buttonHTML: <input type="text" size="30" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
+   <table>
+   <tr>
+   <td>
+   buttonHTML: <input type="text" size="15" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
    &nbsp;
-
-   buttonZoomingHTML: <input type="text" size="30" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
+   </td>
+   <td>
+   buttonZoomingHTML: <input type="text" size="15" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
    &nbsp;
-
-   <br/><br/>
-
+   </td>
+   </tr>
+   <tr>
+   <td>
    stickyZoomEnabled:<input type="checkbox" id="opt_stickyZoomEnabled" onclick="updateCode()"/>
    &nbsp;
-
+   </td>
+   <td>
    overlayRemoveTime: <input type="text" size="6" id="opt_overlayRemoveTime" onblur="updateCode()" value="6000"/>
    &nbsp;
-
-   <br/><br/>
-
-   buttonStyle: <input type="text" size="60" id="opt_buttonStyle" onblur="updateCode()" value="{background: '#FFF'}"/>
+   </td>
+   </tr>
+   </table>
+   <table>
+   <tr>
+   <td>
+   buttonStyle:
+   </td>
+   <td> 
+   <input type="text" size="60" id="opt_buttonStyle" onblur="updateCode()" value="{background: '#FFF'}"/>
    &nbsp;
-   <br/>
-   buttonStartingStyle: <input type="text" size="60" id="opt_buttonStartingStyle" onblur="updateCode()" value="{width: '52px', border: '1px solid black', padding: '2px'}"/>
-   &nbsp;
-   <br/>
-   buttonZoomingStyle: <input type="text" size="60" id="opt_buttonZoomingStyle" onblur="updateCode()" value="{background: '#FF0'}"/>
-   &nbsp;
+   </td>
+   <td>
+   buttonStartingStyle: 
+   </td>
+   <td>
+   <input type="text" size="60" id="opt_buttonStartingStyle" onblur="updateCode()" value="{width: '52px', border: '1px solid black', padding: '2px'}"/>
+   </td>
+   </tr>
+   <tr>
+   <td>
+   buttonZoomingStyle:
+   </td>
+   <td>
+   <input type="text" size="60" id="opt_buttonZoomingStyle" onblur="updateCode()" value="{background: '#FF0'}"/>
+   </td>
+   </tr>
+   </table>
    <br/>
     <div id="map" style="width: 500px; height: 250px"></div>
 
