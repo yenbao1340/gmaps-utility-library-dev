@@ -102,7 +102,6 @@
 
 
    <br/>
-   <div style="border:1px solid black">
    fillColor: <input type="text" id="opt_fillColor" onblur="updateCode()" value="#FF0000"/>
 
    border: <input type="text" id="opt_border" onblur="updateCode()" value="2px solid black"/>
@@ -117,14 +116,12 @@
        <option value="0.2">0.2</option>
        <option value="0.0">0.0</option>
   </select>
-   </div>
-   <br/>
+   <br/><br/>
  
-   <div style="1px solid black">
-   buttonHTML: <input type="text" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
+   buttonHTML: <input type="text" size="30" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
    &nbsp;
 
-   buttonZoomingHTML: <input type="text" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
+   buttonZoomingHTML: <input type="text" size="30" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
    &nbsp;
 
    <br/><br/>
@@ -132,20 +129,19 @@
    stickyZoomEnabled:<input type="checkbox" id="opt_stickyZoomEnabled" onclick="updateCode()"/>
    &nbsp;
 
-   overlayRemoveTime: <input type="text" id="opt_overlayRemoveTime" onblur="updateCode()" value="6000"/>
+   overlayRemoveTime: <input type="text" size="6" id="opt_overlayRemoveTime" onblur="updateCode()" value="6000"/>
    &nbsp;
 
    <br/><br/>
 
-   buttonStyle: <input type="text" id="opt_buttonStyle" onblur="updateCode()" value="{background: '#FFF'}"/>
+   buttonStyle: <input type="text" size="60" id="opt_buttonStyle" onblur="updateCode()" value="{background: '#FFF'}"/>
    &nbsp;
-
-   buttonStartingStyle: <input type="text" id="opt_buttonStartingStyle" onblur="updateCode()" value="{width: '52px', border: '1px solid black', padding: '2px'}"/>
+   <br/>
+   buttonStartingStyle: <input type="text" size="60" id="opt_buttonStartingStyle" onblur="updateCode()" value="{width: '52px', border: '1px solid black', padding: '2px'}"/>
    &nbsp;
-
-   buttonZoomingStyle: <input type="text" id="opt_buttonZoomingStyle" onblur="updateCode()" value="{background: '#FF0'}"/>
+   <br/>
+   buttonZoomingStyle: <input type="text" size="60" id="opt_buttonZoomingStyle" onblur="updateCode()" value="{background: '#FF0'}"/>
    &nbsp;
-   </div>
    <br/>
     <div id="map" style="width: 500px; height: 250px"></div>
 
