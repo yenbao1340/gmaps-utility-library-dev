@@ -165,7 +165,7 @@ GZoomControl.prototype.initialize = function(map) {
   zoomDiv.id ='gzoom-map-cover';
   zoomDiv.innerHTML ='<div id="gzoom-outline" style="position:absolute;display:none;"></div><div id="gzoom-cornerTopDiv" style="position:absolute;display:none;"></div><div id="gzoom-cornerLeftDiv" style="position:absolute;display:none;"></div><div id="gzoom-cornerRightDiv" style="position:absolute;display:none;"></div><div id="gzoom-cornerBottomDiv" style="position:absolute;display:none;"></div>';
   GZUtil.style([zoomDiv], {position: 'absolute', display: 'none', overflow: 'hidden', cursor: 'crosshair', zIndex: 101});
-  mapDiv.appendChild(o);
+  mapDiv.appendChild(zoomDiv);
 
   // add event listeners
   GEvent.addDomListener(buttonDiv, 'click', GZoomControl.prototype.buttonclick_);
