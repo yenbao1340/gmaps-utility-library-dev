@@ -183,6 +183,7 @@ GZoomControl.prototype.initialize = function(map) {
   G.cornerBottomDiv = GZUtil.gE("gzoom-cornerBottomDiv");
   G.cornerLeftDiv = GZUtil.gE("gzoom-cornerLeftDiv");
   G.mapDiv = mapDiv;
+  GLog.write(G.mapDiv);
 
   G.borderCorrection = G.style.outlineWidth * 2;	
   this.setDimensions_();
@@ -344,6 +345,7 @@ GZoomControl.prototype.setDimensions_ = function() {
   if (G.options.forceCheckResizeEnabled) {
     G.mapDiv.checkResize();
   }
+  GLog.write(G.mapDiv);
   var mapSize = G.mapDiv.getSize();
   G.mapWidth  = mapSize.width;
   G.mapHeight = mapSize.height;
