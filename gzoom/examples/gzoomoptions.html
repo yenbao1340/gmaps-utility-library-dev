@@ -64,50 +64,20 @@
        code.push("otherOpts.overlayRemoveTime = " + val_overlayRemoveTime + ";");
      }
 
+     if (el("opt_buttonStyle").value != "{background: '#FFF'}") {
+       code.push("otherOpts.buttonStyle = " + el("opt_buttonStyle").value + ";");
+     }
+
+     if (el("opt_buttonStartingStyle").value != "{width: '52px', border: '1px solid black', padding: '5px'}") {
+       code.push("otherOpts.buttonStartingStyle = " + el("opt_buttonStartingStyle").value + ";");
+     }
+
+     if (el("opt_buttonZoomingStyle").value != "{background: '#FF0'}") {
+       code.push("otherOpts.buttonZoomingStyle = " + el("opt_buttonZoomingStyle").value + ";");
+     }
+
      code.push("zcontrol = new GZoomControl(styleOpts, otherOpts, {});");
      
-     /*
-     var opts = [];
-
-     var val_title = el("opt_title").value;
-     if (val_title) {
-       opts.push("title: \"" + val_title + "\"");
-     }
-
-     var val_icon = el("opt_icon").value;
-
-     if (el("opt_clickable").checked) {
-
-       if (el("opt_draggable").checked) {
-         opts.push("draggable: true");
-
-         if (el("opt_bouncy").checked) {
-           var val_bounceGravity = parseFloat(el("opt_bounceGravity").value);
-           if (val_bounceGravity != 1.0) {
-             opts.push("bounceGravity: " + val_bounceGravity + "");
-           }
-         } else {
-           opts.push("bouncy: false");
-         }
-
-         if (el("opt_dragCrossMove").checked) {
-           opts.push("dragCrossMove: true");
-         }
-       }
-     } else {
-       opts.push("clickable: false");
-     }
-
-     if (opts.length) {
-       code.push("var options = { <br/>"
-                + opts.join(",<br/>") + "<br/>"
-                + "};");
-     }
-     code.push("var marker = new GMarker(point" +
-         (opts.length ? ", options" : "") + ");");
-
-     code.push("map.addOverlay(marker);");
-     */
      code.push("map.addControl(zcontrol);");
      
      var codeHTML = code.join("<br/><br/>");
@@ -131,18 +101,6 @@
  <body onload="load()" onunload="GUnload()">
 
 
-   buttonHTML: <input type="text" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
-   &nbsp;
-
-   buttonZoomingHTML: <input type="text" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
-   &nbsp;
-   <br/>
-   stickyZoomEnabled:<input type="checkbox" id="opt_stickyZoomEnabled" onclick="updateCode()"/>
-   &nbsp;
-
-   overlayRemoveTime: <input type="text" id="opt_overlayRemoveTime" onblur="updateCode()" value="6000"/>
-   &nbsp;
-
    <br/>
    fillColor: <input type="text" id="opt_fillColor" onblur="updateCode()" value="#FF0000"/>
 
@@ -159,7 +117,32 @@
        <option value="0.0">0.0</option>
   </select>
    <br/><br/>
+ 
+   buttonHTML: <input type="text" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
+   &nbsp;
 
+   buttonZoomingHTML: <input type="text" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
+   &nbsp;
+
+   <br/><br/>
+
+   stickyZoomEnabled:<input type="checkbox" id="opt_stickyZoomEnabled" onclick="updateCode()"/>
+   &nbsp;
+
+   overlayRemoveTime: <input type="text" id="opt_overlayRemoveTime" onblur="updateCode()" value="6000"/>
+   &nbsp;
+
+   <br/><br/>
+
+   buttonStyle: <input type="text" id="opt_overlayRemoveTime" onblur="updateCode()" value="{background: '#FFF'}"/>
+   &nbsp;
+
+   buttonStartingStyle: <input type="text" id="opt_overlayRemoveTime" onblur="updateCode()" value="{width: '52px', border: '1px solid black', padding: '2px'}"/>
+   &nbsp;
+
+   buttonZoomingStyle: <input type="text" id="opt_overlayRemoveTime" onblur="updateCode()" value="{background: '#FF0'}"/>
+   &nbsp;
+   <br/><br/>
     <div id="map" style="width: 500px; height: 250px"></div>
 
     <pre class="prettyprint" id="code" style="width:500px; overflow:auto;"></pre>
