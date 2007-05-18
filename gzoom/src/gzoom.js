@@ -158,7 +158,7 @@ GZoomControl.prototype.initialize = function(map) {
   var G = GZoomControl.globals;
   var mapDiv = map.getContainer();
   //DOM:button
-  var buttonDiv = this.initButton_(map);
+  var buttonDiv = this.initButton_(mapDiv);
 
   //DOM:map covers
   var zoomDiv = document.createElement("div");
