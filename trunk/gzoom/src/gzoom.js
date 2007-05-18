@@ -119,9 +119,9 @@ GZoomControl.globals = {
 
 /**
  * Creates a new button to control gzoom and appends to map div.
- * @param {DOM Node} mapDiv The div returned by map.getContainer()
+ * @param {DOM Node} map The div returned by map.getContainer()
  */
-GZoomControl.prototype.initButton_ = function(mapDiv) {
+GZoomControl.prototype.initButton_ = function(map) {
   var G = GZoomControl.globals;
   var buttonDiv = document.createElement('div');
   buttonDiv.innerHTML = G.options.buttonHTML;
@@ -129,7 +129,7 @@ GZoomControl.prototype.initButton_ = function(mapDiv) {
   GZUtil.style([buttonDiv], {cursor: 'pointer', zIndex:200});
   GZUtil.style([buttonDiv], G.options.buttonStartingStyle);
   GZUtil.style([buttonDiv], G.options.buttonStyle);
-  mapDiv.appendChild(buttonDiv);
+  map.appendChild(buttonDiv);
   return buttonDiv;
 };
 
@@ -158,7 +158,7 @@ GZoomControl.prototype.initialize = function(map) {
   var G = GZoomControl.globals;
   var mapDiv = map.getContainer();
   //DOM:button
-  var buttonDiv = this.initButton_(mapDiv);
+  var buttonDiv = this.initButton_(map);
 
   //DOM:map covers
   var zoomDiv = document.createElement("div");
@@ -182,8 +182,7 @@ GZoomControl.prototype.initialize = function(map) {
   G.cornerRightDiv = GZUtil.gE("gzoom-cornerRightDiv");
   G.cornerBottomDiv = GZUtil.gE("gzoom-cornerBottomDiv");
   G.cornerLeftDiv = GZUtil.gE("gzoom-cornerLeftDiv");
-  G.mapDiv = mapDiv;
-  GLog.write(G.mapDiv);
+  G.map = map;
 
   G.borderCorrection = G.style.outlineWidth * 2;	
   this.setDimensions_();
@@ -304,16 +303,16 @@ GZoomControl.prototype.mouseup_ = function(e){
     var nepx = new GPoint(rect.endX, rect.startY);
     var sepx = new GPoint(rect.endX, rect.endY);
     var swpx = new GPoint(rect.startX, rect.endY);
-    var nw = G.mapDiv.fromContainerPixelToLatLng(nwpx); 
-    var ne = G.mapDiv.fromContainerPixelToLatLng(nepx); 
-    var se = G.mapDiv.fromContainerPixelToLatLng(sepx); 
-    var sw = G.mapDiv.fromContainerPixelToLatLng(swpx); 
+    var nw = G.map.fromContainerPixelToLatLng(nwpx); 
+    var ne = G.map.fromContainerPixelToLatLng(nepx); 
+    var se = G.map.fromContainerPixelToLatLng(sepx); 
+    var sw = G.map.fromContainerPixelToLatLng(swpx); 
 
     var zoomAreaPoly = new GPolyline([nw, ne, se, sw, nw], G.style.outlineColor, G.style.outlineWidth + 1,.4);
 
     try{
-      G.mapDiv.addOverlay(zoomAreaPoly);
-      setTimeout (function() {G.mapDiv.removeOverlay(zoomAreaPoly)}, G.options.overlayRemoveTime);  
+      G.map.addOverlay(zoomAreaPoly);
+      setTimeout (function() {G.map.removeOverlay(zoomAreaPoly)}, G.options.overlayRemoveTime);  
     }catch(e) {}
 
     oBounds = new GLatLngBounds();
@@ -321,9 +320,9 @@ GZoomControl.prototype.mouseup_ = function(e){
     oBounds.extend(ne);
     oBounds.extend(se);
     oBounds.extend(sw);
-    zoomLevel = G.mapDiv.getBoundsZoomLevel(oBounds);
+    zoomLevel = G.map.getBoundsZoomLevel(oBounds);
     center = oBounds.getCenter();
-    G.mapDiv.setCenter(center, zoomLevel);
+    G.map.setCenter(center, zoomLevel);
 
     // invoke callback if provided
     if (G.callbacks.dragend != null) {
@@ -343,10 +342,9 @@ GZoomControl.prototype.mouseup_ = function(e){
 GZoomControl.prototype.setDimensions_ = function() {
   var G = GZoomControl.globals;
   if (G.options.forceCheckResizeEnabled) {
-    G.mapDiv.checkResize();
+    G.map.checkResize();
   }
-  GLog.write(G.mapDiv);
-  var mapSize = G.mapDiv.getSize();
+  var mapSize = G.map.getSize();
   G.mapWidth  = mapSize.width;
   G.mapHeight = mapSize.height;
   G.mapRatio  = G.mapHeight / G.mapWidth;
@@ -380,7 +378,7 @@ GZoomControl.prototype.buttonclick_ = function(){
  */
 GZoomControl.prototype.initCover_ = function(){
   var G = GZoomControl.globals;
-  G.mapPosition = GZUtil.getElementPosition(G.mapDiv.getContainer());
+  G.mapPosition = GZUtil.getElementPosition(G.map.getContainer());
   GZoomControl.prototype.setDimensions_();
   GZoomControl.prototype.setButtonMode_('zooming');
   GZUtil.style([G.mc], {display: 'block', background: G.style.fillColor});
