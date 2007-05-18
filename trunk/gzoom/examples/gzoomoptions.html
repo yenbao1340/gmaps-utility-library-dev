@@ -38,8 +38,15 @@
      code.push("var styleOpts = {};");
      var val_opacity = parseFloat(el("opt_opacity").value);
      code.push("styleOpts.opacity = " + val_opacity + ";");
-     code.push("zcontrol = new GZoomControl(styleOpts,{},{});");
 
+     var val_border = el("opt_border").value;
+     code.push("styleOpts.border = " + val_border + ";");
+
+     var val_color = el("opt_color").value;
+     code.push("styleOpts.color = " + val_color + ";");
+
+     code.push("zcontrol = new GZoomControl(styleOpts,{},{});");
+     
      /*
      var opts = [];
 
@@ -134,16 +141,19 @@
    &nbsp;
    dragCrossMove:<input type="checkbox" id="opt_dragCrossMove" onclick="updateCode()"/>
 
+   color: <input type="text" id="opt_color" onblur="updateCode()" value="#FF0000"/>
+
+   border: <input type="text" id="opt_border" onblur="updateCode()" value="2px solid black"/>
+
    &nbsp;
    opacity:
      <select id="opt_opacity" onchange="updateCode()">
-
        <option value="1.0" SELECTED>1.0</option>
        <option value="0.8">0.8</option>
        <option value="0.6">0.6</option>
        <option value="0.4">0.4</option>
-
        <option value="0.2">0.2</option>
+       <option value="0.0">0.0</option>
   </select>
 
    &nbsp;
