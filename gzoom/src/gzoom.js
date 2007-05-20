@@ -45,7 +45,7 @@
  * @param {opts_callbacks} Named optional arguments:
  *   opts_callbacks.buttonclick {Function} Called when the GZoom is activated 
  *     by clicking on the "zoom" button. 
- *   opts_callbacks.dragStart {Function} Called when user starts to drag a rectangle.
+ *   opts_callbacks.dragstart {Function} Called when user starts to drag a rectangle.
  *     Callback args are x,y -- the PIXEL values, relative to the upper-left-hand 
  *     corner of the map, where the user began dragging.
  *   opts_callbacks.dragging {Function} Called repeatedly while the user is dragging.
