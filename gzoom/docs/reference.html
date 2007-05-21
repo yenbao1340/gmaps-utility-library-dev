@@ -85,35 +85,35 @@ Instead, this class is instantiated as a javascript object literal.
 <tr class="even">
 <td class="code">buttonStartingStyle</td>
 <td class="code"> Object</td>
-<td> A hash of CSS styles for the zoom button which are common to both un-activated and activated state.
+<td> A hash of CSS styles for the zoom button which are common to both un-activated and activated state. Default is {width: '52px', border: '1px solid black', padding: '2px'}.
 </td>
 </tr>
 <tr class="odd">
 
 <td class="code">buttonStyle</td>
 <td class="code"> Object</td>
-<td> A hash of CSS styles for the zoom button which will be applied when the button is in un-activated state.
+<td> A hash of CSS styles for the zoom button which will be applied when the button is in un-activated state. Default is {background: '#FFF'}.
 </td>
 </tr>
 <tr class="even">
 
 <td class="code">buttonZoomingHTML</td>
 <td class="code"> String</td>
-<td> HTML which is placed in the zoom button when the button is activated.
+<td> HTML which is placed in the zoom button when the button is activated. Default is "Drag a region on the map".
 </td>
 </tr>
 <tr class="odd">
 
 <td class="code">buttonZoomingStyle</td>
 <td class="code"> Object</td>
-<td> A hash of CSS styles for the zoom button which will be applied when the button is activated.
+<td> A hash of CSS styles for the zoom button which will be applied when the button is activated. Default is {background: '#FF0'}.
 </td>
 </tr>
 <tr class="even">
 
 <td class="code">overlayRemoveTime</td>
 <td class="code"> Number</td>
-<td> The number of milliseconds to wait before removing the rectangle indicating the zoomed-in area after the zoom has happened.
+<td> The number of milliseconds to wait before removing the rectangle indicating the zoomed-in area after the zoom has happened. Default is 6000.
 </td>
 </tr>
 <tr class="even">
@@ -131,8 +131,9 @@ Instead, this class is instantiated as a javascript object literal.
 <h2>
 <a name="GZoomCallbacks"></a>class GZoomCallbacks</h2>
 <p>Instances of this class are used in the <code><span class="nomatch">opts_callbacks</span></code> argument to the constructor of the
-<code><span class="xref"><a href="#GZoomControl">GZoomControl</a></span></code> class. There is no constructor for this class. 
+<code><span class="xref"><a href="#GZoomControl">GZoomControl</a></span></code> class, and allow you to set callback functions for various GZoom events. There is no constructor for this class. 
 Instead, this class is instantiated as a javascript object literal. 
+
 <h3>Properties</h3>
 <p>As the name of this class indicates, all properties are optional.</p>
 

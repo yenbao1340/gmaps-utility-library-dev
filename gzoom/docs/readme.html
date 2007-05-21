@@ -1,29 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-	  <head>
-		<title>GZoom documentation</title>
-	  </head>
-<body>
-<h2>How to add GZoom to your map</h2>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>GZoomControl Documentation: Examples</title>
+   <link rel="stylesheet" type="text/css" href="http://code.google.com/apis/maps/documentation/local_extensions.css" /> 
+   <link rel="stylesheet" type="text/css" href="http://code.google.com/css/dev_docs.css" />
+   <script type="text/javascript" src="http://code.google.com/apis/maps/include/prettify.js"></script>
+  </head>
+  <body onload="prettyPrint()">
+<h1><a name="GZoomControl_HowTo" id="GZoomControl_HowTo"></a>GZoomControl How-to</h1>
+
 You can add GZoom to any Google map with a couple of lines of code.
 <ol>
-    <li>Include gzoom.js in your document header. </li>
-    <pre class="code">&lt;script src=&quot;/javascripts/gzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
+  <li>Include gzoom.js in your document header. </li>
+    <pre class="code">&lt;script src=&quot;gzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
 
-    <li>Add GZoom to your map like any other control. Example:</li>
+  <li>Add GZoom to your map like any other control. Example:</li>
     <pre class="code">map = new GMap2($id(&quot;large-google-map&quot;));<br />map.addControl(new GSmallMapControl());<br /><strong>map.addControl(new GZoomControl());
 </strong></pre>
-		<li><strong>Important!</strong> Make sure your and doctype and namespaces 
-		  are set correctly:</li>
-		<div class="code">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;<br />
+  <li><strong>Important!</strong> Make sure your and doctype and namespaces are set correctly:</li>
+    <pre class="code">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;<br />
 &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;<br />
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; &gt;</div>
-		<li>For Internet Explorer: make sure you enable the VML behavior:
-      <pre class="code">&lt;style type=&quot;text/css&quot;&gt;v\:* {behavior:url(#default#VML);}&lt;/style&gt;</pre>
-		</li>
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; &gt;</pre>
+  <li>For Internet Explorer: make sure you enable the VML behavior:
+    <pre class="code">&lt;style type=&quot;text/css&quot;&gt;v\:* {behavior:url(#default#VML);}&lt;/style&gt;</pre>
+  </li>
 </ol>
-<h2>A complete example HTML document</h2>
+
+<h1>A complete example HTML document</h1>
 <p> This is the &quot;Hello World&quot; code from Google's GMaps documentation. The lines you need to add for GZoom are in bold. </p>
 
 <pre class="code">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;<br />   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;<br />&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; &gt;<br />  &lt;head&gt;<br />    &lt;style type=&quot;text/css&quot;&gt;v\:* {behavior:url(#default#VML);}&lt;/style&gt;<br />     &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;<br />    &lt;title&gt;Google Maps JavaScript API Example&lt;/title&gt;

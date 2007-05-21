@@ -24,7 +24,7 @@
  *  uses them to customize the control.
  * @param {opts_boxStyle} Named optional arguments:
  *   opts_boxStyle.opacity {Number} Opacity from 0-1
- *   opts_boxStyle.fillColor {String} Hex value of fill color
+{background: '#FF0'} *   opts_boxStyle.fillColor {String} Hex value of fill color
  *   opts_boxStyle.border {String} CSS-style declaration of border
  * @param {opts_other} Named optional arguments:
  *   opts_other.buttonHTML {String} The zoom button HTML in non-activated state
@@ -41,7 +41,6 @@
  *   opts_other.stickyZoomEnabled {Boolean} Whether or not the control stays in 
  *     "zoom mode" until turned off. When true, the user can zoom repeatedly, 
  *     until clicking on the zoom button again to turn zoom mode off.
- *   opts_other.forceCheckResizeEnabled {Boolean} 
  * @param {opts_callbacks} Named optional arguments:
  *   opts_callbacks.buttonclick {Function} Called when the GZoom is activated 
  *     by clicking on the "zoom" button. 
@@ -75,10 +74,9 @@ function GZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
 
   // Other options
   GZoomControl.globals.options={
-    forceCheckResizeEnabled: false,
     buttonHTML: 'zoom ...',
     buttonStartingStyle: 
-      {width: '52px', border: '1px solid black', padding: '0px 5px 1px 5px'},
+      {width: '52px', border: '1px solid black', padding: '2px'},
     buttonStyle: {background: '#FFF'},
     buttonZoomingHTML: 'Drag a region on the map',
     buttonZoomingStyle: {background: '#FF0'},
@@ -341,9 +339,6 @@ GZoomControl.prototype.mouseup_ = function(e){
  */
 GZoomControl.prototype.setDimensions_ = function() {
   var G = GZoomControl.globals;
-  if (G.options.forceCheckResizeEnabled) {
-    G.map.checkResize();
-  }
   var mapSize = G.map.getSize();
   G.mapWidth  = mapSize.width;
   G.mapHeight = mapSize.height;
