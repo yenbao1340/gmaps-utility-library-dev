@@ -34,6 +34,8 @@ You can add GZoom to any Google map with a couple of lines of code.
 <pre class="code">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;<br />   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;<br />&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; &gt;<br />  &lt;head&gt;<br />    &lt;style type=&quot;text/css&quot;&gt;v\:* {behavior:url(#default#VML);}&lt;/style&gt;<br />     &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;<br />    &lt;title&gt;Google Maps JavaScript API Example&lt;/title&gt;
 		<br />    &lt;script src=&quot;http://maps.google.com/maps?file=api&amp;v=2&amp;key=YOUR_KEY_HERE&quot;<br />      type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />    <strong>&lt;script src=&quot;/javascripts/gzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</strong><br />    &lt;script type=&quot;text/javascript&quot;&gt;<br /><br />    //&lt;![CDATA[<br /><br />    function load() {<br />      if (GBrowserIsCompatible()) {<br />        var map = new GMap2(document.getElementById(&quot;map&quot;));<br />        map.setCenter(new GLatLng(37.4419, -122.1419), 13);<br />       <strong> map.addControl(new GZoomControl());</strong><br />      }<br />    }<br /><br />    //]]&gt;<br />    &lt;/script&gt;<br />  &lt;/head&gt;<br />  &lt;body onload=&quot;load()&quot; onunload=&quot;GUnload()&quot;&gt;<br />    &lt;div id=&quot;map&quot; style=&quot;width: 900px; height: 600px&quot;&gt;&lt;/div&gt;<br />  &lt;/body&gt;<br />&lt;/html&gt;</pre>
 
+<a href="../examples/simplegzoom.html">View example (simplegzoom.html).</a>
+
 <h2>Advanced usage</h2>
 <p>The GZoom constructor takes three optional arguments, <a href="reference.html#GZoomBoxStyleOptions">GZoomBoxStyleOptions</a>, <a href="reference.html#GZoomOtherOptions">GZoomOtherOptions</a>, and <a href="reference.html#GZoomCallbacks">GZoomCallbacks</a>.
   All three are optional, but if you want to include one, you need to include the previous hashes too, even if they are empty. 
@@ -41,7 +43,9 @@ You can add GZoom to any Google map with a couple of lines of code.
 
   <pre class="code">map.addControl(new GZoomControl({},{},{stickyZoomEnabled:true}));</pre>
 
-  <p>To play with 
+  <p>To play with the first two options parameters, check out this <a href="../examples/gzoomoptions.html">interactive options playground.</a>
+  </p>
+
 <h2>An Advanced GZoomControl Example</h2>
 <p>This example customizes the overlay (with GZoomBoxStyleOptions), provides some of the additional 
   options (with GZoomOtherOptions), and all of the callback (with GZoomCallbacks): <a href="http://earthcode.com/demo/gzoom/demo1.html">see 
@@ -73,14 +77,10 @@ You can add GZoom to any Google map with a couple of lines of code.
 </pre>
 
 <h2>Using an image for the button instead of text</h2>
-<p>The example above demonstrates how to substitute an image for text on the GZoom 
-  button. Basically, use the sButtonHTML and sButtonZoomingHTML arguments (in 
-  the second hash) to specify images rather than text. You can put any valid html 
-  in these arguments, even a combination of images and text. Just make sure you 
-  set the width and height of the button (through the oButtonStartingStyle) as 
-  appropriate for the look of the button. If you need to the shape/background 
-  etc. of the button to change when activated, you can set styles in the oButtonZoomingStyle 
-  argument.</p>
+<p>The example above demonstrates how to substitute an image for text on the GZoom button. Basically, you can do so by using the buttonHTML and buttonZoomingHTML arguments (in GZoomOtherOptions) to specify images rather than text. 
+  You can put any valid html in these arguments, even a combination of images and text. 
+  Just make sure you set the width and height of the button (through the buttonStartingStyle) as appropriate for the look of the button. 
+  If you need the size or background of the button to change when activated, you can set styles in the buttonZoomingStyle argument.</p>
 
 <h2>Specifying the position of the GZoom control</h2>
 <p>Like all controls, GZoom can be placed anywhere you want on the map by specifying an optional GControlPosition. An example:</p>
