@@ -24,7 +24,7 @@
  *  uses them to customize the control.
  * @param {opts_boxStyle} Named optional arguments:
  *   opts_boxStyle.opacity {Number} Opacity from 0-1
-{background: '#FF0'} *   opts_boxStyle.fillColor {String} Hex value of fill color
+ *   opts_boxStyle.fillColor {String} Hex value of fill color
  *   opts_boxStyle.border {String} CSS-style declaration of border
  * @param {opts_other} Named optional arguments:
  *   opts_other.buttonHTML {String} The zoom button HTML in non-activated state
