@@ -156,6 +156,7 @@ DragZoomControl.prototype.setButtonMode_ = function(mode){
  */ 
 DragZoomControl.prototype.initialize = function(map) {
   var G = this.globals;
+  GLog.write("initialized OK");
   var mapDiv = map.getContainer();
   //DOM:button
   var buttonDiv = this.initButton_(mapDiv);
@@ -186,6 +187,7 @@ DragZoomControl.prototype.initialize = function(map) {
 
   G.borderCorrection = G.style.outlineWidth * 2;	
   this.setDimensions_();
+  GLog.write(G.map);
 
   //styles
   this.initStyles_();
