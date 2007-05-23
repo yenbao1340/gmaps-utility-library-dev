@@ -1,39 +1,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>GZoom V1.0 Reference</title>
+<title>DragZoom V1.0 Reference</title>
 <link rel="stylesheet" type="text/css" href="http://code.google.com/css/dev_docs.css"></link>
 </head>
 <body>
 <h2>
-<a name="GZoom"></a>class GZoomControl</h2>
+<a name="DragZoom"></a>class DragZoomControl</h2>
 <p>
 This class lets you add a control to the map which, when clicked, will let the map user zoom by dragging a rectangle on the map.
 It extends <a href="http://www.google.com/apis/maps/documentation/reference.html#GControl" target="_blank">GControl</a>.
 </p>
 <h3>Constructor</h3>
-<table summary="class GZoomControl - Constructor">
+<table summary="class DragZoomControl - Constructor">
 <tbody><tr>
 <th>Constructor</th>
 <th>Description</th>
 </tr>
 <tr class="odd">
-<td class="code">LabeledMarker(<span class="type" title="type:  GZoomBoxStyleOptions">opts_boxStyle</span>, <span class="type" title="type:  GZoomOtherOptions"> opts_other</span>, <span class="type" title="type: GZoomCallbacks"> opts_callbacks </span>)</td>
+<td class="code">LabeledMarker(<span class="type" title="type:  DragZoomBoxStyleOptions">opts_boxStyle</span>, <span class="type" title="type:  DragZoomOtherOptions"> opts_other</span>, <span class="type" title="type: DragZoomCallbacks"> opts_callbacks </span>)</td>
 <td>
-Creates a GZoomControl with the specified options (hashes). All parameters are required, even if empty hashes.
+Creates a DragZoomControl with the specified options (hashes). All parameters are required, even if empty hashes.
 </td>
 </tr>
 </tbody></table>
 
 
 <h2>
-<a name="GZoomBoxStyleOptions"></a>class GZoomBoxStyleOptions</h2>
+<a name="DragZoomBoxStyleOptions"></a>class DragZoomBoxStyleOptions</h2>
 <p>Instances of this class are used in the <code><span class="nomatch">opts_boxStyle</span></code> argument to the constructor of the
-<code><span class="xref"><a href="#GZoomControl">GZoomControl</a></span></code> class. There is no constructor for this class. 
+<code><span class="xref"><a href="#DragZoomControl">DragZoomControl</a></span></code> class. There is no constructor for this class. 
 Instead, this class is instantiated as a javascript object literal. 
 <h3>Properties</h3>
 <p>As the name of this class indicates, all properties are optional.</p>
 
-<table style="width: 90%;" summary="class GZoomBoxStyleOptions - Properties">
+<table style="width: 90%;" summary="class DragZoomBoxStyleOptions - Properties">
 <tbody><tr>
 <th>Properties</th>
 <th>Type</th>
@@ -63,14 +63,14 @@ Instead, this class is instantiated as a javascript object literal.
 
 
 <h2>
-<a name="GZoomBoxOtherOptions"></a>class GZoomOtherOptions</h2>
+<a name="DragZoomBoxOtherOptions"></a>class DragZoomOtherOptions</h2>
 <p>Instances of this class are used in the <code><span class="nomatch">opts_other</span></code> argument to the constructor of the
-<code><span class="xref"><a href="#GZoomControl">GZoomControl</a></span></code> class. There is no constructor for this class. 
+<code><span class="xref"><a href="#DragZoomControl">DragZoomControl</a></span></code> class. There is no constructor for this class. 
 Instead, this class is instantiated as a javascript object literal. 
 <h3>Properties</h3>
 <p>As the name of this class indicates, all properties are optional.</p>
 
-<table style="width: 90%;" summary="class GZoomOtherOptions - Properties">
+<table style="width: 90%;" summary="class DragZoomOtherOptions - Properties">
 <tbody><tr>
 <th>Properties</th>
 <th>Type</th>
@@ -129,15 +129,15 @@ Instead, this class is instantiated as a javascript object literal.
 
 
 <h2>
-<a name="GZoomCallbacks"></a>class GZoomCallbacks</h2>
+<a name="DragZoomCallbacks"></a>class DragZoomCallbacks</h2>
 <p>Instances of this class are used in the <code><span class="nomatch">opts_callbacks</span></code> argument to the constructor of the
-<code><span class="xref"><a href="#GZoomControl">GZoomControl</a></span></code> class, and allow you to set callback functions for various GZoom events. There is no constructor for this class. 
+<code><span class="xref"><a href="#DragZoomControl">DragZoomControl</a></span></code> class, and allow you to set callback functions for various DragZoom events. There is no constructor for this class. 
 Instead, this class is instantiated as a javascript object literal. 
 
 <h3>Properties</h3>
 <p>As the name of this class indicates, all properties are optional.</p>
 
-<table style="width: 90%;" summary="class GZoomCallbacks - Properties">
+<table style="width: 90%;" summary="class DragZoomCallbacks - Properties">
 <tbody><tr>
 <th>Properties</th>
 <th>Type</th>
@@ -146,7 +146,7 @@ Instead, this class is instantiated as a javascript object literal.
 <tr class="odd">
 <td class="code">buttonclick</td>
 <td class="code"> Function</td>
-<td> Called when the GZoom is activated by clicking on the "zoom" button.</td>
+<td> Called when the DragZoom is activated by clicking on the "zoom" button.</td>
 
 </tr>
 <tr class="even">
