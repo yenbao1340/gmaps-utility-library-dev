@@ -37,7 +37,7 @@
      map.clearOverlays();
      if (zcontrol) {
        zcontrol.initStyles_();
-       GZoomControl.globals.mc.style.display = 'none';
+       DragZoomControl.globals.mc.style.display = 'none';
        map.removeControl(zcontrol);
      }
      var code = [];
@@ -84,7 +84,7 @@
        code.push("otherOpts.buttonZoomingStyle = " + el("opt_buttonZoomingStyle").value + ";");
      }
 
-     code.push("zcontrol = new GZoomControl(styleOpts, otherOpts, {});");
+     code.push("zcontrol = new DragZoomControl(styleOpts, otherOpts, {});");
      
      code.push("map.addControl(zcontrol);");
      
