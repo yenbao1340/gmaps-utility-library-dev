@@ -171,7 +171,10 @@ DragZoomControl.prototype.initialize = function(map) {
   // add event listeners
   GEvent.addDomListener(buttonDiv, 'click', this.buttonclick_);
   GEvent.addDomListener(zoomDiv, 'mousedown', this.coverMousedown_);
-  GEvent.addDomListener(document, 'mousemove', this.drag_);
+  GEvent.addDomListener(document, 'mousemove', function() {
+    GLog.write(G.draggingOn);
+  });
+
   GEvent.addDomListener(document, 'mouseup', this.mouseup_);
 
   // get globals
@@ -244,7 +247,7 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
  * @param {Object} e 
  */
 DragZoomControl.prototype.drag_ = function(e){
-  var G=this.globals;
+  var G = this.globals;
   if(G.draggingOn) {
     var pos = this.getRelPos_(e);
     rect = this.getRectangle_(G.startX, G.startY, pos, G.mapRatio);
