@@ -1,0 +1,43 @@
+#summary Coding conventions to be followed in Javascript files here.
+
+= Introduction =
+
+All Javascript files must follow these coding conventions before they can be committed to the release project.
+
+
+= Language Rules =
+  
+  * Variable declarations must start with 'var.'
+  * All JS expressions must end with a semi-colon.
+  * Method definitions should look like:
+{{{
+ Foo.prototype.bar = function() {
+  /* ... */
+};
+}}}
+
+= Style Rules =
+
+== Naming ==
+  * Capitalization: functionNamesLikeThis, variableNamesLikeThis, ClassNamesLikeThis, and SYMBOLIC_CONSTANTS_LIKE_THIS. 
+  * Be descriptive.
+  * Private variables or functions should end in underscores (func_).
+  * Optional function arguments start with opt_.
+
+== Formatting ==
+  * No tabs anywhere - 2 spaces indent for each level of scope.
+  * Wrapped lines should be indented 4 spaces.
+  * Object initialization looks like:
+{{{
+  Obj = {
+    key: "value",
+    key2: "value2"
+  };
+}}}
+  
+== Comments ==
+  * Should follow JSDoc convention: http://jsdoc.sourceforge.net/
+  * Each function must be commented (purpose, @param, @return).
+  * Inline comments useful if code is unclear.
+  * Copyright, author, license, plus short description of file at top of code.
+
