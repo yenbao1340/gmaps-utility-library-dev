@@ -177,9 +177,8 @@ DragZoomControl.prototype.initialize = function(map) {
     me.coverMousedown_(e);
   });
   GEvent.addDomListener(document, 'mousemove', function(e) {
-    me.drag_(e, me);
+    me.drag_(e);
   });
-
   GEvent.addDomListener(document, 'mouseup', function(e) {
     me.mouseup_(e);
   });
@@ -253,7 +252,7 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
  * Function called when drag event is captured
  * @param {Object} e 
  */
-DragZoomControl.prototype.drag_ = function(e, me){
+DragZoomControl.prototype.drag_ = function(e){
   var G = this.globals;
   if(G.draggingOn) {
     var pos = this.getRelPos_(e);
