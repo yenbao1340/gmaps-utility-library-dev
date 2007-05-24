@@ -156,6 +156,7 @@ DragZoomControl.prototype.setButtonMode_ = function(mode){
  */ 
 DragZoomControl.prototype.initialize = function(map) {
   var G = this.globals;
+  var me = this;
   GLog.write("initialized OK");
   var mapDiv = map.getContainer();
   //DOM:button
@@ -172,7 +173,7 @@ DragZoomControl.prototype.initialize = function(map) {
   GEvent.addDomListener(buttonDiv, 'click', this.buttonclick_);
   GEvent.addDomListener(zoomDiv, 'mousedown', this.coverMousedown_);
   GEvent.addDomListener(document, 'mousemove', function(e) {
-    this.drag_(e);
+    me.drag_(e);
     //GLog.write(G.draggingOn);
   });
 
