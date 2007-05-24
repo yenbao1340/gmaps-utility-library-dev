@@ -19,10 +19,10 @@ All Javascript files must follow these coding conventions before they can be com
 = Style Rules =
 
 == Naming ==
-  * Capitalization: functionNamesLikeThis, variableNamesLikeThis, ClassNamesLikeThis, and SYMBOLIC_CONSTANTS_LIKE_THIS. 
+  * Capitalization: functionNamesLikeThis, variableNamesLikeThis, !ClassNamesLikeThis, and SYMBOLIC_CONSTANTS_LIKE_THIS. 
   * Be descriptive.
   * Private variables or functions should end in underscores (func_).
-  * Optional function arguments start with opt_.
+  * Optional function arguments start with !opt_.
 
 == Formatting ==
   * No tabs anywhere - 2 spaces indent for each level of scope.
@@ -40,4 +40,3 @@ All Javascript files must follow these coding conventions before they can be com
   * Each function must be commented (purpose, @param, @return).
   * Inline comments useful if code is unclear.
   * Copyright, author, license, plus short description of file at top of code.
-
