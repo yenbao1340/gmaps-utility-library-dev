@@ -170,14 +170,19 @@ DragZoomControl.prototype.initialize = function(map) {
   mapDiv.appendChild(zoomDiv);
 
   // add event listeners
-  GEvent.addDomListener(buttonDiv, 'click', this.buttonclick_);
-  GEvent.addDomListener(zoomDiv, 'mousedown', this.coverMousedown_);
+  GEvent.addDomListener(buttonDiv, 'click', function(e) {
+    me.buttonclick_(e);
+  });
+  GEvent.addDomListener(zoomDiv, 'mousedown', function(e) {
+    me.coverMousedown_(e);
+  });
   GEvent.addDomListener(document, 'mousemove', function(e) {
     me.drag_(e, me);
-    //GLog.write(G.draggingOn);
   });
 
-  GEvent.addDomListener(document, 'mouseup', this.mouseup_);
+  GEvent.addDomListener(document, 'mouseup', function(e) {
+    me.mouseup_(e);
+  });
 
   // get globals
   G.mapPosition = DragZoomUtil.getElementPosition(mapDiv);
