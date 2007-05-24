@@ -63,8 +63,8 @@
      }
      if (el("opt_buttonHTML").value != 'zoom...') {
        var val_buttonHTML = el("opt_buttonHTML").value; 
-       button_HTML = buttonHTML.replace(">", "&gt;");
-       button_HTML = buttonHTML.replace("<", "&lt;");
+       val_button_HTML = val_buttonHTML.replace(">", "&gt;");
+       val_button_HTML = val_buttonHTML.replace("<", "&lt;");
        code.push("otherOpts.buttonHTML = '" + val_buttonHTML + "';");
      }
      if (el("opt_buttonZoomingHTML").value != 'Drag a region on the map') {
