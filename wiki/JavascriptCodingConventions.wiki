@@ -21,7 +21,8 @@ All Javascript files must follow these coding conventions before they can be com
 == Naming ==
   * Capitalization: functionNamesLikeThis, variableNamesLikeThis, !ClassNamesLikeThis, and SYMBOLIC_CONSTANTS_LIKE_THIS. 
   * Be descriptive.
-  * Private variables or functions should end in underscores (func_).
+  * Private variables or functions should end in underscores (`func_`).
+  * Optional arguments should start with `opt_`.
 
 == Formatting ==
   * No tabs anywhere - 2 spaces indent for each level of scope.
