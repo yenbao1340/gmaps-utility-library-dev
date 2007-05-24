@@ -171,8 +171,9 @@ DragZoomControl.prototype.initialize = function(map) {
   // add event listeners
   GEvent.addDomListener(buttonDiv, 'click', this.buttonclick_);
   GEvent.addDomListener(zoomDiv, 'mousedown', this.coverMousedown_);
-  GEvent.addDomListener(document, 'mousemove', function() {
-    GLog.write(G.draggingOn);
+  GEvent.addDomListener(document, 'mousemove', function(e) {
+    this.drag_(e);
+    //GLog.write(G.draggingOn);
   });
 
   GEvent.addDomListener(document, 'mouseup', this.mouseup_);
