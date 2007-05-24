@@ -63,8 +63,6 @@
      }
      if (el("opt_buttonHTML").value != 'zoom...') {
        var val_buttonHTML = el("opt_buttonHTML").value; 
-       val_buttonHTML = val_buttonHTML.replace("<", "&lt;");
-       val_buttonHTML = val_buttonHTML.replace(">", "&gt;");
        code.push("otherOpts.buttonHTML = '" + val_buttonHTML + "';");
      }
      if (el("opt_buttonZoomingHTML").value != 'Drag a region on the map') {
@@ -92,6 +90,9 @@
      code.push("map.addControl(zcontrol);");
      
      var codeHTML = code.join("<br/>");
+     codeHTML = codeHTML.replace("<", "&lt;");
+     codeHTML = codeHTML.replace(">", "&gt;");
+
      el("code").innerHTML = codeHTML;
 
      var codeJS = codeHTML.replace(/<br\/>/g,"\n");
