@@ -32,10 +32,10 @@ You can add DragZoom to any Google map with a couple of lines of code.
 <p> This is the &quot;Hello World&quot; code from the GMaps documentation. The lines you need to add for DragZoom are in bold. </p>
 
 <pre class="code">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;<br />   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;<br />&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; &gt;<br />  &lt;head&gt;<br />    &lt;style type=&quot;text/css&quot;&gt;v\:* {behavior:url(#default#VML);}&lt;/style&gt;<br />     &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;<br />    &lt;title&gt;Google Maps JavaScript API Example&lt;/title&gt;
-		<br />    &lt;script src=&quot;http://maps.google.com/maps?file=api&amp;v=2&amp;key=YOUR_KEY_HERE&quot;<br />      type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />    <strong>&lt;script src=&quot;/javascripts/gzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</strong><br />    &lt;script type=&quot;text/javascript&quot;&gt;<br /><br />    //&lt;![CDATA[<br /><br />    function load() {<br />      if (GBrowserIsCompatible()) {<br />        var map = new GMap2(document.getElementById(&quot;map&quot;));<br />        map.setCenter(new GLatLng(37.4419, -122.1419), 13);<br />       <strong> map.addControl(new DragZoomControl());</strong><br />      }<br />    }<br /><br />    //]]&gt;<br />    &lt;/script&gt;<br />  &lt;/head&gt;<br />  &lt;body onload=&quot;load()&quot; onunload=&quot;GUnload()&quot;&gt;<br />    &lt;div id=&quot;map&quot; style=&quot;width: 900px; height: 600px&quot;&gt;&lt;/div&gt;<br />  &lt;/body&gt;<br />&lt;/html&gt;</pre>
+		<br />    &lt;script src=&quot;http://maps.google.com/maps?file=api&amp;v=2&amp;key=YOUR_KEY_HERE&quot;<br />      type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />    <strong>&lt;script src=&quot;/javascripts/dragzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</strong><br />    &lt;script type=&quot;text/javascript&quot;&gt;<br /><br />    //&lt;![CDATA[<br /><br />    function load() {<br />      if (GBrowserIsCompatible()) {<br />        var map = new GMap2(document.getElementById(&quot;map&quot;));<br />        map.setCenter(new GLatLng(37.4419, -122.1419), 13);<br />       <strong> map.addControl(new DragZoomControl());</strong><br />      }<br />    }<br /><br />    //]]&gt;<br />    &lt;/script&gt;<br />  &lt;/head&gt;<br />  &lt;body onload=&quot;load()&quot; onunload=&quot;GUnload()&quot;&gt;<br />    &lt;div id=&quot;map&quot; style=&quot;width: 900px; height: 600px&quot;&gt;&lt;/div&gt;<br />  &lt;/body&gt;<br />&lt;/html&gt;</pre>
 
 <p>
-<a href="../examples/simplegzoom.html">View example (simplegzoom.html).</a>
+<a href="../examples/simpledragzoom.html">View example (simpledragzoom.html).</a>
 </p>
 
 <h2>Advanced usage</h2>
@@ -45,7 +45,7 @@ You can add DragZoom to any Google map with a couple of lines of code.
 
   <pre class="code">map.addControl(new DragZoomControl({},{},{stickyZoomEnabled:true}));</pre>
 
-  <p>To play with the first two options parameters, check out this <a href="../examples/gzoomoptions.html">interactive options playground.</a>
+  <p>To play with the first two options parameters, check out this <a href="../examples/dragzoomoptions.html">interactive options playground.</a>
   </p>
 
 <h2>An Advanced DragZoomControl Example</h2>
@@ -79,7 +79,7 @@ You can add DragZoom to any Google map with a couple of lines of code.
 </pre>
 
 <p>
-<a href="../examples/advancedgzoom.html">View example (advancedgzoom.html).</a>
+<a href="../examples/advanceddragzoom.html">View example (advanceddragzoom.html).</a>
 </p>
 
 <h2>Using an image for the button instead of text</h2>
