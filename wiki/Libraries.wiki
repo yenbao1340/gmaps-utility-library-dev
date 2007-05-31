@@ -29,7 +29,7 @@ This class extends the Maps API's standard GMarker class with the ability to sup
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Link to Development Version]
 
 
-== GZoom ==
+== DragZoom ==
 
 This is a control created by Andre Lewis that allows you to select an area on the map by dragging a rectangle and the map will then zoom to that area.
 
