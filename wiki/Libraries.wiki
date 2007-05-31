@@ -33,4 +33,10 @@ This class extends the Maps API's standard GMarker class with the ability to sup
 
 This is a control created by Andre Lewis that allows you to select an area on the map by dragging a rectangle and the map will then zoom to that area.
 
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/gzoom/ Link to Development Version]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/ Link to Release (1.0) Version]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/docs/examples.html Examples]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/docs/reference.html Reference]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/src/dragzoom.js Javascript include]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/src/dragzoom_packed.js Javascript include (packed)]
+
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/dragzoom/ Link to Development Version]
