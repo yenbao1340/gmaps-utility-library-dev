@@ -48,7 +48,6 @@ This is a control that mimics MapTypeControl and optionally has a Traffic button
 [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/ Link to Release (1.0) Version]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/docs/examples.html Examples]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/src/dragzoom.js Javascript include]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/src/dragzoom_packed.js Javascript include (packed)]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/src/extmaptypecontrol.js Javascript include]
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extmaptypecontrol/ Link to Development Version]
