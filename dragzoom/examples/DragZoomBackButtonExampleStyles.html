@@ -17,9 +17,9 @@
       if (GBrowserIsCompatible()) {
         var map = new GMap2(document.getElementById("map"));
         map.setCenter(new GLatLng(40.78, -73.9713), 12);
-        map.addControl(
-          new TextualZoomControl(),
-          new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(7,7)));
+        //map.addControl(
+        //  new TextualZoomControl(),
+        //  new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(7,7)));
         map.enableContinuousZoom();
  
         var otherOpts = { 
