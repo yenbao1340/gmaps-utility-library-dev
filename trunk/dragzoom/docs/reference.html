@@ -24,6 +24,26 @@ Creates a DragZoomControl with the specified options (hashes). All parameters ar
 </tr>
 </tbody></table>
 
+<h2>
+<a name="DragZoomMethods"></a>class DragZoomMethods</h2>
+
+<h3>Methods</h3>
+<p>The Control must be instatiated before calling a method.</p>
+
+<table style="width: 90%;" summary="class DragZoomMethods">
+<tbody><tr>
+<th>Method</th>
+<th>Return Value</th>
+<th>Description</th>
+</tr>
+<tr class="odd">
+<td class="code">saveMapContext(text)</td>
+<td class="code">None</td>
+<td> The map map context is pushed onto the context stack, the backButtonHTML is set to 'text', and the back button is made visible.</td>
+</td>
+</tr>
+</tbody>
+</table>
 
 <h2>
 <a name="DragZoomBoxStyleOptions"></a>class DragZoomBoxStyleOptions</h2>
@@ -111,6 +131,27 @@ Instead, this class is instantiated as a javascript object literal.
 </tr>
 <tr class="even">
 
+<td class="code">backButtonHTML</td>
+<td class="code"> String</td>
+<td> HTML which is placed in the back button when the button is activated. Default is "Drag Zoom Back".
+</td>
+</tr>
+<tr class="odd">
+
+<td class="code">backButtonStyle</td>
+<td class="code"> Object</td>
+<td> A hash of CSS styles for the back button which will be applied when the button is activated. Default is {background: '#FFF', display: 'none'}.
+</td>
+</tr>
+<tr class="even">
+
+<td class="code">backButtonEnabled</td>
+<td class="code"> Boolean</td>
+<td> Whether or not the back button functionality is turned on.  Default is false.
+</td>
+</tr>
+<tr class="odd">
+
 <td class="code">overlayRemoveTime</td>
 <td class="code"> Number</td>
 <td> The number of milliseconds to wait before removing the rectangle indicating the zoomed-in area after the zoom has happened. Default is 6000.
@@ -171,6 +212,15 @@ Called when the user releases the mouse button after dragging the rectangle. Cal
  The first 4 are the latitudes/longitudes; the last 4 are the pixel coords on the map.
 </td>
 </tr>
+<tr class="odd">
+
+<td class="code">backbuttonclick</td>
+<td class="code"> Function</td>
+<td> 
+Called when the back button is activated after the map context is restored. Callback args: methodCall (boolean) set true if
+this backbuttonclick was to restore context set by the method call, else false.</td>
+</tr>
+
 
 </tbody>
 </table>
