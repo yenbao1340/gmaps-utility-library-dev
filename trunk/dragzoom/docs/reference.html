@@ -24,15 +24,10 @@ Creates a DragZoomControl with the specified options (hashes). All parameters ar
 </tr>
 </tbody></table>
 
-<h2>
-<a name="DragZoomMethods"></a>class DragZoomMethods</h2>
-<p>The method allows application custom zoom procedures to integrate with the map context stack and DragZoom back button.
 <h3>Methods</h3>
-<p>The Control must be instatiated before calling a method.</p>
-
 <table style="width: 90%;" summary="class DragZoomMethods">
 <tbody><tr>
-<th>Method</th>
+<th>Methods</th>
 <th>Return Value</th>
 <th>Description</th>
 </tr>
@@ -147,7 +142,7 @@ Instead, this class is instantiated as a javascript object literal.
 
 <td class="code">backButtonEnabled</td>
 <td class="code"> Boolean</td>
-<td> Whether or not the back button functionality is turned on.  Default is false.
+<td> Determines whether or not the back button functionality is turned on.  Default is false.
 </td>
 </tr>
 <tr class="odd">
@@ -217,7 +212,7 @@ Called when the user releases the mouse button after dragging the rectangle. Cal
 <td class="code">backbuttonclick</td>
 <td class="code"> Function</td>
 <td> 
-Called when the back button is activated after the map context is restored. Callback args: methodCall (boolean) set true if
+Called after the map context is restored as a result of clicking the back button. Callback arg: methodCall (boolean) -- set true if
 this backbuttonclick was to restore context set by the method call, else false.</td>
 </tr>
 
