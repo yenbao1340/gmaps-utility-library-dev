@@ -13,8 +13,8 @@
 You can add the DragZoomControl to any Google map with a couple of lines of code.
 </p>
 <ol>
-  <li>Include gzoom.js in your document header. </li>
-    <pre class="code">&lt;script src=&quot;gzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
+  <li>Include draggzoom.js in your document header. </li>
+    <pre class="code">&lt;script src=&quot;dragzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
 
   <li>Add the DragZoomControl to your map like any other control. Example:</li>
     <pre class="code">map = new GMap2($id(&quot;large-google-map&quot;));<br />map.addControl(new GSmallMapControl());<br /><strong>map.addControl(new DragZoomControl());
@@ -32,7 +32,7 @@ You can add the DragZoomControl to any Google map with a couple of lines of code
 <p> This is the &quot;Hello World&quot; code from the GMaps documentation. The lines you need to add for DragZoom are in bold. </p>
 
 <pre class="code">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;<br />   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;<br />&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; &gt;<br />  &lt;head&gt;<br />    &lt;style type=&quot;text/css&quot;&gt;v\:* {behavior:url(#default#VML);}&lt;/style&gt;<br />     &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;<br />    &lt;title&gt;Google Maps JavaScript API Example&lt;/title&gt;
-		<br />    &lt;script src=&quot;http://maps.google.com/maps?file=api&amp;v=2&amp;key=YOUR_KEY_HERE&quot;<br />      type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />    <strong>&lt;script src=&quot;/javascripts/dragzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</strong><br />    &lt;script type=&quot;text/javascript&quot;&gt;<br /><br />    //&lt;![CDATA[<br /><br />    function load() {<br />      if (GBrowserIsCompatible()) {<br />        var map = new GMap2(document.getElementById(&quot;map&quot;));<br />        map.setCenter(new GLatLng(37.4419, -122.1419), 13);<br />       <strong> map.addControl(new DragZoomControl());</strong><br />      }<br />    }<br /><br />    //]]&gt;<br />    &lt;/script&gt;<br />  &lt;/head&gt;<br />  &lt;body onload=&quot;load()&quot; onunload=&quot;GUnload()&quot;&gt;<br />    &lt;div id=&quot;map&quot; style=&quot;width: 900px; height: 600px&quot;&gt;&lt;/div&gt;<br />  &lt;/body&gt;<br />&lt;/html&gt;</pre>
+		<br />    &lt;script src=&quot;http://maps.google.com/maps?file=api&amp;v=2&amp;key=YOUR_KEY_HERE&quot;<br />      type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />    <strong>&lt;script src=&quot;../src/dragzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</strong><br />    &lt;script type=&quot;text/javascript&quot;&gt;<br /><br />    //&lt;![CDATA[<br /><br />    function load() {<br />      if (GBrowserIsCompatible()) {<br />        var map = new GMap2(document.getElementById(&quot;map&quot;));<br />        map.setCenter(new GLatLng(37.4419, -122.1419), 13);<br />       <strong> map.addControl(new DragZoomControl());</strong><br />      }<br />    }<br /><br />    //]]&gt;<br />    &lt;/script&gt;<br />  &lt;/head&gt;<br />  &lt;body onload=&quot;load()&quot; onunload=&quot;GUnload()&quot;&gt;<br />    &lt;div id=&quot;map&quot; style=&quot;width: 900px; height: 600px&quot;&gt;&lt;/div&gt;<br />  &lt;/body&gt;<br />&lt;/html&gt;</pre>
 
 <p>
 <a href="../examples/simpledragzoom.html">View example (simpledragzoom.html).</a>
@@ -53,9 +53,9 @@ You can add the DragZoomControl to any Google map with a couple of lines of code
 <pre class="code">map.addControl(new DragZoomControl(),new GControlPosition(G_ANCHOR_TOP_RIGHT,new GSize(10,10)));</pre>
 
 
-<h2>Enabling the DragZoomControl Back Button, another simple example </h2>
-<p> The DragZoom Control Back Button, when enabled, allows the user to return the map to the state it was in prior to the Drag Zoom with a single click.
-The Back Button will appear after the first DragZoom is done and will dissapear after the map has gone back to its original context.  Successive 
+<h2>Enabling the DragZoomControl back button, another simple example </h2>
+<p> The DragZoom Control back button, when enabled, allows the user to return the map to the state it was in prior to the Drag Zoom with a single click.
+The back button will appear after the first DragZoom is done and will dissapear after the map has gone back to its original context.  Successive 
 DragZooms to increasingly higher zoom levels are supported.
 <p>
 This is the &quot;Hello World&quot; code from the GMaps documentation again (but this time moved to the East Coast to provide regional "balance"). 
@@ -149,21 +149,21 @@ These are the styles and other parameters used in this example:
 
 </pre>
 <p>
-<a href="../examples/DragZoomBackButtonWithImages.html">View example using images for the DragZoom and Back button.</a>
+<a href="../examples/DragZoomBackButtonWithImages.html">View example using images for the DragZoom and back button.</a>
 </p>
 
 <h2>The Back Button and Map Types</h2>
-<p> The DragZoomControl Back Button restores the map context as it was prior to the previous DragZoom.  The map context not only 
+<p> The DragZoomControl back button restores the map context as it was prior to the previous DragZoom.  The map context not only 
 means the map center and zoom level, but the map type as well.  This example illustrates this capability.
 <p>
 The map in the example shows Greater New York. The DragZoom Button is in the top left of the map and the usual Map Type Controls are in the upper right of the map.
 Choose an area using the DragZoom around New York Harbor (about 1/3 of the screen). When the map has zoomed in, change the Map Type to Hybrid.
 Now do another DragZoom (don't click the back button yet) highlighting the Brooklyn Waterfront and then change the Map Type to Satellite.
 <p>
-If you now use the DragZoom Back Button to you will see the sequence reversed. The Map Types will be restored to the value for each zoom level.
+If you now use the DragZoom back button to you will see the sequence reversed. The Map Types will be restored to the value for each zoom level.
 Play around, zooming in and out using the DragZoom and changing the Map Type Controls.
 <p>
-<a href="../examples/DragZoomBackButtonExampleMapTypes.html">View example of restoring Map Types with the Back Button</a>
+<a href="../examples/DragZoomBackButtonExampleMapTypes.html">View example of restoring Map Types with the back button</a>
 </p>
 
 <h2>An Advanced DragZoomControl Example</h2>
@@ -207,7 +207,7 @@ of markers is a way to avoid "clutter" at low zoom levels, and by using a "Clust
 are made visible at higher zoom levels.  Typically the Marker Manager is used to control when a particular type of marker is shown.
 The application may use the Cluster Markers to bring the user in to the underlying markers it represents by zooming in to the appropriate zoom level
 and map center when the Cluster Marker is clicked.
-<p> The DragZoomControl Back Button functionality provides a ready made structure to integrate this type of application zooming methodology with
+<p> The DragZoomControl back button functionality provides a ready made structure to integrate this type of application zooming methodology with
 the DragZoom functionality.  Two features are used to implement this: a method, 
 (<a href="reference.html#DragZoomMethods">DragZoomMethods: saveMapContext()</a>) and a callback,  
 (<a href="reference.html#DragZoomCallbacks">DragZoomCallbacks: backbuttonclick</a>).  The method is called when the application wants to zoom in to the
