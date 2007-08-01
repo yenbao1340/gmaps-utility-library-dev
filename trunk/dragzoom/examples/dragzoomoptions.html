@@ -76,7 +76,7 @@
        var val_backButtonHTML = el("opt_backButtonHTML").value; 
        val_backButton_HTML = val_backButtonHTML.replace(">", "&gt;");
        val_backButton_HTML = val_backButtonHTML.replace("<", "&lt;");
-       code.push("otherOpts.backButtonHTML = '" + val_buttonHTML + "';");
+       code.push("otherOpts.backButtonHTML = '" + val_backButtonHTML + "';");
      }
      if (el("opt_buttonZoomingHTML").value != 'Drag a region on the map') {
        code.push("otherOpts.buttonZoomingHTML = '" + el("opt_buttonZoomingHTML").value + "';");
