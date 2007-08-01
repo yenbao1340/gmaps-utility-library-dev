@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" >
   <head>
     <style type="text/css">v\:* {behavior:url(#default#VML);}</style>
@@ -16,8 +16,8 @@
       if (GBrowserIsCompatible()) {
         var map = new GMap2(document.getElementById("map"));
         map.setCenter(new GLatLng(40.78, -73.9713), 12);
-        var otherOpts = {backButtonEnabled: true};
-        map.addControl(new DragZoomControl({}, otherOpts, {}));
+        map.addControl(new GSmallMapControl());
+        map.addControl(new DragZoomControl({}, {backButtonEnabled: true}, {}));
       }
     }
 
@@ -25,25 +25,6 @@
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <h2>DragZoom Back Button Simple Example </h2>
-
-    <table width=80% style="text-align:left;border:1px solid black"><tr><td style="font:16pt Ariel">
-      This is the minimum change to the DragZoom Control call with the single parameter "backButtonEnabled" used:
-      <br><br style="font-size:6pt">
-      <table width=90% align="center" style="text-align:left;border:1px solid black"><tr><td style="font:14pt Courier">
-           <br>
-           &nbsp;&nbsp;var otherOpts = {backButtonEnabled: true};<br>
-           &nbsp;&nbsp;map.addControl(new DragZoomControl({}, otherOpts, {}));<br>
-           <br>
-      </td></tr></table>
-      <br style="font-size:4pt">
-      Use the DragZoom Button ("zoom...") to initiate a DragZoom.  The DragZoom Back Button ("zoom back") will appear when the DragZoom   
-      is complete. You can do a sequence of DragZooms to drill down on an area of interest.  The DragZoom Back Button will 
-      take you back sequentially.
-    </td></tr></table>
-
-    <p>
-
-    <div id="map" style="left: 50px; width: 800px; height: 550px; border:1px solid black"></div>
+    <div id="map" style="width: 900px; height: 600px"></div>
   </body>
 </html>

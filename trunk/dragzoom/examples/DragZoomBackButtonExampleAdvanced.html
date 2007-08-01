@@ -62,12 +62,12 @@ A:hover  {text-decoration:none;color:Red}
     ]
 
     var parkIcon = new GIcon();
-    parkIcon.shadow = './images/mm_34_shadow.png';
+    parkIcon.shadow = 'mm_34_shadow.png';
     parkIcon.iconSize = new GSize(20, 34);
     parkIcon.shadowSize = new GSize(37, 34);
     parkIcon.iconAnchor = new GPoint(10, 34);
     parkIcon.infoWindowAnchor = new GPoint(9, 2);
-    parkIcon.image = './images/mm_34_green.png';
+    parkIcon.image = 'mm_34_green.png';
 
     // Function to put a label for each of the 5 borough's of New York City on the map
     function addBoroughLabels() {
@@ -159,26 +159,19 @@ A:hover  {text-decoration:none;color:Red}
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <h2>DragZoom Back Button Example integrating an application specific zoom method</h2>
-
     <table width=80% style="text-align:left;border:1px solid black"><tr><td style="font:16pt Ariel">
-      This example illustrates the integration of an application specific zoom method with the DragZoom control.  The application uses 
-      the borough labels for a targeted zoom to the center of that borough, utilzing the DragZoom.saveMapContext() method and the 
-      opts_callbacks.backbuttonclick() callback. 
+      Illustrating the integration of an application specific zoom method with the DragZoom control
     </td></tr><tr><td style="font:13.5pt">
-      &nbsp;&nbsp;1) The map shows Greater New York. Use The DragZoom Button in the top left and select a rectangle encompassing New York City 
-      (about 1/3 of the map area).<br>
-      &nbsp;&nbsp;2) Labels for the 5 boroughs should appear. Click on one of the 5 borough Labels.<br>
-      &nbsp;&nbsp;3) You should now see a closeup of that borough with several park markers.  Click on one of the park markers.<br>
-      &nbsp;&nbsp;4) Do another DragZoom (don't click the back button yet) to magnify the park area.<br>
-      &nbsp;&nbsp;5) Now start clicking the DragZoom back button.  It will take you back through the sequence.<br>
-      &nbsp;&nbsp;Play around, zooming in and out using the DragZoom and the Borough Zoom.<br>
-      <br style="font:4pt">
+      - The map shows Greater New York. Use The DragZoom Button in the top left and select a rectangle encompassing New York City 
+      (about 1/4 of the map area).<br>
+      - Labels for the 5 boroughs should appear. Click on one of the 5 borough labels.<br>
+      - You should now see a closeup of that borough with several park markers.  Click on one of the park markers.<br>
+      - Do another DragZoom (don't click the back button yet) to magnify the park area.<br>
+      - Now start clicking the DragZoom back button.  It will take you back through the sequence.<br><br style="font:4pt">
+      Play around, zooming in and out using the DragZoom and the Borough Zoom.<br>
     </td></tr></table>
-
     <p>
-
-    <div id="map" style="left: 50px; width: 800px; height: 550px; border:1px solid black"></div>
+    <div id="map" style="width: 900px; height: 600px; border:1px solid black"></div>
 
   </body>
 </html>

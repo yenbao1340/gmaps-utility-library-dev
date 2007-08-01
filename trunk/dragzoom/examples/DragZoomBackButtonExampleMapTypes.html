@@ -39,25 +39,22 @@
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <h2>DragZoom Back Button Example with Map Types</h2>
-
     <table width=80% style="text-align:left;border:1px solid black"><tr><td style="font:16pt Ariel">
-      Illustrating the the saving and restoring of map context including the map type using the DragZoom Back Button.
+      Illustrating the restoring of map context including the map type using the DragZoom Back Button.
     </td></tr><tr><td style="font:13.5pt">
-      &nbsp;&nbsp;1) The map shows Greater New York. The DragZoom Button is in the top left of the map and the Map Type Controls 
-        are in the upper right of the map.<br>
-      &nbsp;&nbsp;2) Choose an area using the DragZoom around New York Harbor (about 1/3 of the screen).<br>
-      &nbsp;&nbsp;3) Change the Map Type to Hybrid.<br>
-      &nbsp;&nbsp;4) Do another DragZoom highlighting the Brooklyn Waterfront.<br>
-      &nbsp;&nbsp;5) Change the Mapt Type to Satellite.<br>
-      &nbsp;&nbsp;6) Use the DragZoom Back Button to reverse the sequence.  The Map Types will be restored to the value for each zoom level.<br>
-      &nbsp;&nbsp;Play around, zooming in and out using the DragZoom and changing the Map Type Controls.<br>
-      <br style="font-size:6pt">
+    <p>
+    -  Choose an area using the DragZoom around New York Harbor (about 1/3 of the screen). When the map has zoomed in, change the Map Type to 
+      Hybrid.<br> 
+    -  Now do another DragZoom (don't click the back button yet) highlighting the Brooklyn Waterfront and then change the Mapt Type to 
+      Satellite.<br> 
+    -  If you now use the DragZoom Back Button to you will see the sequence reversed. The Map Types will be restored to the value for each 
+      zoom level.<br><br>
+    - Play around, zooming in and out using the DragZoom and changing the Map Type Controls.
     </td></tr></table>
 
     <p>
 
-    <div id="map" style="left: 50px; width: 800px; height: 550px; border:1px solid black"></div>
+    <div id="map" style="width:900px; height: 600px; border:1px solid black"></div>
 
   </body>
 </html>
