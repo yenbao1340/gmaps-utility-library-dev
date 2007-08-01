@@ -58,14 +58,25 @@
        code.push("styleOpts.fillColor = '" + val_fillColor + "';");
      }
 
+     if (el("opt_backButtonEnabled").checked) {
+       code.push("otherOpts.backButtonEnabled = true;"); 
+     }
+
      if (el("opt_stickyZoomEnabled").checked) {
        code.push("otherOpts.stickyZoomEnabled = true;"); 
      }
+
      if (el("opt_buttonHTML").value != 'zoom...') {
        var val_buttonHTML = el("opt_buttonHTML").value; 
        val_button_HTML = val_buttonHTML.replace(">", "&gt;");
        val_button_HTML = val_buttonHTML.replace("<", "&lt;");
        code.push("otherOpts.buttonHTML = '" + val_buttonHTML + "';");
+     }
+     if (el("opt_backButtonHTML").value != 'zoom back...') {
+       var val_backButtonHTML = el("opt_backButtonHTML").value; 
+       val_backButton_HTML = val_backButtonHTML.replace(">", "&gt;");
+       val_backButton_HTML = val_backButtonHTML.replace("<", "&lt;");
+       code.push("otherOpts.backButtonHTML = '" + val_buttonHTML + "';");
      }
      if (el("opt_buttonZoomingHTML").value != 'Drag a region on the map') {
        code.push("otherOpts.buttonZoomingHTML = '" + el("opt_buttonZoomingHTML").value + "';");
@@ -73,6 +84,10 @@
      var val_overlayRemoveTime = parseInt(el("opt_overlayRemoveTime").value);
      if(val_overlayRemoveTime != 6000) {
        code.push("otherOpts.overlayRemoveTime = " + val_overlayRemoveTime + ";");
+     }
+
+     if (el("opt_backButtonStyle").value != "{display: 'none', background: '#FFF'}") {
+       code.push("otherOpts.backButtonStyle = " + el("opt_backButtonStyle").value + ";");
      }
 
      if (el("opt_buttonStyle").value != "{background: '#FFF'}") {
@@ -135,10 +150,16 @@
    buttonHTML: <input type="text" size="15" id="opt_buttonHTML" onblur="updateCode()" value="zoom..."/>
    </td>
    <td>
+   backButonuttonHTML: <input type="text" size="15" id="opt_backButtonHTML" onblur="updateCode()" value="zoom back..."/>
+   </td>
+   <td>
    buttonZoomingHTML: <input type="text" size="15" id="opt_buttonZoomingHTML" onblur="updateCode()" value="Drag a region on the map"/>
    </td>
    </tr>
    <tr>
+   <td>
+   backButtonEnabled:<input type="checkbox" id="opt_backButtonEnabled" onclick="updateCode()"/>
+   </td>
    <td>
    stickyZoomEnabled:<input type="checkbox" id="opt_stickyZoomEnabled" onclick="updateCode()"/>
    </td>
@@ -154,6 +175,14 @@
    </td>
    <td> 
    <input type="text" size="60" id="opt_buttonStyle" onblur="updateCode()" value="{background: '#FFF'}"/>
+   </td>
+   </tr>
+   <tr>
+   <td>
+   backButtonStyle:
+   </td>
+   <td> 
+   <input type="text" size="60" id="opt_backButtonStyle" onblur="updateCode()" value="{display: 'none', background: '#FFF'}"/>
    </td>
    </tr>
    <tr>

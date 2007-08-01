@@ -30,8 +30,8 @@
           buttonZoomingStyle: {background:"yellow"},
           backButtonHTML: "Drag Zoom Back",  
           backButtonStyle: {display:"none",marginTop:"3px",background:"#FFFFC8"},
-          backButtonEnabled: true, 
-          overlayRemoveTime: 1500} 
+          backButtonEnabled: true} 
+
         map.addControl(new DragZoomControl({}, otherOpts, {}), new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(7,39)));
       }
     }
@@ -40,32 +40,6 @@
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <h2>DragZoom Back Button Example with button styles and parameters</h2>
-
-    <table width=80% style="text-align:left;border:1px solid black"><tr><td style="font:16pt Ariel">
-      Illustrating the the customizing of the DragZoom Button and the DragZoom Back Button using styles.  The Textual Zoom Control
-      buttons are also included to illustrate a series of matching buttons for different types of zooming.  Here are the styles and parameters used 
-      (otherOpts params):
-      <br><br style="font-size:6pt">
-      <table width=90% align="center" style="text-align:left;border:1px solid black"><tr><td style="font:14pt Courier">
-        var otherOpts = {<br>
-        &nbsp;&nbsp;buttonStartingStyle: { display:"block", color:"black", background:"white", <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;textAlign:"center", font:"Verdana 12px bold", width:"7em", cursor:"pointer", <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;paddingBottom:"1px", border:"1px solid gray"}, <br>
-        &nbsp;&nbsp;buttonHTML: "Drag Zoom",<br>
-        &nbsp;&nbsp;buttonZoomingHTML: "Drag a region on the map (click here to reset)",<br>
-        &nbsp;&nbsp;buttonZoomingStyle: {background:"yellow"},<br>
-        &nbsp;&nbsp;backButtonHTML: "Drag Zoom Back",<br>  
-        &nbsp;&nbsp;backButtonStyle: {display:"none", marginTop:"3px", background:"#FFFFC8"},<br>
-        &nbsp;&nbsp;backButtonEnabled: true,<br>
-        &nbsp;&nbsp;overlayRemoveTime: 1500}
-        <br style="font-size:6pt">
-      </td></tr></table>
-      <br style="font-size:6pt">
-    </td></tr></table>
-
-    <p>
-
-    <div id="map" style="left: 50px; width: 750px; height: 500px; border:1px solid black"></div>
+    <div id="map" style="width: 900px; height: 600px;"></div>
   </body>
 </html>
