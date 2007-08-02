@@ -321,6 +321,11 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
  */
 DragZoomControl.prototype.drag_ = function(e){
   var G = this.globals;
+
+  document.onselectstart = function() {
+    return false;
+  });
+
   if(G.draggingOn) {
     var pos = this.getRelPos_(e);
     rect = this.getRectangle_(G.startX, G.startY, pos, G.mapRatio);
