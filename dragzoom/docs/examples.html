@@ -116,7 +116,7 @@ These are the styles and parameters used in this example:
           buttonHTML: '&lt;img title="Drag Zoom In" src="zoomin.gif"&gt;',
           buttonStyle: {width:'21px',height:'19px'},
           buttonZoomingHTML: 'Drag a region on the map (click here to reset)',
-          buttonZoomingStyle: {background:'yellow',width:'75px',height:'100px',paddingLeft:'4px'},
+          buttonZoomingStyle: {background:'yellow',width:'75px',height:'100%',paddingLeft:'4px'},
           backButtonHTML: '&lt;img title="Zoom Back" src="zoomout.gif"&gt;',  
           backButtonStyle: {display:'none',marginTop:'5px',width:'21px',height:'19px'},
           backButtonEnabled: true, 
@@ -239,20 +239,24 @@ This code shows the creation of the map, it's controls and the labels and marker
     }
 </pre>
 <p>
-This shows how the method is invoked and it shows the callback function:
+This shows how the method is invoked:
 <pre class="code">
 
     // Function to save the map context via the DragZoomControl method and then zoom in to the (lat,lng)
-    // called when the label is clicked
+    // called when the Borough label is clicked
     function saveContextAndZoom(lat,lng,zoom,name) {
       buttonText = name+' Zoom Back';
-      DragZoom.saveMapContext(buttonText);
+      <b>DragZoom.saveMapContext(buttonText);</b>
       map.setCenter(new GLatLng(lat,lng),parseInt(zoom));
     }
 
-</pre><pre class="code">
+</pre>
+<p>
+This shows the callback function:
+<pre class="code">
 
     // Callback Function called after the map context is restored for the borough zoom back
+    // This callback clears the infoWindow if it is open
     function restoreContextCallback(methodCall) {
       if (methodCall) map.closeInfoWindow();  // "methodCall" indicates this particular restore was for 
     }                                         // a zoom called by the method, not the DragZoom button

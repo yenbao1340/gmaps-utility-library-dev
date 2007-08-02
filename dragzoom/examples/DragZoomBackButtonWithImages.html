@@ -23,7 +23,7 @@
           buttonHTML: '<img title="Drag Zoom In" src="zoomin.gif">',
           buttonStyle: {width:'21px',height:'19px'},
           buttonZoomingHTML: 'Drag a region on the map (click here to reset)',
-          buttonZoomingStyle: {background:'yellow',width:'75px',height:'100px',paddingLeft:'4px'},
+          buttonZoomingStyle: {background:'yellow',width:'75px',height:'100%',paddingLeft:'4px'},
           backButtonHTML: '<img title="Zoom Back" src="zoomout.gif">',  
           backButtonStyle: {display:'none',marginTop:'5px',width:'21px',height:'19px'},
           backButtonEnabled: true, 
@@ -37,13 +37,6 @@
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-
-    <table width=80% style="text-align:left;border:1px solid black"><tr><td style="font:16pt Ariel">
-      Illustrating the the customizing of the DragZoom Button and the DragZoom Back Button using images. 
-    </td></tr></table>
-
-    <p>
-
     <div id="map" style="width: 900px; height: 600px;"></div>
   </body>
 </html>
