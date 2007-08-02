@@ -38,7 +38,7 @@ You can add the DragZoomControl to any Google map with a couple of lines of code
 <a href="../examples/simpledragzoom.html">View example (simpledragzoom.html).</a>
 </p>
 
-<h2>Available DragZoomControl Options</h2>
+<h2>DragZoomControl Options</h2>
 <p>The DragZoom constructor takes three optional arguments, <a href="reference.html#DragZoomBoxStyleOptions">DragZoomBoxStyleOptions</a>, 
 <a href="reference.html#DragZoomOtherOptions">DragZoomOtherOptions</a>, and <a href="reference.html#DragZoomCallbacks">DragZoomCallbacks</a>.
   All three are optional, but if you want to include one, you need to include the previous hashes too, even if they are empty. 
@@ -59,7 +59,7 @@ The back button will appear after the first DragZoom is done and will dissapear 
 DragZooms to increasingly higher zoom levels are supported.
 <p>
 This is the &quot;Hello World&quot; code from the GMaps documentation again (but this time moved to the East Coast to provide regional "balance"). 
-The code shows just the onload routine.  Note the one option added to the DragZoom initiation which enables the back button.  When you 
+The code shows just the onload routine.  Note the one option added to the DragZoom initialization call which enables the back button.  When you 
 run this example, do a DragZoom and you will see the back button appear.  Do several successive DragZooms and you can back them out  in reverse order.
 
 <pre class="code">
@@ -102,15 +102,15 @@ These are the styles and other parameters used in this example:
 <a href="../examples/DragZoomBackButtonExampleStyles.html">View button styles example.</a>
 </p>
 
-<h2>Using an image for the button instead of text</h2>
+<h2>Using an image for a button instead of text</h2>
 <p>The next example demonstrates how to substitute an image for text on the DragZoom Control buttons. Basically, you can do so by using the buttonHTML and 
   backButtonHTML and possibbly buttonZoomingHTML arguments (in DragZoomOtherOptions) to specify images rather than text. 
-  You can put any valid html in these arguments, even a combination of images and text. 
-  Just make sure you set the width and height of the button (through the buttonStartingStyle or the individual button style declarations) 
-  as appropriate for the look of the button. 
-  If you need the size or background of the button to change when activated, you can set styles in the buttonZoomingStyle argument.</p>
+  You can put any valid html in these arguments, even a combination of images and text.   Just make sure you set the width and height of the button 
+  (through the buttonStartingStyle or the individual button style declarations)   as appropriate for the look of the button.   If you need the size 
+  or background of the button to change when activated, you can set styles in the buttonZoomingStyle argument.</p>
 <p>
-These are the styles and other parameters used in this example:
+This example uses simple "zoom in" and "zoom out" icons for the DragZoom and back buttons, but retains the text for the zooming button.  
+These are the styles and parameters used in this example:
 <pre class="code">
         var otherOpts = { 
           buttonStartingStyle: {background: '#FFF', padding: '2px', border:'1px solid black'},
