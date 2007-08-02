@@ -324,7 +324,7 @@ DragZoomControl.prototype.drag_ = function(e){
 
   document.onselectstart = function() {
     return false;
-  });
+  };
 
   if(G.draggingOn) {
     var pos = this.getRelPos_(e);
