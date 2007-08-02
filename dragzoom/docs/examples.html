@@ -59,24 +59,10 @@ The back button will appear after the first DragZoom is done and will dissapear 
 DragZooms to increasingly higher zoom levels are supported.
 <p>
 This is the &quot;Hello World&quot; code from the GMaps documentation again (but this time moved to the East Coast to provide regional "balance"). 
-The lines you need to add for DragZoom are in bold. Note the one option added to the DragZoom initiation which enables the back button.  When you 
+The code shows just the onload routine.  Note the one option added to the DragZoom initiation which enables the back button.  When you 
 run this example, do a DragZoom and you will see the back button appear.  Do several successive DragZooms and you can back them out  in reverse order.
 
 <pre class="code">
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-&lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" >
-  &lt;head>
-    &lt;style type="text/css">v\:* {behavior:url(#default#VML);}&lt;/style>
-     &lt;meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    &lt;title>Google Maps JavaScript API Example&lt;/title>
-		
-    &lt;script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=YourKeyGoesHere">&lt;/script>
-    <b>&lt;script src="../src/dragzoom.js" type="text/javascript">&lt;/script></b>
-    &lt;script type="text/javascript">
-
-    //&lt;![CDATA[
-
     function load() {
       if (GBrowserIsCompatible()) {
         var map = new GMap2(document.getElementById("map"));
@@ -85,14 +71,6 @@ run this example, do a DragZoom and you will see the back button appear.  Do sev
         <b>map.addControl(new DragZoomControl({}, {backButtonEnabled: true}, {}));</b>
       }
     }
-
-    //]]>
-    &lt;/script>
-  &lt;/head>
-  &lt;body onload="load()" onunload="GUnload()">
-    &lt;div id="map" style="width: 900px; height: 600px"></div>
-  &lt;/body>
-&lt;/html>
 </pre>
 
 <p>
@@ -139,7 +117,7 @@ These are the styles and other parameters used in this example:
           buttonHTML: '&lt;img title="Drag Zoom In" src="zoomin.gif"&gt;',
           buttonStyle: {width:'21px',height:'19px'},
           buttonZoomingHTML: 'Drag a region on the map (click here to reset)',
-          buttonZoomingStyle: {background:'yellow',width:'75px',height:'100px',paddingLeft:'4px',font:'Verdana 12px bold'},
+          buttonZoomingStyle: {background:'yellow',width:'75px',height:'100px',paddingLeft:'4px'},
           backButtonHTML: '&lt;img title="Zoom Back" src="zoomout.gif"&gt;',  
           backButtonStyle: {display:'none',marginTop:'5px',width:'21px',height:'19px'},
           backButtonEnabled: true, 
