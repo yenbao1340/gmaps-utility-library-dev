@@ -38,13 +38,13 @@ You can add the DragZoomControl to any Google map with a couple of lines of code
 <a href="../examples/simpledragzoom.html">View example (simpledragzoom.html).</a>
 </p>
 
-<h2>Enabling the DragZoomControl back button, another simple example </h2>
+<h2>Enabling the DragZoomControl back button</h2>
 <p> The DragZoom Control back button, when enabled, allows the user to return the map to the state it was in prior to the Drag Zoom with a single click.
 The back button will appear directly under the DragZoom button after the first DragZoom is done and will dissapear after the map has gone back to its 
 original state.  Successive DragZooms to increasingly higher zoom levels are supported.
 <p>
-This is the &quot;Hello World&quot; code from the GMaps documentation again (but this time moved to the East Coast to provide regional "balance"). 
-The code shows just the onload routine.  Note the one option added to the DragZoom initialization call which enables the back button.  When you 
+The example uses the &quot;Hello World&quot; code again (but this time moved to the East Coast to provide regional "balance"). 
+Note the one option added to the DragZoom initialization call which enables the back button.  When you 
 run this example, do a DragZoom and you will see the back button appear.  Do several successive DragZooms and you can back them out  in reverse order.
 
 <pre class="code">
@@ -62,25 +62,28 @@ run this example, do a DragZoom and you will see the back button appear.  Do sev
 <a href="../examples/DragZoomBackButtonExampleSimple.html">View back button enabled example.</a>
 </p>
 
-<h2>DragZoomControl Options</h2>
+<h2>DragZoomControl options</h2>
 <p>The DragZoom constructor takes three optional arguments, <a href="reference.html#DragZoomBoxStyleOptions">DragZoomBoxStyleOptions</a>, 
 <a href="reference.html#DragZoomOtherOptions">DragZoomOtherOptions</a>, and <a href="reference.html#DragZoomCallbacks">DragZoomCallbacks</a>.
   All three are optional, but if you want to include one, you need to include the previous hashes too, even if they are empty. 
-  The following example uses all the default options but allows you to set any option, style or HTML in the first two arguments that you wish.</p>
+  The following example starts with all the default options but allows you to change any option, style or HTML in the first two arguments that you wish.</p>
 
-  <p>To play with these options, check out this <a href="../examples/dragzoomoptions.html">interactive options playground.</a>
+  <p>Check out this <a href="../examples/dragzoomoptions.html">interactive options playground.</a>
   </p>
 
 <h2>Specifying the position of the DragZoomControl button</h2>
-<p>Like all controls, DragZoom can be placed anywhere you want on the map by specifying an optional GControlPosition. An example:</p>
+<p>Like all controls, DragZoomControl can be placed anywhere you want on the map by specifying an optional GControlPosition.  (Note this
+is a <b>map.addControl</b> option, not a <b>DragZoomControl</b> option.)</p>
 
 <pre class="code">map.addControl(new DragZoomControl(),new GControlPosition(G_ANCHOR_TOP_RIGHT,new GSize(10,10)));</pre>
+
+<p>All the following examples use this option to control the control button(s) position.</p>
 
 <h2>Button Styles: making the control buttons look the way you want </h2>
 <p> The control button default style creates servicable buttons, but you may want to customize them to fit the "look and feel" of your map.
 This example shows the use of the TextualZoomControl (from the <a href="http://www.google.com/apis/maps/documentation/#Custom_Controls">
 Google Maps API documentation page</a>) and the DragZoomControl with a consistant style.  These style dfefinitions go in the second optional
-parmeter in the DragZoomControl initialization call (more on these parameters below): 
+parmeter in the DragZoomControl initialization call (see the section above for all the DragZoomControl options): 
 <p>
 These are the styles and other parameters used in this example:
 <pre class="code">
