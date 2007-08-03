@@ -17,7 +17,7 @@ You can add the DragZoomControl to any Google map with a couple of lines of code
     <pre class="code">&lt;script src=&quot;dragzoom.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
 
   <li>Add the DragZoomControl to your map like any other control. Example:</li>
-    <pre class="code">map = new GMap2($id(&quot;large-google-map&quot;));<br />map.addControl(new GSmallMapControl());<br /><strong>map.addControl(new DragZoomControl());
+    <pre class="code">map = new GMap2(document.getElementById('map'));<br />map.addControl(new GSmallMapControl());<br /><strong>map.addControl(new DragZoomControl());
 </strong></pre>
   <li><strong>Important!</strong> Make sure your and doctype and namespaces are set correctly:</li>
     <pre class="code">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;<br />
@@ -50,7 +50,7 @@ run this example, do a DragZoom and you will see the back button appear.  Do sev
 <pre class="code">
     function load() {
       if (GBrowserIsCompatible()) {
-        var map = new GMap2(document.getElementById("map"));
+        var map = new GMap2(document.getElementById('map'));
         map.setCenter(new GLatLng(40.78, -73.9713), 12);
         map.addControl(new GSmallMapControl());
         <b>map.addControl(new DragZoomControl({}, {backButtonEnabled: true}, {}));</b>
@@ -88,13 +88,13 @@ parmeter in the DragZoomControl initialization call (see the section above for a
 These are the styles and other parameters used in this example:
 <pre class="code">
         var otherOpts = { 
-          buttonStartingStyle: {display:"block",color:"black",background:"white",width:"7em",textAlign:"center",
-            fontFamily:"Verdana",fontSize:"12px",fontWeight:"bold",border:"1px solid gray",paddingBottom:"1px",cursor:"pointer"},
-          buttonHTML: "Drag Zoom",
+          buttonStartingStyle: {display:'block',color:'black',background:'white',width:'7em',textAlign:'center',
+            fontFamily:'Verdana',fontSize:'12px',fontWeight:'bold',border:'1px solid gray',paddingBottom:'1px',cursor:'pointer'},
+          buttonHTML: 'Drag Zoom',
           buttonZoomingHTML: 'Drag a region on the map (click here to reset)',
-          buttonZoomingStyle: {background:"yellow"},
-          backButtonHTML: "Drag Zoom Back",  
-          backButtonStyle: {display:"none",marginTop:"3px",background:"#FFFFC8"},
+          buttonZoomingStyle: {background:'yellow'},
+          backButtonHTML: 'Drag Zoom Back',  
+          backButtonStyle: {display:'none',marginTop:'3px',background:'#FFFFC8'},
           backButtonEnabled: true
         } 
         map.addControl(new DragZoomControl({}, otherOpts, {}), new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(7,39)));
@@ -116,11 +116,11 @@ These are the styles and parameters used in this example:
 <pre class="code">
         var otherOpts = { 
           buttonStartingStyle: {background: '#FFF', paddingTop: '4px', paddingLeft: '4px', border:'1px solid black'},
-          buttonHTML: '&lt;img title="Drag Zoom In" src="zoomin.gif"&gt;',
+          buttonHTML: '&lt;img title='Drag Zoom In' src='zoomin.gif'&gt;',
           buttonStyle: {width:'25px', height:'23px'},
           buttonZoomingHTML: 'Drag a region on the map (click here to reset)',
           buttonZoomingStyle: {background:'yellow',width:'75px', height:'100%'},
-          backButtonHTML: '&lt;img title="Zoom Back Out" src="zoomout.gif"&gt;',  
+          backButtonHTML: '&lt;img title='Zoom Back Out' src='zoomout.gif'&gt;',  
           backButtonStyle: {display:'none',marginTop:'5px',width:'25px', height:'23px'},
           backButtonEnabled: true, 
           overlayRemoveTime: 1500
@@ -214,19 +214,19 @@ This code shows the creation of the map, it's controls and the labels and marker
 <pre class="code">
     function load() {
       if (GBrowserIsCompatible()) {
-        map = new GMap2(document.getElementById("map"));
+        map = new GMap2(document.getElementById('map'));
         map.setCenter(mapCenter, mapZoom);
 
         markerMgr = new MarkerManager(map);
 
         var otherOpts = {
-          buttonStartingStyle: {display:"block",color:"black",background:"white",width:"7em",textAlign:"center",
-            fontFamily:"Verdana",fontSize:"12px",fontWeight:"bold",border:"1px solid gray",cursor:"pointer"},
-          buttonHTML: "Drag Zoom",
+          buttonStartingStyle: {display:'block',color:'black',background:'white',width:'7em',textAlign:'center',
+            fontFamily:'Verdana',fontSize:'12px',fontWeight:'bold',border:'1px solid gray',cursor:'pointer'},
+          buttonHTML: 'Drag Zoom',
           buttonZoomingHTML: 'Drag a region on the map (click here to reset)',
-          buttonZoomingStyle: {background:"yellow"},
-          backButtonHTML: "Drag Zoom Back",  
-          backButtonStyle: {display:"none",marginTop:"3px",background:"#FFFFC8"},
+          buttonZoomingStyle: {background:'yellow'},
+          backButtonHTML: 'Drag Zoom Back',  
+          backButtonStyle: {display:'none',marginTop:'3px',background:'#FFFFC8'},
           backButtonEnabled: true, 
           overlayRemoveTime: 1500
         } 
