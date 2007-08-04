@@ -136,12 +136,12 @@ These are the styles and parameters used in this example:
 <p> The DragZoomControl back button restores the map context as it was prior to the previous DragZoom.  The map context not only 
 means the map center and zoom level, but the map type as well.  This example illustrates this capability.
 <p>
-The map in the example shows Greater New York. The DragZoom Button is in the top left of the map and the usual Map Type Controls are in the upper right of the map.
-Choose an area using the DragZoom around New York Harbor (about 1/3 of the screen). When the map has zoomed in, change the Map Type to Hybrid.
-Now do another DragZoom (don't click the back button yet) highlighting the Brooklyn Waterfront and then change the Map Type to Satellite.
-<p>
-If you now use the DragZoom back button to you will see the sequence reversed. The Map Types will be restored to the value for each zoom level.
-Play around, zooming in and out using the DragZoom and changing the Map Type Controls.
+The map in the example shows Greater New York. The DragZoom Button is in the top left of the map and the usual Map Type Controls are in the upper 
+right of the map.
+<ul><li>Choose an area using the DragZoom around New York Harbor (about 1/3 of the screen). When the map has zoomed in, change the Map Type to Hybrid.</li>
+<li>Now do another DragZoom (don't click the back button yet) highlighting the Brooklyn Waterfront and then change the Map Type to Satellite.</li>
+<li>Now use the DragZoom back button and you will see the sequence reversed. The Map Types will be restored to the value for each zoom level.</li></ul>
+<p>Play around, zooming in and out using the DragZoom and changing the Map Type Controls.
 <p>
 <a href="../examples/DragZoomBackButtonExampleMapTypes.html">View example of restoring Map Types with the back button</a>
 </p>
@@ -199,17 +199,6 @@ may be necessary.
 In this example, a very simplistic version of clustering is illustrated: For each of New York City's 5 boroughs, a label with the borough name serves as 
 a cluster marker.  Clicking on the label will cause the map to zoom in to the center of the borough where several markers are displayed for parks in the 
 borough. When the back button is clicked, the application closes the infoWindow as an example of a clean up.
-<p> 
-To see the integration of this scheme with the Drag Zoom Control, bring up the example and do the following: 
-<ul>
-  <li>The map in the example shows Greater New York. Use The DragZoom Button in the top left and select a rectangle encompassing New York City 
-  (about 1/4 of the map area).</li>
-  <li>Labels for the 5 boroughs should appear. Click on one of the 5 borough labels.</li>
-  <li>You should now see a closeup of that borough with several park markers.  Click on one of the park markers.</li>
-  <li>Do another DragZoom (don't click the back button yet) to magnify the park area.</li>
-  <li>Now start clicking the DragZoom back button.  It will take you back through the sequence.</li>
-</ul>
-<p>Play around, zooming in and out using the DragZoom and the Borough Zoom.</li>
 <p>
 This code shows the creation of the map, it's controls and the labels and markers for the example:
 <pre class="code">
@@ -266,9 +255,18 @@ This shows the callback function:
     }                                         // a zoom called by the method, not the DragZoom button
 
 </pre>
-
-<p>
-<a href="../examples/DragZoomBackButtonExampleAdvanced.html">View example of the integration of application zoom with the DragZoomControl</a>
+<p> 
+To see the integration of this scheme with the Drag Zoom Control, bring up the example and do the following: 
+<ul>
+  <li>The map in the example shows Greater New York. Use The DragZoom Button in the top left and select a rectangle encompassing New York City 
+  (about 1/4 of the map area).</li>
+  <li>Labels for the 5 boroughs should appear. Click on one of the 5 borough labels.</li>
+  <li>You should now see a closeup of that borough with several park markers.  Click on one of the park markers.</li>
+  <li>Do another DragZoom (don't click the back button yet) to magnify the park area.</li>
+  <li>Now start clicking the DragZoom back button.  It will take you back through the sequence.</li>
+</ul>
+<p>Play around, zooming in and out using the DragZoom and the Borough Zoom.
+<p><a href="../examples/DragZoomBackButtonExampleAdvanced.html">View example of the integration of application zoom with the DragZoomControl</a>
 </p>
 <p>
 <b><u>And here's a real world example:</u></b>
