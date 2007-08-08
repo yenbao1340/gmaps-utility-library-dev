@@ -43,13 +43,13 @@ ExtMapTypeControl.prototype.initialize = function(map) {
   var container = document.createElement("div");
   var me = this;
 
-  var satDiv = me.createButton_("Satellite");
   var mapDiv = me.createButton_("Map");
+  var satDiv = me.createButton_("Satellite");
   var hybDiv = me.createButton_("Hybrid");
  
+  me.assignButtonEvent_(mapDiv, map, G_NORMAL_MAP, [satDiv, hybDiv]);
   me.assignButtonEvent_(satDiv, map, G_SATELLITE_MAP, [mapDiv, hybDiv]);
   me.assignButtonEvent_(hybDiv, map, G_HYBRID_MAP, [satDiv, mapDiv]);
-  me.assignButtonEvent_(mapDiv, map, G_NORMAL_MAP, [satDiv, hybDiv]);
   GEvent.addListener(map, "maptypechanged", function() {
     if (map.getCurrentMapType() == G_NORMAL_MAP) {
       GEvent.trigger(mapDiv, "click"); 
@@ -78,6 +78,13 @@ ExtMapTypeControl.prototype.initialize = function(map) {
         me.trafficInfo = new GTrafficOverlay();
         me.trafficInfo.hidden = false; 
         map.addOverlay(me.trafficInfo);
+        GEvent.addListener(me.trafficInfo, "changed", function(hasTrafficInView) {
+          if (hasTrafficInView) {
+            trafficDiv.style.visibility = 'visible';
+          } else {
+            trafficDiv.style.visibility = 'hidden';
+          }
+        });
       }
       me.toggleButton_(trafficDiv.firstChild, !me.trafficInfo.hidden);
     });
@@ -126,11 +133,14 @@ ExtMapTypeControl.prototype.initialize = function(map) {
     container.appendChild(trafficDiv);
   }
 
-  container.appendChild(satDiv);
   container.appendChild(mapDiv);
+  container.appendChild(satDiv);
   container.appendChild(hybDiv);
 
   map.getContainer().appendChild(container);
+
+  GEvent.trigger(map, "maptypechanged");
+
   return container;
 }
 
