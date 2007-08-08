@@ -82,6 +82,7 @@ ExtMapTypeControl.prototype.initialize = function(map) {
           if (hasTrafficInView) {
             trafficDiv.style.visibility = 'visible';
           } else {
+            GLog.write("hiding");
             trafficDiv.style.visibility = 'hidden';
           }
         });
