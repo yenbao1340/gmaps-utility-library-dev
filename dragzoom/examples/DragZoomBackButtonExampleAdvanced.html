@@ -88,6 +88,8 @@
       return marker; 
     }
 
+    // Function to save the map context via the DragZoomControl method and then zoom in to the (lat,lng)
+    // called when the cluster marker is clicked
     function addClusterListeners(marker, lat, lng, zoom) {
       GEvent.addListener(marker, "click", function() {
         map.closeInfoWindow();
@@ -98,8 +100,9 @@
       return marker; 
     }
 
-    // Function called after the map context is restored from the cluster zoom
-    function restoreContextCallback(method) {
+   // Function called after the map context is restored from the cluster zoom
+   // This callback clears the infoWindow if it is open
+   function restoreContextCallback(method) {
       if (method) map.closeInfoWindow();      // "method" indicates this particular restore was for 
     }                                         // a zoom called by the method, not the regular DragZoom
 
