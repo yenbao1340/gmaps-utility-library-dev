@@ -236,7 +236,7 @@ This shows how the method is invoked:
 <pre class="code">
 
     // Function to save the map context via the DragZoomControl method and then zoom in to the (lat,lng)
-    // called when the Borough label is clicked
+    // called when the cluster marker is clicked
     function saveContextAndZoom(lat,lng,zoom,name) {
       buttonText = name+' Zoom Back';
       <b>DragZoom.saveMapContext(buttonText);</b>
@@ -248,10 +248,10 @@ This shows how the method is invoked:
 This shows the callback function:
 <pre class="code">
 
-    // Callback Function called after the map context is restored for the borough zoom back
+    // Function called after the map context is restored from the cluster zoom
     // This callback clears the infoWindow if it is open
-    function restoreContextCallback(methodCall) {
-      if (methodCall) map.closeInfoWindow();  // "methodCall" indicates this particular restore was for 
+    function restoreContextCallback(method) {
+      if (method) map.closeInfoWindow();      // "method" indicates this particular restore was for 
     }                                         // a zoom called by the method, not the DragZoom button
 
 </pre>
@@ -265,7 +265,6 @@ To see the integration of this scheme with the Drag Zoom Control, bring up the e
       Notice also that the text on the back button has changed. Click on the markers and zoom in further using the DragZoom button.</li>
   <li>Now use the DragZoom back button.  It will take you back through the sequence.</li>
 </ul>
-<p>Play around, zooming in and out using the DragZoom and the Borough Zoom.
 <p><a href="../examples/DragZoomBackButtonExampleAdvanced.html">View example of the integration of application zoom with the DragZoomControl</a>
 </p>
 <p>
