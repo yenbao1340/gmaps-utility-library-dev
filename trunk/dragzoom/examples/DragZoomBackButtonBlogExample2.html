@@ -20,7 +20,7 @@
     var markerMgr;
 
     var clusterMarker = 
-      {"name":"Manhattan",     "lat":40.78, "lng":-73.97, "zoom":14}
+      {"name":"Central Park",     "lat":40.78, "lng":-73.97, "zoom":14}
     
     var greenMarkers = [
       {"name":"Central Park Zoo",              "lat":40.7677, "lng":-73.9715},
@@ -48,7 +48,7 @@
     greenIcon.infoWindowAnchor = new GPoint(5, 1);
     greenIcon.image = 'mm_20_green.png';
 
-    // Function to put a marker for each of the 5 borough's major parks on the map
+    // Function to put the cluster marker and the individual markers into the MM
     function addMarkers() {
       // Add the cluster marker
       var lat = clusterMarker["lat"];
@@ -87,7 +87,6 @@
 
       return marker; 
     }
-
     function addClusterListeners(marker, lat, lng, zoom) {
       GEvent.addListener(marker, "click", function() {
         map.closeInfoWindow();
@@ -98,10 +97,10 @@
       return marker; 
     }
 
-    // Function called after the map context is restored for the borough zoom back
+    // Function called after the map context is restored by the cluster zoom back
     function restoreContextCallback(method) {
-      if (method) map.closeInfoWindow();      // "method" indicates this particular restore was for 
-    }                                         // a zoom called by the method, not the DragZoom button
+      if (method) map.closeInfoWindow();      // "method" indicates this particular restore was for a zoom called
+    }                                         // by the method (i.e. the cluster zoom), not the regular DragZoom
 
     function load() {
       if (GBrowserIsCompatible()) {
@@ -125,7 +124,7 @@
        map.addControl(DragZoom = new DragZoomControl({}, otherOpts, callbacks), 
           new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(7,7)));
 
-        addMarkers();        // Add the cluster marker and the markers near the center of Manhattan and load into the Marker Manager
+        addMarkers();        // Add the cluster marker and the markers near Central Park and load into the Marker Manager
         markerMgr.refresh(); // Turn everything on
       }
     }
