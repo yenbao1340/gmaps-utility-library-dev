@@ -11,7 +11,7 @@
       if (GBrowserIsCompatible()) {
         var map = new GMap2(document.getElementById("map"));
         map.addControl(new ExtMapTypeControl({showTraffic: true, showTrafficKey: true}));
-        map.addControl(new GLargeMapControl());
+        map.addControl(new GSmallMapControl());
         map.setCenter(new GLatLng(37.441944, -122.141944), 13);
         map.setMapType(G_SATELLITE_MAP);
       }
