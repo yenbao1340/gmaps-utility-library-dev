@@ -136,7 +136,7 @@ ExtMapTypeControl.prototype.initialize = function(map) {
 
   map.getContainer().appendChild(container);
 
-  //GEvent.trigger(map, "maptypechanged");
+  GEvent.trigger(map, "maptypechanged");
 
   return container;
 }
