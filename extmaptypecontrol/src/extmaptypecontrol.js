@@ -65,28 +65,31 @@ ExtMapTypeControl.prototype.initialize = function(map) {
    trafficDiv.style.marginRight = "8px";
    trafficDiv.firstChild.style.cssFloat = "left";
    trafficDiv.firstChild.style.styleFloat = "left";
-    GEvent.addDomListener(trafficDiv.firstChild, "click", function() {
-      if (me.trafficInfo) {
-        if (me.trafficInfo.hidden) {
-          me.trafficInfo.hidden = false;
-          me.trafficInfo.show();
-        } else {
-          me.trafficInfo.hidden = true;
-          me.trafficInfo.hide();
-        }
+   me.trafficInfo = new GTrafficOverlay();
+   me.trafficInfo.added = false;
+   GEvent.addListener(me.trafficInfo, "changed", function(hasTrafficInView) {
+     GLog.write(hasTrafficInView);
+     if (hasTrafficInView) {
+       trafficDiv.style.visibility = 'visible';
+     } else {
+       GLog.write("hiding");
+       trafficDiv.style.visibility = 'hidden';
+     }
+   });
+
+   GEvent.addDomListener(trafficDiv.firstChild, "click", function() {
+     if (me.trafficInfo.added) {
+       if (me.trafficInfo.hidden) {
+         me.trafficInfo.hidden = false;
+         me.trafficInfo.show();
+       } else {
+         me.trafficInfo.hidden = true;
+         me.trafficInfo.hide();
+       }
       } else {
-        me.trafficInfo = new GTrafficOverlay();
-        me.trafficInfo.hidden = false; 
+        me.trafficInfo.hidden = false;
+        me.trafficInfo.added = true; 
         map.addOverlay(me.trafficInfo);
-        GEvent.addListener(me.trafficInfo, "changed", function(hasTrafficInView) {
-          GLog.write(hasTrafficInView);
-          if (hasTrafficInView) {
-            trafficDiv.style.visibility = 'visible';
-          } else {
-            GLog.write("hiding");
-            trafficDiv.style.visibility = 'hidden';
-          }
-        });
       }
       me.toggleButton_(trafficDiv.firstChild, !me.trafficInfo.hidden);
     });
