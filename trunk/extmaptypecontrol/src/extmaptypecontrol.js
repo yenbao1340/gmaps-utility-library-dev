@@ -70,24 +70,20 @@ ExtMapTypeControl.prototype.initialize = function(map) {
    // We have to do this so that we can sense if traffic is in view
    map.addOverlay(me.trafficInfo);
    GEvent.addListener(me.trafficInfo, "changed", function(hasTrafficInView) {
-     GLog.write(hasTrafficInView);
      if (hasTrafficInView) {
        trafficDiv.style.visibility = 'visible';
      } else {
-       GLog.write("hiding");
        trafficDiv.style.visibility = 'hidden';
      }
    });
 
    GEvent.addDomListener(trafficDiv.firstChild, "click", function() {
      if (me.trafficInfo.isHidden()) {
-      me.trafficInfo.hidden = false;
       me.trafficInfo.show();
      } else {
-       me.trafficInfo.hidden = true;
        me.trafficInfo.hide();
      }
-      me.toggleButton_(trafficDiv.firstChild, !me.trafficInfo.hidden);
+      me.toggleButton_(trafficDiv.firstChild, !me.trafficInfo.isHidden());
     });
 
     if (me.options.showTrafficKey) {
