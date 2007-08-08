@@ -182,23 +182,26 @@ right of the map.
 </p>
 
 <h2>Advanced use: Integration of an application specific zoom methodology</h2>
-<p> Some applications use a zoom mechanisim tailored to the application.  The most obvious example is when markers are clustered.  Clustering
-of markers is a way to avoid "clutter" at low zoom levels, and by using a "cluster marker" as a "proxy" to represent many individual markers which
-are made visible at higher zoom levels.  Typically the Marker Manager is used to control when a particular type of marker is shown.
+<p> 
+Some applications use a zoom mechanisim tailored to the application.  The most obvious example is when markers are clustered.  Clustering
+of markers is a way to avoid "clutter" at low zoom levels, and by using a "cluster marker" as a proxy to represent many individual markers which
+are made visible at higher zoom levels.  The Marker Manager is used to control when a particular type of marker is shown.
 The application may use the cluster markers to bring the user in to the underlying markers it represents by zooming in to the appropriate zoom level
 and map center when the cluster marker is clicked.
-<p> The DragZoomControl back button functionality provides a ready made structure to integrate this type of application zooming methodology with
+<p> 
+The DragZoomControl back button functionality provides a ready made structure to integrate this type of application zooming methodology with
 the DragZoom functionality.  Two features are used to implement this: a method, 
 (<a href="reference.html#DragZoomMethods">DragZoomMethods: saveMapContext()</a>) and a callback,  
 (<a href="reference.html#DragZoomCallbacks">DragZoomCallbacks: backbuttonclick</a>).  The method is called when the application wants to zoom in to the
-area of interest (typically when a cluster marker is clicked).  The DragZoom Control then saves the map context on behalf of the application which then
-does the appropiate zoom and map centering.  The method also allows the application to set an appropriate text on the back button.  When the user
+area of interest (when a cluster marker is clicked).  The DragZoom Control then saves the map context on behalf of the application which then
+does the appropiate zoom and map centering.  The method also allows the application to set new text on the back button.  When the user
 subsequently clicks the back button, the map context is restored and an application callback function is called to allow any  "clean up" which
 may be necessary.
 <p>
-In this example, a very simplistic version of clustering is illustrated: For each of New York City's 5 boroughs, a label with the borough name serves as 
-a cluster marker.  Clicking on the label will cause the map to zoom in to the center of the borough where several markers are displayed for parks in the 
-borough. When the back button is clicked, the application closes the infoWindow as an example of a clean up.
+In this example, a very simple version of clustering is illustrated: A single cluster marker is placed on the map in in Manhattan. Clicking on 
+this cluster marker will cause the map to zoom in to the Central Park area where several markers are displayed for points of interest.
+When the cluster zoom back button is clicked, the application closes the infoWindow as an example of a clean up.  The cluster zoom can be combined 
+with the DragZoom.
 <p>
 This code shows the creation of the map, it's controls and the labels and markers for the example:
 <pre class="code">
