@@ -78,7 +78,6 @@ ExtMapTypeControl.prototype.initialize = function(map) {
         me.trafficInfo = new GTrafficOverlay();
         me.trafficInfo.hidden = false; 
         map.addOverlay(me.trafficInfo);
-        /*
         GEvent.addListener(me.trafficInfo, "changed", function(hasTrafficInView) {
           if (hasTrafficInView) {
             trafficDiv.style.visibility = 'visible';
@@ -86,7 +85,6 @@ ExtMapTypeControl.prototype.initialize = function(map) {
             trafficDiv.style.visibility = 'hidden';
           }
         });
-        */
       }
       me.toggleButton_(trafficDiv.firstChild, !me.trafficInfo.hidden);
     });
