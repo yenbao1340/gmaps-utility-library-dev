@@ -6,9 +6,6 @@
     <title>Google Maps JavaScript API Example</title>
     <link rel="stylesheet" type="text/css" href="http://www.google.com/apis/maps/documentation/local_extensions.css" />
     <style type="text/css">
-    v\:* {
-      behavior:url(#default#VML);
-    } 
     td { 
       background-color: #FFFFFF;
     }
@@ -23,7 +20,7 @@
 
    var map;
    var zcontrol;
-   
+
    function load() {
      if (GBrowserIsCompatible()) {
        map = new GMap2(document.getElementById("map"));
@@ -112,7 +109,6 @@
 
      var codeJS = codeHTML.replace(/<br\/>/g,"\n");
      eval(codeJS);
-     GLog.write(zcontrol.globals.options.stickyZoomEnabled);
      prettyPrint();
    }
 
