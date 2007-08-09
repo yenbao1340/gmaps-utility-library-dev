@@ -6,9 +6,6 @@
     <title>Google Maps JavaScript API Example</title>
     <link rel="stylesheet" type="text/css" href="http://www.google.com/apis/maps/documentation/local_extensions.css" />
     <style type="text/css">
-    v\:* {
-      behavior:url(#default#VML);
-    } 
     td { 
       background-color: #FFFFFF;
     }
@@ -22,24 +19,26 @@
    //<![CDATA[
 
    var map;
-   var zcontrol;
 
    function load() {
      if (GBrowserIsCompatible()) {
-       map = new GMap2(document.getElementById("map"));
-       map.addControl(new GSmallMapControl());
-       map.setCenter(new GLatLng(40.713955826286046,-35.15625), 2);
        updateCode();
      }
    }
 
    function updateCode() {
+
+       map = new GMap2(document.getElementById("map"));
+       map.addControl(new GSmallMapControl());
+       map.setCenter(new GLatLng(40.713955826286046,-35.15625), 2);
      map.clearOverlays();
-     if (zcontrol) {
-       zcontrol.initStyles_();
-       zcontrol.globals.mapCover.style.display = 'none';
-       map.removeControl(zcontrol);
+     /*
+     if (curcontrol) {
+       curcontrol.initStyles_();
+       curcontrol.globals.mapCover.style.display = 'none';
+       map.removeControl(curcontrol);
      }
+     */
      var code = [];
      code.push("var styleOpts = {};");
      code.push("var otherOpts = {};");
@@ -102,7 +101,7 @@
        code.push("otherOpts.buttonZoomingStyle = " + el("opt_buttonZoomingStyle").value + ";");
      }
 
-     code.push("zcontrol = new DragZoomControl(styleOpts, otherOpts, {});");
+     code.push("var zcontrol = new DragZoomControl(styleOpts, otherOpts, {});");
      
      code.push("map.addControl(zcontrol);");
      
@@ -112,7 +111,7 @@
 
      var codeJS = codeHTML.replace(/<br\/>/g,"\n");
      eval(codeJS);
-
+     var curcontrol = zcontrol;
      prettyPrint();
    }
 
