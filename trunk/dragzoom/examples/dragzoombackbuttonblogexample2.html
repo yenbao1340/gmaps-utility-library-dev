@@ -90,7 +90,7 @@
     function addClusterListeners(marker, lat, lng, zoom) {
       GEvent.addListener(marker, "click", function() {
         map.closeInfoWindow();
-        DragZoom.saveMapContext('Cluster Zoom Back');
+        dragZoom.saveMapContext('Cluster Zoom Back');
         map.setCenter(new GLatLng(lat,lng),parseInt(zoom));
         }
       )
@@ -121,7 +121,7 @@
           overlayRemoveTime: 1500} 
         var callbacks = {backbuttonclick:function(method){restoreContextCallback(method)}}
  
-       map.addControl(DragZoom = new DragZoomControl({}, otherOpts, callbacks), 
+       map.addControl(dragZoom = new DragZoomControl({}, otherOpts, callbacks), 
           new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(7,7)));
 
         addMarkers();        // Add the cluster marker and the markers near Central Park and load into the Marker Manager
