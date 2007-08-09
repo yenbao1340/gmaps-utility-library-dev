@@ -414,7 +414,7 @@ DragZoomControl.prototype.mouseup_ = function(e){
 		
     //re-init if sticky
     if (G.options.stickyZoomEnabled) {
-      GLog.write("stickyZoomEnabled, re-initting");
+      //GLog.write("stickyZoomEnabled, re-initting");
       this.initCover_();
       if (G.options.backButtonEnabled) this.saveBackContext_(G.options.backButtonHTML,false); // save the map context for back button
       G.backButtonDiv.style.display='none';
