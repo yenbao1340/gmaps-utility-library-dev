@@ -19,24 +19,26 @@
    //<![CDATA[
 
    var map;
-   var curcontrol;
 
    function load() {
      if (GBrowserIsCompatible()) {
-       map = new GMap2(document.getElementById("map"));
-       map.addControl(new GSmallMapControl());
-       map.setCenter(new GLatLng(40.713955826286046,-35.15625), 2);
        updateCode();
      }
    }
 
    function updateCode() {
+
+       map = new GMap2(document.getElementById("map"));
+       map.addControl(new GSmallMapControl());
+       map.setCenter(new GLatLng(40.713955826286046,-35.15625), 2);
      map.clearOverlays();
+     /*
      if (curcontrol) {
        curcontrol.initStyles_();
        curcontrol.globals.mapCover.style.display = 'none';
        map.removeControl(curcontrol);
      }
+     */
      var code = [];
      code.push("var styleOpts = {};");
      code.push("var otherOpts = {};");
