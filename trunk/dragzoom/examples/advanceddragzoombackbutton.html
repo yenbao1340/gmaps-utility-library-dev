@@ -33,20 +33,20 @@
     ]
 
     var clusterIcon = new GIcon();
-    clusterIcon.shadow = 'mm_34_shadow.png';
+    clusterIcon.shadow = 'images/mm_34_shadow.png';
     clusterIcon.iconSize = new GSize(20, 34);
     clusterIcon.shadowSize = new GSize(37, 34);
     clusterIcon.iconAnchor = new GPoint(10, 34);
     clusterIcon.infoWindowAnchor = new GPoint(9, 2);
-    clusterIcon.image = 'mm_34_green.png';
+    clusterIcon.image = 'images/mm_34_green.png';
 
     var greenIcon = new GIcon();
-    greenIcon.shadow = 'mm_20_shadow.png';
+    greenIcon.shadow = 'images/mm_20_shadow.png';
     greenIcon.iconSize = new GSize(12, 20);
     greenIcon.shadowSize = new GSize(22, 20);
     greenIcon.iconAnchor = new GPoint(6, 20);
     greenIcon.infoWindowAnchor = new GPoint(5, 1);
-    greenIcon.image = 'mm_20_green.png';
+    greenIcon.image = 'images/mm_20_green.png';
 
     // Function to put the cluster marker and the underlying markers into the MM
     function addMarkers() {
@@ -122,10 +122,11 @@
           backButtonHTML: "Drag Zoom Back",  
           backButtonStyle: {display:"none",marginTop:"3px",background:"#FFFFC8"},
           backButtonEnabled: true, 
-          overlayRemoveTime: 1500} 
+          overlayRemoveTime: 1500
+        }; 
         var callbacks = {backbuttonclick:function(method){restoreContextCallback(method)}}
  
-       map.addControl(DragZoom = new DragZoomControl({}, otherOpts, callbacks), 
+        map.addControl(DragZoom = new DragZoomControl({}, otherOpts, callbacks), 
           new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(7,7)));
 
         addMarkers();        // Add the cluster marker and the markers near Central Park and load into the Marker Manager
