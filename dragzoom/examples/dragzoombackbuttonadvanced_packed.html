@@ -8,7 +8,7 @@
 		
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxQGj0PqsCtxKvarsoS-iqLdqZSKfxRdmoPmGl7Y9335WLC36wIGYa6o5Q" type="text/javascript"></script>
     <script src="./scripts/markermanager.js"></script>
-    <script src="../src/dragzoom.js" type="text/javascript"></script>
+    <script src="../src/dragzoom_packed.js" type="text/javascript"></script>
     <script type="text/javascript">
 
     //<![CDATA[
@@ -20,7 +20,7 @@
     var markerMgr;
 
     var clusterMarker = 
-      {"name":"Central Park",     "lat":40.78, "lng":-73.97, "zoom":14}
+      {"name":"Manhattan",     "lat":40.78, "lng":-73.97, "zoom":14}
     
     var greenMarkers = [
       {"name":"Central Park Zoo",              "lat":40.7677, "lng":-73.9715},
@@ -48,7 +48,7 @@
     greenIcon.infoWindowAnchor = new GPoint(5, 1);
     greenIcon.image = 'mm_20_green.png';
 
-    // Function to put the cluster marker and the individual markers into the MM
+    // Function to put the cluster marker and the underlying markers into the MM
     function addMarkers() {
       // Add the cluster marker
       var lat = clusterMarker["lat"];
@@ -87,20 +87,21 @@
 
       return marker; 
     }
+
     function addClusterListeners(marker, lat, lng, zoom) {
       GEvent.addListener(marker, "click", function() {
         map.closeInfoWindow();
-        dragZoom.saveMapContext('Cluster Zoom Back');
+        DragZoom.saveMapContext('Cluster Zoom Back');
         map.setCenter(new GLatLng(lat,lng),parseInt(zoom));
         }
       )
       return marker; 
     }
 
-    // Function called after the map context is restored by the cluster zoom back
+    // Function called after the map context is restored from the cluster zoom
     function restoreContextCallback(method) {
-      if (method) map.closeInfoWindow();      // "method" indicates this particular restore was for a zoom called
-    }                                         // by the method (i.e. the cluster zoom), not the regular DragZoom
+      if (method) map.closeInfoWindow();      // "method" indicates this particular restore was for 
+    }                                         // a zoom called by the method, not the regular DragZoom
 
     function load() {
       if (GBrowserIsCompatible()) {
@@ -121,7 +122,7 @@
           overlayRemoveTime: 1500} 
         var callbacks = {backbuttonclick:function(method){restoreContextCallback(method)}}
  
-       map.addControl(dragZoom = new DragZoomControl({}, otherOpts, callbacks), 
+       map.addControl(DragZoom = new DragZoomControl({}, otherOpts, callbacks), 
           new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(7,7)));
 
         addMarkers();        // Add the cluster marker and the markers near Central Park and load into the Marker Manager
@@ -133,6 +134,19 @@
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <div id="map" style="width: 500px; height: 450px; border:1px solid black"></div>
+     <table width=900px style="text-align:left;border:1px solid black"><tr>
+      <td style="font-size:14pt; padding-left:10px; padding-right:10px">
+      <ul>
+        <li>The map shows Greater New York. Use The DragZoom Button in the top left and select a rectangle encompassing 
+            Manhattan (about 1/4 of the map).</li> 
+        <li>A single cluster marker should appear on Central Park. Click on it.</li>
+        <li>You should now see a closeup of the Central Park area with a number of markers indicating points of interest.  
+            Notice also that the text on the back button has changed. Click on the markers and zoom in further using the DragZoom button.</li>
+        <li>Now use the DragZoom back button.  It will take you back through the sequence.</li>
+      </ul>
+    </td></tr></table>
+    <p>
+    <div id="map" style="width:900px; height:600px; border:1px solid black"></div>
+
   </body>
 </html>
