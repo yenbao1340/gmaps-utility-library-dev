@@ -4,5 +4,5 @@ ExtMapTypeControl.prototype.initialize=function(b){var c=document.createElement(
 ExtMapTypeControl.prototype.createButton_=function(a){var b=document.createElement("div");this.setButtonStyle_(b);b.style.cssFloat="left";b.style.styleFloat="left";var c=document.createElement("div");c.appendChild(document.createTextNode(a));c.style.width="6em";b.appendChild(c);return b
 ExtMapTypeControl.prototype.assignButtonEvent_=function(a,b,c,d){var e=this;GEvent.addDomListener(a,"click",function(){for(var i=0;i<d.length;i++){e.toggleButton_(d[i].firstChild,false)}e.toggleButton_(a.firstChild,true);b.setMapType(c)})
 ExtMapTypeControl.prototype.toggleButton_=function(a,b){a.style.fontWeight=b?"bold":"";a.style.border="1px solid white";var c=b?["Top","Left"]:["Bottom","Right"];for(var j=0;j<c.length;j++){a.style["border"+c[j]]="1px solid #b0b0b0"}
-ExtMapTypeControl.prototype.getDefaultPosition=function(){return new GControlPosition(G_ANCHOR_TOP_RIGHT,new GSize(7,7))
+ExtMapTypeControl.prototype.getDefaultPosition=function(){return new GControlPosition(G_ANCHOR_TOP_RIGHT,new GSize(7,7))}
 ExtMapTypeControl.prototype.setButtonStyle_=function(a){a.style.color="#000000";a.style.backgroundColor="white";a.style.font="small Arial";a.style.border="1px solid black";a.style.padding="0px";a.style.margin="0px";a.style.textAlign="center";a.style.fontSize="12px";a.style.cursor="pointer"}
