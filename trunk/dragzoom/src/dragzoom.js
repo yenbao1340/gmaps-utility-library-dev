@@ -398,13 +398,13 @@ DragZoomControl.prototype.mouseup_ = function(e){
       setTimeout (function() {G.map.removeOverlay(zoomAreaPoly)}, G.options.overlayRemoveTime);  
     }catch(e) {}
 
-    oBounds = new GLatLngBounds();
-    oBounds.extend(nw);
-    oBounds.extend(ne);
-    oBounds.extend(se);
-    oBounds.extend(sw);
-    zoomLevel = G.map.getBoundsZoomLevel(oBounds);
-    center = oBounds.getCenter();
+    polyBounds = zoomAreaPoly.getBounds();
+    var ne = polyBounds.getNorthEast();
+    var sw = polyBounds.getSouthWest();
+    var se = new GLatLng(sw.lat(), ne.lng());
+    var nw = new GLatLng(ne.lat(), sw.lng());
+    zoomLevel = G.map.getBoundsZoomLevel(polyBounds);
+    center = polyBounds.getCenter();
     G.map.setCenter(center, zoomLevel);
 
     // invoke callback if provided
