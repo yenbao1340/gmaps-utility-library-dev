@@ -60,33 +60,33 @@ ExtMapTypeControl.prototype.initialize = function(map) {
     }
   });
 
- if (me.options.showTraffic) {
-   var trafficDiv = me.createButton_("Traffic");
-   trafficDiv.style.marginRight = "8px";
-   trafficDiv.style.visibility = 'hidden';
-   trafficDiv.firstChild.style.cssFloat = "left";
-   trafficDiv.firstChild.style.styleFloat = "left";
-   // Sending true makes overlay hidden by default
-   me.trafficInfo = new GTrafficOverlay(true);
-   me.trafficInfo.hidden = true;
-   // We have to do this so that we can sense if traffic is in view
-   GEvent.addListener(me.trafficInfo, "changed", function(hasTrafficInView) {
-     if (hasTrafficInView) {
-       trafficDiv.style.visibility = 'visible';
-     } else {
-       trafficDiv.style.visibility = 'hidden';
-     }
-   });
-   map.addOverlay(me.trafficInfo);
+  if (me.options.showTraffic) {
+    var trafficDiv = me.createButton_("Traffic");
+    trafficDiv.style.marginRight = "8px";
+    trafficDiv.style.visibility = 'hidden';
+    trafficDiv.firstChild.style.cssFloat = "left";
+    trafficDiv.firstChild.style.styleFloat = "left";
+    // Sending true makes overlay hidden by default
+    me.trafficInfo = new GTrafficOverlay(true);
+    me.trafficInfo.hidden = true;
+    // We have to do this so that we can sense if traffic is in view
+    GEvent.addListener(me.trafficInfo, "changed", function(hasTrafficInView) {
+      if (hasTrafficInView) {
+        trafficDiv.style.visibility = 'visible';
+      } else {
+        trafficDiv.style.visibility = 'hidden';
+      }
+    });
+    map.addOverlay(me.trafficInfo);
 
-   GEvent.addDomListener(trafficDiv.firstChild, "click", function() {
-     if (me.trafficInfo.hidden) {
-       me.trafficInfo.hidden = false;
-       me.trafficInfo.show();
-     } else {
-       me.trafficInfo.hidden = true;
-       me.trafficInfo.hide();
-     }
+    GEvent.addDomListener(trafficDiv.firstChild, "click", function() {
+      if (me.trafficInfo.hidden) {
+        me.trafficInfo.hidden = false;
+        me.trafficInfo.show();
+      } else {
+        me.trafficInfo.hidden = true;
+        me.trafficInfo.hide();
+      }
       me.toggleButton_(trafficDiv.firstChild, !me.trafficInfo.hidden);
     });
 
@@ -105,7 +105,7 @@ ExtMapTypeControl.prototype.initialize = function(map) {
                      {"color": "#c0c0c0", "text": "No data"}];
       for (var i = 0; i < keyInfo.length; i++) {
         keyExpandedDiv.innerHTML += "<div style='text-align: left'><span style='background-color: " + keyInfo[i].color + "'>&nbsp;&nbsp</span>"
-          +  "<span style='color: " + keyInfo[i].color + "'> " + keyInfo[i].text + " </span>" + "</div>"; 
+            +  "<span style='color: " + keyInfo[i].color + "'> " + keyInfo[i].text + " </span>" + "</div>"; 
       }
       keyExpandedDiv.style.display = "none";
 
@@ -119,7 +119,7 @@ ExtMapTypeControl.prototype.initialize = function(map) {
         }
         me.toggleButton_(keyDiv, me.keyExpanded);
       });
-    
+
       me.toggleButton_(keyDiv, me.keyExpanded);
     }
 
