@@ -126,12 +126,10 @@ function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
     stickyZoomEnabled: false,
     onselectstartEnabled: true  
   };
-  alert(this.globals.options.onselectstartEnabled);
 	
   for (var s in opts_other) {
     this.globals.options[s] = opts_other[s]
   }
-  alert(this.globals.options.onselectstartEnabled);
 
   // callbacks: buttonclick, dragstart, dragging, dragend, backbuttonclick 
   if (opts_callbacks == null) {
