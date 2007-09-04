@@ -51,6 +51,8 @@
  *   opts_other.backButtonHTML {String} The back button HTML
  *   opts_other.backButtonStyle {Object} A hash of css styles for the back button
  *     which will be applied when the button is created.	
+ *   opts_other.onselectstartEnabled {Boolean} Whether or not to allow selectonstart outside of a drag. 
+ *     If user wan't to supress selection this must be set false.
  * @param {opts_callbacks} Named optional arguments:
  *   opts_callbacks.buttonclick {Function} Called when the DragZoom is activated 
  *     by clicking on the "zoom" button. 
@@ -121,8 +123,9 @@ function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
     buttonZoomingStyle: {background: '#FF0'},
     overlayRemoveTime: 6000,
     backButtonEnabled: false,
-    stickyZoomEnabled: false
-  };
+    stickyZoomEnabled: false,
+    onselectstartEnabled: true  
+};
 	
   for (var s in opts_other) {
     this.globals.options[s] = opts_other[s]
@@ -268,9 +271,9 @@ DragZoomControl.prototype.initialize = function(map) {
   
   //styles
     this.initStyles_();
-
-    document.onselectstart = function() {
-      return true;  // set this on initially.
+    
+    if (G.options.onselectstartEnabled) document.onselectstart = function() {
+      return true;  // make sure this is on initially if the user wants it 
     };
 
   return buttonContainerDiv;
@@ -316,14 +319,14 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
   if (G.callbacks.dragstart != null) {
     G.callbacks.dragstart(G.startX, G.startY);
   }
-  document.onselectstart = function() {
+  if (G.options.onselectstartEnabled) document.onselectstart = function() {
     return false; // set this while the drag is in progress
   };
 
   return false;
 };
 
-/**z
+/**
  * Function called when drag event is captured
  * @param {Object} e 
  */
@@ -377,7 +380,7 @@ DragZoomControl.prototype.mouseup_ = function(e){
   var G = this.globals;
   if (G.draggingOn) {
 
-    document.onselectstart = function() {
+    if (G.options.onselectstartEnabled) document.onselectstart = function() {
       return true;  // reset this when drag is finished.
     };
 
@@ -440,7 +443,7 @@ DragZoomControl.prototype.setDimensions_ = function() {
   G.mapWidth  = mapSize.width;
   G.mapHeight = mapSize.height;
   G.mapRatio  = G.mapHeight / G.mapWidth;
-  // set left:0px in next <div>s in case we inherit taxt-align:center from map <div> in IE.
+  // set left:0px in next <div>s in case we inherit text-align:center from map <div> in IE.
   DragZoomUtil.style([G.mapCover, G.cornerTopDiv, G.cornerRightDiv, G.cornerBottomDiv, G.cornerLeftDiv], 
     {left: '0px',width: G.mapWidth + 'px', height: G.mapHeight +'px'});
 };
