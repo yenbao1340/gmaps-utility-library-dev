@@ -52,7 +52,7 @@
  *   opts_other.backButtonStyle {Object} A hash of css styles for the back button
  *     which will be applied when the button is created.	
  *   opts_other.onselectstartEnabled {Boolean} Whether or not to allow selectonstart outside of a drag. 
- *     If user wan't to supress selection this must be set false.
+ *     If user wants to supress selection this must be set false.
  * @param {opts_callbacks} Named optional arguments:
  *   opts_callbacks.buttonclick {Function} Called when the DragZoom is activated 
  *     by clicking on the "zoom" button. 
@@ -125,11 +125,13 @@ function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
     backButtonEnabled: false,
     stickyZoomEnabled: false,
     onselectstartEnabled: true  
-};
+  };
+  alert(this.globals.options.onselectstartEnabled);
 	
   for (var s in opts_other) {
     this.globals.options[s] = opts_other[s]
   }
+  alert(this.globals.options.onselectstartEnabled);
 
   // callbacks: buttonclick, dragstart, dragging, dragend, backbuttonclick 
   if (opts_callbacks == null) {
@@ -319,7 +321,7 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
   if (G.callbacks.dragstart != null) {
     G.callbacks.dragstart(G.startX, G.startY);
   }
-  if (G.options.onselectstartEnabled) document.onselectstart = function() {
+  document.onselectstart = function() {
     return false; // set this while the drag is in progress
   };
 
@@ -381,7 +383,7 @@ DragZoomControl.prototype.mouseup_ = function(e){
   if (G.draggingOn) {
 
     if (G.options.onselectstartEnabled) document.onselectstart = function() {
-      return true;  // reset this when drag is finished.
+      return true;  // reset this when drag is finished unless the user wants it off.
     };
 
     var pos = this.getRelPos_(e);
