@@ -268,6 +268,11 @@ DragZoomControl.prototype.initialize = function(map) {
   
   //styles
     this.initStyles_();
+
+    document.onselectstart = function() {
+      return true;  // set this on initially.
+    };
+
   return buttonContainerDiv;
 };
 
@@ -311,6 +316,9 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
   if (G.callbacks.dragstart != null) {
     G.callbacks.dragstart(G.startX, G.startY);
   }
+  document.onselectstart = function() {
+    return false; // set this while the drag is in progress
+  };
 
   return false;
 };
@@ -321,10 +329,6 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
  */
 DragZoomControl.prototype.drag_ = function(e){
   var G = this.globals;
-
-  document.onselectstart = function() {
-    return false;
-  };
 
   if(G.draggingOn) {
     var pos = this.getRelPos_(e);
@@ -372,6 +376,11 @@ DragZoomControl.prototype.drag_ = function(e){
 DragZoomControl.prototype.mouseup_ = function(e){
   var G = this.globals;
   if (G.draggingOn) {
+
+    document.onselectstart = function() {
+      return true;  // reset this when drag is finished.
+    };
+
     var pos = this.getRelPos_(e);
     G.draggingOn = false;
     
@@ -517,6 +526,7 @@ DragZoomControl.prototype.initCover_ = function(){
   G.mapPosition = DragZoomUtil.getElementPosition(G.map.getContainer());
   this.setDimensions_();
   this.setButtonMode_('zooming');
+  //DragZoomUtil.style([G.mapCover], {textAlign: 'left', display: 'block', background: G.style.fillColor});
   DragZoomUtil.style([G.mapCover], {display: 'block', background: G.style.fillColor});
   DragZoomUtil.style([G.outlineDiv], {width: '0px', height: '0px'});
 
