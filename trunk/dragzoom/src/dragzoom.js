@@ -440,8 +440,9 @@ DragZoomControl.prototype.setDimensions_ = function() {
   G.mapWidth  = mapSize.width;
   G.mapHeight = mapSize.height;
   G.mapRatio  = G.mapHeight / G.mapWidth;
+  // set left:0px in next <div>s in case we inherit taxt-align:center from map <div> in IE.
   DragZoomUtil.style([G.mapCover, G.cornerTopDiv, G.cornerRightDiv, G.cornerBottomDiv, G.cornerLeftDiv], 
-    {width: G.mapWidth + 'px', height: G.mapHeight +'px'});
+    {left: '0px',width: G.mapWidth + 'px', height: G.mapHeight +'px'});
 };
 
 /**
@@ -526,7 +527,6 @@ DragZoomControl.prototype.initCover_ = function(){
   G.mapPosition = DragZoomUtil.getElementPosition(G.map.getContainer());
   this.setDimensions_();
   this.setButtonMode_('zooming');
-  //DragZoomUtil.style([G.mapCover], {textAlign: 'left', display: 'block', background: G.style.fillColor});
   DragZoomUtil.style([G.mapCover], {display: 'block', background: G.style.fillColor});
   DragZoomUtil.style([G.outlineDiv], {width: '0px', height: '0px'});
 
