@@ -51,8 +51,6 @@
  *   opts_other.backButtonHTML {String} The back button HTML
  *   opts_other.backButtonStyle {Object} A hash of css styles for the back button
  *     which will be applied when the button is created.	
- *   opts_other.onselectstartEnabled {Boolean} Whether or not to allow selectonstart outside of a drag. 
- *     If user wants to supress selection this must be set false.
  * @param {opts_callbacks} Named optional arguments:
  *   opts_callbacks.buttonclick {Function} Called when the DragZoom is activated 
  *     by clicking on the "zoom" button. 
@@ -134,8 +132,7 @@ function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
     buttonZoomingStyle: {background: '#FF0'},
     overlayRemoveTime: 6000,
     backButtonEnabled: false,
-    stickyZoomEnabled: false,
-    onselectstartEnabled: true  
+    stickyZoomEnabled: false
   };
 	
   for (var s in opts_other) {
@@ -276,6 +273,7 @@ DragZoomControl.prototype.initialize = function(map) {
     G.cornerBottomDiv = DragZoomUtil.gE("gzoom-cornerBottomDiv");
     G.cornerLeftDiv = DragZoomUtil.gE("gzoom-cornerLeftDiv");
     G.map = map;
+    G.mapDiv = mapDiv;
   
     G.borderCorrection = G.style.outlineWidth * 2;	
     this.setDimensions_();
@@ -283,10 +281,6 @@ DragZoomControl.prototype.initialize = function(map) {
   //styles
     this.initStyles_();
     
-    //if (G.options.onselectstartEnabled) document.onselectstart = function() {
-    //  return true;  // make sure this is on initially if the user wants it 
-    //};
-
   return buttonContainerDiv;
 };
 
@@ -330,9 +324,9 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
   if (G.callbacks.dragstart != null) {
     G.callbacks.dragstart(G.startX, G.startY);
   }
-  document.onselectstart = function() {
-    return false; // set this while the drag is in progress
-  };
+
+  // disable text selection while the drag is in progress
+  G.mapDiv.onselectstart = function() {return false}; 
 
   return false;
 };
@@ -391,9 +385,6 @@ DragZoomControl.prototype.mouseup_ = function(e){
   var G = this.globals;
   if (G.draggingOn) {
 
-    document.onselectstart = function() {
-      return G.options.onselectstartEnabled;  // reset this when drag is finished unless the user wants it off.
-    };
 
     var pos = this.getRelPos_(e);
     G.draggingOn = false;
@@ -484,6 +475,7 @@ DragZoomControl.prototype.buttonclick = function(){
   } else {
     this.initCover_();
     if ( G.options.backButtonEnabled ) this.saveBackContext_(G.options.backButtonHTML,false); // save the map context for back button
+    //delete G.mapDiv.onselectstart;  // reset this after the drag zoom /// delete throws an error in IE
   }
 };
 
