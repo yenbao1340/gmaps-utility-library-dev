@@ -71,7 +71,18 @@
  *     this backbuttonclick was to restore context set by the mathod call, else false.
  * Method
  *    this.saveMapContext(text) Call to push map context onto the backStack and set the button text 
- */ 
+ *    this.buttonclick() Call to simulate clicking the deragZoom button
+ *    this.backbuttonclick() Call to simulate clicking the deragZoom back button
+ **/
+/**
+ *  Versions
+ *  1.0 original version (v 189) 5/24/2007
+ *  1.1 backbutton functionality added  (v 211) 7/30/2007
+ *  1.1.1
+ *    fix select text conflict in IE
+ *    fix align-text:center inheritance problem in IE
+ *    expose this.buttonclick() and this.backbuttonclick() as methods
+ **/ 
 function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
   // Holds all information needed globally
   // Not all globals are initialized here
@@ -239,10 +250,10 @@ DragZoomControl.prototype.initialize = function(map) {
   
   // add event listeners
     GEvent.addDomListener(buttonDiv, 'click', function(e) {
-      me.buttonclick_(e);
+      me.buttonclick(e);
     });
     GEvent.addDomListener(backButtonDiv, 'click', function(e) {
-      me.backButtonclick_(e);
+      me.backbuttonclick(e);
     });
     GEvent.addDomListener(zoomDiv, 'mousedown', function(e) {
       me.coverMousedown_(e);
@@ -272,9 +283,9 @@ DragZoomControl.prototype.initialize = function(map) {
   //styles
     this.initStyles_();
     
-    if (G.options.onselectstartEnabled) document.onselectstart = function() {
-      return true;  // make sure this is on initially if the user wants it 
-    };
+    //if (G.options.onselectstartEnabled) document.onselectstart = function() {
+    //  return true;  // make sure this is on initially if the user wants it 
+    //};
 
   return buttonContainerDiv;
 };
@@ -380,8 +391,8 @@ DragZoomControl.prototype.mouseup_ = function(e){
   var G = this.globals;
   if (G.draggingOn) {
 
-    if (G.options.onselectstartEnabled) document.onselectstart = function() {
-      return true;  // reset this when drag is finished unless the user wants it off.
+    document.onselectstart = function() {
+      return G.options.onselectstartEnabled;  // reset this when drag is finished unless the user wants it off.
     };
 
     var pos = this.getRelPos_(e);
@@ -461,7 +472,7 @@ DragZoomControl.prototype.initStyles_ = function(){
 /**
  * Function called when the zoom button's click event is captured.
  */
-DragZoomControl.prototype.buttonclick_ = function(){
+DragZoomControl.prototype.buttonclick = function(){
   var G = this.globals;	
   G.backButtonDiv.style.display='none';
   if (G.mapCover.style.display == 'block') { // reset if clicked before dragging 
@@ -481,7 +492,7 @@ DragZoomControl.prototype.buttonclick_ = function(){
  * Function called when the back button's click event is captured.
  * calls the function to set the map context back to where it was before the zoom.
  */
-DragZoomControl.prototype.backButtonclick_ = function(){
+DragZoomControl.prototype.backbuttonclick = function(){
   var G = this.globals;	
   if (G.options.backButtonEnabled) {
     this.restoreBackContext_();
