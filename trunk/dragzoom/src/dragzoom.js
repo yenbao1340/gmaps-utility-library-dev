@@ -77,7 +77,7 @@
  *  Versions
  *  1.0 original version (v 189) 5/24/2007
  *  1.1 backbutton functionality added  (v 211) 7/30/2007
- *  1.1.1 bug fixes and 2 new methods (v 358) 9/6/2007
+ *  1.2 bug fixes and 2 new methods 9/6/2007
  *    fix text selection conflict in IE
  *    fix align-text:center inheritance problem in IE
  *    expose this.buttonclick() and this.backbuttonclick() as methods, removing underscores from function names
