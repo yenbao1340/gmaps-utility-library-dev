@@ -69,18 +69,20 @@
  *     this backbuttonclick was to restore context set by the mathod call, else false.
  * Method
  *    this.saveMapContext(text) Call to push map context onto the backStack and set the button text 
- *    this.buttonclick() Call to simulate clicking the deragZoom button
- *    this.backbuttonclick() Call to simulate clicking the deragZoom back button
+ *    this.buttonclick() Call to simulate clicking the dragZoom button
+ *    this.backbuttonclick() Call to simulate clicking the dragZoom back button
  **/
+
 /**
  *  Versions
  *  1.0 original version (v 189) 5/24/2007
  *  1.1 backbutton functionality added  (v 211) 7/30/2007
  *  1.1.1
- *    fix select text conflict in IE
+ *    fix text selection conflict in IE
  *    fix align-text:center inheritance problem in IE
- *    expose this.buttonclick() and this.backbuttonclick() as methods
- **/ 
+ *    expose this.buttonclick() and this.backbuttonclick() as methods, removing underscores from function names
+ **/
+
 function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
   // Holds all information needed globally
   // Not all globals are initialized here
@@ -183,7 +185,7 @@ DragZoomControl.prototype.initButton_ = function(buttonContainerDiv) {
  * Creates a second new button to control backup zoom and appends to the button container div.
  * @param {DOM Node} buttonContainerDiv created in main .initialize code
  */
-DragZoomControl.prototype.initBackButton_ = function(buttonContainerDiv) {	//**BB** entire function
+DragZoomControl.prototype.initBackButton_ = function(buttonContainerDiv) {
   var G = this.globals;
   var backButtonDiv = document.createElement('div');
   backButtonDiv.innerHTML = G.options.backButtonHTML;
@@ -273,13 +275,16 @@ DragZoomControl.prototype.initialize = function(map) {
     G.cornerBottomDiv = DragZoomUtil.gE("gzoom-cornerBottomDiv");
     G.cornerLeftDiv = DragZoomUtil.gE("gzoom-cornerLeftDiv");
     G.map = map;
-    G.mapDiv = mapDiv;
   
     G.borderCorrection = G.style.outlineWidth * 2;	
     this.setDimensions_();
   
   //styles
     this.initStyles_();
+
+  // disable text selection on map cover
+    G.mapCover.onselectstart = function() {return false}; 
+
     
   return buttonContainerDiv;
 };
@@ -324,9 +329,6 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
   if (G.callbacks.dragstart != null) {
     G.callbacks.dragstart(G.startX, G.startY);
   }
-
-  // disable text selection while the drag is in progress
-  G.mapDiv.onselectstart = function() {return false}; 
 
   return false;
 };
@@ -425,7 +427,7 @@ DragZoomControl.prototype.mouseup_ = function(e){
     if (G.callbacks.dragend != null) {
       G.callbacks.dragend(nw, ne, se, sw, nwpx, nepx, sepx, swpx);
     }
-		
+
     //re-init if sticky
     if (G.options.stickyZoomEnabled) {
       //GLog.write("stickyZoomEnabled, re-initting");
@@ -475,7 +477,6 @@ DragZoomControl.prototype.buttonclick = function(){
   } else {
     this.initCover_();
     if ( G.options.backButtonEnabled ) this.saveBackContext_(G.options.backButtonHTML,false); // save the map context for back button
-    //delete G.mapDiv.onselectstart;  // reset this after the drag zoom /// delete throws an error in IE
   }
 };
 
