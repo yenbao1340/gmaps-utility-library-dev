@@ -77,7 +77,7 @@
  *  Versions
  *  1.0 original version (v 189) 5/24/2007
  *  1.1 backbutton functionality added  (v 211) 7/30/2007
- *  1.1.1
+ *  1.1.1 bug fixes and 2 new methods (v 358) 9/6/2007
  *    fix text selection conflict in IE
  *    fix align-text:center inheritance problem in IE
  *    expose this.buttonclick() and this.backbuttonclick() as methods, removing underscores from function names
@@ -146,11 +146,9 @@ function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
     opts_callbacks = {}
   }
   this.globals.callbacks = opts_callbacks;
-
 }
 
 DragZoomControl.prototype = new GControl();
-
 
 /**
  * Back Button functionality:	
@@ -163,7 +161,6 @@ DragZoomControl.prototype.saveMapContext = function(text) {
     this.globals.backButtonDiv.style.display = 'block';
   }	
 };
-
 
 /**
  * Creates a new button to control gzoom and appends to the button container div.
@@ -284,7 +281,6 @@ DragZoomControl.prototype.initialize = function(map) {
 
   // disable text selection on map cover
     G.mapCover.onselectstart = function() {return false}; 
-
     
   return buttonContainerDiv;
 };
@@ -339,7 +335,6 @@ DragZoomControl.prototype.coverMousedown_ = function(e){
  */
 DragZoomControl.prototype.drag_ = function(e){
   var G = this.globals;
-
   if(G.draggingOn) {
     var pos = this.getRelPos_(e);
     rect = this.getRectangle_(G.startX, G.startY, pos, G.mapRatio);
@@ -386,8 +381,6 @@ DragZoomControl.prototype.drag_ = function(e){
 DragZoomControl.prototype.mouseup_ = function(e){
   var G = this.globals;
   if (G.draggingOn) {
-
-
     var pos = this.getRelPos_(e);
     G.draggingOn = false;
     
@@ -541,7 +534,6 @@ DragZoomControl.prototype.initCover_ = function(){
   if(G.callbacks['buttonclick'] != null){
     G.callbacks.buttonclick();
   }
-
 };
 
 /**
@@ -601,8 +593,6 @@ DragZoomControl.prototype.resetDragZoom_ = function() {
   this.setButtonMode_('normal');
   if (G.options.backButtonEnabled  && (G.backStack.length > 0)) G.backButtonDiv.style.display = 'block'; // show the back button
 };
-
-
 
 /* utility functions in DragZoomUtil.namespace */
 var DragZoomUtil={};
