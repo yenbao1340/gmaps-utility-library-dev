@@ -35,7 +35,19 @@ Creates a DragZoomControl with the specified options (hashes). All parameters ar
 <tr class="odd">
 <td class="code">saveMapContext(text)</td>
 <td class="code">None</td>
-<td> The map context is pushed onto the context stack, the backButtonHTML is set to 'text', and the back button is made visible.</td>
+<td> The map state is pushed onto the context stack, the backButtonHTML is set to 'text', and the back button is made visible.</td>
+</td>
+</tr>
+<tr class="odd">
+<td class="code">buttonclick()</td>
+<td class="code">None</td>
+<td> A DragZoom operation is initiated as if the user had clicked the DragZoom button.  For use in custom map controls.</td>
+</td>
+</tr>
+<tr class="odd">
+<td class="code">backbuttonclick()</td>
+<td class="code">None</td>
+<td> A DragZoom back operation is initiated as if the user had clicked the DragZoom back button.  For use in custom map controls.</td>
 </td>
 </tr>
 </tbody>
@@ -183,7 +195,7 @@ Instead, this class is instantiated as a javascript object literal.
 <tr class="odd">
 <td class="code">buttonclick</td>
 <td class="code"> Function</td>
-<td> Called when the DragZoom is activated by clicking on the "zoom" button.</td>
+<td> Called when DragZoom is activated by clicking on the DragZoom button or by calling the buttonclick() method.</td>
 
 </tr>
 <tr class="even">
@@ -213,7 +225,7 @@ Called when the user releases the mouse button after dragging the rectangle. Cal
 <td class="code">backbuttonclick</td>
 <td class="code"> Function</td>
 <td> 
-Called after the map context is restored as a result of clicking the back button. Callback arg: method (boolean) -- set true if
+Called after the map context is restored as a result of clicking the DragZoom back button or by calling the backbuttonclick() method. Callback arg: method (boolean) -- set true if
 this backbuttonclick was to restore context set by the saveMapContext(text) method, else false.</td>
 </tr>
 
