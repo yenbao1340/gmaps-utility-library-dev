@@ -480,7 +480,7 @@ DragZoomControl.prototype.buttonclick = function(){
  */
 DragZoomControl.prototype.backbuttonclick = function(){
   var G = this.globals;	
-  if (G.options.backButtonEnabled) {
+  if (G.options.backButtonEnabled && G.backStack.length > 0) {
     this.restoreBackContext_();
     // invoke the callback if provided
     if (G.callbacks['backbuttonclick'] != null) {
