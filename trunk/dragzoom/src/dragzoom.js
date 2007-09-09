@@ -69,8 +69,8 @@
  *     this backbuttonclick was to restore context set by the mathod call, else false.
  * Method
  *    this.saveMapContext(text) Call to push map context onto the backStack and set the button text 
- *    this.buttonclick() Call to simulate clicking the dragZoom button
- *    this.backbuttonclick() Call to simulate clicking the dragZoom back button
+ *    this.initiateZoom() Call to simulate clicking the dragZoom button
+ *    this.initiateZoomBack() Call to simulate clicking the dragZoom back button
  **/
 
 /**
@@ -80,7 +80,7 @@
  *  1.2 bug fixes and 2 new methods 9/6/2007
  *    fix text selection conflict in IE
  *    fix align-text:center inheritance problem in IE
- *    expose this.buttonclick() and this.backbuttonclick() as methods, removing underscores from function names
+ *    create methods initiateZoom and initiateZoomBack which call buttonclick_() and backbuttonclick_()
  **/
 
 function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
@@ -151,8 +151,12 @@ function DragZoomControl(opts_boxStyle, opts_other, opts_callbacks) {
 DragZoomControl.prototype = new GControl();
 
 /**
+ * Methods
+ */
+
+/**
+ * Method called to save the map context before the zoom.
  * Back Button functionality:	
- * Method of this object called to save the map context before the zoom.
  * @param {text} text string for the back button
  */
 DragZoomControl.prototype.saveMapContext = function(text) {
@@ -161,6 +165,17 @@ DragZoomControl.prototype.saveMapContext = function(text) {
     this.globals.backButtonDiv.style.display = 'block';
   }	
 };
+
+/**
+ * Method called to initiate a dragZoom as if the user had clicked the dragZoom button.
+ */
+DragZoomControl.prototype.initiateZoom = function() {this.buttonclick_()};
+
+/**
+ * Method called to initiate a dragZoom back operation as if the user had clicked the dragZoom back button.
+ * Back Button functionality:	
+ */
+DragZoomControl.prototype.initiateZoomBack = function() {if (this.globals.options.backButtonEnabled) this.backbuttonclick_()};	
 
 /**
  * Creates a new button to control gzoom and appends to the button container div.
@@ -246,10 +261,10 @@ DragZoomControl.prototype.initialize = function(map) {
   
   // add event listeners
     GEvent.addDomListener(buttonDiv, 'click', function(e) {
-      me.buttonclick(e);
+      me.buttonclick_(e);
     });
     GEvent.addDomListener(backButtonDiv, 'click', function(e) {
-      me.backbuttonclick(e);
+      me.backbuttonclick_(e);
     });
     GEvent.addDomListener(zoomDiv, 'mousedown', function(e) {
       me.coverMousedown_(e);
@@ -458,7 +473,7 @@ DragZoomControl.prototype.initStyles_ = function(){
 /**
  * Function called when the zoom button's click event is captured.
  */
-DragZoomControl.prototype.buttonclick = function(){
+DragZoomControl.prototype.buttonclick_ = function(){
   var G = this.globals;	
   G.backButtonDiv.style.display='none';
   if (G.mapCover.style.display == 'block') { // reset if clicked before dragging 
@@ -478,7 +493,7 @@ DragZoomControl.prototype.buttonclick = function(){
  * Function called when the back button's click event is captured.
  * calls the function to set the map context back to where it was before the zoom.
  */
-DragZoomControl.prototype.backbuttonclick = function(){
+DragZoomControl.prototype.backbuttonclick_ = function(){
   var G = this.globals;	
   if (G.options.backButtonEnabled && G.backStack.length > 0) {
     this.restoreBackContext_();
