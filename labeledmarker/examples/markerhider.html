@@ -40,19 +40,20 @@
           var markers = xml.documentElement.getElementsByTagName("marker");
           for (var i = 0; i < markers.length; i++) {
             var name = markers[i].getAttribute("name");
+            var label = markers[i].getAttribute("label");
             var address = markers[i].getAttribute("address");
             var type = markers[i].getAttribute("type");
             var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")),
                                     parseFloat(markers[i].getAttribute("lng")));
-            var marker = createMarker(point, name, address, type);
+            var marker = createMarker(point, name, label, address, type);
             map.addOverlay(marker);
           }
         });
       }
     }
 
-    function createMarker(point, name, address, type) {
-      var marker = new GMarker(point, customIcons[type]);
+    function createMarker(point, name, label, address, type) {
+      var marker = new LabeledMarker(point, {icon: customIcons[type]}, labelText: label});
       markerGroups[type].push(marker);
       var html = "<b>" + name + "</b> <br/>" + address;
       GEvent.addListener(marker, 'click', function() {
