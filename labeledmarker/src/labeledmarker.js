@@ -166,7 +166,7 @@ LabeledMarker.prototype.hide = function() {
  * Hides the label of the marker.
  */
 LabeledMarker.prototype.hideLabel = function() {
-  if (this.div_)
+  if (this.div_) {
     this.div_.style.visibility = 'hidden';
   }
 }
@@ -176,7 +176,7 @@ LabeledMarker.prototype.hideLabel = function() {
  * Shows the label of the marker.
  */
 LabeledMarker.prototype.showLabel = function() {
-  if (this.div_)
+  if (this.div_) {
     this.div_.style.visibility = 'visible';
   }
 }
