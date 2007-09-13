@@ -53,7 +53,7 @@
     }
 
     function createMarker(point, name, label, address, type) {
-      var marker = new LabeledMarker(point, {icon: customIcons[type], labelText: label});
+      var marker = new LabeledMarker(point, {icon: customIcons[type], labelText: label, labelOffset: new GSize(-6, -10)});
       markerGroups[type].push(marker);
       var html = "<b>" + name + "</b> <br/>" + address;
       GEvent.addListener(marker, 'click', function() {
