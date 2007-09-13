@@ -75,7 +75,7 @@ LabeledMarker.prototype.initialize = function(map) {
   this.div_.innerHTML = this.labelText_;
   this.div_.style.position = "absolute";
   this.div_.style.cursor = "pointer";
-  this.div_.title = this.title;
+  this.div_.title = this.title_;
   map.getPane(G_MAP_MARKER_PANE).appendChild(this.div_);
 
   if (this.clickable_) {
