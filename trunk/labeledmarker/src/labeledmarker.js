@@ -43,7 +43,7 @@ function LabeledMarker(latlng, opt_opts){
   this.labelOffset_ = opt_opts.labelOffset || new GSize(0, 0);
   
   this.clickable_ = opt_opts.clickable || true;
-  
+    
   if (opt_opts.draggable) {
   	// This version of LabeledMarker doesn't support dragging.
   	opt_opts.draggable = false;
@@ -139,4 +139,44 @@ LabeledMarker.prototype.redraw = function(force) {
  */
 LabeledMarker.prototype.copy = function() {
   return new LabeledMarker(this.latlng_, this.opt_opts_);
+}
+
+
+/**
+ * Shows the marker. Note that this function triggers the event GMarker.visibilitychanged 
+ * in case the marker is currently hidden.
+ */
+LabeledMarker.prototype.show = function() {
+  GMarker.prototype.show.apply(this, arguments);
+  this.showLabel();
+}
+
+
+/**
+ * Hides the marker if it is currently visible. Note that this function triggers the event 
+ * GMarker.visibilitychanged in case the marker is currently visible.
+ */
+LabeledMarker.prototype.hide = function() {
+  GMarker.prototype.hide.apply(this, arguments);
+  this.hideLabel();
+}
+
+
+/**
+ * Hides the label of the marker.
+ */
+LabeledMarker.prototype.hideLabel = function() {
+  if (this.div_)
+    this.div_.style.visibility = 'hidden';
+  }
+}
+
+
+/**
+ * Shows the label of the marker.
+ */
+LabeledMarker.prototype.showLabel = function() {
+  if (this.div_)
+    this.div_.style.visibility = 'visible';
+  }
 }
