@@ -43,7 +43,8 @@ function LabeledMarker(latlng, opt_opts){
   this.labelOffset_ = opt_opts.labelOffset || new GSize(0, 0);
   
   this.clickable_ = opt_opts.clickable || true;
-    
+  this.title_ = opt_opts.title || "";
+   
   if (opt_opts.draggable) {
   	// This version of LabeledMarker doesn't support dragging.
   	opt_opts.draggable = false;
@@ -74,6 +75,7 @@ LabeledMarker.prototype.initialize = function(map) {
   this.div_.innerHTML = this.labelText_;
   this.div_.style.position = "absolute";
   this.div_.style.cursor = "pointer";
+  this.div_.title = this.title;
   map.getPane(G_MAP_MARKER_PANE).appendChild(this.div_);
 
   if (this.clickable_) {
