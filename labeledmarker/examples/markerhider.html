@@ -75,6 +75,7 @@
     function toggleLabels() {
       for (groupName in markerGroups) {
         for (var i = 0; i < markerGroups[groupName].length; i++) {
+          var marker = markerGroups[groupName][i];
           if (!marker.isHidden()) {
             marker.showLabels();
           }
