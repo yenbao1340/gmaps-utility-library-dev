@@ -80,11 +80,7 @@
       for (groupName in markerGroups) {
         for (var i = 0; i < markerGroups[groupName].length; i++) {
           var marker = markerGroups[groupName][i];
-          if (showLabels && !marker.isHidden()) {
-            marker.showLabel();
-          } else {
-            marker.hideLabel();
-          }
+          marker.setLabelVisibility(showLabels);
         }
       }
     }

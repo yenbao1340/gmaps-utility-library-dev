@@ -152,8 +152,10 @@ LabeledMarker.prototype.copy = function() {
  */
 LabeledMarker.prototype.show = function() {
   GMarker.prototype.show.apply(this, arguments);
-  if (!this.labelHidden_) {
+  if (this.labelVisibility_) {
     this.showLabel();
+  } else {
+    this.hideLabel();
   }
 }
 
@@ -168,12 +170,22 @@ LabeledMarker.prototype.hide = function() {
 }
 
 
+LabeledMarker.prototype.setLabelVisibility = function(visibility) {
+  this.labelVisibility_ = visibility;
+  if (!this.isHidden()) { // Marker showing, make visible change
+    if (this.labelVisibility_) {
+      this.showLabel();
+    } else {
+      this.hideLabel();
+    }
+  }
+}
+
 /**
  * Hides the label of the marker.
  */
 LabeledMarker.prototype.hideLabel = function() {
   this.div_.style.visibility = 'hidden';
-  this.labelHidden_ = true;
 }
 
 
@@ -182,5 +194,4 @@ LabeledMarker.prototype.hideLabel = function() {
  */
 LabeledMarker.prototype.showLabel = function() {
   this.div_.style.visibility = 'visible';
-  this.labelHidden_ = false;
 }
