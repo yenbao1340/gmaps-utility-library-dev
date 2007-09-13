@@ -34,8 +34,8 @@
       if (GBrowserIsCompatible()) {
         var map = new GMap2(document.getElementById("map"));
         map.setCenter(new GLatLng(47.614495, -122.341861), 13);
-        document.getElementById("restaurantsCheckbox").checked = true;
-        document.getElementById("barsCheckbox").checked = true;
+        document.getElementById("restaurantCheckbox").checked = true;
+        document.getElementById("barCheckbox").checked = true;
         document.getElementById("labelsCheckbox").checked = true;
 
         GDownloadUrl("markerdata.xml", function(data) {
