@@ -44,6 +44,7 @@ function LabeledMarker(latlng, opt_opts){
   
   this.clickable_ = opt_opts.clickable || true;
   this.title_ = opt_opts.title || "";
+  this.labelHidden_  = false;
    
   if (opt_opts.draggable) {
   	// This version of LabeledMarker doesn't support dragging.
@@ -76,6 +77,7 @@ LabeledMarker.prototype.initialize = function(map) {
   this.div_.style.position = "absolute";
   this.div_.style.cursor = "pointer";
   this.div_.title = this.title_;
+  
   map.getPane(G_MAP_MARKER_PANE).appendChild(this.div_);
 
   if (this.clickable_) {
@@ -145,18 +147,20 @@ LabeledMarker.prototype.copy = function() {
 
 
 /**
- * Shows the marker. Note that this function triggers the event GMarker.visibilitychanged 
- * in case the marker is currently hidden.
+ * Shows the marker, and shows label if it wasn't hidden. Note that this function 
+ * triggers the event GMarker.visibilitychanged in case the marker is currently hidden.
  */
 LabeledMarker.prototype.show = function() {
   GMarker.prototype.show.apply(this, arguments);
-  this.showLabel();
+  if (!this.labelHidden_) {
+    this.showLabel();
+  }
 }
 
 
 /**
- * Hides the marker if it is currently visible. Note that this function triggers the event 
- * GMarker.visibilitychanged in case the marker is currently visible.
+ * Hides the marker and label if it is currently visible. Note that this function 
+ * triggers the event GMarker.visibilitychanged in case the marker is currently visible.
  */
 LabeledMarker.prototype.hide = function() {
   GMarker.prototype.hide.apply(this, arguments);
@@ -168,9 +172,8 @@ LabeledMarker.prototype.hide = function() {
  * Hides the label of the marker.
  */
 LabeledMarker.prototype.hideLabel = function() {
-  if (this.div_) {
-    this.div_.style.visibility = 'hidden';
-  }
+  this.div_.style.visibility = 'hidden';
+  this.labelHidden_ = true;
 }
 
 
@@ -178,7 +181,6 @@ LabeledMarker.prototype.hideLabel = function() {
  * Shows the label of the marker.
  */
 LabeledMarker.prototype.showLabel = function() {
-  if (this.div_) {
-    this.div_.style.visibility = 'visible';
-  }
+  this.div_.style.visibility = 'visible';
+  this.labelHidden_ = false;
 }
