@@ -73,10 +73,13 @@
     }
 
     function toggleLabels() {
+      var showLabels = document.getElementById("labelsCheckbox").checked;
       for (groupName in markerGroups) {
         for (var i = 0; i < markerGroups[groupName].length; i++) {
           var marker = markerGroups[groupName][i];
-          if (!marker.isHidden()) {
+          if (showLabels) {
+            marker.showLabel();
+          } else {
             marker.hideLabel();
           }
         }
