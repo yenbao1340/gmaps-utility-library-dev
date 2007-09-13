@@ -44,7 +44,7 @@ function LabeledMarker(latlng, opt_opts){
   
   this.clickable_ = opt_opts.clickable || true;
   this.title_ = opt_opts.title || "";
-  this.labelVisibility__  = true;
+  this.labelVisibility_  = true;
    
   if (opt_opts.draggable) {
   	// This version of LabeledMarker doesn't support dragging.
