@@ -170,6 +170,9 @@ LabeledMarker.prototype.hide = function() {
 }
 
 
+/**
+ * Sets the visibility of the label, which will be respected during show/hides.
+ * If marker is visible when set, it will show or hide label appropriately.
 LabeledMarker.prototype.setLabelVisibility = function(visibility) {
   this.labelVisibility_ = visibility;
   if (!this.isHidden()) { // Marker showing, make visible change
@@ -180,6 +183,16 @@ LabeledMarker.prototype.setLabelVisibility = function(visibility) {
     }
   }
 }
+
+
+/**
+ * Returns whether label visibility is set on.
+ * @return {Boolean}  
+ */
+LabeledMarker.prototype.getLabelVisibility = function() {
+  return this.labelVisibility_;
+}
+
 
 /**
  * Hides the label of the marker.
