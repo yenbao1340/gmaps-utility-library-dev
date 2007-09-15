@@ -173,7 +173,8 @@ LabeledMarker.prototype.hide = function() {
 /**
  * Sets the visibility of the label, which will be respected during show/hides.
  * If marker is visible when set, it will show or hide label appropriately.
-LabeledMarker.prototype.setLabelVisible = function() {
+ */
+LabeledMarker.prototype.setLabelVisibility = function(visibility) {
   GLog.write("setlabelvisible called");
   this.labelVisibility_ = visibility;
   if (!this.isHidden()) { // Marker showing, make visible change
@@ -198,7 +199,7 @@ LabeledMarker.prototype.getLabelVisibility = function() {
 /**
  * Hides the label of the marker.
  */
-LabeledMarker.prototype.hideLabelNow = function() {
+LabeledMarker.prototype.hideLabel = function() {
   this.div_.style.visibility = 'hidden';
 }
 
