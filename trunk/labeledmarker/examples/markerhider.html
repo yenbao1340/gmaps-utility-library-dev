@@ -80,7 +80,8 @@
       for (groupName in markerGroups) {
         for (var i = 0; i < markerGroups[groupName].length; i++) {
           var marker = markerGroups[groupName][i];
-          marker.show();
+          GLog.write(marker)
+          marker.hide();
         }
       }
     }
