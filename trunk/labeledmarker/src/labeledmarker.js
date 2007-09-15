@@ -198,7 +198,7 @@ LabeledMarker.prototype.getLabelVisibility = function() {
 /**
  * Hides the label of the marker.
  */
-LabeledMarker.prototype.hideLabel = function() {
+LabeledMarker.prototype.hideLabelNow = function() {
   this.div_.style.visibility = 'hidden';
 }
 
