@@ -81,7 +81,7 @@
         for (var i = 0; i < markerGroups[groupName].length; i++) {
           var marker = markerGroups[groupName][i];
           GLog.write(marker)
-          marker.hide();
+          marker.setLabelVisible(showLabels);
         }
       }
     }
