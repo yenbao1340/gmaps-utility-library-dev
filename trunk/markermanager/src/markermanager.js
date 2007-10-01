@@ -90,11 +90,21 @@ function MarkerManager(map, opt_opts) {
   // NOTE: These two closures provide easy access to the map.
   // They are used as callbacks, not as methods.
   me.removeOverlay_ = function(marker) {
-    map.removeOverlay(marker);
+    if (!marker.isInfoWindowOpened) {
+      map.removeOverlay(marker);
+    }
     me.shownMarkers_--;
   };
   me.addOverlay_ = function(marker) {
     map.addOverlay(marker);
+    marker.isInfoWindowOpened = false;
+
+    GEvent.addListener(marker, "infowindowopen", function() {
+      marker.isInfoWindowOpened = true;
+    });
+    GEvent.addListener(marker, "infowindowclose", function() {
+      marker.isInfoWindowOpened = false;
+    });
     me.shownMarkers_++;
   };
 
