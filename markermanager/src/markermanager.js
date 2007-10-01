@@ -92,11 +92,14 @@ function MarkerManager(map, opt_opts) {
   me.removeOverlay_ = function(marker) {
     if (!marker.isInfoWindowOpened) {
       map.removeOverlay(marker);
+      me.shownMarkers_--;
     }
-    me.shownMarkers_--;
   };
   me.addOverlay_ = function(marker) {
-    map.addOverlay(marker);
+    if (!marker.isInfoWindowOpened) {
+      map.addOverlay(marker);
+      me.shownMarkers_++;
+    }
     marker.isInfoWindowOpened = false;
 
     GEvent.addListener(marker, "infowindowopen", function() {
@@ -105,7 +108,6 @@ function MarkerManager(map, opt_opts) {
     GEvent.addListener(marker, "infowindowclose", function() {
       marker.isInfoWindowOpened = false;
     });
-    me.shownMarkers_++;
   };
 
   me.resetManager_();
