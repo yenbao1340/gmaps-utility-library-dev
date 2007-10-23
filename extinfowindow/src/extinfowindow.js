@@ -464,7 +464,7 @@ ExtInfoWindow.prototype.getStyle_ = function(element, style) {
       }
     }
 
-    if((value == 'auto') && ['width','height'].include(style) && (this.getStyle_(element, 'display') != 'none')){
+    if((value == 'auto') && (style == 'width' || style == 'height') && (this.getStyle_(element, 'display') != 'none')){
       value = element['offset'+style.capitalize()] + 'px';
     }
 
