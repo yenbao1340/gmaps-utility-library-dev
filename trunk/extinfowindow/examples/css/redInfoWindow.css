@@ -1,0 +1,84 @@
+/*Partials: ==SKIN header Custom info window */ 
+#custom_info_window_red{
+  width: 16em;
+}
+#custom_info_window_red_tl{
+  width: 15px;
+  height: 15px;
+  padding: 3px;
+  background: url('../images/corners/red_tl.png') top left no-repeat transparent;
+}
+* html #custom_info_window_red_tl{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_tl.png', sizingMethod='crop');
+}
+#custom_info_window_red_t{
+  background: url('../images/corners/red_t.png') top left repeat-x transparent;
+}
+#custom_info_window_red_tr{
+  width: 15px;
+  height: 15px;
+  background: url('../images/corners/red_tr.png') top right no-repeat transparent;
+}
+* html #custom_info_window_red_tr{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_tr.png', sizingMethod='crop');
+}
+#custom_info_window_red_l{
+  background: url('../images/corners/red_l.png') top left repeat-y transparent;
+  width: 3px;
+}
+#custom_info_window_red_r{
+  background: url('../images/corners/red_r.png') top right repeat-y transparent;
+  width: 3px;
+}
+#custom_info_window_red_bl{
+  width: 15px;
+  height: 15px;
+  background: url('../images/corners/red_bl.png') top left no-repeat transparent;
+}
+* html #custom_info_window_red_bl{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_bl.png', sizingMethod='crop');
+}
+#custom_info_window_red_b{
+  background: url('../images/corners/red_b.png') bottom left repeat-x #FFF;
+}
+#custom_info_window_red_br{
+  width: 15px;
+  height: 15px;
+  background: url('../images/corners/red_br.png') top left no-repeat transparent;
+}
+* html #custom_info_window_red_br{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_br.png', sizingMethod='crop');
+}
+#custom_info_window_red_close{
+  width: 21px;
+  height: 21px;
+  background: url('../images/corners/red_close.png') top left no-repeat transparent;
+  cursor: pointer;
+}
+* html #custom_info_window_red_close{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_close.png', sizingMethod='crop');
+}
+#custom_info_window_red_beak{
+	width: 26px;
+  height: 39px;
+  background: url('../images/corners/red_beak.png') top left no-repeat transparent;
+}
+* html #custom_info_window_red_beak{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_beak.png', sizingMethod='crop');
+}
+
+#custom_info_window_red div.title{
+  background-color: #900;
+  color: #FFF;
+}
+#custom_info_window_red p{
+  clear: left;
+} 
+
+
