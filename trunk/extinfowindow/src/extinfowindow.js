@@ -94,7 +94,7 @@ ExtInfoWindow.prototype.initialize = function(map) {
 	this.container.id = this.infoWindowId;
 	this.container.style.width = this.getStyle_(document.getElementById(this.infoWindowId), "width");
 	
-	this.contentDiv = null;
+	this.contentDiv = this.initContents_();
 	this.wrapperDiv = null;
 
   //Steal mouse down event to keep mouse clicks and mouse click and drag from being passed
@@ -147,129 +147,110 @@ ExtInfoWindow.prototype.copy = function() {
  */
 ExtInfoWindow.prototype.redraw = function(force) {
 	if (!force) return;
-
-	//get the content div
-	if( this.contentDiv == null ){
-	  this.contentDiv = this.initContents_();
-	}
 	
-		//retrieve the rendered width and height
-		var contentWidth = this.getDimensions_(this.container).width;
-		var contentHeight = this.contentDiv.offsetHeight;
+	var contentHeight = this.contentDiv.offsetHeight;
 
-		//remove the content from the map
-		this.contentDiv.style.visibility='visible';
+	this.contentDiv.style.visibility='visible';
 
-		//set the width and height to ensure they
-		//stay that size when drawn again
-		this.contentDiv.style.width=contentWidth+'px';
+	
 
-		//set up the actual position relative to your images
-		this.contentDiv.style.position='absolute';
-		this.contentDiv.style.left= this.wrapperParts.l.w+'px';
-		this.contentDiv.style.top= this.wrapperParts.tl.h+'px';
-		this.contentDiv.style.background='#FFF';
+	//create the wrapper for the window
+	if( this.wrapperDiv == null ){
+	  this.wrapperDiv = document.createElement("div");
+	  this.container.appendChild(this.wrapperDiv);
+  }
 
-		//create the wrapper for the window
-		if( this.wrapperDiv == null ){
-		  this.wrapperDiv = document.createElement("div");
-		  this.container.appendChild(this.wrapperDiv);
-	  }
+	//Finish configuring wrapper parts that were not set in initialization
+	this.wrapperParts.tl.l = 0;
+	this.wrapperParts.tl.t = 0;
+	this.wrapperParts.t.l =this.wrapperParts.tl.w;
+	this.wrapperParts.t.t = 0;
+	this.wrapperParts.t.w = (this.wrapperParts.l.w + this.contentWidth + this.wrapperParts.r.w)-this.wrapperParts.tl.w-this.wrapperParts.tr.w;
+	this.wrapperParts.t.h = this.wrapperParts.tl.h;
+	this.wrapperParts.tr.l = this.wrapperParts.t.w + this.wrapperParts.tl.w;
+	this.wrapperParts.tr.t = 0;
+	this.wrapperParts.l.l = 0;
+	this.wrapperParts.l.t = this.wrapperParts.tl.h;
+	this.wrapperParts.l.h = contentHeight;
+	this.wrapperParts.r.l = this.contentWidth+this.wrapperParts.l.w;
+	this.wrapperParts.r.t = this.wrapperParts.tr.h;
+	this.wrapperParts.r.h = contentHeight;
+	this.wrapperParts.bl.l = 0;
+	this.wrapperParts.bl.t = contentHeight + this.wrapperParts.bl.h;
+	this.wrapperParts.b.l = this.wrapperParts.br.w;
+	this.wrapperParts.b.t = contentHeight + this.wrapperParts.bl.h;
+	this.wrapperParts.b.w = (this.wrapperParts.l.w + this.contentWidth + this.wrapperParts.r.w) - this.wrapperParts.bl.w - this.wrapperParts.br.w;
+	this.wrapperParts.b.h = this.wrapperParts.bl.h;
+	this.wrapperParts.br.l = this.wrapperParts.b.w + this.wrapperParts.bl.w;
+	this.wrapperParts.br.t = contentHeight + this.wrapperParts.br.h;
+	this.wrapperParts.close.l = this.wrapperParts.tr.l +this.wrapperParts.tr.w - this.wrapperParts.close.w - this.borderSize;
+	this.wrapperParts.close.t = this.borderSize;
+	this.wrapperParts.beak.l = (this.contentWidth/2) - (this.wrapperParts.beak.w/2);
+	this.wrapperParts.beak.t = this.wrapperParts.bl.t + this.wrapperParts.bl.h - this.borderSize;
 
-		//Finish configuring wrapper parts that were not set in initialization
-		this.wrapperParts.tl.l = 0;
-		this.wrapperParts.tl.t = 0;
-		this.wrapperParts.t = {
-		  l:this.wrapperParts.tl.w, 
-		  t:0, 
-		  w:(this.wrapperParts.l.w + contentWidth + this.wrapperParts.r.w)-this.wrapperParts.tl.w-this.wrapperParts.tr.w, 
-		  h:this.wrapperParts.tl.h
-		};
-		this.wrapperParts.tr.l = this.wrapperParts.t.w + this.wrapperParts.tl.w;
-		this.wrapperParts.tr.t = 0;
-		this.wrapperParts.l.l = 0;
-		this.wrapperParts.l.t = this.wrapperParts.tl.h;
-		this.wrapperParts.l.h = contentHeight;
-		this.wrapperParts.r.l = contentWidth+this.wrapperParts.l.w;
-		this.wrapperParts.r.t = this.wrapperParts.tr.h;
-		this.wrapperParts.r.h = contentHeight;
-		this.wrapperParts.bl.l = 0;
-		this.wrapperParts.bl.t = contentHeight + this.wrapperParts.bl.h;
-		this.wrapperParts.b.l = this.wrapperParts.br.w;
-		this.wrapperParts.b.t = contentHeight + this.wrapperParts.bl.h;
-		this.wrapperParts.b.w = (this.wrapperParts.l.w + contentWidth + this.wrapperParts.r.w) - this.wrapperParts.bl.w - this.wrapperParts.br.w;
-		this.wrapperParts.b.h = this.wrapperParts.bl.h;
-		this.wrapperParts.br.l = this.wrapperParts.b.w + this.wrapperParts.bl.w;
-		this.wrapperParts.br.t = contentHeight + this.wrapperParts.br.h;
-		this.wrapperParts.close.l = this.wrapperParts.tr.l +this.wrapperParts.tr.w - this.wrapperParts.close.w - this.borderSize;
-		this.wrapperParts.close.t = this.borderSize;
-		this.wrapperParts.beak.l = (contentWidth/2) - (this.wrapperParts.beak.w/2);
-		this.wrapperParts.beak.t = this.wrapperParts.bl.t + this.wrapperParts.bl.h - this.borderSize;
-
-		//create the decoration wrapper DOM objects
-		//append the styled info window to the container
-		for (i in this.wrapperParts) {
-	  	if( i == "close" ){
-				//first append the content so the close button is layered above
-				this.wrapperDiv.appendChild(this.contentDiv);
-			}
-		  var wrapperPartsDiv = null;
-		  if( this.wrapperParts[i].img == null){
-		    wrapperPartsDiv = document.createElement('div')
-		    this.wrapperDiv.appendChild(wrapperPartsDiv);
-		  }else{
-		    wrapperPartsDiv = this.wrapperParts[i].img
-	    }
-			wrapperPartsDiv.id = this.infoWindowId+"_"+i;
-			wrapperPartsDiv.style.position='absolute';
-			wrapperPartsDiv.style.width= this.wrapperParts[i].w+"px";
-			wrapperPartsDiv.style.height= this.wrapperParts[i].h+"px";
-			wrapperPartsDiv.style.top=this.wrapperParts[i].t+'px';
-			wrapperPartsDiv.style.left=this.wrapperParts[i].l+'px';
-
-			this.wrapperParts[i].img = wrapperPartsDiv;
+	//create the decoration wrapper DOM objects
+	//append the styled info window to the container
+	for (i in this.wrapperParts) {
+  	if( i == "close" ){
+			//first append the content so the close button is layered above
+			this.wrapperDiv.appendChild(this.contentDiv);
 		}
+	  var wrapperPartsDiv = null;
+	  if( this.wrapperParts[i].el == null){
+      wrapperPartsDiv = document.createElement('div');
+      this.wrapperDiv.appendChild(wrapperPartsDiv);
+	  }else{
+	    wrapperPartsDiv = this.wrapperParts[i].el;
+    }
+		wrapperPartsDiv.id = this.infoWindowId+"_"+i;
+		wrapperPartsDiv.style.position='absolute';
+		wrapperPartsDiv.style.width= this.wrapperParts[i].w+"px";
+		wrapperPartsDiv.style.height= this.wrapperParts[i].h+"px";
+		wrapperPartsDiv.style.top=this.wrapperParts[i].t+'px';
+		wrapperPartsDiv.style.left=this.wrapperParts[i].l+'px';
 
-		//add event handlers like the close box
-		var currentMarker = this.marker;
-		GEvent.addDomListener(this.wrapperParts.close.img, "click", 
-		  function() {
-			  currentMarker.closeExtInfoWindow();
-		  }
-		);
+		this.wrapperParts[i].el = wrapperPartsDiv;
+	}
 
-		//get the X,Y pixel location of the marker
-		var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
+	//add event handlers like the close box
+	var currentMarker = this.marker;
+	GEvent.addDomListener(this.wrapperParts.close.el, "click", 
+	  function() {
+		  currentMarker.closeExtInfoWindow();
+	  }
+	);
 
-		//position the container div for the window
-		this.container.style.position='absolute';
-		var markerIcon = this.marker.getIcon();
+	//get the X,Y pixel location of the marker
+	var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
 
-		this.container.style.left = (pixelLocation.x 
-			- (contentWidth/2) 
-			- markerIcon.iconAnchor.x 
-			+ markerIcon.infoWindowAnchor.x
-			) + "px";
-			
-		this.container.style.top = (pixelLocation.y
-		  - this.wrapperParts.bl.h
-			- contentHeight
-			- this.wrapperParts.tl.h
-			- this.wrapperParts.beak.h
-			- markerIcon.iconAnchor.y
-			+ markerIcon.infoWindowAnchor.y
-			+ this.borderSize
+	//position the container div for the window
+	this.container.style.position='absolute';
+	var markerIcon = this.marker.getIcon();
+
+	this.container.style.left = (pixelLocation.x 
+		- (this.contentWidth/2) 
+		- markerIcon.iconAnchor.x 
+		+ markerIcon.infoWindowAnchor.x
 		) + "px";
 		
-		this.container.style.border = '0';
-		this.container.style.margin = '0';
-		this.container.style.padding = '0';
-		this.container.style.display = 'block';
-	//}
+	this.container.style.top = (pixelLocation.y
+	  - this.wrapperParts.bl.h
+		- contentHeight
+		- this.wrapperParts.tl.h
+		- this.wrapperParts.beak.h
+		- markerIcon.iconAnchor.y
+		+ markerIcon.infoWindowAnchor.y
+		+ this.borderSize
+	) + "px";
+	
+	this.container.style.border = '0';
+	this.container.style.margin = '0';
+	this.container.style.padding = '0';
+	this.container.style.display = 'block';
 
 	if(map.ExtInfoWindowInstance != null) {
 		this.resize();
-		this.repositionMap(contentWidth, contentHeight);
+		this.repositionMap(this.contentWidth, contentHeight);
 	}
 };
 
@@ -283,28 +264,28 @@ ExtInfoWindow.prototype.resize = function(){
 	var contentWidth = this.contentDiv.offsetWidth;
 	var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
 
-	var oldWindowHeight = this.wrapperParts.t.img.offsetHeight + this.wrapperParts.l.img.offsetHeight + this.wrapperParts.b.img.offsetHeight;
-	var oldWindowPosTop = this.wrapperParts.t.img.offsetTop;
+	var oldWindowHeight = this.wrapperParts.t.el.offsetHeight + this.wrapperParts.l.el.offsetHeight + this.wrapperParts.b.el.offsetHeight;
+	var oldWindowPosTop = this.wrapperParts.t.el.offsetTop;
 	
-	this.wrapperParts.l.img.style.height = contentHeight + "px";
-	this.wrapperParts.r.img.style.height = contentHeight + "px";
+	this.wrapperParts.l.el.style.height = contentHeight + "px";
+	this.wrapperParts.r.el.style.height = contentHeight + "px";
 
 	//shrink down info window to look correct for new height
-	var newPosTop = this.wrapperParts.b.img.offsetTop - contentHeight;
-	this.wrapperParts.l.img.style.top = newPosTop + "px";
-	this.wrapperParts.r.img.style.top = newPosTop + "px";
+	var newPosTop = this.wrapperParts.b.el.offsetTop - contentHeight;
+	this.wrapperParts.l.el.style.top = newPosTop + "px";
+	this.wrapperParts.r.el.style.top = newPosTop + "px";
 	this.contentDiv.style.top = newPosTop + "px";
 
-	windowTHeight = this.wrapperParts.t.img.style.height;
+	windowTHeight = this.wrapperParts.t.el.style.height;
 	windowTHeight = windowTHeight.substring(0, windowTHeight.indexOf("px") );
 	newPosTop -= windowTHeight;
-	this.wrapperParts.close.img.style.top = newPosTop + this.borderSize + "px";
-	this.wrapperParts.tl.img.style.top = newPosTop + "px";
-	this.wrapperParts.t.img.style.top = newPosTop + "px";
-	this.wrapperParts.tr.img.style.top = newPosTop + "px";
+	this.wrapperParts.close.el.style.top = newPosTop + this.borderSize + "px";
+	this.wrapperParts.tl.el.style.top = newPosTop + "px";
+	this.wrapperParts.t.el.style.top = newPosTop + "px";
+	this.wrapperParts.tr.el.style.top = newPosTop + "px";
 
-	var newWindowHeight = this.wrapperParts.t.img.offsetHeight + this.wrapperParts.l.img.offsetHeight + this.wrapperParts.b.img.offsetHeight;
-	var newWindowPosTop = this.wrapperParts.t.img.offsetTop;
+	var newWindowHeight = this.wrapperParts.t.el.offsetHeight + this.wrapperParts.l.el.offsetHeight + this.wrapperParts.b.el.offsetHeight;
+	var newWindowPosTop = this.wrapperParts.t.el.offsetTop;
 };
 
 /**
@@ -330,11 +311,11 @@ ExtInfoWindow.prototype.repositionMap = function(){
 	var paddingY = this.paddingY;
 
 	//test top of screen	
-	var windowT = this.wrapperParts.t.img;
-	var windowL = this.wrapperParts.l.img;
-	var windowB = this.wrapperParts.b.img;
-	var windowR = this.wrapperParts.r.img;
-	var windowBeak = this.wrapperParts.beak.img;
+	var windowT = this.wrapperParts.t.el;
+	var windowL = this.wrapperParts.l.el;
+	var windowB = this.wrapperParts.b.el;
+	var windowR = this.wrapperParts.r.el;
+	var windowBeak = this.wrapperParts.beak.el;
 
 	var offsetTop = markerPosition.y - ( this.marker.getIcon().iconSize.height +  this.getDimensions_(windowBeak).height + this.getDimensions_(windowB).height + this.getDimensions_(windowL).height + this.getDimensions_(windowT).height + this.paddingY);
 	if( offsetTop < mapNE.y) {
@@ -408,6 +389,18 @@ ExtInfoWindow.prototype.initContents_ = function(){
 
 	//temporarily append the content to the map container
 	this.map.getContainer().appendChild(content);
+	
+	this.contentWidth = this.getDimensions_(this.container).width;
+	var contentHeight = content.offsetHeight;
+	//set the width and height to ensure they
+	//stay that size when drawn again
+  content.style.width=this.contentWidth+'px';
+
+	//set up the actual position relative to your images
+	content.style.position='absolute';
+	content.style.left=this.wrapperParts.l.w+'px';
+	content.style.top=this.wrapperParts.tl.h+'px';
+	content.style.background='#FFF';
 
 	return content;
 };
