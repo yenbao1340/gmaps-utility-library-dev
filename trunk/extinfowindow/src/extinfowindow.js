@@ -249,7 +249,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	this.container.style.display = 'block';
 
 	if(map.ExtInfoWindowInstance != null) {
-		this.resize();
+		//this.resize();
 		this.repositionMap(this.contentWidth, contentHeight);
 	}
 };
