@@ -279,7 +279,6 @@ ExtInfoWindow.prototype.redraw = function(force) {
  */
 ExtInfoWindow.prototype.resize = function(){
 	//get the new content's height
-	console.log(this.contentDiv);
 	var contentHeight = this.contentDiv.offsetHeight;
 	var contentWidth = this.contentDiv.offsetWidth;
 	var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
@@ -314,7 +313,6 @@ ExtInfoWindow.prototype.resize = function(){
  * the extInfoWindow is completely displayed.
  */
 ExtInfoWindow.prototype.repositionMap = function(){
-  console.log("Repos Map");
 	//pan if necessary so it shows on the screen
 	var mapNE = this.map.fromLatLngToDivPixel(
 		this.map.getBounds().getNorthEast()
