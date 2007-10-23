@@ -150,10 +150,13 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	
 	var contentHeight = this.contentDiv.offsetHeight;
 
-	this.contentDiv.style.visibility='visible';
-
+  //reposition contents depending on wrapper parts.
+  //this is necessary for content that is pulled in via ajax
+	this.contentDiv.style.left=this.wrapperParts.l.w+'px';
+	this.contentDiv.style.top=this.wrapperParts.tl.h+'px';
 	
-
+	this.contentDiv.style.visibility='visible';
+	
 	//create the wrapper for the window
 	if( this.wrapperDiv == null ){
 	  this.wrapperDiv = document.createElement("div");
@@ -398,8 +401,6 @@ ExtInfoWindow.prototype.initContents_ = function(){
 
 	//set up the actual position relative to your images
 	content.style.position='absolute';
-	content.style.left=this.wrapperParts.l.w+'px';
-	content.style.top=this.wrapperParts.tl.h+'px';
 	content.style.background='#FFF';
 
 	return content;
