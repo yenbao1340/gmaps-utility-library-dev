@@ -12,10 +12,9 @@
 }
 * html #custom_info_window_bubble_tl{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/bubble_tl.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/bubble_tl.png', sizingMethod='crop');
 }
 #custom_info_window_bubble_t{
-  
   background: url('../images/corners/bubble_t.png') top left repeat-x #FFF;
 }
 #custom_info_window_bubble_tr{
@@ -25,7 +24,7 @@
 }
 * html #custom_info_window_bubble_tr{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/bubble_tr.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/bubble_tr.png', sizingMethod='crop');
 }
 #custom_info_window_bubble_l{
   background: url('../images/corners/bubble_l.png') top left repeat-y transparent;
@@ -42,7 +41,7 @@
 }
 * html #custom_info_window_bubble_bl{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/bubble_bl.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/bubble_bl.png', sizingMethod='crop');
 }
 #custom_info_window_bubble_b{
   height: 2px;
@@ -55,7 +54,7 @@
 }
 * html #custom_info_window_bubble_br{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/bubble_br.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/bubble_br.png', sizingMethod='crop');
 }
 #custom_info_window_bubble_close{
   width: 20px;
@@ -65,7 +64,7 @@
 }
 * html #custom_info_window_bubble_close{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/bubble_close.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/bubble_close.png', sizingMethod='crop');
 }
 #custom_info_window_bubble_beak{
 	width: 49px;
@@ -75,7 +74,7 @@
 }
 * html #custom_info_window_bubble_beak{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/bubble_beak.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/bubble_beak.png', sizingMethod='crop');
 }
 
 

@@ -1,7 +1,6 @@
 /*Partials: ==SKIN header Custom info window */ 
 #custom_info_window_red{
-  width: 16em;
-  background: yellow;
+  width: 250px;
 }
 #custom_info_window_red_contents{
   background-color: #FFF;
@@ -9,12 +8,11 @@
 #custom_info_window_red_tl{
   width: 15px;
   height: 15px;
-  padding: 3px;
   background: url('../images/corners/red_tl.png') top left no-repeat transparent;
 }
 * html #custom_info_window_red_tl{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_tl.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tl.png', sizingMethod='crop');
 }
 #custom_info_window_red_t{
   background: url('../images/corners/red_t.png') top left repeat-x transparent;
@@ -26,7 +24,7 @@
 }
 * html #custom_info_window_red_tr{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_tr.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tr.png', sizingMethod='crop');
 }
 #custom_info_window_red_l{
   background: url('../images/corners/red_l.png') top left repeat-y transparent;
@@ -43,9 +41,10 @@
 }
 * html #custom_info_window_red_bl{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_bl.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_bl.png', sizingMethod='crop');
 }
 #custom_info_window_red_b{
+  height: 2px;
   background: url('../images/corners/red_b.png') bottom left repeat-x #FFF;
 }
 #custom_info_window_red_br{
@@ -55,7 +54,7 @@
 }
 * html #custom_info_window_red_br{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_br.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_br.png', sizingMethod='crop');
 }
 #custom_info_window_red_close{
   width: 21px;
@@ -65,7 +64,7 @@
 }
 * html #custom_info_window_red_close{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_close.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_close.png', sizingMethod='crop');
 }
 #custom_info_window_red_beak{
 	width: 26px;
@@ -74,15 +73,11 @@
 }
 * html #custom_info_window_red_beak{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='examples/images/corners/red_beak.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_beak.png', sizingMethod='crop');
 }
-
 #custom_info_window_red div.title{
   background-color: #900;
   color: #FFF;
 }
-#custom_info_window_red p{
-  clear: left;
-} 
 
 

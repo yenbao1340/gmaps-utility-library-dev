@@ -43,7 +43,8 @@ function load() {
 			marker.openExtInfoWindow(
 				"custom_info_window_red",
 				"<div class='title'>Some Title</div>"+
-				"<p>I'm a red custom info window with HTML content and a red title bar.</p>",
+				"<p>I'm a red custom info window with HTML content and a red title bar.</p>"+
+				"<div>asdf<br />qwerty<br />foo<br />bar<br />",
 				{beakOffset: 3}
 			); 
 		});
@@ -59,7 +60,9 @@ function load() {
 		GEvent.addListener(marker2, 'click', function(){ 
 			marker2.openExtInfoWindow(
 				"custom_info_window_bubble",
-				"I'm a bubble.",
+				"<div class='title'>Some Title</div>"+
+				"<p>I'm a red custom info window with HTML content and a red title bar.</p>"+
+				"<div>asdf<br />qwerty<br />foo<br />bar<br />",
 				{beakOffset: 2}
 			); 
 		});
