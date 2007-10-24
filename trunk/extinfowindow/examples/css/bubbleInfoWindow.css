@@ -2,6 +2,9 @@
 #custom_info_window_bubble{
   width: 250px;
 }
+#custom_info_window_bubble_contents{
+  background-color: #FFF;
+}
 #custom_info_window_bubble_tl{
   width: 48px;
   height: 48px;
