@@ -162,7 +162,6 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	if (!force) return;
 	
 	var contentHeight = this.contentDiv.offsetHeight;
-	//alert(contentHeight);
 
   //reposition contents depending on wrapper parts.
   //this is necessary for content that is pulled in via ajax
@@ -192,7 +191,6 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	this.wrapperParts.bl.t = contentHeight + this.wrapperParts.tl.h;
 	this.wrapperParts.b.l = this.wrapperParts.bl.w;
 	this.wrapperParts.b.t = contentHeight + this.wrapperParts.tl.h;
-alert(this.wrapperParts.b.t);
 	this.wrapperParts.b.w = (this.wrapperParts.l.w + this.contentWidth + this.wrapperParts.r.w) - this.wrapperParts.bl.w - this.wrapperParts.br.w;
 	this.wrapperParts.b.h = this.wrapperParts.bl.h;
 	this.wrapperParts.br.l = this.wrapperParts.b.w + this.wrapperParts.bl.w;
