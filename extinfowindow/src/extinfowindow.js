@@ -94,12 +94,24 @@ ExtInfoWindow.prototype.initialize = function(map) {
 	this.container.id = this.infoWindowId;
 	this.container.style.width = this.getStyle_(document.getElementById(this.infoWindowId), "width");
 	
-	this.contentDiv = this.initContents_();
-	this.wrapperDiv = null;
+	this.contentDiv = document.createElement("div");
+	this.contentDiv.id = this.infoWindowId+"_contents";
+	this.contentDiv.innerHTML = this.html;
+	this.contentDiv.style.margin = '0';
+	this.contentDiv.style.padding = '0';
+	this.contentDiv.style.border = '0';
+	this.contentDiv.style.display = 'block';
+	this.contentDiv.style.visibility = 'hidden';
 
-  //Steal mouse down event to keep mouse clicks and mouse click and drag from being passed
-  //down the event stack to the map.  Without this you could click and drag around the map
-  //from inside the extInfoWindow
+	this.map.getContainer().appendChild(this.contentDiv);	
+	this.contentWidth = this.getDimensions_(this.container).width;
+  this.contentDiv.style.width = this.contentWidth+'px';
+	this.contentDiv.style.position = 'absolute';
+	this.contentDiv.style.background = this.getStyle_(this.contentDiv, "background-color") == "transparent" ? "#FFF" : this.getStyle_(this.contentDiv, "background-color");
+	
+	this.wrapperDiv = document.createElement("div");
+	this.container.appendChild(this.wrapperDiv);
+
 	GEvent.bindDom(this.container,"mousedown",this,this.onClick_);
 
 	if( this.ajaxUrl != null ){
@@ -109,7 +121,8 @@ ExtInfoWindow.prototype.initialize = function(map) {
 
 /**
  * Private function to steal mouse click events to prevent it from returning to the map.
- * Without this links in the info window would not work.
+ * Without this links in the ExtInfoWindow would not work, and you could click to zoom or drag 
+ * the map behind it.
  * @param {MouseEvent} e The mouse event caught by this function
  */
 ExtInfoWindow.prototype.onClick_ = function(e){
@@ -157,11 +170,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	
 	this.contentDiv.style.visibility='visible';
 	
-	//create the wrapper for the window
-	if( this.wrapperDiv == null ){
-	  this.wrapperDiv = document.createElement("div");
-	  this.container.appendChild(this.wrapperDiv);
-  }
+
 
 	//Finish configuring wrapper parts that were not set in initialization
 	this.wrapperParts.tl.l = 0;
@@ -379,31 +388,7 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
  * @return {HTMLDivElement} 
  */
 ExtInfoWindow.prototype.initContents_ = function(){
-	var content = document.createElement("div");
-	content.id=this.infoWindowId+"_contents";
-	content.innerHTML = this.html;
-	content.style.margin='0';
-	content.style.padding='0';
-	content.style.border='0';
-	content.style.display='block';
-
-	//make it invisible for now
-	content.style.visibility='hidden';
-
-	//temporarily append the content to the map container
-	this.map.getContainer().appendChild(content);
 	
-	this.contentWidth = this.getDimensions_(this.container).width;
-	var contentHeight = content.offsetHeight;
-	//set the width and height to ensure they
-	//stay that size when drawn again
-  content.style.width=this.contentWidth+'px';
-
-	//set up the actual position relative to your images
-	content.style.position='absolute';
-	content.style.background='#FFF';
-
-	return content;
 };
 
 /**

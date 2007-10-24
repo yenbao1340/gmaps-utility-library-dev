@@ -1,6 +1,10 @@
 /*Partials: ==SKIN header Custom info window */ 
 #custom_info_window_red{
   width: 16em;
+  background: yellow;
+}
+#custom_info_window_red_contents{
+  background-color: #FFF;
 }
 #custom_info_window_red_tl{
   width: 15px;
