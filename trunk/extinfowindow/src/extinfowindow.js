@@ -162,6 +162,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	if (!force) return;
 	
 	var contentHeight = this.contentDiv.offsetHeight;
+	//alert(contentHeight);
 
   //reposition contents depending on wrapper parts.
   //this is necessary for content that is pulled in via ajax
@@ -188,13 +189,14 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	this.wrapperParts.r.t = this.wrapperParts.tr.h;
 	this.wrapperParts.r.h = contentHeight;
 	this.wrapperParts.bl.l = 0;
-	this.wrapperParts.bl.t = contentHeight + this.wrapperParts.bl.h;
-	this.wrapperParts.b.l = this.wrapperParts.br.w;
-	this.wrapperParts.b.t = contentHeight + this.wrapperParts.bl.h;
+	this.wrapperParts.bl.t = contentHeight + this.wrapperParts.tl.h;
+	this.wrapperParts.b.l = this.wrapperParts.bl.w;
+	this.wrapperParts.b.t = contentHeight + this.wrapperParts.tl.h;
+alert(this.wrapperParts.b.t);
 	this.wrapperParts.b.w = (this.wrapperParts.l.w + this.contentWidth + this.wrapperParts.r.w) - this.wrapperParts.bl.w - this.wrapperParts.br.w;
 	this.wrapperParts.b.h = this.wrapperParts.bl.h;
 	this.wrapperParts.br.l = this.wrapperParts.b.w + this.wrapperParts.bl.w;
-	this.wrapperParts.br.t = contentHeight + this.wrapperParts.br.h;
+	this.wrapperParts.br.t = contentHeight + this.wrapperParts.tr.h;
 	this.wrapperParts.close.l = this.wrapperParts.tr.l +this.wrapperParts.tr.w - this.wrapperParts.close.w - this.borderSize;
 	this.wrapperParts.close.t = this.borderSize;
 	this.wrapperParts.beak.l = (this.contentWidth/2) - (this.wrapperParts.beak.w/2);
