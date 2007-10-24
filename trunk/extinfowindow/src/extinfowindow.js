@@ -67,9 +67,9 @@ function ExtInfoWindow(marker, windowId, html, opt_opts) {
 		tempElement.style.visibility="hidden";
 		document.body.appendChild(tempElement);
 		tempElement = document.getElementById(this.infoWindowId+"_"+i);
-		var tempWrapperPart = this.wrapperParts.eval(i);
-		tempWrapperPart.w = this.getStyle_(tempElement,"width") != "0px" ? stripOutUnit(this.getStyle_(tempElement, "width")) : 0;
-		tempWrapperPart.h = this.getStyle_(tempElement, "height") != "0px" ? stripOutUnit(this.getStyle_(tempElement, "height")) : 0;
+		var tempWrapperPart = eval("this.wrapperParts."+i);    
+		tempWrapperPart.w = stripOutUnit(this.getStyle_(tempElement, "width"));
+		tempWrapperPart.h = stripOutUnit(this.getStyle_(tempElement, "height"));
 		document.body.removeChild(tempElement);
 	}
 };
@@ -451,7 +451,11 @@ ExtInfoWindow.prototype.getStyle_ = function(element, style) {
     }
 
     if((value == 'auto') && (style == 'width' || style == 'height') && (this.getStyle_(element, 'display') != 'none')){
-      value = element['offset'+style.capitalize()] + 'px';
+      if( style == "width" ){
+        value = element.offsetWidth;
+      }else{
+        value = element.offsetHeight;
+      }
     }
 
     if (window.opera && ['left', 'top', 'right', 'bottom'].include(style)){
@@ -564,7 +568,12 @@ GMarker.prototype.closeExtInfoWindow = function() {
  * Helper function that removes trailing "px" from argument and returns only the integer value
  * @param {String} stringWithUnit The String that will have it's trailing "px" unit removed
  * @return {Number}
- */
+*/
 function stripOutUnit(stringWithUnit){
-	return stringWithUnit.substring(0, stringWithUnit.length-2) - 0;
+  var testString = stringWithUnit.toString();
+  if(testString.indexOf("px") >= 0){
+    return stringWithUnit.substring(0, stringWithUnit.length-2) - 0;  
+  }else{
+    return testString - 0;
+  }
 };
