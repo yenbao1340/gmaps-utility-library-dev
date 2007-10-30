@@ -36,15 +36,14 @@ function load() {
 		var redIcon1 = new GIcon(G_DEFAULT_ICON);
 		redIcon1.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker1.png";
 		redIcon1.iconAnchor = new GPoint(0, 0);
-		redIcon1.infoWindowAnchor = new GPoint(10, 0 );
+		redIcon1.infoWindowAnchor = new GPoint(0, 0 );
 
 		marker = new GMarker( new GLatLng(43, -110), redIcon1);
 		GEvent.addListener(marker, 'click', function(){ 
 			marker.openExtInfoWindow(
 				"custom_info_window_red",
 				"<div class='title'>Some Title</div>"+
-				"<p>I'm a red custom info window with HTML content and a red title bar.</p>"+
-				"<div>asdf<br />qwerty<br />foo<br />bar<br />",
+				"<p>I'm a red custom info window with HTML content and a red title bar.</p>",
 				{beakOffset: 3}
 			); 
 		});
@@ -56,7 +55,7 @@ function load() {
 		redIcon2.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker2.png";
 		redIcon2.iconAnchor = new GPoint(0, 0);
 		redIcon2.infoWindowAnchor = new GPoint(0, 0 );
-		marker2 = new GMarker( new GLatLng(42, -100), redIcon2);
+		marker2 = new GMarker( new GLatLng(43, -100), redIcon2);
 		GEvent.addListener(marker2, 'click', function(){ 
 			marker2.openExtInfoWindow(
 				"custom_info_window_bubble",
