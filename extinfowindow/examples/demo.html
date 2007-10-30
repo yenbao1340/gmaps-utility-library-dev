@@ -3,11 +3,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<title>Google Maps JavaScript API Example</title>
+<title>ExtInfoWindow Example</title>
 
 <link type="text/css" rel="Stylesheet" media="screen" href="css/redInfoWindow.css"/>
 <link type="text/css" rel="Stylesheet" media="screen" href="css/blueInfoWindow.css"/>
 <link type="text/css" rel="Stylesheet" media="screen" href="css/bubbleInfoWindow.css"/>
+
+<style>
+	#map{
+		width: 500px;
+		height: 400px;
+	}
+	#demo_explanation{
+		background-color: #DDD;
+		clear: left;
+		float: left;
+		font-size: 12px;
+		width: 500px;
+		margin: 2px 0;
+	}
+	#demo_explanation ul{
+		list-style-type: none;
+		padding-left: 5px;
+	}
+	#demo_explanation li img{
+		vertical-align: middle;
+		margin: 3px 0;
+	}
+</style>
 
 <script type="text/javascript" 
 	src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxQGj0PqsCtxKvarsoS-iqLdqZSKfxRdmoPmGl7Y9335WLC36wIGYa6o5Q">
@@ -20,7 +43,7 @@ var map;
 function load() {
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("map"));
-		map.setCenter(new GLatLng(39, -96), 4);
+		map.setCenter(new GLatLng(39, -96), 3);
 		map.addControl(new GLargeMapControl());
 
 		//default google marker with a regular html info window
@@ -42,8 +65,7 @@ function load() {
 		GEvent.addListener(marker, 'click', function(){ 
 			marker.openExtInfoWindow(
 				"custom_info_window_red",
-				"<div class='title'>Some Title</div>"+
-				"<p>I'm a red custom info window with HTML content and a red title bar.</p>",
+				"<p>I'm a red ExtInfoWindow with HTML content.</p>",
 				{beakOffset: 3}
 			); 
 		});
@@ -59,9 +81,7 @@ function load() {
 		GEvent.addListener(marker2, 'click', function(){ 
 			marker2.openExtInfoWindow(
 				"custom_info_window_bubble",
-				"<div class='title'>Some Title</div>"+
-				"<p>I'm a red custom info window with HTML content and a red title bar.</p>"+
-				"<div>asdf<br />qwerty<br />foo<br />bar<br />",
+				"<p>I'm an ExtInfoWindow styled to look like a talking bubble.</p>",
 				{beakOffset: 2}
 			); 
 		});
@@ -76,7 +96,7 @@ function load() {
 		GEvent.addListener(marker3, 'click', function(){ 
 			marker3.openExtInfoWindow(
 				"custom_info_window_red",
-				"I'm a custom info window with Ajax content.",
+				"Loading...",
 				{ajaxUrl: "ajax/ajaxTest.html", beakOffset: 3}
 			); 
 		});
@@ -87,8 +107,25 @@ function load() {
 </script>
 </head>
 <body onload="load()" onunload="GUnload()">
-	
-<div id="map" style="width: 700px; height: 600px; float:left;"></div>
+
+<div id="map"></div>
+<div id="demo_explanation">
+	<h2>Demo Explanation</h2>
+	<ul>
+		<li>
+			<img src="http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker1.png" 
+			/> = ExtInfoWindow with a red theme
+		</li>
+		<li>
+			<img src="http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker2.png" 
+			/> = ExtInfoWindow with a talking bubble theme
+		</li>
+		<li>
+			<img src="http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker3.png" 
+			/> = ExtInfoWindow with a red theme and content pulled from ajax request to "ajax/ajaxTest.html"
+		</li>
+	</ul>
+</div>
 
 </body>
 </html>
