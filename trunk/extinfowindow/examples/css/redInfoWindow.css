@@ -71,3 +71,24 @@
   background-image:none;
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_beak.png', sizingMethod='crop');
 }
+#custom_info_window_red_contents .section1{
+  margin: 0;
+  padding: 0;
+}
+#custom_info_window_red_contents .section2{
+  margin: 0;
+  padding: 0;
+  background-color: #FFDFDF;
+  border-bottom: dotted 1px #900;
+  border-top: dotted 1px #900;
+}
+#custom_info_window_red_contents p{
+  margin: 1px 0;
+  padding: 5px;
+}
+#custom_info_window_red_contents .title{
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFF;
+  background-color: #900;
+}

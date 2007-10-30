@@ -96,8 +96,13 @@ function load() {
 		GEvent.addListener(marker3, 'click', function(){ 
 			marker3.openExtInfoWindow(
 				"custom_info_window_red",
-				"Loading...",
-				{ajaxUrl: "ajax/ajaxTest.html", beakOffset: 3}
+				"<div class='title'>ExtInfoWindow Fun!</div>"+
+				"<div class='section1'><p>See how you can use background colors "+
+				"to match up with the CSS images to create title bars.</p></div>"+
+				"<div class='section2'><p>Also, you can do anything you want "+
+				"within the bounds of CSS</p></div>"+
+				"<div class='section1'><p>another line of text</p></div>",
+				{beakOffset: 3}
 			); 
 		});
 		map.addOverlay(marker3);
@@ -109,23 +114,6 @@ function load() {
 <body onload="load()" onunload="GUnload()">
 
 <div id="map"></div>
-<div id="demo_explanation">
-	<h2>Demo Explanation</h2>
-	<ul>
-		<li>
-			<img src="http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker1.png" 
-			/> = ExtInfoWindow with a red theme
-		</li>
-		<li>
-			<img src="http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker2.png" 
-			/> = ExtInfoWindow with a talking bubble theme
-		</li>
-		<li>
-			<img src="http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker3.png" 
-			/> = ExtInfoWindow with a red theme and content pulled from ajax request to "ajax/ajaxTest.html"
-		</li>
-	</ul>
-</div>
 
 </body>
 </html>
