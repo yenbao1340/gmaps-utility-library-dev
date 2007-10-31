@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ExtInfoWindow V1.0 Reference</title>
+<link rel="stylesheet" type="text/css" href="http://code.google.com/css/dev_docs.css"></link>
+</head>
+<body>
+<h2>
+<a name="ExtInfoWindow"></a>class ExtInfoWindow</h2>
+<p>
+	This class is used to create a custom GInfoWindow that will mimic
+	the behavior of the standard GInfoWindow.  Additionally this class lets you 
+	easily theme your GInfoWindow through CSS id attributes and even pull content
+	from a supplied Ajax url in the constructor, giving the user a more control
+	over every aspect of the GInfoWindow.
+  </p>
+<h3>Constructor</h3>
+<table summary="class ExtInfoWindow - Constructor">
+<tbody><tr>
+<th>Constructor</th>
+<th>Description</th>
+</tr>
+<tr class="odd">
+<td class="code">ExtInfoWindow(<span class="type" title="type:  GMarker">marker</span>, <span class="type" title="type:  String"> windowId</span>, <span class="type" title="type:  HTML"> html</span>, <span class="type" title="type:  ExtInfoWindowOptions"> opt_opts</span>)</td>
+
+<td>
+        Creates a new ExtInfoWindow with content and styling based on the passed parameters.
+</td>
+</tr>
+</tbody></table>
+<h3>Methods</h3>
+<table summary="class MarkerManager - Methods">
+<tbody><tr>
+<th>Methods</th>
+<th>Return Value</th>
+<th>Description</th>
+</tr>
+
+<tr class="odd">
+<td class="code">resize()</td>
+<td class="code"><span class="void">none</span></td>
+
+<td>
+        Recalculate the height of the window
+</td>
+</tr>
+
+<tr class="even">
+<td class="code">repositionMap()</td>
+<td class="code"><span class="void">none</span></td>
+<td>
+        Determines the location of the GInfoWindow's corners
+		in relation to the viewable map region in order to pan
+		the map, if need be, so that the entire GInfoWindow is
+		always displayed.
+</td>
+</tr>
+
+</tbody></table>
+<h3>Events</h3>
+<table summary="class MarkerManager - Events">
+<tbody><tr>
+<th>Events</th>
+<th>Arguments</th>
+<th>Description</th>
+</tr>
+
+<tr class="odd">
+<td class="code"><!--changed--></td>
+<td class="code">
+	<!--<span class="type" title="type:  GBounds">bounds</span>, <span class="type" title="type:  Number"> markerCount</span>-->
+</td>
+<td>
+	<!--This event is fired when markers managed by a manager have been added
+        to or removed from the map. The event handler function should be
+        prepared to accept two arguments. The fist one is the rectangle
+        definining the bounds of the visible grid. The second one carries the
+        number of markers currently shown on the map.-->
+</td>
+</tr>
+</tbody></table>
+<h2>
+<a name="ExtInfoWindowOptions"></a>class ExtInfoWindowOptions</h2>
+
+<p>
+	This class represents optional arguments to the
+	<code><span class="xref"><a href="#ExtInfoWindow">ExtInfoWindow</a></span></code> constructor.
+ 	It has no constructor, but is
+  	instantiated as object literal.
+</p>
+<h3>Properties</h3>
+<table summary="class ExtInfoWindowOptions - Properties">
+<tbody><tr>
+<th>Properties</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr class="odd">
+
+<td class="code">ajaxUrl</td>
+<td class="code">String</td>
+<td>
+	A string of the relative url where the ExtInfoWindow should request HTML data. 
+	NOTE: content returned is assumed to be valid HTML content.
+</td>
+</tr>
+<tr class="even">
+<td class="code">beakOffset</td>
+<td class="code">Number</td>
+<td>
+	The number of pixels a the beak, or pointer end, of the <code>ExtInfoWindow</code> should be
+	moved up vertically.  This is useful when working with an <code>ExtInfoWindow</code> with a border.
+	The default value is <code><span class="nomatch">0</span></code>.	
+</td>
+</tr>
+<tr class="odd">
+<td class="code">paddingX</td>
+<td class="code">Number</td>
+<td>
+	The number, in pixels, that ExtInfoWindow should pad on the left and right sides
+	when positioning itself inside the viewable map region. 
+	The default value is <code><span class="nomatch">0</span></code>.
+</td>
+</tr>
+
+<tr class="even">
+<td class="code">paddingY</td>
+<td class="code">Number</td>
+<td>
+	The number, in pixels, that ExtInfoWindow should pad on the top and bottom sides
+	when positioning itself inside the viewable map region. 
+	The default value is <code><span class="nomatch">0</span></code>.
+</td>
+</tr>
+</tbody></table>
+<h2>
+
+</body>
+</html>
