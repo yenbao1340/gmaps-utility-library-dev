@@ -6,12 +6,13 @@
 <title>ExtInfoWindow Example</title>
 
 <link type="text/css" rel="Stylesheet" media="screen" href="css/redInfoWindow.css"/>
-<link type="text/css" rel="Stylesheet" media="screen" href="css/blueInfoWindow.css"/>
+<link type="text/css" rel="Stylesheet" media="screen" href="css/funkyBox.css"/>
 <link type="text/css" rel="Stylesheet" media="screen" href="css/bubbleInfoWindow.css"/>
+<link type="text/css" rel="Stylesheet" media="screen" href="css/coolBlues.css"/>
 
 <style>
 	#map{
-		width: 500px;
+		width: 700px;
 		height: 400px;
 	}
 	#demo_explanation{
@@ -43,7 +44,7 @@ var map;
 function load() {
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("map"));
-		map.setCenter(new GLatLng(39, -96), 3);
+		map.setCenter(new GLatLng(44, -96), 4);
 		map.addControl(new GLargeMapControl());
 
 		//default google marker with a regular html info window
@@ -59,14 +60,14 @@ function load() {
 		var redIcon1 = new GIcon(G_DEFAULT_ICON);
 		redIcon1.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker1.png";
 		redIcon1.iconAnchor = new GPoint(0, 0);
-		redIcon1.infoWindowAnchor = new GPoint(0, 0 );
+		redIcon1.infoWindowAnchor = new GPoint(3,0);
 
-		marker = new GMarker( new GLatLng(43, -110), redIcon1);
+		marker = new GMarker( new GLatLng(43, -120), redIcon1);
 		GEvent.addListener(marker, 'click', function(){ 
 			marker.openExtInfoWindow(
-				"custom_info_window_red",
-				"<p>I'm a red ExtInfoWindow with HTML content.</p>",
-				{beakOffset: 3}
+				"extInfoWindow_funkyBox",
+				"<p>I'm a funky ExtInfoWindow with HTML content.</p>",
+				{beakOffset: 2}
 			); 
 		});
 		map.addOverlay(marker);
@@ -77,7 +78,7 @@ function load() {
 		redIcon2.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker2.png";
 		redIcon2.iconAnchor = new GPoint(0, 0);
 		redIcon2.infoWindowAnchor = new GPoint(0, 0 );
-		marker2 = new GMarker( new GLatLng(43, -100), redIcon2);
+		marker2 = new GMarker( new GLatLng(43, -110), redIcon2);
 		GEvent.addListener(marker2, 'click', function(){ 
 			marker2.openExtInfoWindow(
 				"custom_info_window_bubble",
@@ -91,8 +92,8 @@ function load() {
 		var redIcon3 = new GIcon(G_DEFAULT_ICON);
 		redIcon3.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker3.png";
 		redIcon3.iconAnchor = new GPoint(0, 0);
-		redIcon3.infoWindowAnchor = new GPoint(10,34);
-		marker3 = new GMarker( new GLatLng(43, -90), redIcon3);
+		redIcon3.infoWindowAnchor = new GPoint(0,0);
+		marker3 = new GMarker( new GLatLng(43, -100), redIcon3);
 		GEvent.addListener(marker3, 'click', function(){ 
 			marker3.openExtInfoWindow(
 				"custom_info_window_red",
@@ -106,6 +107,23 @@ function load() {
 			); 
 		});
 		map.addOverlay(marker3);
+		
+		//marker with ext info window with Ajax contents and red skin
+		var redIcon4 = new GIcon(G_DEFAULT_ICON);
+		redIcon4.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker4.png";
+		redIcon4.iconAnchor = new GPoint(0, 0);
+		redIcon4.infoWindowAnchor = new GPoint(40,34);
+		marker4 = new GMarker( new GLatLng(43, -90), redIcon4);
+		GEvent.addListener(marker4, 'click', function(){ 
+			marker4.openExtInfoWindow(
+				"extInfoWindow_coolBlues",
+				"<div>Coooool! With some clever use of gradients, widths, and the "+
+				"GIcon.infoWindowAnchor position, we can make a cool info window "+
+				"with a beak pointing to the Lat / Lon on the map</div>",
+				{beakOffset: 1}
+			); 
+		});
+		map.addOverlay(marker4);
 
 	}
 }
