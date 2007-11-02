@@ -9,6 +9,7 @@
 <link type="text/css" rel="Stylesheet" media="screen" href="css/funkyBox.css"/>
 <link type="text/css" rel="Stylesheet" media="screen" href="css/bubbleInfoWindow.css"/>
 <link type="text/css" rel="Stylesheet" media="screen" href="css/coolBlues.css"/>
+<link type="text/css" rel="Stylesheet" media="screen" href="css/opacityWindow.css"/>
 
 <style>
 	#map{
@@ -124,6 +125,22 @@ function load() {
 			); 
 		});
 		map.addOverlay(marker4);
+		
+		//marker with ext info window with Ajax contents and red skin
+		var redIcon5 = new GIcon(G_DEFAULT_ICON);
+		redIcon5.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker5.png";
+		redIcon5.iconAnchor = new GPoint(0, 0);
+		redIcon5.infoWindowAnchor = new GPoint(10,10);
+		marker5 = new GMarker( new GLatLng(43, -80), redIcon5);
+		GEvent.addListener(marker5, 'click', function(){ 
+			marker5.openExtInfoWindow(
+				"opacity_window",
+				"<div>~/extinfowinow/]$</div>"+
+				"<div>How about a terminal themed window? Sure, why not.</div>",
+				{beakOffset: 18}
+			); 
+		});
+		map.addOverlay(marker5);
 
 	}
 }

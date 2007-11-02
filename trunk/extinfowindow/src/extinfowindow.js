@@ -97,9 +97,6 @@ ExtInfoWindow.prototype.initialize = function(map) {
 	this.contentDiv = document.createElement("div");
 	this.contentDiv.id = this.infoWindowId+"_contents";
 	this.contentDiv.innerHTML = this.html;
-	this.contentDiv.style.margin = '0';
-	this.contentDiv.style.padding = '0';
-	this.contentDiv.style.border = '0';
 	this.contentDiv.style.display = 'block';
 	this.contentDiv.style.visibility = 'hidden';
 
@@ -107,7 +104,6 @@ ExtInfoWindow.prototype.initialize = function(map) {
 	this.contentWidth = this.getDimensions_(this.container).width;
   this.contentDiv.style.width = this.contentWidth+'px';
 	this.contentDiv.style.position = 'absolute';
-	this.contentDiv.style.background = this.getStyle_(this.contentDiv, "background-color") == "transparent" ? "#FFF" : this.getStyle_(this.contentDiv, "background-color");
 	
 	this.wrapperDiv = document.createElement("div");
 	this.container.appendChild(this.wrapperDiv);
@@ -198,6 +194,10 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	this.wrapperParts.close.l = this.wrapperParts.tr.l +this.wrapperParts.tr.w - this.wrapperParts.close.w - this.borderSize;
 	this.wrapperParts.close.t = this.borderSize;
 	this.wrapperParts.beak.l = (this.contentWidth/2) - (this.wrapperParts.beak.w/2);
+	if( this.wrapperParts.beak.l < 1 ){
+	  //force a round down, otherwise you won't get borders to line up
+	  this.wrapperParts.beak.l = 0;
+	}
 	this.wrapperParts.beak.t = this.wrapperParts.bl.t + this.wrapperParts.bl.h - this.borderSize;
 
 	//create the decoration wrapper DOM objects
@@ -255,9 +255,6 @@ ExtInfoWindow.prototype.redraw = function(force) {
 		+ this.borderSize
 	) + "px";
 	
-	this.container.style.border = '0';
-	this.container.style.margin = '0';
-	this.container.style.padding = '0';
 	this.container.style.display = 'block';
 
 	if(map.ExtInfoWindowInstance != null) {
@@ -321,6 +318,7 @@ ExtInfoWindow.prototype.repositionMap = function(){
 	var panY=0;
 	var paddingX = this.paddingX;
 	var paddingY = this.paddingY;
+	var infoWindowAnchor = this.marker.getIcon().infoWindowAnchor;
 
 	//test top of screen	
 	var windowT = this.wrapperParts.t.el;
@@ -340,13 +338,13 @@ ExtInfoWindow.prototype.repositionMap = function(){
 		}
 	}
 
-	//test right of screen	
-	var offsetRight = Math.round(markerPosition.x + this.marker.getIcon().iconSize.width/2 + this.getDimensions_(this.container).width/2 + this.getDimensions_(windowR).width + this.borderSize + this.paddingX);
+	//test right of screen
+	var offsetRight = Math.round(markerPosition.x + this.marker.getIcon().iconSize.width/2 + this.getDimensions_(this.container).width/2 + this.getDimensions_(windowR).width + this.borderSize + this.paddingX + infoWindowAnchor.x );
 	if(offsetRight > mapNE.x) {
 		panX = -( offsetRight - mapNE.x);
 	}else{
 		//test left of screen
-		var offsetLeft = - (Math.round( (this.getDimensions_(this.container).width/2 - this.marker.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize + this.paddingX) - markerPosition.x);
+		var offsetLeft = - (Math.round( (this.getDimensions_(this.container).width/2 - this.marker.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize + this.paddingX) - markerPosition.x - infoWindowAnchor.x);
 		if( offsetLeft < mapSW.x) {
 			panX = mapSW.x - offsetLeft;
 		}
