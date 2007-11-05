@@ -66,6 +66,7 @@ function load() {
 		marker = new GMarker( new GLatLng(43, -120), redIcon1);
 		GEvent.addListener(marker, 'click', function(){ 
 			marker.openExtInfoWindow(
+				map,
 				"extInfoWindow_funkyBox",
 				"<p>I'm a funky ExtInfoWindow with HTML content.</p>",
 				{beakOffset: 2}
@@ -97,6 +98,7 @@ function load() {
 		marker3 = new GMarker( new GLatLng(43, -100), redIcon3);
 		GEvent.addListener(marker3, 'click', function(){ 
 			marker3.openExtInfoWindow(
+				map, 
 				"custom_info_window_red",
 				"<div class='title'>ExtInfoWindow Fun!</div>"+
 				"<div class='section1'><p>See how you can use background colors "+
@@ -117,6 +119,7 @@ function load() {
 		marker4 = new GMarker( new GLatLng(43, -90), redIcon4);
 		GEvent.addListener(marker4, 'click', function(){ 
 			marker4.openExtInfoWindow(
+				map,
 				"extInfoWindow_coolBlues",
 				"<div>Coooool! With some clever use of gradients, widths, and the "+
 				"GIcon.infoWindowAnchor position, we can make a cool info window "+
@@ -134,6 +137,7 @@ function load() {
 		marker5 = new GMarker( new GLatLng(43, -80), redIcon5);
 		GEvent.addListener(marker5, 'click', function(){ 
 			marker5.openExtInfoWindow(
+				map,
 				"opacity_window",
 				"<div>~/extinfowinow/]$</div>"+
 				"<div>How about a terminal themed window? Sure, why not.</div>",

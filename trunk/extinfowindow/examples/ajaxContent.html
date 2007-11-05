@@ -52,6 +52,7 @@ function load() {
 		marker = new GMarker( new GLatLng(36, -100), redIcon1);
 		GEvent.addListener(marker, 'click', function(){ 
 			marker.openExtInfoWindow(
+				map,
 				"custom_info_window_red",
 				"<div>Loading...</div>",
 				{
