@@ -226,9 +226,10 @@ ExtInfoWindow.prototype.redraw = function(force) {
 
 	//add event handlers like the close box
 	var currentMarker = this.marker;
+	var thisMap = this.map;
 	GEvent.addDomListener(this.wrapperParts.close.el, "click", 
 	  function() {
-		  currentMarker.closeExtInfoWindow();
+		  currentMarker.closeExtInfoWindow(thisMap);
 	  }
 	);
 
@@ -549,7 +550,7 @@ GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
 /**
  * Remove the ExtInfoWindow instance 
  */
-GMarker.prototype.closeExtInfoWindow = function() {
+GMarker.prototype.closeExtInfoWindow = function(map) {
 	if(map.ExtInfoWindowInstance != null) {
 		map.ExtInfoWindowInstance.remove();
 		map.ExtInfoWindowInstance = null;
