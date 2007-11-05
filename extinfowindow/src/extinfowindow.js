@@ -257,9 +257,9 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	
 	this.container.style.display = 'block';
 
-	if(map.ExtInfoWindowInstance != null) {
+	if(this.map.ExtInfoWindowInstance != null) {
 		//this.resize();
-		this.repositionMap(this.contentWidth, contentHeight);
+		this.repositionMap();
 	}
 };
 
@@ -364,13 +364,15 @@ ExtInfoWindow.prototype.repositionMap = function(){
 ExtInfoWindow.prototype.ajaxRequest_ = function(url){
 	var request = GXmlHttp.create();
 	request.open("GET", url, true);
+	var thismap = this.map;
 	request.onreadystatechange = function(){
 		if (request.readyState == 4) {
 			result = request.responseText;
-			var infoWindow = document.getElementById(map.ExtInfoWindowInstance.infoWindowId+"_contents");
+			var infoWindow = document.getElementById(thismap.ExtInfoWindowInstance.infoWindowId+"_contents");
 			try{
 				infoWindow.innerHTML = result;
-				map.ExtInfoWindowInstance.resize();
+				thismap.ExtInfoWindowInstance.resize();
+      	GEvent.trigger(thismap, "extinfowindowupdate");
 			}catch(err){
 				//An error will occur here if the ExtInfoWindow is closed after the ajax call was kicked off
 				//and before the contents could be updated.  For now just throw it away.
@@ -378,15 +380,6 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
 		}
 	}
 	request.send(null);
-	//GEvent.trigger(this, "ajaxcomplete");
-};
-
-/**
- * Private function that intitializes the contents region of the ExtInfoWindow
- * @return {HTMLDivElement} 
- */
-ExtInfoWindow.prototype.initContents_ = function(){
-	
 };
 
 /**
@@ -499,6 +492,7 @@ GMap.prototype.InfoWindowListener = null;
  * ExtInfoWindow ever opened, add event listeners to the map to close the ExtInfoWindow on 
  * zoom and click, to mimic the default GInfoWindow behavior.
  *
+ * @param {GMap} map The GMap2 object where the ExtInfoWindow will open
  * @param {String} cssId The id we will use to reference the info window
  * @param {String} html The HTML contents
  * @param {Object} opt_opts A contianer for optional arguments:
@@ -511,7 +505,7 @@ GMap.prototype.InfoWindowListener = null;
  *                    This is used to make sure the beak lines up correcting if the 
  *                    info window styling containers a border.
  */
-GMarker.prototype.openExtInfoWindow = function(cssId, html, opt_opts) {
+GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
 	map.closeInfoWindow();
 	if(map.ExtInfoWindowInstance != null) {
 		map.ExtInfoWindowInstance.remove();

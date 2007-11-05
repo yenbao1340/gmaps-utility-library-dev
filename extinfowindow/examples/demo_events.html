@@ -15,9 +15,9 @@
     <script type="text/javascript">
 		function load() {
 		  if (GBrowserIsCompatible()) {
-			map = new GMap2(document.getElementById("map"));
-			map.setCenter(new GLatLng(39, -96), 4);
-			map.addControl(new GLargeMapControl());
+			map2 = new GMap2(document.getElementById("map"));
+			map2.setCenter(new GLatLng(39, -96), 4);
+			map2.addControl(new GLargeMapControl());
 			
 			//default google marker with a regular html info window
 			defaultMarker = new GMarker( new GLatLng(35, -103));
@@ -27,7 +27,7 @@
 							"I'm a default Google info window with HTML content."
 					); 
 				} );
-			map.addOverlay(defaultMarker);
+			map2.addOverlay(defaultMarker);
 
 			
 			//marker with ext info window with a red skin
@@ -40,13 +40,19 @@
 			GEvent.addListener(marker, 'click', 
 				function(){ 
 					marker.openExtInfoWindow(
+							map2,
 							"custom_info_window_red",
 							"<div class='title'>Some Title</div>"+
 							"<p>I'm a red custom info window with HTML content and a red title bar.</p>",
-							{beakOffset: 3}
+							{beakOffset: 3, ajaxUrl: 'ajax/ajaxTabs.html'}
 					); 
 				} );
-			map.addOverlay(marker);
+			GEvent.addListener(map2, 'extinfowindowupdate',
+				function(){
+					var contentToChange = document.getElementById("custom_info_window_red_contents");
+					console.log(contentToChange.innerHTML	);
+			});
+			map2.addOverlay(marker);
 			
 		  }
 		}
