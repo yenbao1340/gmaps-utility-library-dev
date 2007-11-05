@@ -1,29 +1,35 @@
 #custom_info_window_red{
-  width: 400px;
+  width: 250px;
+  background-color: #FFF;
 }
 #custom_info_window_red_contents{
   background-color: #FFF;
 }
 #custom_info_window_red_tl{
   width: 16px;
-  height: 16px;
-  background: url('../images/corners/red_tl.png') top left no-repeat transparent;
+  height: 50px;
+  background: url('../images/corners/red_tab_tl.png') top left no-repeat transparent;
 }
 * html #custom_info_window_red_tl{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tl.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tab_tl.png', sizingMethod='crop');
 }
 #custom_info_window_red_t{
-  background: url('../images/corners/red_t.png') top left repeat-x transparent;
+  background: url('../images/corners/red_tab_t.png') top left repeat-x transparent;
+}
+
+* html #custom_info_window_red_t{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tab_t.png', sizingMethod='crop');
 }
 #custom_info_window_red_tr{
   width: 16px;
-  height: 16px;
-  background: url('../images/corners/red_tr.png') top left no-repeat transparent;
+  height: 50px;
+  background: url('../images/corners/red_tab_tr.png') top left no-repeat transparent;
 }
 * html #custom_info_window_red_tr{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tr.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tab_tr.png', sizingMethod='crop');
 }
 #custom_info_window_red_l{
   width: 3px;
@@ -96,12 +102,40 @@
 }
 
 /* styles for tabs part */
+.tabs_header{
+  position: absolute;
+  top: -29px;
+  left: 16px;
+}
 .tab{
-  background-color: yellow;
+  background: url('../images/corners/red_tab.png') top left no-repeat transparent;
   font-size: 11px;
   font-weight: bold;
   cursor: pointer;
-  padding: 7px 9px 3px 9px;
+  padding: 7px 18px 3px 16px;
   margin-right: 1px;
   display: inline;
+  width: 100px;
 }
+* html .tab{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tab.png', sizingMethod='crop');
+}
+.tab_contents{
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 13px;
+}
+#tab0_content{
+  position: relative; 
+  top: 0;
+  left: 0;
+}
+#tab1_content{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
