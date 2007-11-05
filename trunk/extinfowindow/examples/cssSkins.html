@@ -83,6 +83,7 @@ function load() {
 		marker2 = new GMarker( new GLatLng(43, -110), redIcon2);
 		GEvent.addListener(marker2, 'click', function(){ 
 			marker2.openExtInfoWindow(
+				map,
 				"custom_info_window_bubble",
 				"<p>I'm an ExtInfoWindow styled to look like a talking bubble.</p>",
 				{beakOffset: 2}
