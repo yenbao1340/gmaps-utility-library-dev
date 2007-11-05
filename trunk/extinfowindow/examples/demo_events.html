@@ -47,7 +47,6 @@
 							}
 							tabs[i].setAttribute("name", i.toString());
 							GEvent.addDomListener(tabs[i],"click",function(e){
-								alert(e);
 								eventElement = e.currentTarget;
 								var tabIndex = eventElement.getAttribute("name");
 								for(tabContentIndex=0; tabContentIndex < tabs.length; tabContentIndex++){
