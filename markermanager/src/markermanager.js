@@ -97,17 +97,10 @@ function MarkerManager(map, opt_opts) {
   };
   me.addOverlay_ = function(marker) {
     if (!marker.isInfoWindowOpened) {
+      marker.isInfoWindowOpened = false;
       map.addOverlay(marker);
       me.shownMarkers_++;
     }
-    marker.isInfoWindowOpened = false;
-
-    GEvent.addListener(marker, "infowindowopen", function() {
-      marker.isInfoWindowOpened = true;
-    });
-    GEvent.addListener(marker, "infowindowclose", function() {
-      marker.isInfoWindowOpened = false;
-    });
   };
 
   me.resetManager_();
@@ -184,6 +177,15 @@ MarkerManager.prototype.addMarkerBatch_ = function(marker, minZoom, maxZoom) {
   if (this.trackMarkers_) {
     GEvent.bind(marker, "changed", this, this.onMarkerMoved_);
   }
+
+  GEvent.addListener(marker, "infowindowopen", function() {
+    marker.isInfoWindowOpened = true;
+  });
+
+  GEvent.addListener(marker, "infowindowclose", function() {
+    marker.isInfoWindowOpened = false;
+  });
+
   var gridPoint = this.getTilePoint_(mPoint, maxZoom, GSize.ZERO);
 
   for (var zoom = maxZoom; zoom >= minZoom; zoom--) {
@@ -716,4 +718,3 @@ MarkerManager.prototype.removeFromArray = function(array, value, opt_notype) {
   }
   return shift;
 };
-
