@@ -78,6 +78,7 @@ ExtMapTypeControl.prototype.initialize = function(map) {
     me.trafficInfo.hidden = true;
     // We have to do this so that we can sense if traffic is in view
     GEvent.addListener(me.trafficInfo, "changed", function(hasTrafficInView) {
+      GLog.write(hasTrafficInView);
       if (hasTrafficInView) {
         trafficDiv.style.visibility = 'visible';
       } else {
