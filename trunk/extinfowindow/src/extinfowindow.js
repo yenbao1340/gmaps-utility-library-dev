@@ -291,6 +291,8 @@ ExtInfoWindow.prototype.resize = function(){
 
 	var newWindowHeight = this.wrapperParts.t.domElement.offsetHeight + this.wrapperParts.l.domElement.offsetHeight + this.wrapperParts.b.domElement.offsetHeight;
 	var newWindowPosTop = this.wrapperParts.t.domElement.offsetTop;
+	
+	this.repositionMap();
 };
 
 /**
@@ -346,7 +348,7 @@ ExtInfoWindow.prototype.repositionMap = function(){
 		}
 	}
 
-	if(panX!=0 || panY!=0 && map.ExtInfoWindowInstance != null ) {
+	if(panX!=0 || panY!=0 && this.map.ExtInfoWindowInstance != null ) {
 		this.map.panBy(new GSize(panX,panY));
 	}
 };
