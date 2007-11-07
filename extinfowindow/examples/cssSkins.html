@@ -116,16 +116,15 @@ function load() {
 		var redIcon4 = new GIcon(G_DEFAULT_ICON);
 		redIcon4.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker4.png";
 		redIcon4.iconAnchor = new GPoint(0, 0);
-		redIcon4.infoWindowAnchor = new GPoint(40,34);
+		redIcon4.infoWindowAnchor = new GPoint(0,0);
 		marker4 = new GMarker( new GLatLng(43, -90), redIcon4);
 		GEvent.addListener(marker4, 'click', function(){ 
 			marker4.openExtInfoWindow(
 				map,
-				"extInfoWindow_coolBlues",
-				"<div>Coooool! With some clever use of gradients, widths, and the "+
-				"GIcon.infoWindowAnchor position, we can make a cool info window "+
-				"with a beak pointing to the Lat / Lon on the map</div>",
-				{beakOffset: 1}
+				"opacity_window",
+				"<div>~/extinfowinow/]$</div>"+
+				"<div>How about a terminal theme window? Sure, why not.</div>",
+				{beakOffset: 18}
 			); 
 		});
 		map.addOverlay(marker4);
@@ -134,15 +133,16 @@ function load() {
 		var redIcon5 = new GIcon(G_DEFAULT_ICON);
 		redIcon5.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker5.png";
 		redIcon5.iconAnchor = new GPoint(0, 0);
-		redIcon5.infoWindowAnchor = new GPoint(10,10);
+		redIcon5.infoWindowAnchor = new GPoint(40,34);
 		marker5 = new GMarker( new GLatLng(43, -80), redIcon5);
 		GEvent.addListener(marker5, 'click', function(){ 
 			marker5.openExtInfoWindow(
 				map,
-				"opacity_window",
-				"<div>~/extinfowinow/]$</div>"+
-				"<div>How about a terminal themed window? Sure, why not.</div>",
-				{beakOffset: 18}
+				"extInfoWindow_coolBlues",
+				"<div>With some clever use of gradients, widths, and the "+
+				"GIcon.infoWindowAnchor position, we can make a cool info window "+
+				"with a beak pointing to the Lat / Lon on the map</div>",
+				{beakOffset: 1}
 			); 
 		});
 		map.addOverlay(marker5);
