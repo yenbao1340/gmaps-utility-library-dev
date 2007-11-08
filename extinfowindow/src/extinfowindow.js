@@ -162,6 +162,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	if (!force) return;
 	
 	var contentHeight = this.contentDiv.offsetHeight;
+	this.contentDiv.style.height = contentHeight+"px";
 
   //reposition contents depending on wrapper parts.
   //this is necessary for content that is pulled in via ajax
@@ -265,8 +266,11 @@ ExtInfoWindow.prototype.redraw = function(force) {
  * wrapping decorator elements accordingly.
  */
 ExtInfoWindow.prototype.resize = function(){
-	//get the new content's height
+  
+	this.contentDiv.style.height = "auto";
 	var contentHeight = this.contentDiv.offsetHeight;
+	this.contentDiv.style.height = contentHeight + "px";
+	
 	var contentWidth = this.contentDiv.offsetWidth;
 	var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
 
@@ -363,6 +367,7 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
 	var request = GXmlHttp.create();
 	request.open("GET", url, true);
 	var thismap = this.map;
+	var thisContentDiv = this.contentDiv;
 	request.onreadystatechange = function(){
 		if (request.readyState == 4) {
 			result = request.responseText;
