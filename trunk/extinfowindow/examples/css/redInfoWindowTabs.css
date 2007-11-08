@@ -63,6 +63,7 @@
 #custom_info_window_red_close{
   width: 21px;
   height: 21px;
+  margin-top: 32px;
   background: url('../images/corners/red_close.png') top left no-repeat transparent;
   cursor: pointer;
 }
