@@ -95,7 +95,7 @@ function load() {
 		var redIcon3 = new GIcon(G_DEFAULT_ICON);
 		redIcon3.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker3.png";
 		redIcon3.iconAnchor = new GPoint(0, 0);
-		redIcon3.infoWindowAnchor = new GPoint(0,0);
+		redIcon3.infoWindowAnchor = new GPoint(6,0);
 		marker3 = new GMarker( new GLatLng(43, -100), redIcon3);
 		GEvent.addListener(marker3, 'click', function(){ 
 			marker3.openExtInfoWindow(
@@ -105,8 +105,8 @@ function load() {
 				"<div class='section1'><p>See how you can use background colors "+
 				"to match up with the CSS images to create title bars.</p></div>"+
 				"<div class='section2'><p>Also, you can do anything you want "+
-				"within the bounds of CSS</p></div>"+
-				"<div class='section1'><p>another line of text</p></div>",
+				"within the bounds of CSS.</p></div>"+
+				"<div class='section1'><p>Including the striped row look you see here.</p></div>",
 				{beakOffset: 3}
 			); 
 		});

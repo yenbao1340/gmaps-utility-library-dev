@@ -73,6 +73,9 @@ function ExtInfoWindow(marker, windowId, html, opt_opts) {
 		tempWrapperPart.h = parseInt(this.getStyle_(tempElement, "height"));
 		document.body.removeChild(tempElement);
 	}
+	
+	this.container = null;
+	this.map = null;
 };
 
 //use the GOverlay class
@@ -87,11 +90,10 @@ ExtInfoWindow.prototype = new GOverlay();
  */
 ExtInfoWindow.prototype.initialize = function(map) {
 	this.map = map;
-	var container = document.createElement("div");
-	container.style.position="relative";
-	container.style.display="none";
-	this.map.getPane(G_MAP_FLOAT_PANE).appendChild(container);
-	this.container = container;
+	this.container = document.createElement("div");
+	this.container.style.position="relative";
+	this.container.style.display="none";
+	this.map.getPane(G_MAP_FLOAT_PANE).appendChild(this.container);
 	this.container.id = this.infoWindowId;
 	this.container.style.width = this.getStyle_(document.getElementById(this.infoWindowId), "width");
 	
@@ -161,6 +163,7 @@ ExtInfoWindow.prototype.copy = function() {
 ExtInfoWindow.prototype.redraw = function(force) {
 	if (!force) return;
 	
+	//set the content section's height, needed so  browser font resizing does not affect the window's dimensions
 	var contentHeight = this.contentDiv.offsetHeight;
 	this.contentDiv.style.height = contentHeight+"px";
 
@@ -168,11 +171,8 @@ ExtInfoWindow.prototype.redraw = function(force) {
   //this is necessary for content that is pulled in via ajax
 	this.contentDiv.style.left=this.wrapperParts.l.w+'px';
 	this.contentDiv.style.top=this.wrapperParts.tl.h+'px';
-	
 	this.contentDiv.style.visibility='visible';
 	
-
-
 	//Finish configuring wrapper parts that were not set in initialization
 	this.wrapperParts.tl.t=0;
 	this.wrapperParts.tl.l=0;
@@ -201,7 +201,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	//append the styled info window to the container
 	for (i in this.wrapperParts) {
   	if( i == "close" ){
-			//first append the content so the close button is layered above
+			//first append the content so the close button is layered above it
 			this.wrapperDiv.appendChild(this.contentDiv);
 		}
 	  var wrapperPartsDiv = null;
@@ -217,11 +217,10 @@ ExtInfoWindow.prototype.redraw = function(force) {
 		wrapperPartsDiv.style.height= this.wrapperParts[i].h+"px";
 		wrapperPartsDiv.style.top=this.wrapperParts[i].t+'px';
 		wrapperPartsDiv.style.left=this.wrapperParts[i].l+'px';
-
 		this.wrapperParts[i].domElement = wrapperPartsDiv;
 	}
 
-	//add event handlers like the close box
+	//add event handler for the close box
 	var currentMarker = this.marker;
 	var thisMap = this.map;
 	GEvent.addDomListener(this.wrapperParts.close.domElement, "click", 
@@ -230,10 +229,8 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	  }
 	);
 
-	//get the X,Y pixel location of the marker
+  //position the container on the map, over the marker
 	var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
-
-	//position the container div for the window
 	this.container.style.position='absolute';
 	var markerIcon = this.marker.getIcon();
 
@@ -256,7 +253,6 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	this.container.style.display = 'block';
 
 	if(this.map.ExtInfoWindowInstance != null) {
-		//this.resize();
 		this.repositionMap();
 	}
 };
@@ -266,26 +262,23 @@ ExtInfoWindow.prototype.redraw = function(force) {
  * wrapping decorator elements accordingly.
  */
 ExtInfoWindow.prototype.resize = function(){
-  
+  //set height so font resizing in the browser does not make visual defects
 	this.contentDiv.style.height = "auto";
 	var contentHeight = this.contentDiv.offsetHeight;
 	this.contentDiv.style.height = contentHeight + "px";
 	
 	var contentWidth = this.contentDiv.offsetWidth;
 	var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
-
 	var oldWindowHeight = this.wrapperParts.t.domElement.offsetHeight + this.wrapperParts.l.domElement.offsetHeight + this.wrapperParts.b.domElement.offsetHeight;
 	var oldWindowPosTop = this.wrapperParts.t.domElement.offsetTop;
 	
+	//resize info window to look correct for new height
 	this.wrapperParts.l.domElement.style.height = contentHeight + "px";
 	this.wrapperParts.r.domElement.style.height = contentHeight + "px";
-
-	//shrink down info window to look correct for new height
 	var newPosTop = this.wrapperParts.b.domElement.offsetTop - contentHeight;
 	this.wrapperParts.l.domElement.style.top = newPosTop + "px";
 	this.wrapperParts.r.domElement.style.top = newPosTop + "px";
 	this.contentDiv.style.top = newPosTop + "px";
-
 	windowTHeight = parseInt(this.wrapperParts.t.domElement.style.height);
 	newPosTop -= windowTHeight;
 	this.wrapperParts.close.domElement.style.top = newPosTop + this.borderSize + "px";
@@ -293,9 +286,6 @@ ExtInfoWindow.prototype.resize = function(){
 	this.wrapperParts.t.domElement.style.top = newPosTop + "px";
 	this.wrapperParts.tr.domElement.style.top = newPosTop + "px";
 
-	var newWindowHeight = this.wrapperParts.t.domElement.offsetHeight + this.wrapperParts.l.domElement.offsetHeight + this.wrapperParts.b.domElement.offsetHeight;
-	var newWindowPosTop = this.wrapperParts.t.domElement.offsetTop;
-	
 	this.repositionMap();
 };
 
@@ -364,25 +354,22 @@ ExtInfoWindow.prototype.repositionMap = function(){
  * @param {String} url The Url of where to make the ajax request on the server
  */
 ExtInfoWindow.prototype.ajaxRequest_ = function(url){
-	var request = GXmlHttp.create();
-	request.open("GET", url, true);
-	var thismap = this.map;
-	var thisContentDiv = this.contentDiv;
-	request.onreadystatechange = function(){
-		if (request.readyState == 4) {
-			result = request.responseText;
-			var infoWindow = document.getElementById(thismap.ExtInfoWindowInstance.infoWindowId+"_contents");
-			try{
-				infoWindow.innerHTML = result;
-				thismap.ExtInfoWindowInstance.resize();
-      	GEvent.trigger(thismap, "extinfowindowupdate");
-			}catch(err){
-				//An error will occur here if the ExtInfoWindow is closed after the ajax call was kicked off
-				//and before the contents could be updated.  For now just throw it away.
-			}
-		}
-	}
-	request.send(null);
+   var thisMap = this.map;
+	GDownloadUrl(url, function(response, status){
+	  var infoWindow = document.getElementById(thisMap.ExtInfoWindowInstance.infoWindowId+"_contents");
+  	try{
+  	  if( response == null || status == -1 ){
+  		  infoWindow.innerHTML = "<span class='error'>ERROR: The Ajax request failed to get HTML content from '"+url+"'</span>";
+		  }else{
+		    infoWindow.innerHTML = response;
+		  }
+  		thisMap.ExtInfoWindowInstance.resize();
+    	GEvent.trigger(thisMap, "extinfowindowupdate");
+  	}catch(err){
+  		//An error will occur here if the ExtInfoWindow is closed after the ajax call was kicked off
+  		//and before the contents could be updated.  For now just throw it away.
+  	}
+	})
 };
 
 /**
@@ -393,25 +380,26 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
  * @return {Object} Object with keys: width, height
  */
 ExtInfoWindow.prototype.getDimensions_ = function(element) {
-    var display = this.getStyle_(element, 'display');
-    if (display != 'none' && display != null) // Safari bug
-      return {width: element.offsetWidth, height: element.offsetHeight};
+  var display = this.getStyle_(element, 'display');
+  if (display != 'none' && display != null){ // Safari bug
+    return {width: element.offsetWidth, height: element.offsetHeight};
+  }
 
-    // All *Width and *Height properties give 0 on elements with display none,
-    // so enable the element temporarily
-    var els = element.style;
-    var originalVisibility = els.visibility;
-    var originalPosition = els.position;
-    var originalDisplay = els.display;
-    els.visibility = 'hidden';
-    els.position = 'absolute';
-    els.display = 'block';
-    var originalWidth = element.clientWidth;
-    var originalHeight = element.clientHeight;
-    els.display = originalDisplay;
-    els.position = originalPosition;
-    els.visibility = originalVisibility;
-    return {width: originalWidth, height: originalHeight};
+  // All *Width and *Height properties give 0 on elements with display none,
+  // so enable the element temporarily
+  var els = element.style;
+  var originalVisibility = els.visibility;
+  var originalPosition = els.position;
+  var originalDisplay = els.display;
+  els.visibility = 'hidden';
+  els.position = 'absolute';
+  els.display = 'block';
+  var originalWidth = element.clientWidth;
+  var originalHeight = element.clientHeight;
+  els.display = originalDisplay;
+  els.position = originalPosition;
+  els.visibility = originalVisibility;
+  return {width: originalWidth, height: originalHeight};
 };
 
 /**
@@ -453,16 +441,16 @@ ExtInfoWindow.prototype.getStyle_ = function(element, style) {
  * @return {String}
  */
 ExtInfoWindow.prototype.camelize_ = function(element) {
-    var parts = element.split('-'), len = parts.length;
-    if (len == 1) return parts[0];
-    var camelized = element.charAt(0) == '-'
-      ? parts[0].charAt(0).toUpperCase() + parts[0].substring(1)
-      : parts[0];
+  var parts = element.split('-'), len = parts.length;
+  if (len == 1) return parts[0];
+  var camelized = element.charAt(0) == '-'
+    ? parts[0].charAt(0).toUpperCase() + parts[0].substring(1)
+    : parts[0];
 
-    for (var i = 1; i < len; i++){
-      camelized += parts[i].charAt(0).toUpperCase() + parts[i].substring(1);
-    }
-    return camelized;
+  for (var i = 1; i < len; i++){
+    camelized += parts[i].charAt(0).toUpperCase() + parts[i].substring(1);
+  }
+  return camelized;
 };
 
 GMap.prototype.ExtInfoWindowInstance = null;
@@ -496,12 +484,11 @@ GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
 	}
 	if(map.ExtInfoWindowInstance == null) {
 		map.ExtInfoWindowInstance = new ExtInfoWindow(
-					this,
-					cssId,
-					html,
-					opt_opts
+		  this,
+  		cssId,
+  		html,
+  		opt_opts
 		);
-
 		if( map.ClickListener == null){
 		  //listen for map click, close ExtInfoWindow if open
 			map.ClickListener = GEvent.addListener(map, "click",
