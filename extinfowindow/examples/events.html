@@ -58,8 +58,8 @@
         GLog.write("Tracking Events: extinfowindowopen, extinfowindowclose, extinfowindowbeforeclose, and extinfowindowupdate");
         GEvent.addListener(map2, 'extinfowindowupdate',function(){GLog.write("extinfowindowupdate found");});
         GEvent.addListener(map2, 'extinfowindowopen',function(){GLog.write("extinfowindowopen found");});
-        GEvent.addListener(map2, 'extinfowindowbeforeclose',function(){GLog.write("infowindowbeforeclose found");});
-        GEvent.addListener(map2, 'extinfowindowclose',function(){ GLog.write("infowindowclose found"); });
+        GEvent.addListener(map2, 'extinfowindowbeforeclose',function(){GLog.write("extinfowindowbeforeclose found");});
+        GEvent.addListener(map2, 'extinfowindowclose',function(){ GLog.write("extinfowindowclose found"); });
       }
     }
   </script>
