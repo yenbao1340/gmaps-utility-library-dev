@@ -60,53 +60,9 @@
             ); 
           }
         );
-        GEvent.addListener(map2, 'extinfowindowupdate',function(){
-          /**
-           * Anonymous function to parse through the HTML pulled back from the 
-           * ExtInfoWindow's Ajax request.
-           */
-          var windowContent = document.getElementById("custom_info_window_red_contents");
-          
-          //grab the DOM elements that will become the tabs
-          var tabs = new Array(document.getElementById("tab0"),document.getElementById("tab1"));
-          if( tabs.length > 0 ){
-            
-            //intialize each tab's content section. Show the first tab's content, and hide the others
-            var tabContentsArray = new Array(tabs.length);
-            for( i=0; i < tabs.length; i++){
-              tabContentsArray[i] = document.getElementById("tab"+i+"_content");
-              if( i > 0){
-                hide(tabContentsArray[i]);
-              }
-              tabs[i].setAttribute("name", i.toString());
-              
-              //Add event listener for mouse clicks on each tab
-              GEvent.addDomListener(tabs[i],"click",function(e){
-                /**
-                 * Anonymous function to handle the clicked tab
-                 * @param {Object} e The DOM element that was clicked
-                 */
-                 
-                //Determine what tab was clicked.
-                eventElement = e.currentTarget;
-                var tabIndex = eventElement.getAttribute("name");
-                
-                //Loop through the tab content DOM elements, showing the contents 
-                //associated to the clicked tab, and hiding the rest
-                for(tabContentIndex=0; tabContentIndex < tabs.length; tabContentIndex++){
-                  if( tabContentIndex == tabIndex ){
-                    show(tabContentsArray[tabContentIndex]);
-                  }else{
-                    hide(tabContentsArray[tabContentIndex]);
-                  }
-                }
-                
-                //resize the info window in case the new tab's contents is taller
-                //or shorter than the previous contents
-                map2.ExtInfoWindowInstance.resize();
-              });
-            }
-          }
+        GEvent.addDomListener(map2, 'extinfowindowupdate',function(){
+          alert("foooo");
+         
         });
         map2.addOverlay(marker);
       }

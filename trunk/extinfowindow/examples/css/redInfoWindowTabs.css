@@ -20,7 +20,7 @@
 
 * html #custom_info_window_red_t{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tab_t.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tab_t.png', sizingMethod='scale');
 }
 #custom_info_window_red_tr{
   width: 16px;
@@ -115,12 +115,12 @@
   cursor: pointer;
   padding: 7px 18px 3px 16px;
   margin-right: 1px;
-  display: inline;
   width: 100px;
+  height: 16px;
 }
 * html .tab{
-  background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tab.png', sizingMethod='crop');
+  background: none #FFF;
+  border: 3px solid #900;
 }
 .tab_contents{
   position: relative;
@@ -137,7 +137,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  display:none;
+  display:block;
 }
 
 

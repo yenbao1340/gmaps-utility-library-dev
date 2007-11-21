@@ -76,6 +76,7 @@ function ExtInfoWindow(marker, windowId, html, opt_opts) {
 	
 	this.container = null;
 	this.map = null;
+	this.initDraw = false;
 };
 
 //use the GOverlay class
@@ -112,12 +113,11 @@ ExtInfoWindow.prototype.initialize = function(map) {
 	this.container.appendChild(this.wrapperDiv);
 
 	GEvent.bindDom(this.container,"mousedown",this,this.onClick_);
-
+  
+	GEvent.trigger(this.map, "extinfowindowopen");
 	if( this.ajaxUrl != null ){
 		this.ajaxRequest_(this.ajaxUrl);
 	}
-	
-	GEvent.trigger(this.map, "extinfowindowopen");
 };
 
 /**
@@ -253,6 +253,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	this.container.style.display = 'block';
 
 	if(this.map.ExtInfoWindowInstance != null) {
+	  this.initDraw = true;
 		this.repositionMap();
 	}
 };
@@ -262,6 +263,15 @@ ExtInfoWindow.prototype.redraw = function(force) {
  * wrapping decorator elements accordingly.
  */
 ExtInfoWindow.prototype.resize = function(){
+  if( !this.initDraw ){
+    //this seems to be a problem with IE6 where it can get to the resize function
+    //from being called in ajaxRequest_ which results in trying evaluate some
+    //of the domElements in this.wrapperParts before they have been initially set
+    //up. For a fix, a timeout will be set to give IE6 some more time to finish
+    //initializing the info window before doing a resize.
+    var thisResize = this.resize;
+    var resizeTimeout = setTimeout(function(){ thisResize(); }, 1000);
+  }
   //set height so font resizing in the browser does not make visual defects
 	this.contentDiv.style.height = "auto";
 	var contentHeight = this.contentDiv.offsetHeight;
@@ -269,7 +279,8 @@ ExtInfoWindow.prototype.resize = function(){
 	
 	var contentWidth = this.contentDiv.offsetWidth;
 	var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
-	var oldWindowHeight = this.wrapperParts.t.domElement.offsetHeight + this.wrapperParts.l.domElement.offsetHeight + this.wrapperParts.b.domElement.offsetHeight;
+
+	var oldWindowHeight = this.wrapperParts.t.domElement.offsetHeight + this.wrapperParts.l.domElement.offsetHeight + this.wrapperParts.b.domElement.offsetHeight;	
 	var oldWindowPosTop = this.wrapperParts.t.domElement.offsetTop;
 	
 	//resize info window to look correct for new height
@@ -357,7 +368,7 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
    var thisMap = this.map;
 	GDownloadUrl(url, function(response, status){
 	  var infoWindow = document.getElementById(thisMap.ExtInfoWindowInstance.infoWindowId+"_contents");
-  	try{
+  	//try{
   	  if( response == null || status == -1 ){
   		  infoWindow.innerHTML = "<span class='error'>ERROR: The Ajax request failed to get HTML content from '"+url+"'</span>";
 		  }else{
@@ -365,11 +376,12 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
 		  }
   		thisMap.ExtInfoWindowInstance.resize();
     	GEvent.trigger(thisMap, "extinfowindowupdate");
-  	}catch(err){
+  	//}catch(err){
+  	//  throw(err);
   		//An error will occur here if the ExtInfoWindow is closed after the ajax call was kicked off
   		//and before the contents could be updated.  For now just throw it away.
-  	}
-	})
+  	//}
+	});
 };
 
 /**
