@@ -12,17 +12,6 @@
     		height: 400px;
     		float: left;
     	}
-    	#demo_explanation{
-    		border-right: 1px solid #000;
-    		float: left;
-    		width: 49%;
-    		margin-right: 5px;
-    		padding-right: 5px;
-    		font-size: .9em;
-    	}
-    	#extInfoWindow_funkyBox_contents{
-        font-size: 12px;
-      }
     </style>
 
     <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxQGj0PqsCtxKvarsoS-iqLdqZSKfxRdmoPmGl7Y9335WLC36wIGYa6o5Q"></script>
@@ -65,19 +54,6 @@
   </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <h1>ExtInfoWindow Events</h1>
-    <div id="demo_explanation">
-    	<p>
-    	  This demo will illustrate how you can listen for new ExtInfoWindow events that fire on <code>GMap2</code>.
-    	  The new events we will listen for, and write to <code>GLog</code> are: 
-    	  <ul>
-    	    <li>extinfowindowopen</li>
-    	    <li>extinfowindowbeforeclose</li>
-    	    <li>extinfowindowclose</li>
-    	    <li>extinfowindowupdate</li>
-    	  </ul>
-    	</p>
-    </div>
     <div id="map"></div>
   </body>
 </html>
