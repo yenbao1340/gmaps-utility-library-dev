@@ -169,7 +169,7 @@
 </p>
 <p>
   The exact HTML returned from our Ajax request will be:
-  <pre>
+  <pre class="code">
 &lt;div id="" class="tabs">
   &lt;div class="tabs_header">
     &lt;div id="tab0" class="tab first">&lt;span>Tab1&lt;/span>&lt;/div>
@@ -216,7 +216,7 @@
 </p>
 <p><br />
   The javascript function fired when "extinfowindowupdate" is found is: 
-  <pre>
+  <pre class="code">
 var windowContent = document.getElementById("custom_info_window_red_contents");
 var tabs = new Array(document.getElementById("tab0"),
 document.getElementById("tab1"));
@@ -248,23 +248,5 @@ if( tabs.length > 0 ){
   <a href="../examples/eventExtInfoWindowUpdate.html">View the advanced example (eventExtInfoWindowUpdate.html).</a>
 </p>
 </div>
-<div class="browser">
-<h2><a name="Browser"></a>Browser compatibility</h2>
-<p>
-  You need a modern browser. ExtInfoWindow has been tested with IE6/XP, --IE7/XP, Safari2/OS10.4,
-  FF2.0.0.9/OS10.4, --FF1.4.1/XP, --FF2/XP.
-</p>
-<p>
-  It works with  Opera9/XP, but there is some jumpiness and odd scrollbar behavior.
-</p>
-</div>
-<div>
-<h2><a name="Notes"></a>Notes</h2>
-<ul>
-  <li>note about different doctypes</li>
-  <li>like any GMaps application, <strong>make sure you register GUnload() on document unload</strong>. See Google's documentation if you're not sure how.</li>
-  </ul>
-</div>
-
 </body>
 </html>
