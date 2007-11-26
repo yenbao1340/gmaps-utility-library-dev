@@ -49,13 +49,19 @@ function ExtInfoWindow(marker, windowId, html, opt_opts) {
 	this.paddingX = this.options.paddingX == null ? 0+this.borderSize : this.options.paddingX+this.borderSize;
 	this.paddingY = this.options.paddingY == null ? 0+this.borderSize : this.options.paddingY+this.borderSize;
 	
-	this.wrapperDiv = document.createElement("div");
+	this.map = null;
+	
+	this.container = document.createElement("div");
+	this.container.style.position="relative";
+	this.container.style.display="none";
 	
 	this.contentDiv = document.createElement("div");
 	this.contentDiv.id = this.infoWindowId+"_contents";
 	this.contentDiv.innerHTML = this.html;
 	this.contentDiv.style.display = 'block';
 	this.contentDiv.style.visibility = 'hidden';
+	
+	this.wrapperDiv = document.createElement("div");
 	
 	this.wrapperParts = {
 	  tl:{t:0, l:0, w:0, h:0, domElement: null},
@@ -101,12 +107,6 @@ function ExtInfoWindow(marker, windowId, html, opt_opts) {
 		wrapperPartsDiv.style.left=this.wrapperParts[i].l+'px';
 		this.wrapperParts[i].domElement = wrapperPartsDiv;
 	}
-	
-	this.container = document.createElement("div");
-	this.container.style.position="relative";
-	this.container.style.display="none";
-	
-	this.map = null;
 };
 
 //use the GOverlay class
@@ -126,7 +126,7 @@ ExtInfoWindow.prototype.initialize = function(map) {
 	this.container.id = this.infoWindowId;
 	this.container.style.width = this.getStyle_(document.getElementById(this.infoWindowId), "width");
 	
-	this.map.getContainer().appendChild(this.contentDiv);	
+	this.map.getContainer().appendChild(this.contentDiv);
 	this.contentWidth = this.getDimensions_(this.container).width;
   this.contentDiv.style.width = this.contentWidth+'px';
 	this.contentDiv.style.position = 'absolute';
@@ -223,7 +223,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	for (i in this.wrapperParts) {
   	if( i == "close" ){
 			//first append the content so the close button is layered above it
-			this.wrapperDiv.appendChild(this.contentDiv);
+			this.wrapperDiv.insertBefore(this.contentDiv, this.wrapperParts[i].domElement);
 		}
 	  var wrapperPartsDiv = null;
 	  if( this.wrapperParts[i].domElement == null){
