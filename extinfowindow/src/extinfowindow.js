@@ -254,7 +254,6 @@ ExtInfoWindow.prototype.redraw = function(force) {
 	var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
 	this.container.style.position='absolute';
 	var markerIcon = this.marker.getIcon();
-
 	this.container.style.left = (pixelLocation.x 
 		- (this.contentWidth/2) 
 		- markerIcon.iconAnchor.x 
@@ -363,7 +362,7 @@ ExtInfoWindow.prototype.repositionMap = function(){
 	}
 
 	//test right of screen
-	var offsetRight = Math.round(markerPosition.x + this.marker.getIcon().iconSize.width/2 + this.getDimensions_(this.container).width/2 + this.getDimensions_(windowR).width + this.borderSize + this.paddingX + infoWindowAnchor.x );
+	var offsetRight = Math.round(markerPosition.x + this.getDimensions_(this.container).width/2 + this.getDimensions_(windowR).width + this.paddingX + infoWindowAnchor.x );
 	if(offsetRight > mapNE.x) {
 		panX = -( offsetRight - mapNE.x);
 	}else{
