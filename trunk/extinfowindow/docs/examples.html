@@ -14,10 +14,9 @@
 <li><a href="#HowTo">Initial Setup</a></li>
 <li><a href="#Simple">Simple Example</a></li>
 <li><a href="#css">Using CSS Skins</a></li>
+<li><a href="#basicAjax">Basic Ajax Content</a></li>
 <li><a href="#basicEvents">Basic Event Listening</a></li>
-<li><a href="#advancedEvents">Advanced: Event Listening on extinfowindowupdate</a></li>
-<li><a href="#Browser">Browser Compatibility</a></li>
-<li><a href="#Notes">Notes</a></li>
+<li><a href="#advancedEvents">Advanced: Using event listeners to create a tabbed infowindow</a></li>
 </ul>
 <div class="how_to">
   <h2><a name="HowTo"></a>How-To</h2>
@@ -141,6 +140,45 @@
 </p>
 </div>
 
+<div class="basic_ajax">
+<h2><a name="basicAjax"></a>Basic Ajax Content</h2>
+<p>
+  This demo illustrates how to use ajax to inject content into your ExtInfoWindow.
+</p>
+<p>
+  To utilize this feature you have to set the option <code>ajaxUrl</code> as part of the opt_opts 
+  when calling <code>GMarker.openExtInfoWindow</code>. In this example we ajaxUrl to be the 
+  relative path: "ajax/ajaxTest.html".  
+</p>
+<p>
+  When the user clicks the marker, the ExtInfoWindow will display 
+  with the original HTML (in this case a string saying "Loading...") and kick
+  off an Ajax request to the supplied url.  The response content is returned 
+  as HTML and inserted into the contents section of the window.
+</p>
+<p>
+  The HTML contents returned will be:
+</p>
+<pre class="code">
+&lt;p>
+  Content pulled from an Ajax request!
+&lt;/p>
+&lt;p>
+  This is from an HTML file, but imagine if you passed a url to a server 
+  side page that renders HTML, like .php or .rhtml!  You can process dynamic 
+  data on the fly without preloading on page load.
+&lt;/p>
+&lt;p>
+  Want to see a demo of the above statement? Go to 
+  &lt;a href="http://updates.orbitz.com" target="_blank">Orbitz Traveler Update&lt;/a> 
+  and click any of the airports on the homepage map.
+&lt;/p>
+</pre>
+<p>
+  <a href="../examples/events.html">View the example (ajaxContent.html).</a>
+</p>
+</div>
+
 <div class="basic_events">
 <h2><a name="basicEvents"></a>Basic Event Listening</h2>
 <p>
@@ -153,6 +191,12 @@
     <tr><td>extinfowindowclose</td><td>occurs upon closing an ExtInfoWindow</li></tr>
     <tr><td>extinfowindowupdate</td><td>occurs after completion of using ExtInfoWindow's ajax to update it's contents.</td></tr>
   </table>
+<pre class="code">
+GEvent.addListener(map2, 'extinfowindowupdate', function(){GLog.write("extinfowindowupdate found");});
+GEvent.addListener(map2, 'extinfowindowopen', function(){GLog.write("extinfowindowopen found");});
+GEvent.addListener(map2, 'extinfowindowbeforeclose', function(){GLog.write("extinfowindowbeforeclose found");});
+GEvent.addListener(map2, 'extinfowindowclose', function(){ GLog.write("extinfowindowclose found"); });
+</pre>
 </p>
 <p>
   <a href="../examples/events.html">View the example (events.html).</a>
@@ -160,7 +204,7 @@
 </div>
 
 <div class="advanced_events">
-<h2><a name="advancedEvents"></a>Advanced: Event Listening on extinfowindowupdate</h2>
+<h2><a name="advancedEvents"></a>Advanced: Using event listeners to create a tabbed infowindow</h2>
 <p>
   This demo will illustrate how you can manipulate Ajax returned content using the "extinfowindowupdate" event.
 </p>
@@ -238,7 +282,7 @@ if( tabs.length > 0 ){
           hide(tabContentsArray[tabContentIndex]);
         }
       }
-      map2.ExtInfoWindowInstance.resize();
+      map2.getExtInfoWindow().resize();
     });
   }
 }
