@@ -136,6 +136,51 @@
   The following example demonstrates how to use different styles and the cssId parameter, in the GMaker.openExtInfoWindow function, to open ExtInfoWindows with different skins on diferent markers all on the same map.  The styles are defined in separate stylesheets that are included in the document head.
 </p>
 <p>
+  Each ExtInfoWindow is created from 10 pieces based on the supplied cssId and prefixes set in the code. The following table describes each suffix, what they mean, and what, miminimally, is expected in CSS.
+</p>
+<table>
+  <tr>
+    <th>suffix</th><th>meaning</th><th>minimum CSS</th>
+  </tr.>
+  <tr>
+    <td>_tl</td><td>top left</td><td>width, height</td>
+  </tr>
+  <tr>
+    <td>_t</td><td>top</td><td>height</td>
+  </tr>
+  <tr>
+    <td>_tr</td><td>top right</td><td>width, height</td>
+  </tr>
+  <tr>
+    <td>_l</td><td>left</td><td>width</td>
+  </tr>
+  <tr>
+    <td>_contents</td><td>center contents area</td><td>background-color</td>
+  </tr>
+  <tr>
+    <td>_r</td><td>right</td><td>width</td>
+  </tr>
+  <tr>
+    <td>_bl</td><td>bottom left</td><td>width, height</td>
+  </tr>
+  <tr>
+    <td>_b</td><td>bottom</td><td>height</td>
+  </tr>
+  <tr>
+    <td>_br</td><td>bottom right</td><td>width, height</td>
+  </tr>
+  <tr>
+    <td>_beak</td><td>bottom beak/pointer area</td><td>width, height</td>
+  </tr>
+  <tr>
+    <td>_close</td><td>close box section</td><td>width, height</td>
+  </tr>
+</table><br />
+<p>
+  The following diagram explains how using the cssId "demoWindow" would map to each part of the ExtInfoWindow<br />
+  <img src="../examples/images/css_diagram.png" alt="css diagram" border="0" />
+</p>
+<p>
   <a href="../examples/cssSkins.html">View the example (cssSkins.html).</a>
 </p>
 </div>
