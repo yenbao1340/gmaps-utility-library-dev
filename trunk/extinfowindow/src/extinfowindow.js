@@ -130,7 +130,6 @@ ExtInfoWindow.prototype.initialize = function(map) {
   this.map.getPane(G_MAP_FLOAT_PANE).appendChild(this.container);
   this.container.id = this.infoWindowId;
   var containerWidth  = this.getStyle_(document.getElementById(this.infoWindowId), "width");
-  alert(containerWidth);
   this.container.style.width = (containerWidth == null ? this.defaultStyles.containerWidth : containerWidth);
 
   this.map.getContainer().appendChild(this.contentDiv);
