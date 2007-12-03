@@ -279,7 +279,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
   this.container.style.display = 'block';
 
   if(this.map.ExtInfoWindowInstance != null) {
-    this.repositionMap();
+    this.repositionMap_();
   }
 };
 
@@ -323,7 +323,7 @@ ExtInfoWindow.prototype.resize = function(){
   this.wrapperParts.t.domElement.style.top = newPosTop + "px";
   this.wrapperParts.tr.domElement.style.top = newPosTop + "px";
 
-  this.repositionMap();
+  this.repositionMap_();
 };
 
 /**
@@ -331,7 +331,7 @@ ExtInfoWindow.prototype.resize = function(){
  * map region and by how much.  Use that information to pan the map so that 
  * the extInfoWindow is completely displayed.
  */
-ExtInfoWindow.prototype.repositionMap = function(){
+ExtInfoWindow.prototype.repositionMap_ = function(){
   //pan if necessary so it shows on the screen
   var mapNE = this.map.fromLatLngToDivPixel(
     this.map.getBounds().getNorthEast()
@@ -348,6 +348,7 @@ ExtInfoWindow.prototype.repositionMap = function(){
   var paddingX = this.paddingX;
   var paddingY = this.paddingY;
   var infoWindowAnchor = this.marker.getIcon().infoWindowAnchor;
+  var iconAnchor = this.marker.getIcon().iconAnchor;
 
   //test top of screen	
   var windowT = this.wrapperParts.t.domElement;
@@ -356,7 +357,7 @@ ExtInfoWindow.prototype.repositionMap = function(){
   var windowR = this.wrapperParts.r.domElement;
   var windowBeak = this.wrapperParts.beak.domElement;
 
-  var offsetTop = markerPosition.y - ( this.marker.getIcon().iconSize.height +  this.getDimensions_(windowBeak).height + this.getDimensions_(windowB).height + this.getDimensions_(windowL).height + this.getDimensions_(windowT).height + this.paddingY);
+  var offsetTop = markerPosition.y - ( -infoWindowAnchor.y + iconAnchor.y +  this.getDimensions_(windowBeak).height + this.getDimensions_(windowB).height + this.getDimensions_(windowL).height + this.getDimensions_(windowT).height + this.paddingY);
   if( offsetTop < mapNE.y) {
     panY = mapNE.y - offsetTop;
   }else{
@@ -368,12 +369,12 @@ ExtInfoWindow.prototype.repositionMap = function(){
   }
 
   //test right of screen
-  var offsetRight = Math.round(markerPosition.x + this.getDimensions_(this.container).width/2 + this.getDimensions_(windowR).width + this.paddingX + infoWindowAnchor.x );
+  var offsetRight = Math.round(markerPosition.x + this.getDimensions_(this.container).width/2 + this.getDimensions_(windowR).width + this.paddingX + infoWindowAnchor.x - iconAnchor.x);
   if(offsetRight > mapNE.x) {
     panX = -( offsetRight - mapNE.x);
   }else{
     //test left of screen
-    var offsetLeft = - (Math.round( (this.getDimensions_(this.container).width/2 - this.marker.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize + this.paddingX) - markerPosition.x - infoWindowAnchor.x);
+    var offsetLeft = - (Math.round( (this.getDimensions_(this.container).width/2 - this.marker.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize + this.paddingX) - markerPosition.x - infoWindowAnchor.x + iconAnchor.x);
     if( offsetLeft < mapSW.x) {
       panX = mapSW.x - offsetLeft;
     }
