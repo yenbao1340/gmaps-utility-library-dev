@@ -50,6 +50,7 @@ ExtMapTypeControl.prototype.initialize = function(map) {
     var newMapTypes = map.getMapTypes();
     var newMapType = newMapTypes.pop();
     var newMapTypeDiv = me.createButton_(newMapType.getName());
+    newMapTypeDiv.setAttribute('title', newMapType.getAlt());
     mapTypes.push(newMapType);
     mapTypeDivs.push(newMapTypeDiv);
     me.resetButtonEvents_(map, mapTypeDivs);
@@ -69,6 +70,7 @@ ExtMapTypeControl.prototype.initialize = function(map) {
 
   if (me.options.showTraffic) {
     var trafficDiv = me.createButton_("Traffic");
+    trafficDiv.setAttribute('title', 'Show Traffic');
     trafficDiv.style.marginRight = "8px";
     trafficDiv.style.visibility = 'hidden';
     trafficDiv.firstChild.style.cssFloat = "left";
@@ -162,6 +164,7 @@ ExtMapTypeControl.prototype.addMapTypeButtons_ = function(map) {
   var mapTypeDivs = new Array();
   for (var i = 0; i < mapTypes.length; i++) {
     mapTypeDivs[i] = me.createButton_(mapTypes[i].getName());
+    mapTypeDivs[i].setAttribute('title', mapTypes[i].getAlt());
   }
   me.resetButtonEvents_(map, mapTypeDivs);
   return mapTypeDivs;
