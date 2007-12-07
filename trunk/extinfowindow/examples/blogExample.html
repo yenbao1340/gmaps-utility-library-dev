@@ -18,7 +18,7 @@
           map.setCenter(new GLatLng(44, -96), 4);
           map.addControl(new GLargeMapControl());
 
-          marker = new GMarker( new GLatLng(44, -96) );
+          marker = new GMarker( new GLatLng(35, -96) );
           GEvent.addListener(marker, 'click', function(){ 
             marker.openExtInfoWindow(
               map,
@@ -26,39 +26,16 @@
               "Loading...",
               {
                 beakOffset: 3, 
-                ajaxUrl: "rss.xml", 
-                foo: callbackFunction
+                ajaxUrl: "rss.xml"
               }
             ); 
           });
           map.addOverlay(marker);
-          
-          GEvent.addDomListener(map, 'extinfowindowupdate',function(){
-           
-          });
         }
-      }
-      function callbackFunction(){
-        //this is a rather ugly way of scraping the rss feed we supplied above to grab all the titles and display only
-        //those in the info window
-        var windowContent = document.getElementById("rss_window_contents");
-        var entries = windowContent.innerHTML.split("<entry>");
-        var newHTML = "<ol>";
-        var entriesLength= entries.length > 10 ? 10 : entries.length;
-        for( i=0; i < entriesLength; i++ ){
-          var entry = entries[i];
-          var title = entry.substring( entry.indexOf("<title"), entry.indexOf("</title>") );
-          var title_contents = title.substring( title.indexOf(">")+1, title.length);
-          console.log(title_contents);
-          newHTML += "<li>" + title_contents+ "</li>";
-        }
-        newHTML += "</ul>";
-        windowContent.innerHTML ="<div>" + newHTML + "</div>";
-        map.getExtInfoWindow().resize();
       }
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <div id="map" style="width: 900px; height: 600px" ></div>
+    <div id="map" style="width: 500px; height:500px" ></div>
   </body>
 </html>
