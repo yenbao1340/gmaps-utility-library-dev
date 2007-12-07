@@ -45,7 +45,7 @@ function ExtInfoWindow(marker, windowId, html, opt_opts) {
 
   this.options = opt_opts == null ? {} : opt_opts;
   this.ajaxUrl = this.options.ajaxUrl == null ? null : this.options.ajaxUrl;
-  this.callback = this.options.foo == null ? null : this.options.foo;
+  this.callback = this.options.ajaxCallback == null ? null : this.options.ajaxCallback;
 
   this.borderSize = this.options.beakOffset == null ? 0 : this.options.beakOffset;
   this.paddingX = this.options.paddingX == null ? 0+this.borderSize : this.options.paddingX+this.borderSize;
