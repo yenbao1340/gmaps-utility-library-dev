@@ -16,7 +16,6 @@
         if (GBrowserIsCompatible()) {
           map = new GMap2(document.getElementById("map"));
           map.setCenter(new GLatLng(44, -96), 4);
-          map.addControl(new GLargeMapControl());
 
           marker = new GMarker( new GLatLng(35, -96) );
           GEvent.addListener(marker, 'click', function(){ 
@@ -36,6 +35,6 @@
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <div id="map" style="width: 500px; height:500px" ></div>
+    <div id="map" style="width: 500px; height:300px" ></div>
   </body>
 </html>
