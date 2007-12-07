@@ -45,6 +45,8 @@ function ExtInfoWindow(marker, windowId, html, opt_opts) {
 
   this.options = opt_opts == null ? {} : opt_opts;
   this.ajaxUrl = this.options.ajaxUrl == null ? null : this.options.ajaxUrl;
+  this.callback = this.options.foo == null ? null : this.options.foo;
+
   this.borderSize = this.options.beakOffset == null ? 0 : this.options.beakOffset;
   this.paddingX = this.options.paddingX == null ? 0+this.borderSize : this.options.paddingX+this.borderSize;
   this.paddingY = this.options.paddingY == null ? 0+this.borderSize : this.options.paddingY+this.borderSize;
@@ -393,12 +395,16 @@ ExtInfoWindow.prototype.repositionMap_ = function(){
  */
 ExtInfoWindow.prototype.ajaxRequest_ = function(url){
   var thisMap = this.map;
+  var thisCallback = this.callback;
   GDownloadUrl(url, function(response, status){
     var infoWindow = document.getElementById(thisMap.ExtInfoWindowInstance.infoWindowId+"_contents");
     if( response == null || status == -1 ){
       infoWindow.innerHTML = "<span class='error'>ERROR: The Ajax request failed to get HTML content from '"+url+"'</span>";
     }else{
       infoWindow.innerHTML = response;
+    }
+    if( thisCallback != null ){
+      thisCallback();
     }
     thisMap.ExtInfoWindowInstance.resize();
     GEvent.trigger(thisMap, "extinfowindowupdate");
