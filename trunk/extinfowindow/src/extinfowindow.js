@@ -516,9 +516,8 @@ ExtInfoWindow.prototype.camelize_ = function(element) {
 };
 
 GMap.prototype.ExtInfoWindowInstance_ = null;
-GMap.prototype.ZoomEndListener = null;
-GMap.prototype.ClickListener = null;
-GMap.prototype.InfoWindowListener = null;
+GMap.prototype.ClickListener_ = null;
+GMap.prototype.InfoWindowListener_ = null;
 
 /**
  * Creates a new instance of ExtInfoWindow for the GMarker.  Register the newly created 
@@ -560,9 +559,9 @@ GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
       html,
       opt_opts
     ) );
-    if( map.ClickListener == null){
+    if( map.ClickListener_ == null){
       //listen for map click, close ExtInfoWindow if open
-      map.ClickListener = GEvent.addListener(map, "click",
+      map.ClickListener_ = GEvent.addListener(map, "click",
       function(event){
           if( !event && map.getExtInfoWindow() != null ){
             map.closeExtInfoWindow();
@@ -570,9 +569,9 @@ GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
         }
       );
     }
-    if( map.InfoWindowListener == null){
+    if( map.InfoWindowListener_ == null){
       //listen for default info window open, close ExtInfoWindow if open
-      map.InfoWindowListener = GEvent.addListener(map, "infowindowopen", 
+      map.InfoWindowListener_ = GEvent.addListener(map, "infowindowopen", 
       function(event){
           if( map.getExtInfoWindow() != null){
             map.closeExtInfoWindow();
