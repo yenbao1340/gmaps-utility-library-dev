@@ -185,7 +185,6 @@ ExtInfoWindow.prototype.remove = function() {
     
     GEvent.trigger(this.map, "extinfowindowclose");
     this.map.setExtInfoWindow_(null);
-    //GMarker.prototype.remove.apply(this, arguments);
   }
   
   
