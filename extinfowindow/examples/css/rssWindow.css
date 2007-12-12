@@ -1,97 +1,97 @@
-#rss_window{
+#snow_window{
   width: 300px;
 }
-#rss_window_contents{
-  background: url(' ../images/corners/rssWindow_contents.png') bottom center no-repeat #FADFCB;
+#snow_window_contents{
+  background: url(' ../images/corners/snowWindow_contents.png') bottom center no-repeat #FADFCB;
   font-family: courier new;
   font-size: 12px;
 }
-#rss_window_tl{
+#snow_window_tl{
   width: 14px;
   height: 14px;
-  background: url('../images/corners/rssWindow_tl.png') top left no-repeat transparent;
+  background: url('../images/corners/snowWindow_tl.png') top left no-repeat transparent;
 }
-* html #rss_window_tl{
+* html #snow_window_tl{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/rssWindow_tl.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/snowWindow_tl.png', sizingMethod='crop');
 }
-#rss_window_t{
-  background: url('../images/corners/rssWindow_t.png') top left repeat-x transparent;
+#snow_window_t{
+  background: url('../images/corners/snowWindow_t.png') top left repeat-x transparent;
 }
-#rss_window_tr{
+#snow_window_tr{
   width: 14px;
   height: 14px;
-  background: url('../images/corners/rssWindow_tr.png') top left no-repeat transparent;
+  background: url('../images/corners/snowWindow_tr.png') top left no-repeat transparent;
 }
-* html #rss_window_tr{
+* html #snow_window_tr{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/rssWindow_tr.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/snowWindow_tr.png', sizingMethod='crop');
 }
-#rss_window_l{
+#snow_window_l{
   width: 3px;
-  background: url('../images/corners/rssWindow_l.png') top left repeat-y transparent;
+  background: url('../images/corners/snowWindow_l.png') top left repeat-y transparent;
 }
-#rss_window_r{
+#snow_window_r{
   width: 3px;
-  background: url('../images/corners/rssWindow_r.png') top right repeat-y transparent;
+  background: url('../images/corners/snowWindow_r.png') top right repeat-y transparent;
 }
-#rss_window_bl{
+#snow_window_bl{
   width: 14px;
   height: 14px;
-  background: url('../images/corners/rssWindow_bl.png') top left no-repeat transparent;
+  background: url('../images/corners/snowWindow_bl.png') top left no-repeat transparent;
 }
-* html #rss_window_bl{
+* html #snow_window_bl{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/rssWindow_bl.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/snowWindow_bl.png', sizingMethod='crop');
 }
-#rss_window_b{
-  background: url('../images/corners/rssWindow_b.png') top left repeat-x transparent;
+#snow_window_b{
+  background: url('../images/corners/snowWindow_b.png') top left repeat-x transparent;
 }
-#rss_window_br{
+#snow_window_br{
   width: 14px;
   height: 14px;
-  background: url('../images/corners/rssWindow_br.png') top left no-repeat transparent;
+  background: url('../images/corners/snowWindow_br.png') top left no-repeat transparent;
 }
-* html #rss_window_br{
+* html #snow_window_br{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/rssWindow_br.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/snowWindow_br.png', sizingMethod='crop');
 }
-#rss_window_close{
+#snow_window_close{
   width: 13px;
   height: 13px;
-  background: url('../images/corners/rssWindow_close.png') top left no-repeat transparent;
+  background: url('../images/corners/snowWindow_close.png') top left no-repeat transparent;
   margin: 10px 0 0 -10px;
   cursor: pointer;
 }
-* html #rss_window_close{
+* html #snow_window_close{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/rssWindow_close.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/snowWindow_close.png', sizingMethod='crop');
 }
-#rss_window_beak{
+#snow_window_beak{
   width: 27px;
   height: 37px;
-  background: url('../images/corners/rssWindow_beak.png') top left no-repeat transparent;
+  background: url('../images/corners/snowWindow_beak.png') top left no-repeat transparent;
 }
-* html #rss_window_beak{
+* html #snow_window_beak{
   background-image:none;
-  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/rssWindow_beak.png', sizingMethod='crop');
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/snowWindow_beak.png', sizingMethod='crop');
 }
-#rss_window_contents .section1{
+#snow_window_contents .section1{
   margin: 0;
   padding: 0;
 }
-#rss_window_contents .section2{
+#snow_window_contents .section2{
   margin: 0;
   padding: 0;
   background-color: #FFDFDF;
   border-bottom: dotted 1px #900;
   border-top: dotted 1px #900;
 }
-#rss_window_contents p{
+#snow_window_contents p{
   margin: 1px 0;
   padding: 5px;
 }
-#rss_window_contents .title{
+#snow_window_contents .title{
   font-size: 18px;
   font-weight: bold;
   color: #FFF;
