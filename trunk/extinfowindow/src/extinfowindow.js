@@ -170,8 +170,13 @@ ExtInfoWindow.prototype.onClick_ = function(e){
  * Remove the extInfoWindow container from the map pane. 
  */
 ExtInfoWindow.prototype.remove = function() {
-  this.container.parentNode.removeChild(this.container);
-  GEvent.trigger(this.map, "extinfowindowclose");
+  if( this.map.getExtInfoWindow() != null){
+    GEvent.trigger(this, "extinfowindowbeforeclose");
+    this.container.parentNode.removeChild(this.container);
+    GEvent.trigger(this.map, "extinfowindowclose");
+    this.map.setExtInfoWindow(null);
+  }
+  
 };
 
 /**
@@ -576,13 +581,12 @@ GMap2.prototype.getExtInfoWindow = function(){
   return this.ExtInfoWindowInstance;
 };
 
+GMap2.prototype.setExtInfoWindow = function( extInfoWindow ){
+  this.ExtInfoWindowInstance = extInfoWindow;
+}
 /**
  * Remove the ExtInfoWindow from the map
  */
 GMap2.prototype.closeExtInfoWindow = function(){
-  if( this.ExtInfoWindowInstance != null){
-    GEvent.trigger(this, "extinfowindowbeforeclose");
-    this.ExtInfoWindowInstance.remove();
-    this.ExtInfoWindowInstance = null;
-  }
+  this.ExtInfoWindowInstance.remove();
 };
