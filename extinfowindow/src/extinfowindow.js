@@ -153,6 +153,7 @@ ExtInfoWindow.prototype.initialize = function(map) {
  * Private function to steal mouse click events to prevent it from returning to the map.
  * Without this links in the ExtInfoWindow would not work, and you could click to zoom or drag 
  * the map behind it.
+ * @private
  * @param {MouseEvent} e The mouse event caught by this function
  */
 ExtInfoWindow.prototype.onClick_ = function(e){
@@ -171,11 +172,23 @@ ExtInfoWindow.prototype.onClick_ = function(e){
  */
 ExtInfoWindow.prototype.remove = function() {
   if( this.map.getExtInfoWindow() != null){
-    GEvent.trigger(this, "extinfowindowbeforeclose");
-    this.container.parentNode.removeChild(this.container);
+    GEvent.trigger(this.map, "extinfowindowbeforeclose");
+    
+    GEvent.clearInstanceListeners(this.container);
+    if (this.container.outerHTML) {
+      this.container.outerHTML = ""; //prevent pseudo-leak in IE
+    }
+    if (this.container.parentNode) {
+      this.container.parentNode.removeChild(this.container);
+    }
+    this.container = null;
+    
     GEvent.trigger(this.map, "extinfowindowclose");
-    this.map.setExtInfoWindow(null);
+    this.map.setExtInfoWindow_(null);
+    //GMarker.prototype.remove.apply(this, arguments);
   }
+  
+  
   
 };
 
@@ -195,7 +208,7 @@ ExtInfoWindow.prototype.copy = function() {
  * @param {Boolean} force Will be true when pixel coordinates need to be recomputed.
  */
 ExtInfoWindow.prototype.redraw = function(force) {
-  if (!force) return;
+  if (!force || this.container == null) return;
 
   //set the content section's height, needed so  browser font resizing does not affect the window's dimensions
   var contentHeight = this.contentDiv.offsetHeight;
@@ -285,7 +298,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
 
   this.container.style.display = 'block';
 
-  if(this.map.ExtInfoWindowInstance != null) {
+  if(this.map.getExtInfoWindow() != null) {
     this.repositionMap_();
   }
 };
@@ -337,6 +350,7 @@ ExtInfoWindow.prototype.resize = function(){
  * Check to see if the displayed extInfoWindow is positioned off the viewable 
  * map region and by how much.  Use that information to pan the map so that 
  * the extInfoWindow is completely displayed.
+ * @private
  */
 ExtInfoWindow.prototype.repositionMap_ = function(){
   //pan if necessary so it shows on the screen
@@ -387,7 +401,7 @@ ExtInfoWindow.prototype.repositionMap_ = function(){
     }
   }
 
-  if(panX!=0 || panY!=0 && this.map.ExtInfoWindowInstance != null ) {
+  if(panX!=0 || panY!=0 && this.map.getExtInfoWindow() != null ) {
     this.map.panBy(new GSize(panX,panY));
   }
 };
@@ -396,13 +410,14 @@ ExtInfoWindow.prototype.repositionMap_ = function(){
  * Private function that handles performing an ajax request to the server.  The response
  * information is assumed to be HTML and is placed inside this extInfoWindow's contents region.
  * Last, check to see if the height has changed, and resize the extInfoWindow accordingly.
+ * @private
  * @param {String} url The Url of where to make the ajax request on the server
  */
 ExtInfoWindow.prototype.ajaxRequest_ = function(url){
   var thisMap = this.map;
   var thisCallback = this.callback;
   GDownloadUrl(url, function(response, status){
-    var infoWindow = document.getElementById(thisMap.ExtInfoWindowInstance.infoWindowId+"_contents");
+    var infoWindow = document.getElementById(thisMap.getExtInfoWindow().infoWindowId+"_contents");
     if( response == null || status == -1 ){
       infoWindow.innerHTML = "<span class='error'>ERROR: The Ajax request failed to get HTML content from '"+url+"'</span>";
     }else{
@@ -411,7 +426,7 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
     if( thisCallback != null ){
       thisCallback();
     }
-    thisMap.ExtInfoWindowInstance.resize();
+    thisMap.getExtInfoWindow().resize();
     GEvent.trigger(thisMap, "extinfowindowupdate");
   });
 };
@@ -419,6 +434,7 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
 /**
  * Private function derived from Prototype.js to get a given element's
  * height and width
+ * @private
  * @param {Object} element The DOM element that will have height and 
  *                    width will be calculated for it.
  * @return {Object} Object with keys: width, height
@@ -449,6 +465,7 @@ ExtInfoWindow.prototype.getDimensions_ = function(element) {
 /**
  * Private function derived from Prototype.js to get a given element's
  * value that is associated with the passed style
+ * @private
  * @param {Object} element The DOM element that will be checked.
  * @param {String} style The style name that will be have it's value returned.
  * @return {Object}
@@ -481,6 +498,7 @@ ExtInfoWindow.prototype.getStyle_ = function(element, style) {
 /**
  * Private function pulled from Prototype.js that will change a hyphened
  * style name into camel case.
+ * @private
  * @param {String} element The string that will be parsed and made into camel case
  * @return {String}
  */
@@ -497,7 +515,7 @@ ExtInfoWindow.prototype.camelize_ = function(element) {
   return camelized;
 };
 
-GMap.prototype.ExtInfoWindowInstance = null;
+GMap.prototype.ExtInfoWindowInstance_ = null;
 GMap.prototype.ZoomEndListener = null;
 GMap.prototype.ClickListener = null;
 GMap.prototype.InfoWindowListener = null;
@@ -532,21 +550,21 @@ GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
   }
   
   map.closeInfoWindow();
-  if(map.ExtInfoWindowInstance != null) {
+  if(map.getExtInfoWindow() != null) {
     map.closeExtInfoWindow();
   }
-  if(map.ExtInfoWindowInstance == null) {
-    map.ExtInfoWindowInstance = new ExtInfoWindow(
+  if(map.getExtInfoWindow() == null) {
+    map.setExtInfoWindow_( new ExtInfoWindow(
       this,
       cssId,
       html,
       opt_opts
-    );
+    ) );
     if( map.ClickListener == null){
       //listen for map click, close ExtInfoWindow if open
       map.ClickListener = GEvent.addListener(map, "click",
       function(event){
-          if( !event && map.ExtInfoWindowInstance != null ){
+          if( !event && map.getExtInfoWindow() != null ){
             map.closeExtInfoWindow();
           }
         }
@@ -556,13 +574,13 @@ GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
       //listen for default info window open, close ExtInfoWindow if open
       map.InfoWindowListener = GEvent.addListener(map, "infowindowopen", 
       function(event){
-          if( map.ExtInfoWindowInstance != null){
+          if( map.getExtInfoWindow() != null){
             map.closeExtInfoWindow();
           }
         }
       );
     }
-    map.addOverlay(map.ExtInfoWindowInstance);
+    map.addOverlay(map.getExtInfoWindow());
   }
 };
 
@@ -578,15 +596,18 @@ GMarker.prototype.closeExtInfoWindow = function(map) {
  * Get the ExtInfoWindow instance from the map
  */
 GMap2.prototype.getExtInfoWindow = function(){
-  return this.ExtInfoWindowInstance;
+  return this.ExtInfoWindowInstance_;
 };
-
-GMap2.prototype.setExtInfoWindow = function( extInfoWindow ){
-  this.ExtInfoWindowInstance = extInfoWindow;
+/**
+ * Set the ExtInfoWindow instance for the map
+ * @private
+ */
+GMap2.prototype.setExtInfoWindow_ = function( extInfoWindow ){
+  this.ExtInfoWindowInstance_ = extInfoWindow;
 }
 /**
  * Remove the ExtInfoWindow from the map
  */
 GMap2.prototype.closeExtInfoWindow = function(){
-  this.ExtInfoWindowInstance.remove();
+  this.ExtInfoWindowInstance_.remove();
 };
