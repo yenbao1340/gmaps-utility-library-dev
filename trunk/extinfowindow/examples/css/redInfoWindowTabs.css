@@ -91,7 +91,7 @@
   border-bottom: dotted 1px #900;
   border-top: dotted 1px #900;
 }
-#custom_info_window_red_contents p{
+#custom_info_window_red_contents .tab_contents p{
   margin: 1px 0;
   padding: 5px;
 }
@@ -105,22 +105,31 @@
 /* styles for tabs part */
 .tabs_header{
   position: absolute;
-  top: -29px;
+  top: -31px;
   left: 16px;
+  float: left;
 }
-.tab{
+#tab0, #tab1{
+  float: left;
   background: url('../images/corners/red_tab.png') top left no-repeat transparent;
   font-size: 11px;
   font-weight: bold;
   cursor: pointer;
-  padding: 7px 18px 3px 16px;
-  margin-right: 1px;
-  width: 100px;
+  width: 60px;
   height: 16px;
 }
-* html .tab{
-  background: none #FFF;
-  border: 3px solid #900;
+.tabs_header .tab p.contents{
+  margin: 5px 0 0 15px;
+  _margin-top: 4px;
+  padding: 0;
+}
+* html #tab0, * html #tab1{
+  background: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_tab.png', sizingMethod='crop');
+  height: 16px;
+  width: 60px;
+  padding: 0;
+  margin: 0;
 }
 .tab_contents{
   position: relative;
@@ -137,7 +146,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  display:block;
+  display:none;
 }
 
 
