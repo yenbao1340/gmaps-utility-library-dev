@@ -82,7 +82,7 @@ ExtInfoWindow.prototype.initialize = function(map) {
   this.defaultStyles = {
     containerWidth: this.map_.getSize().width / 2,
     borderSize: 1
-  }
+  };
 
   this.wrapperParts = {
     tl:{t:0, l:0, w:0, h:0, domElement: null},
