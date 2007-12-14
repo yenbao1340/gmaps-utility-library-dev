@@ -1,5 +1,5 @@
 /*
-* ExtInfoWindow Class 
+* ExtInfoWindow Class, v1.0 
 *  Copyright (c) 2007, Joe Monahan (http://www.seejoecode.com)
 * 
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,31 +39,31 @@
  *                    info window styling containers a border.
  */
 function ExtInfoWindow(marker, windowId, html, opt_opts) {
-  this.html = html;
-  this.marker = marker;
-  this.infoWindowId = windowId;
+  this.html_ = html;
+  this.marker_ = marker;
+  this.infoWindowId_ = windowId;
 
-  this.options = opt_opts == null ? {} : opt_opts;
-  this.ajaxUrl = this.options.ajaxUrl == null ? null : this.options.ajaxUrl;
-  this.callback = this.options.ajaxCallback == null ? null : this.options.ajaxCallback;
+  this.options_ = opt_opts == null ? {} : opt_opts;
+  this.ajaxUrl_ = this.options_.ajaxUrl == null ? null : this.options_.ajaxUrl;
+  this.callback_ = this.options_.ajaxCallback == null ? null : this.options_.ajaxCallback;
 
-  this.borderSize = this.options.beakOffset == null ? 0 : this.options.beakOffset;
-  this.paddingX = this.options.paddingX == null ? 0+this.borderSize : this.options.paddingX+this.borderSize;
-  this.paddingY = this.options.paddingY == null ? 0+this.borderSize : this.options.paddingY+this.borderSize;
+  this.borderSize_ = this.options_.beakOffset == null ? 0 : this.options_.beakOffset;
+  this.paddingX_ = this.options_.paddingX == null ? 0 + this.borderSize_ : this.options_.paddingX + this.borderSize_;
+  this.paddingY_ = this.options_.paddingY == null ? 0 + this.borderSize_ : this.options_.paddingY + this.borderSize_;
 
-  this.map = null;
+  this.map_ = null;
 
-  this.container = document.createElement("div");
-  this.container.style.position="relative";
-  this.container.style.display="none";
+  this.container_ = document.createElement('div');
+  this.container_.style.position = 'relative';
+  this.container_.style.display = 'none';
 
-  this.contentDiv = document.createElement("div");
-  this.contentDiv.id = this.infoWindowId+"_contents";
-  this.contentDiv.innerHTML = this.html;
-  this.contentDiv.style.display = 'block';
-  this.contentDiv.style.visibility = 'hidden';
+  this.contentDiv_ = document.createElement('div');
+  this.contentDiv_.id = this.infoWindowId_ + '_contents';
+  this.contentDiv_.innerHTML = this.html_;
+  this.contentDiv_.style.display = 'block';
+  this.contentDiv_.style.visibility = 'hidden';
 
-  this.wrapperDiv = document.createElement("div");
+  this.wrapperDiv_ = document.createElement('div');
 };
 
 //use the GOverlay class
@@ -77,10 +77,10 @@ ExtInfoWindow.prototype = new GOverlay();
  * @param {GMap2} map The map that has had this extInfoWindow is added to it.
  */
 ExtInfoWindow.prototype.initialize = function(map) {
-  this.map = map;
+  this.map_ = map;
 
   this.defaultStyles = {
-    containerWidth: this.map.getSize().width/2,
+    containerWidth: this.map_.getSize().width / 2,
     borderSize: 1
   }
 
@@ -97,55 +97,55 @@ ExtInfoWindow.prototype.initialize = function(map) {
     close:{t:0, l:0, w:0, h:0, domElement: null}
   };
 
-  for( i in this.wrapperParts ){
-    var tempElement = document.createElement("div");
-    tempElement.id = this.infoWindowId+"_"+i;
-    tempElement.style.visibility="hidden";
+  for (var i in this.wrapperParts ) {
+    var tempElement = document.createElement('div');
+    tempElement.id = this.infoWindowId_ + '_' + i;
+    tempElement.style.visibility = 'hidden';
     document.body.appendChild(tempElement);
-    tempElement = document.getElementById(this.infoWindowId+"_"+i);
-    var tempWrapperPart = eval("this.wrapperParts."+i);    
-    tempWrapperPart.w = parseInt(this.getStyle_(tempElement, "width"));
-    tempWrapperPart.h = parseInt(this.getStyle_(tempElement, "height"));
+    tempElement = document.getElementById(this.infoWindowId_ + '_' + i);
+    var tempWrapperPart = eval('this.wrapperParts.' + i);    
+    tempWrapperPart.w = parseInt(this.getStyle_(tempElement, 'width'));
+    tempWrapperPart.h = parseInt(this.getStyle_(tempElement, 'height'));
     document.body.removeChild(tempElement);
   }
-  for (i in this.wrapperParts) {
-    if( i == "close" ){
+  for (var i in this.wrapperParts) {
+    if (i == 'close' ) {
       //first append the content so the close button is layered above it
-      this.wrapperDiv.appendChild(this.contentDiv);
+      this.wrapperDiv_.appendChild(this.contentDiv_);
     }
     var wrapperPartsDiv = null;
-    if( this.wrapperParts[i].domElement == null){
+    if (this.wrapperParts[i].domElement == null) {
       wrapperPartsDiv = document.createElement('div');
-      this.wrapperDiv.appendChild(wrapperPartsDiv);
-    }else{
+      this.wrapperDiv_.appendChild(wrapperPartsDiv);
+    } else {
       wrapperPartsDiv = this.wrapperParts[i].domElement;
     }
-    wrapperPartsDiv.id = this.infoWindowId+"_"+i;
-    wrapperPartsDiv.style.position='absolute';
-    wrapperPartsDiv.style.width= this.wrapperParts[i].w+"px";
-    wrapperPartsDiv.style.height= this.wrapperParts[i].h+"px";
-    wrapperPartsDiv.style.top=this.wrapperParts[i].t+'px';
-    wrapperPartsDiv.style.left=this.wrapperParts[i].l+'px';
+    wrapperPartsDiv.id = this.infoWindowId_ + '_' + i;
+    wrapperPartsDiv.style.position = 'absolute';
+    wrapperPartsDiv.style.width = this.wrapperParts[i].w + 'px';
+    wrapperPartsDiv.style.height = this.wrapperParts[i].h + 'px';
+    wrapperPartsDiv.style.top = this.wrapperParts[i].t + 'px';
+    wrapperPartsDiv.style.left = this.wrapperParts[i].l + 'px';
     this.wrapperParts[i].domElement = wrapperPartsDiv;
   }
   
-  this.map.getPane(G_MAP_FLOAT_PANE).appendChild(this.container);
-  this.container.id = this.infoWindowId;
-  var containerWidth  = this.getStyle_(document.getElementById(this.infoWindowId), "width");
-  this.container.style.width = (containerWidth == null ? this.defaultStyles.containerWidth : containerWidth);
+  this.map_.getPane(G_MAP_FLOAT_PANE).appendChild(this.container_);
+  this.container_.id = this.infoWindowId_;
+  var containerWidth  = this.getStyle_(document.getElementById(this.infoWindowId_), 'width');
+  this.container_.style.width = (containerWidth == null ? this.defaultStyles.containerWidth : containerWidth);
 
-  this.map.getContainer().appendChild(this.contentDiv);
-  this.contentWidth = this.getDimensions_(this.container).width;
-  this.contentDiv.style.width = this.contentWidth+'px';
-  this.contentDiv.style.position = 'absolute';
+  this.map_.getContainer().appendChild(this.contentDiv_);
+  this.contentWidth = this.getDimensions_(this.container_).width;
+  this.contentDiv_.style.width = this.contentWidth + 'px';
+  this.contentDiv_.style.position = 'absolute';
 
-  this.container.appendChild(this.wrapperDiv);
+  this.container_.appendChild(this.wrapperDiv_);
 
-  GEvent.bindDom(this.container,"mousedown",this,this.onClick_);
+  GEvent.bindDom(this.container_, 'mousedown', this,this.onClick_);
 
-  GEvent.trigger(this.map, "extinfowindowopen");
-  if( this.ajaxUrl != null ){
-    this.ajaxRequest_(this.ajaxUrl);
+  GEvent.trigger(this.map_, 'extinfowindowopen');
+  if (this.ajaxUrl_ != null ) {
+    this.ajaxRequest_(this.ajaxUrl_);
   }
 };
 
@@ -156,14 +156,14 @@ ExtInfoWindow.prototype.initialize = function(map) {
  * @private
  * @param {MouseEvent} e The mouse event caught by this function
  */
-ExtInfoWindow.prototype.onClick_ = function(e){
-  if(navigator.userAgent.toLowerCase().indexOf("msie")!=-1 && document.all){
+ExtInfoWindow.prototype.onClick_ = function(e) {
+  if(navigator.userAgent.toLowerCase().indexOf('msie')! =- 1 && document.all){
     window.event.cancelBubble=true;
     window.event.returnValue=false;
   }
   else{
     e.preventDefault();
-    e.stopPropagation()
+    e.stopPropagation();
   }
 };
 
@@ -171,24 +171,21 @@ ExtInfoWindow.prototype.onClick_ = function(e){
  * Remove the extInfoWindow container from the map pane. 
  */
 ExtInfoWindow.prototype.remove = function() {
-  if( this.map.getExtInfoWindow() != null){
-    GEvent.trigger(this.map, "extinfowindowbeforeclose");
+  if (this.map_.getExtInfoWindow() != null) {
+    GEvent.trigger(this.map_, 'extinfowindowbeforeclose');
     
-    GEvent.clearInstanceListeners(this.container);
-    if (this.container.outerHTML) {
-      this.container.outerHTML = ""; //prevent pseudo-leak in IE
+    GEvent.clearInstanceListeners(this.container_);
+    if (this.container_.outerHTML) {
+      this.container_.outerHTML = ''; //prevent pseudo-leak in IE
     }
-    if (this.container.parentNode) {
-      this.container.parentNode.removeChild(this.container);
+    if (this.container_.parentNode) {
+      this.container_.parentNode.removeChild(this.container_);
     }
-    this.container = null;
+    this.container_ = null;
     
-    GEvent.trigger(this.map, "extinfowindowclose");
-    this.map.setExtInfoWindow_(null);
+    GEvent.trigger(this.map_, 'extinfowindowclose');
+    this.map_.setExtInfoWindow_(null);
   }
-  
-  
-  
 };
 
 /**
@@ -198,7 +195,7 @@ ExtInfoWindow.prototype.remove = function() {
  * @return {GOverlay}
  */
 ExtInfoWindow.prototype.copy = function() {
-  return new ExtInfoWindow(this.marker, this.infoWindowId, this.html, this.options);
+  return new ExtInfoWindow(this.marker_, this.infoWindowId_, this.html_, this.options_);
 };
 
 /**
@@ -207,28 +204,28 @@ ExtInfoWindow.prototype.copy = function() {
  * @param {Boolean} force Will be true when pixel coordinates need to be recomputed.
  */
 ExtInfoWindow.prototype.redraw = function(force) {
-  if (!force || this.container == null) return;
+  if (!force || this.container_ == null) return;
 
   //set the content section's height, needed so  browser font resizing does not affect the window's dimensions
-  var contentHeight = this.contentDiv.offsetHeight;
-  this.contentDiv.style.height = contentHeight+"px";
+  var contentHeight = this.contentDiv_.offsetHeight;
+  this.contentDiv_.style.height = contentHeight + 'px';
 
   //reposition contents depending on wrapper parts.
   //this is necessary for content that is pulled in via ajax
-  this.contentDiv.style.left=this.wrapperParts.l.w+'px';
-  this.contentDiv.style.top=this.wrapperParts.tl.h+'px';
-  this.contentDiv.style.visibility='visible';
+  this.contentDiv_.style.left = this.wrapperParts.l.w + 'px';
+  this.contentDiv_.style.top = this.wrapperParts.tl.h + 'px';
+  this.contentDiv_.style.visibility = 'visible';
 
   //Finish configuring wrapper parts that were not set in initialization
-  this.wrapperParts.tl.t=0;
-  this.wrapperParts.tl.l=0;
+  this.wrapperParts.tl.t = 0;
+  this.wrapperParts.tl.l = 0;
   this.wrapperParts.t.l = this.wrapperParts.tl.w;
-  this.wrapperParts.t.w = (this.wrapperParts.l.w + this.contentWidth + this.wrapperParts.r.w)-this.wrapperParts.tl.w-this.wrapperParts.tr.w;
+  this.wrapperParts.t.w = (this.wrapperParts.l.w + this.contentWidth + this.wrapperParts.r.w) - this.wrapperParts.tl.w - this.wrapperParts.tr.w;
   this.wrapperParts.t.h = this.wrapperParts.tl.h;
   this.wrapperParts.tr.l = this.wrapperParts.t.w + this.wrapperParts.tl.w;
   this.wrapperParts.l.t = this.wrapperParts.tl.h;
   this.wrapperParts.l.h = contentHeight;
-  this.wrapperParts.r.l = this.contentWidth+this.wrapperParts.l.w;
+  this.wrapperParts.r.l = this.contentWidth + this.wrapperParts.l.w;
   this.wrapperParts.r.t = this.wrapperParts.tr.h;
   this.wrapperParts.r.h = contentHeight;
   this.wrapperParts.bl.t = contentHeight + this.wrapperParts.tl.h;
@@ -238,66 +235,66 @@ ExtInfoWindow.prototype.redraw = function(force) {
   this.wrapperParts.b.h = this.wrapperParts.bl.h;
   this.wrapperParts.br.l = this.wrapperParts.b.w + this.wrapperParts.bl.w;
   this.wrapperParts.br.t = contentHeight + this.wrapperParts.tr.h;
-  this.wrapperParts.close.l = this.wrapperParts.tr.l +this.wrapperParts.tr.w - this.wrapperParts.close.w - this.borderSize;
-  this.wrapperParts.close.t = this.borderSize;
-  this.wrapperParts.beak.l = this.borderSize + (this.contentWidth/2) - (this.wrapperParts.beak.w/2);
-  this.wrapperParts.beak.t = this.wrapperParts.bl.t + this.wrapperParts.bl.h - this.borderSize;
+  this.wrapperParts.close.l = this.wrapperParts.tr.l +this.wrapperParts.tr.w - this.wrapperParts.close.w - this.borderSize_;
+  this.wrapperParts.close.t = this.borderSize_;
+  this.wrapperParts.beak.l = this.borderSize_ + (this.contentWidth / 2) - (this.wrapperParts.beak.w / 2);
+  this.wrapperParts.beak.t = this.wrapperParts.bl.t + this.wrapperParts.bl.h - this.borderSize_;
 
   //create the decoration wrapper DOM objects
   //append the styled info window to the container
-  for (i in this.wrapperParts) {
-    if( i == "close" ){
+  for (var i in this.wrapperParts) {
+    if (i == 'close' ) {
       //first append the content so the close button is layered above it
-      this.wrapperDiv.insertBefore(this.contentDiv, this.wrapperParts[i].domElement);
+      this.wrapperDiv_.insertBefore(this.contentDiv_, this.wrapperParts[i].domElement);
     }
     var wrapperPartsDiv = null;
-    if( this.wrapperParts[i].domElement == null){
+    if (this.wrapperParts[i].domElement == null) {
       wrapperPartsDiv = document.createElement('div');
-      this.wrapperDiv.appendChild(wrapperPartsDiv);
-    }else{
+      this.wrapperDiv_.appendChild(wrapperPartsDiv);
+    } else {
       wrapperPartsDiv = this.wrapperParts[i].domElement;
     }
-    wrapperPartsDiv.id = this.infoWindowId+"_"+i;
+    wrapperPartsDiv.id = this.infoWindowId_ + '_' + i;
     wrapperPartsDiv.style.position='absolute';
-    wrapperPartsDiv.style.width= this.wrapperParts[i].w+"px";
-    wrapperPartsDiv.style.height= this.wrapperParts[i].h+"px";
-    wrapperPartsDiv.style.top=this.wrapperParts[i].t+'px';
-    wrapperPartsDiv.style.left=this.wrapperParts[i].l+'px';
+    wrapperPartsDiv.style.width = this.wrapperParts[i].w + 'px';
+    wrapperPartsDiv.style.height = this.wrapperParts[i].h + 'px';
+    wrapperPartsDiv.style.top = this.wrapperParts[i].t + 'px';
+    wrapperPartsDiv.style.left = this.wrapperParts[i].l + 'px';
     this.wrapperParts[i].domElement = wrapperPartsDiv;
   }
 
   //add event handler for the close box
-  var currentMarker = this.marker;
-  var thisMap = this.map;
-  GEvent.addDomListener(this.wrapperParts.close.domElement, "click", 
+  var currentMarker = this.marker_;
+  var thisMap = this.map_;
+  GEvent.addDomListener(this.wrapperParts.close.domElement, 'click', 
     function() {
       thisMap.closeExtInfoWindow();
     }
   );
 
   //position the container on the map, over the marker
-  var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
-  this.container.style.position='absolute';
-  var markerIcon = this.marker.getIcon();
-  this.container.style.left = (pixelLocation.x 
-    - (this.contentWidth/2) 
+  var pixelLocation = this.map_.fromLatLngToDivPixel(this.marker_.getPoint());
+  this.container_.style.position = 'absolute';
+  var markerIcon = this.marker_.getIcon();
+  this.container_.style.left = (pixelLocation.x 
+    - (this.contentWidth / 2) 
     - markerIcon.iconAnchor.x 
     + markerIcon.infoWindowAnchor.x
-  ) + "px";
+  ) + 'px';
 
-  this.container.style.top = (pixelLocation.y
+  this.container_.style.top = (pixelLocation.y
     - this.wrapperParts.bl.h
     - contentHeight
     - this.wrapperParts.tl.h
     - this.wrapperParts.beak.h
     - markerIcon.iconAnchor.y
     + markerIcon.infoWindowAnchor.y
-    + this.borderSize
-  ) + "px";
+    + this.borderSize_
+  ) + 'px';
 
-  this.container.style.display = 'block';
+  this.container_.style.display = 'block';
 
-  if(this.map.getExtInfoWindow() != null) {
+  if(this.map_.getExtInfoWindow() != null) {
     this.repositionMap_();
   }
 };
@@ -309,38 +306,38 @@ ExtInfoWindow.prototype.redraw = function(force) {
 ExtInfoWindow.prototype.resize = function(){
   
   //Create temporary DOM node for new contents to get new height
-  //This is done because if you manipulate this.contentDiv directly it causes visual errors in IE6
-  var tempElement = this.contentDiv.cloneNode(true);
-  tempElement.id = this.infoWindowId+"_tempContents";
-  tempElement.style.visibility="hidden";	
-  tempElement.style.height = "auto";
+  //This is done because if you manipulate this.contentDiv_ directly it causes visual errors in IE6
+  var tempElement = this.contentDiv_.cloneNode(true);
+  tempElement.id = this.infoWindowId_ + '_tempContents';
+  tempElement.style.visibility = 'hidden';	
+  tempElement.style.height = 'auto';
   document.body.appendChild(tempElement);
-  tempElement = document.getElementById(this.infoWindowId+"_tempContents");
+  tempElement = document.getElementById(this.infoWindowId_ + '_tempContents');
   var contentHeight = tempElement.offsetHeight;
   document.body.removeChild(tempElement);
 
   //Set the new height to eliminate visual defects that can be caused by font resizing in browser
-  this.contentDiv.style.height = contentHeight + "px";
+  this.contentDiv_.style.height = contentHeight + 'px';
 
-  var contentWidth = this.contentDiv.offsetWidth;
-  var pixelLocation = this.map.fromLatLngToDivPixel(this.marker.getPoint());
+  var contentWidth = this.contentDiv_.offsetWidth;
+  var pixelLocation = this.map_.fromLatLngToDivPixel(this.marker_.getPoint());
 
   var oldWindowHeight = this.wrapperParts.t.domElement.offsetHeight + this.wrapperParts.l.domElement.offsetHeight + this.wrapperParts.b.domElement.offsetHeight;	
   var oldWindowPosTop = this.wrapperParts.t.domElement.offsetTop;
 
   //resize info window to look correct for new height
-  this.wrapperParts.l.domElement.style.height = contentHeight + "px";
-  this.wrapperParts.r.domElement.style.height = contentHeight + "px";
+  this.wrapperParts.l.domElement.style.height = contentHeight + 'px';
+  this.wrapperParts.r.domElement.style.height = contentHeight + 'px';
   var newPosTop = this.wrapperParts.b.domElement.offsetTop - contentHeight;
-  this.wrapperParts.l.domElement.style.top = newPosTop + "px";
-  this.wrapperParts.r.domElement.style.top = newPosTop + "px";
-  this.contentDiv.style.top = newPosTop + "px";
+  this.wrapperParts.l.domElement.style.top = newPosTop + 'px';
+  this.wrapperParts.r.domElement.style.top = newPosTop + 'px';
+  this.contentDiv_.style.top = newPosTop + 'px';
   windowTHeight = parseInt(this.wrapperParts.t.domElement.style.height);
   newPosTop -= windowTHeight;
-  this.wrapperParts.close.domElement.style.top = newPosTop + this.borderSize + "px";
-  this.wrapperParts.tl.domElement.style.top = newPosTop + "px";
-  this.wrapperParts.t.domElement.style.top = newPosTop + "px";
-  this.wrapperParts.tr.domElement.style.top = newPosTop + "px";
+  this.wrapperParts.close.domElement.style.top = newPosTop + this.borderSize_ + 'px';
+  this.wrapperParts.tl.domElement.style.top = newPosTop + 'px';
+  this.wrapperParts.t.domElement.style.top = newPosTop + 'px';
+  this.wrapperParts.tr.domElement.style.top = newPosTop + 'px';
 
   this.repositionMap_();
 };
@@ -353,22 +350,22 @@ ExtInfoWindow.prototype.resize = function(){
  */
 ExtInfoWindow.prototype.repositionMap_ = function(){
   //pan if necessary so it shows on the screen
-  var mapNE = this.map.fromLatLngToDivPixel(
-    this.map.getBounds().getNorthEast()
+  var mapNE = this.map_.fromLatLngToDivPixel(
+    this.map_.getBounds().getNorthEast()
   );
-  var mapSW = this.map.fromLatLngToDivPixel(
-    this.map.getBounds().getSouthWest()
+  var mapSW = this.map_.fromLatLngToDivPixel(
+    this.map_.getBounds().getSouthWest()
   );
-  var markerPosition = this.map.fromLatLngToDivPixel(
-    this.marker.getPoint()
+  var markerPosition = this.map_.fromLatLngToDivPixel(
+    this.marker_.getPoint()
   );
 
-  var panX=0;
-  var panY=0;
-  var paddingX = this.paddingX;
-  var paddingY = this.paddingY;
-  var infoWindowAnchor = this.marker.getIcon().infoWindowAnchor;
-  var iconAnchor = this.marker.getIcon().iconAnchor;
+  var panX = 0;
+  var panY = 0;
+  var paddingX = this.paddingX_;
+  var paddingY = this.paddingY_;
+  var infoWindowAnchor = this.marker_.getIcon().infoWindowAnchor;
+  var iconAnchor = this.marker_.getIcon().iconAnchor;
 
   //test top of screen	
   var windowT = this.wrapperParts.t.domElement;
@@ -377,31 +374,31 @@ ExtInfoWindow.prototype.repositionMap_ = function(){
   var windowR = this.wrapperParts.r.domElement;
   var windowBeak = this.wrapperParts.beak.domElement;
 
-  var offsetTop = markerPosition.y - ( -infoWindowAnchor.y + iconAnchor.y +  this.getDimensions_(windowBeak).height + this.getDimensions_(windowB).height + this.getDimensions_(windowL).height + this.getDimensions_(windowT).height + this.paddingY);
-  if( offsetTop < mapNE.y) {
+  var offsetTop = markerPosition.y - ( -infoWindowAnchor.y + iconAnchor.y +  this.getDimensions_(windowBeak).height + this.getDimensions_(windowB).height + this.getDimensions_(windowL).height + this.getDimensions_(windowT).height + this.paddingY_);
+  if (offsetTop < mapNE.y) {
     panY = mapNE.y - offsetTop;
-  }else{
+  } else {
     //test bottom of screen
-    var offsetBottom = markerPosition.y + this.paddingY;
-    if(offsetBottom >= mapSW.y) {
+    var offsetBottom = markerPosition.y + this.paddingY_;
+    if (offsetBottom >= mapSW.y) {
       panY = -(offsetBottom - mapSW.y);
     }
   }
 
   //test right of screen
-  var offsetRight = Math.round(markerPosition.x + this.getDimensions_(this.container).width/2 + this.getDimensions_(windowR).width + this.paddingX + infoWindowAnchor.x - iconAnchor.x);
-  if(offsetRight > mapNE.x) {
+  var offsetRight = Math.round(markerPosition.x + this.getDimensions_(this.container_).width/2 + this.getDimensions_(windowR).width + this.paddingX_ + infoWindowAnchor.x - iconAnchor.x);
+  if (offsetRight > mapNE.x) {
     panX = -( offsetRight - mapNE.x);
-  }else{
+  } else {
     //test left of screen
-    var offsetLeft = - (Math.round( (this.getDimensions_(this.container).width/2 - this.marker.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize + this.paddingX) - markerPosition.x - infoWindowAnchor.x + iconAnchor.x);
+    var offsetLeft = - (Math.round( (this.getDimensions_(this.container_).width/2 - this.marker_.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize_ + this.paddingX_) - markerPosition.x - infoWindowAnchor.x + iconAnchor.x);
     if( offsetLeft < mapSW.x) {
       panX = mapSW.x - offsetLeft;
     }
   }
 
-  if(panX!=0 || panY!=0 && this.map.getExtInfoWindow() != null ) {
-    this.map.panBy(new GSize(panX,panY));
+  if (panX != 0 || panY != 0 && this.map_.getExtInfoWindow() != null ) {
+    this.map_.panBy(new GSize(panX,panY));
   }
 };
 
@@ -413,20 +410,20 @@ ExtInfoWindow.prototype.repositionMap_ = function(){
  * @param {String} url The Url of where to make the ajax request on the server
  */
 ExtInfoWindow.prototype.ajaxRequest_ = function(url){
-  var thisMap = this.map;
-  var thisCallback = this.callback;
+  var thisMap = this.map_;
+  var thisCallback = this.callback_;
   GDownloadUrl(url, function(response, status){
-    var infoWindow = document.getElementById(thisMap.getExtInfoWindow().infoWindowId+"_contents");
-    if( response == null || status == -1 ){
-      infoWindow.innerHTML = "<span class='error'>ERROR: The Ajax request failed to get HTML content from '"+url+"'</span>";
-    }else{
+    var infoWindow = document.getElementById(thisMap.getExtInfoWindow().infoWindowId + '_contents');
+    if (response == null || status == -1 ) {
+      infoWindow.innerHTML = '<span class="error">ERROR: The Ajax request failed to get HTML content from "' + url + '"</span>';
+    } else {
       infoWindow.innerHTML = response;
     }
-    if( thisCallback != null ){
+    if (thisCallback != null ) {
       thisCallback();
     }
     thisMap.getExtInfoWindow().resize();
-    GEvent.trigger(thisMap, "extinfowindowupdate");
+    GEvent.trigger(thisMap, 'extinfowindowupdate');
   });
 };
 
@@ -440,7 +437,7 @@ ExtInfoWindow.prototype.ajaxRequest_ = function(url){
  */
 ExtInfoWindow.prototype.getDimensions_ = function(element) {
   var display = this.getStyle_(element, 'display');
-  if (display != 'none' && display != null){ // Safari bug
+  if (display != 'none' && display != null) { // Safari bug
     return {width: element.offsetWidth, height: element.offsetHeight};
   }
 
@@ -481,14 +478,14 @@ ExtInfoWindow.prototype.getStyle_ = function(element, style) {
       value = element.currentStyle[style];
     }
   }
-  if((value == 'auto') && (style == 'width' || style == 'height') && (this.getStyle_(element, 'display') != 'none')){
-    if( style == "width" ){
+  if((value == 'auto') && (style == 'width' || style == 'height') && (this.getStyle_(element, 'display') != 'none')) {
+    if( style == 'width' ) {
       value = element.offsetWidth;
-    }else{
+    }else {
       value = element.offsetHeight;
     }
   }
-  if (window.opera && ['left', 'top', 'right', 'bottom'].include(style)){
+  if (window.opera && ['left', 'top', 'right', 'bottom'].include(style)) {
     if (this.getStyle_(element, 'position') == 'static') value = 'auto';
   } 
   return (value == 'auto') ? null : value;
@@ -508,7 +505,7 @@ ExtInfoWindow.prototype.camelize_ = function(element) {
     ? parts[0].charAt(0).toUpperCase() + parts[0].substring(1)
     : parts[0];
 
-  for (var i = 1; i < len; i++){
+  for (var i = 1; i < len; i++) {
     camelized += parts[i].charAt(0).toUpperCase() + parts[i].substring(1);
   }
   return camelized;
@@ -538,41 +535,41 @@ GMap.prototype.InfoWindowListener_ = null;
  *                    info window styling containers a border.
  */
 GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
-  if( map == null ){
-    throw "Error in GMarker.openExtInfoWindow: map cannot be null";
+  if (map == null) {
+    throw 'Error in GMarker.openExtInfoWindow: map cannot be null';
     return false;
   }
-  if( cssId == null || cssId == "" ){
-    throw "Error in GMarker.openExtInfoWindow: must specify a cssId";
+  if (cssId == null || cssId == '') {
+    throw 'Error in GMarker.openExtInfoWindow: must specify a cssId';
     return false;
   }
   
   map.closeInfoWindow();
-  if(map.getExtInfoWindow() != null) {
+  if (map.getExtInfoWindow() != null) {
     map.closeExtInfoWindow();
   }
-  if(map.getExtInfoWindow() == null) {
+  if (map.getExtInfoWindow() == null) {
     map.setExtInfoWindow_( new ExtInfoWindow(
       this,
       cssId,
       html,
       opt_opts
     ) );
-    if( map.ClickListener_ == null){
+    if (map.ClickListener_ == null) {
       //listen for map click, close ExtInfoWindow if open
-      map.ClickListener_ = GEvent.addListener(map, "click",
-      function(event){
+      map.ClickListener_ = GEvent.addListener(map, 'click',
+      function(event) {
           if( !event && map.getExtInfoWindow() != null ){
             map.closeExtInfoWindow();
           }
         }
       );
     }
-    if( map.InfoWindowListener_ == null){
+    if (map.InfoWindowListener_ == null) {
       //listen for default info window open, close ExtInfoWindow if open
-      map.InfoWindowListener_ = GEvent.addListener(map, "infowindowopen", 
-      function(event){
-          if( map.getExtInfoWindow() != null){
+      map.InfoWindowListener_ = GEvent.addListener(map, 'infowindowopen', 
+      function(event) {
+          if (map.getExtInfoWindow() != null) {
             map.closeExtInfoWindow();
           }
         }
