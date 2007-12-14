@@ -157,11 +157,10 @@ ExtInfoWindow.prototype.initialize = function(map) {
  * @param {MouseEvent} e The mouse event caught by this function
  */
 ExtInfoWindow.prototype.onClick_ = function(e) {
-  if(navigator.userAgent.toLowerCase().indexOf('msie')! =- 1 && document.all){
-    window.event.cancelBubble=true;
-    window.event.returnValue=false;
-  }
-  else{
+  if(navigator.userAgent.toLowerCase().indexOf('msie') != -1 && document.all) {
+    window.event.cancelBubble = true;
+    window.event.returnValue = false;
+  } else {
     e.preventDefault();
     e.stopPropagation();
   }
