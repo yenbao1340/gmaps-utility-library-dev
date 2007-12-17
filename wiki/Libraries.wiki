@@ -56,7 +56,7 @@ This is a control that mimics MapTypeControl and optionally has a Traffic button
 
 This is an extension that lets you create custom styled info windows with CSS and makes it easy to load in AJAX content or tabs.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/ Link to Release (1.1) Version]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/ Link to Release (1.0) Version]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/docs/examples.html Examples]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/docs/reference.html Reference]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/src/extmaptypecontrol.js Javascript include]
