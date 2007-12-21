@@ -19,6 +19,7 @@
           map.addControl(new GLargeMapControl());
 
           marker = new GMarker( new GLatLng(44, -96) );
+          
           GEvent.addListener(marker, 'click', function(){ 
             marker.openExtInfoWindow(
               map,
@@ -27,12 +28,20 @@
               {beakOffset: 3}
             ); 
           });
+          
+          /*
+          GEvent.addListener(marker, 'click', function(){ 
+            marker.openInfoWindowHtml(
+              "I'm a default Google info window with HTML content."
+            ); 
+          });
+          */
           map.addOverlay(marker);
         }
       }
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
-    <div id="map" style="width: 900px; height: 600px" ></div>
+    <div id="map" style="width: 400px; height: 600px" ></div>
   </body>
 </html>

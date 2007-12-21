@@ -604,6 +604,6 @@ GMap2.prototype.setExtInfoWindow_ = function( extInfoWindow ){
  */
 GMap2.prototype.closeExtInfoWindow = function(){
   if (this.getExtInfoWindow() != null) {
-    this.ExtInfoWindowInstance_.remove();
+    this.getExtInfoWindow().remove();
   }
 };
