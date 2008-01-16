@@ -128,14 +128,6 @@ ExtInfoWindow.prototype.initialize = function(map) {
     wrapperPartsDiv.style.left = this.wrapperParts[i].l + 'px';
     this.wrapperParts[i].domElement = wrapperPartsDiv;
   }
-  //add event handler for the close box
-  var currentMarker = this.marker_;
-  var thisMap = this.map_;
-  GEvent.addDomListener(this.wrapperParts.close.domElement, 'click', 
-    function() {
-      thisMap.closeExtInfoWindow();
-    }
-  );
   
   this.map_.getPane(G_MAP_FLOAT_PANE).appendChild(this.container_);
   this.container_.id = this.infoWindowId_;
@@ -211,14 +203,11 @@ ExtInfoWindow.prototype.copy = function() {
  * @param {Boolean} force Will be true when pixel coordinates need to be recomputed.
  */
 ExtInfoWindow.prototype.redraw = function(force) {
-  //if (!force || this.container_ == null) return;
-  if (this.container_ == null) return;
-  
-  if (force) {
-    //set the content section's height, needed so  browser font resizing does not affect the window's dimensions
-    var contentHeight = this.contentDiv_.offsetHeight;
-    this.contentDiv_.style.height = contentHeight + 'px';
-  }
+  if (!force || this.container_ == null) return;
+
+  //set the content section's height, needed so  browser font resizing does not affect the window's dimensions
+  var contentHeight = this.contentDiv_.offsetHeight;
+  this.contentDiv_.style.height = contentHeight + 'px';
 
   //reposition contents depending on wrapper parts.
   //this is necessary for content that is pulled in via ajax
@@ -273,7 +262,14 @@ ExtInfoWindow.prototype.redraw = function(force) {
     this.wrapperParts[i].domElement = wrapperPartsDiv;
   }
 
-  
+  //add event handler for the close box
+  var currentMarker = this.marker_;
+  var thisMap = this.map_;
+  GEvent.addDomListener(this.wrapperParts.close.domElement, 'click', 
+    function() {
+      thisMap.closeExtInfoWindow();
+    }
+  );
 
   //position the container on the map, over the marker
   var pixelLocation = this.map_.fromLatLngToDivPixel(this.marker_.getPoint());
@@ -296,10 +292,9 @@ ExtInfoWindow.prototype.redraw = function(force) {
   ) + 'px';
 
   this.container_.style.display = 'block';
-  if( force ){
-    if(this.map_.getExtInfoWindow() != null) {
-      this.repositionMap_();
-    }
+
+  if(this.map_.getExtInfoWindow() != null) {
+    this.repositionMap_();
   }
 };
 
@@ -389,26 +384,17 @@ ExtInfoWindow.prototype.repositionMap_ = function(){
     }
   }
 
-  var offsetFactors = {};
-  offsetFactors.containerHalf = this.getDimensions_(this.container_).width/2;
-  offsetFactors.markerIcon = this.marker_.getIcon().iconSize.width/2;
-  offsetFactors.windowL = this.wrapperParts.l.w;
-  offsetFactors.borderSize = this.borderSize_;
-  offsetFactors.paddingX = this.paddingX_;
-  offsetFactors.markerPositionX = markerPosition.x;
-  offsetFactors.infoWindowAnchorX = infoWindowAnchor.x;
-  offsetFactors.iconAnchorX = iconAnchor.x;
-  var offsetLeft = - (Math.round( (this.getDimensions_(this.container_).width/2 - this.marker_.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize_ + this.paddingX_) - markerPosition.x - infoWindowAnchor.x + iconAnchor.x);
-  if( offsetLeft < mapSW.x) {
-    panX = mapSW.x - offsetLeft;
-  }else if( this.map_.getZoom() > 2 ){
-    //test right of screen
-    var offsetRight = Math.round(markerPosition.x + this.getDimensions_(this.container_).width/2 + this.getDimensions_(windowR).width + this.paddingX_ + infoWindowAnchor.x - iconAnchor.x);
-    if (offsetRight > mapNE.x) {
-      panX = -( offsetRight - mapNE.x);
+  //test right of screen
+  var offsetRight = Math.round(markerPosition.x + this.getDimensions_(this.container_).width/2 + this.getDimensions_(windowR).width + this.paddingX_ + infoWindowAnchor.x - iconAnchor.x);
+  if (offsetRight > mapNE.x) {
+    panX = -( offsetRight - mapNE.x);
+  } else {
+    //test left of screen
+    var offsetLeft = - (Math.round( (this.getDimensions_(this.container_).width/2 - this.marker_.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize_ + this.paddingX_) - markerPosition.x - infoWindowAnchor.x + iconAnchor.x);
+    if( offsetLeft < mapSW.x) {
+      panX = mapSW.x - offsetLeft;
     }
   }
-  
 
   if (panX != 0 || panY != 0 && this.map_.getExtInfoWindow() != null ) {
     this.map_.panBy(new GSize(panX,panY));
