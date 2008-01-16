@@ -41,10 +41,7 @@
           //marker with ext info window with a red skin
           var redIcon1 = new GIcon(G_DEFAULT_ICON);
           redIcon1.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker1.png";
-          redIcon1.iconAnchor = new GPoint(0, 0);
-          redIcon1.infoWindowAnchor = new GPoint(3,0);
-
-          marker = new GMarker( new GLatLng(43, -120), redIcon1);
+          marker = new GMarker( new GLatLng(42, -120), redIcon1);
           GEvent.addListener(marker, 'click', function(){ 
             marker.openExtInfoWindow(
               map,
@@ -58,9 +55,7 @@
           //marker with ext info window with a talking bubble skin
           var redIcon2 = new GIcon(G_DEFAULT_ICON);
           redIcon2.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker2.png";
-          redIcon2.iconAnchor = new GPoint(0, 0);
-          redIcon2.infoWindowAnchor = new GPoint(0, 0 );
-          marker2 = new GMarker( new GLatLng(43, -110), redIcon2);
+          marker2 = new GMarker( new GLatLng(42, -110), redIcon2);
           GEvent.addListener(marker2, 'click', function(){ 
             marker2.openExtInfoWindow(
               map,
@@ -74,9 +69,7 @@
           //marker with ext info window with Ajax contents and red skin
           var redIcon3 = new GIcon(G_DEFAULT_ICON);
           redIcon3.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker3.png";
-          redIcon3.iconAnchor = new GPoint(0, 0);
-          redIcon3.infoWindowAnchor = new GPoint(6,0);
-          marker3 = new GMarker( new GLatLng(43, -100), redIcon3);
+          marker3 = new GMarker( new GLatLng(42, -100), redIcon3);
           GEvent.addListener(marker3, 'click', function(){ 
             marker3.openExtInfoWindow(
               map, 
@@ -95,9 +88,8 @@
           //marker with ext info window with Ajax contents and red skin
           var redIcon4 = new GIcon(G_DEFAULT_ICON);
           redIcon4.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker4.png";
-          redIcon4.iconAnchor = new GPoint(0, 0);
-          redIcon4.infoWindowAnchor = new GPoint(0,0);
-          marker4 = new GMarker( new GLatLng(43, -90), redIcon4);
+          redIcon4.infoWIndowAnchor = new GPoint(0,0);
+          marker4 = new GMarker( new GLatLng(42, -90), redIcon4);
           GEvent.addListener(marker4, 'click', function(){ 
             marker4.openExtInfoWindow(
               map,
@@ -112,9 +104,8 @@
           //marker with ext info window with Ajax contents and red skin
           var redIcon5 = new GIcon(G_DEFAULT_ICON);
           redIcon5.image = "http://gmaps-samples.googlecode.com/svn/trunk/markers/red/marker5.png";
-          redIcon5.iconAnchor = new GPoint(0, 0);
           redIcon5.infoWindowAnchor = new GPoint(40,34);
-          marker5 = new GMarker( new GLatLng(43, -80), redIcon5);
+          marker5 = new GMarker( new GLatLng(42, -80), redIcon5);
           GEvent.addListener(marker5, 'click', function(){ 
             marker5.openExtInfoWindow(
               map,
