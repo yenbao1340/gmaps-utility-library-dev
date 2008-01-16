@@ -90,17 +90,12 @@ function MarkerManager(map, opt_opts) {
   // NOTE: These two closures provide easy access to the map.
   // They are used as callbacks, not as methods.
   me.removeOverlay_ = function(marker) {
-    if (!marker.isInfoWindowOpened) {
-      map.removeOverlay(marker);
-      me.shownMarkers_--;
-    }
+    map.removeOverlay(marker);
+    me.shownMarkers_--;
   };
   me.addOverlay_ = function(marker) {
-    if (!marker.isInfoWindowOpened) {
-      marker.isInfoWindowOpened = false;
-      map.addOverlay(marker);
-      me.shownMarkers_++;
-    }
+    map.addOverlay(marker);
+    me.shownMarkers_++;
   };
 
   me.resetManager_();
@@ -177,14 +172,6 @@ MarkerManager.prototype.addMarkerBatch_ = function(marker, minZoom, maxZoom) {
   if (this.trackMarkers_) {
     GEvent.bind(marker, "changed", this, this.onMarkerMoved_);
   }
-
-  GEvent.addListener(marker, "infowindowopen", function() {
-    marker.isInfoWindowOpened = true;
-  });
-
-  GEvent.addListener(marker, "infowindowclose", function() {
-    marker.isInfoWindowOpened = false;
-  });
 
   var gridPoint = this.getTilePoint_(mPoint, maxZoom, GSize.ZERO);
 
