@@ -498,9 +498,6 @@ ExtInfoWindow.prototype.getStyle_ = function(element, style) {
       value = element.offsetHeight;
     }
   }
-  if (window.opera && ['left', 'top', 'right', 'bottom'].include(style)) {
-    if (this.getStyle_(element, 'position') == 'static') value = 'auto';
-  } 
   return (value == 'auto') ? null : value;
 };
 
