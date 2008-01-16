@@ -398,11 +398,9 @@ ExtInfoWindow.prototype.repositionMap_ = function(){
   offsetFactors.markerPositionX = markerPosition.x;
   offsetFactors.infoWindowAnchorX = infoWindowAnchor.x;
   offsetFactors.iconAnchorX = iconAnchor.x;
-  console.log(offsetFactors);
   var offsetLeft = - (Math.round( (this.getDimensions_(this.container_).width/2 - this.marker_.getIcon().iconSize.width/2) + this.getDimensions_(windowL).width + this.borderSize_ + this.paddingX_) - markerPosition.x - infoWindowAnchor.x + iconAnchor.x);
   if( offsetLeft < mapSW.x) {
     panX = mapSW.x - offsetLeft;
-    console.log(panX);
   }else if( this.map_.getZoom() > 2 ){
     //test right of screen
     var offsetRight = Math.round(markerPosition.x + this.getDimensions_(this.container_).width/2 + this.getDimensions_(windowR).width + this.paddingX_ + infoWindowAnchor.x - iconAnchor.x);
