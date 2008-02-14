@@ -142,6 +142,7 @@ ExtInfoWindow.prototype.initialize = function(map) {
   this.container_.appendChild(this.wrapperDiv_);
 
   GEvent.bindDom(this.container_, 'mousedown', this,this.onClick_);
+  GEvent.bindDom(this.container_, 'dblclick', this,this.onClick_);
 
   GEvent.trigger(this.map_, 'extinfowindowopen');
   if (this.ajaxUrl_ != null ) {
@@ -161,7 +162,7 @@ ExtInfoWindow.prototype.onClick_ = function(e) {
     window.event.cancelBubble = true;
     window.event.returnValue = false;
   } else {
-    e.preventDefault();
+    //e.preventDefault();
     e.stopPropagation();
   }
 };
@@ -181,7 +182,6 @@ ExtInfoWindow.prototype.remove = function() {
       this.container_.parentNode.removeChild(this.container_);
     }
     this.container_ = null;
-    
     GEvent.trigger(this.map_, 'extinfowindowclose');
     this.map_.setExtInfoWindow_(null);
   }
@@ -580,7 +580,9 @@ GMarker.prototype.openExtInfoWindow = function(map, cssId, html, opt_opts) {
  * @param {GMap2} map The map where the GMarker and ExtInfoWindow exist
  */
 GMarker.prototype.closeExtInfoWindow = function(map) {
-  map.closeExtInfoWindow();
+  if( map.getExtInfWindow() != null ){
+    map.closeExtInfoWindow();
+  }
 };
 
 /**
@@ -600,7 +602,7 @@ GMap2.prototype.setExtInfoWindow_ = function( extInfoWindow ){
  * Remove the ExtInfoWindow from the map
  */
 GMap2.prototype.closeExtInfoWindow = function(){
-  if (this.getExtInfoWindow() != null) {
-    this.getExtInfoWindow().remove();
+  if( this.getExtInfoWindow() != null ){
+    this.ExtInfoWindowInstance_.remove();
   }
 };
