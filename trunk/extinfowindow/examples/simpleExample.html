@@ -17,7 +17,8 @@
           map = new GMap2(document.getElementById("map"));
           map.setCenter(new GLatLng(44, -96), 4);
           map.addControl(new GLargeMapControl());
-
+          map.enableScrollWheelZoom();
+          
           marker = new GMarker( new GLatLng(44, -96) );
           
           GEvent.addListener(marker, 'click', function(){ 
