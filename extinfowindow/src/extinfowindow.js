@@ -143,6 +143,8 @@ ExtInfoWindow.prototype.initialize = function(map) {
 
   GEvent.bindDom(this.container_, 'mousedown', this,this.onClick_);
   GEvent.bindDom(this.container_, 'dblclick', this,this.onClick_);
+  GEvent.bindDom(this.container_, 'DOMMouseScroll', this, this.onClick_);
+  
 
   GEvent.trigger(this.map_, 'extinfowindowopen');
   if (this.ajaxUrl_ != null ) {
