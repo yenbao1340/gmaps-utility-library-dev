@@ -1,8 +1,8 @@
 <html>
 <head>
 <title>Marker Maker</title>
- <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA-O3c-Om9OcvXMOJXreXHAxT2MGhLvOJt8GrjSUL43OmcjQmGtxTaPEpHKK2neSdfBYbnzoxnoZ7Sww"
-         type="text/javascript"></script>
+ <script type="text/javascript"  src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxQGj0PqsCtxKvarsoS-iqLdqZSKfxRdmoPmGl7Y9335WLC36wIGYa6o5Q">
+ </script>
  <script src="../src/iconfactory.js" type="text/javascript"></script>
  <script src="colorselector/colorselector.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -24,49 +24,49 @@ function changeCornerColor(colorHex) {
   updateImage();
 }
 
-    function load() {
-      if (GBrowserIsCompatible()) {
-        map = new GMap2(document.getElementById("map"));
-        map.addControl(new GSmallMapControl());
-        map.addControl(new GMapTypeControl());
-        map.setCenter(new GLatLng(37.4419, -122.1419), 13);
-        updateImage();
-     }
-   }
+function load() {
+  if (GBrowserIsCompatible()) {
+    map = new GMap2(document.getElementById("map"));
+    map.addControl(new GSmallMapControl());
+    map.addControl(new GMapTypeControl());
+    map.setCenter(new GLatLng(37.4419, -122.1419), 13);
+    updateImage();
+  }
+}
 
-   function updateImage() {
-     map.clearOverlays();
-     markerOptions.width = document.getElementById("markerWidth").value;
-     markerOptions.height = document.getElementById("markerHeight").value;
-     markerOptions.primaryColor = document.getElementById("primaryColor").value + "FF";
-     markerOptions.cornerColor = document.getElementById("cornerColor").value + "FF";
-     markerOptions.strokeColor = document.getElementById("strokeColor").value + "FF";
-     var icon = IconFactory.createMarkerIcon({width:markerOptions.width, height:markerOptions.height, primaryColor: markerOptions.primaryColor, strokeColor: markerOptions.strokeColor, cornerColor: markerOptions.cornerColor});
+function updateImage() {
+  map.clearOverlays();
+  markerOptions.width = document.getElementById("markerWidth").value;
+  markerOptions.height = document.getElementById("markerHeight").value;
+  markerOptions.primaryColor = document.getElementById("primaryColor").value + "FF";
+  markerOptions.cornerColor = document.getElementById("cornerColor").value + "FF";
+  markerOptions.strokeColor = document.getElementById("strokeColor").value + "FF";
+  var icon = IconFactory.createMarkerIcon({width:markerOptions.width, height:markerOptions.height, primaryColor: markerOptions.primaryColor, strokeColor: markerOptions.strokeColor, cornerColor: markerOptions.cornerColor});
 
-     document.getElementById("marker").innerHTML = "";
-     var img = document.createElement("img");
-     img.setAttribute("src", icon.image);
-     document.getElementById("marker").appendChild(img);
-     // Add 10 markers to the map at random locations
-     var bounds = map.getBounds();
-     var southWest = bounds.getSouthWest();
-        var northEast = bounds.getNorthEast();
-        var lngSpan = northEast.lng() - southWest.lng();
-        var latSpan = northEast.lat() - southWest.lat();
-        for (var i = 0; i < 10; i++) {
-          var point = new GLatLng(southWest.lat() + latSpan * Math.random(),
-                                  southWest.lng() + lngSpan * Math.random());
-          map.addOverlay(createMarker(point, icon));
-        }
-    }
+  document.getElementById("marker").innerHTML = "";
+  var img = document.createElement("img");
+  img.setAttribute("src", icon.image);
+  document.getElementById("marker").appendChild(img);
+  // Add 10 markers to the map at random locations
+  var bounds = map.getBounds();
+  var southWest = bounds.getSouthWest();
+  var northEast = bounds.getNorthEast();
+  var lngSpan = northEast.lng() - southWest.lng();
+  var latSpan = northEast.lat() - southWest.lat();
+  for (var i = 0; i < 10; i++) {
+    var point = new GLatLng(southWest.lat() + latSpan * Math.random(),
+                            southWest.lng() + lngSpan * Math.random());
+    map.addOverlay(createMarker(point, icon));
+  }
+}
 
-    function createMarker(point, icon) {
-      var marker = new GMarker(point, {icon: icon, draggable:true});
-      GEvent.addListener(marker, "click", function() {
-        marker.openInfoWindowHtml("Test");
-      });
-      return marker;
-    }
+function createMarker(point, icon) {
+  var marker = new GMarker(point, {icon: icon, draggable:true});
+  GEvent.addListener(marker, "click", function() {
+    marker.openInfoWindowHtml("Test");
+  });
+  return marker;
+}
 </script>
 </head>
 <body style="font-family: Arial, sans serif" onload="load()">
