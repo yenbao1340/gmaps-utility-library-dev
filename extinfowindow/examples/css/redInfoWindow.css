@@ -64,6 +64,26 @@
   background-image:none;
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_close.png', sizingMethod='crop');
 }
+#custom_info_window_red_max{
+  width: 21px;
+  height: 21px;
+  background: url('../images/corners/red_max.png') top left no-repeat transparent;
+  cursor: pointer;
+}
+* html #custom_info_window_red_max{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_max.png', sizingMethod='crop');
+}
+#custom_info_window_red_min{
+  width: 21px;
+  height: 21px;
+  background: url('../images/corners/red_min.png') top left no-repeat transparent;
+  cursor: pointer;
+}
+* html #custom_info_window_red_min{
+  background-image:none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/corners/red_min.png', sizingMethod='crop');
+}
 #custom_info_window_red_beak{
   width: 28px;
   height: 38px;
