@@ -46,6 +46,10 @@ function ExtInfoWindow(marker, windowId, html, opt_opts) {
   this.options_ = opt_opts == null ? {} : opt_opts;
   this.ajaxUrl_ = this.options_.ajaxUrl == null ? null : this.options_.ajaxUrl;
   this.callback_ = this.options_.ajaxCallback == null ? null : this.options_.ajaxCallback;
+  
+  this.maxContent_ = this.options_.maxContent == null ? null : this.options_.maxContent;
+  this.maximizeEnabled_ = this.maxContent_ == null ? false : true;
+  this.isMaximized_ = false;
 
   this.borderSize_ = this.options_.beakOffset == null ? 0 : this.options_.beakOffset;
   this.paddingX_ = this.options_.paddingX == null ? 0 + this.borderSize_ : this.options_.paddingX + this.borderSize_;
@@ -79,6 +83,11 @@ ExtInfoWindow.prototype = new GOverlay();
 ExtInfoWindow.prototype.initialize = function(map) {
   this.map_ = map;
 
+  if( this.maximizeEnabled_ ){
+    this.maxWidth_ = this.map_.getSize().width * .9;
+    this.maxHeight_ = this.map_.getSize().height * .9;
+  }
+
   this.defaultStyles = {
     containerWidth: this.map_.getSize().width / 2,
     borderSize: 1
@@ -96,6 +105,10 @@ ExtInfoWindow.prototype.initialize = function(map) {
     beak:{t:0, l:0, w:0, h:0, domElement: null},
     close:{t:0, l:0, w:0, h:0, domElement: null}
   };
+  if( this.maximizeEnabled_ ){
+    this.wrapperParts.max = {t:0, l:0, w:0, h:0, domElement: null}
+    this.wrapperParts.min = {t:0, l:0, w:0, h:0, domElement: null}
+  }
 
   for (var i in this.wrapperParts ) {
     var tempElement = document.createElement('div');
@@ -140,11 +153,62 @@ ExtInfoWindow.prototype.initialize = function(map) {
   this.contentDiv_.style.position = 'absolute';
 
   this.container_.appendChild(this.wrapperDiv_);
-
-  GEvent.bindDom(this.container_, 'mousedown', this,this.onClick_);
-  GEvent.bindDom(this.container_, 'dblclick', this,this.onClick_);
-  GEvent.bindDom(this.container_, 'DOMMouseScroll', this, this.onClick_);
   
+  if( this.maximizeEnabled_ ){
+    this.minWidth_ = this.getDimensions_(this.container_).width;
+    console.log(this.minWidth_);
+  }
+  
+  if (this.maximizeEnabled_) {
+    thisMap = this.map_;
+    thisMaxWidth = this.maxWidth_;
+    thisMaxHeight = this.maxHeight_;
+    thisContainer = this.container_;
+    thisMaxContent = this.maxContent_;
+    
+    thisMinWidth = this.container_.style.width;
+    thisMinHeight = this.container_.style.height;
+    //add event handler for maximize and minimize icons
+    GEvent.addDomListener(this.wrapperParts.max.domElement, 'click', 
+      function() {
+        var infoWindow = thisMap.getExtInfoWindow();
+        infoWindow.container_.style.width = thisMaxWidth + 'px';
+        infoWindow.ajaxRequest_(thisMaxContent);
+        infoWindow.isMaximized_ = true;
+        infoWindow.redraw(true);
+      
+        //swap min/max icons
+        infoWindow.toggleMaxMin_();
+      }
+    );
+    GEvent.addDomListener(this.wrapperParts.min.domElement, 'click', 
+      function() {
+        var infoWindow = thisMap.getExtInfoWindow();
+        infoWindow.container_.style.width = thisMinWidth;
+        infoWindow.container_.style.height = thisMinHeight;
+        if (infoWindow.ajaxUrl_ != null ) {
+           infoWindow.ajaxRequest_(this.ajaxUrl_);
+        }else{
+          infoWindow.contentDiv_.innerHTML = infoWindow.html_;
+        }
+        
+        infoWindow.isMaximized_ = false;
+        infoWindow.redraw(true);
+        infoWindow.resize();
+
+        //swap min/max icons
+        infoWindow.toggleMaxMin_();
+      }
+    );
+    
+    this.toggleMaxMin_();
+    
+  }
+
+  var stealEvents = ['mousedown', 'dblclick', 'DOMMouseScroll'];
+  for( i=0; i < stealEvents.length; i++ ){
+    GEvent.bindDom(this.container_, stealEvents[i], this, this.onClick_);
+  }
 
   GEvent.trigger(this.map_, 'extinfowindowopen');
   if (this.ajaxUrl_ != null ) {
@@ -206,10 +270,13 @@ ExtInfoWindow.prototype.copy = function() {
  */
 ExtInfoWindow.prototype.redraw = function(force) {
   if (!force || this.container_ == null) return;
-
+  
   //set the content section's height, needed so  browser font resizing does not affect the window's dimensions
   var contentHeight = this.contentDiv_.offsetHeight;
   this.contentDiv_.style.height = contentHeight + 'px';
+  
+  this.contentWidth = this.getDimensions_(this.container_).width;
+  this.contentDiv_.style.width = this.container_.style.width;
 
   //reposition contents depending on wrapper parts.
   //this is necessary for content that is pulled in via ajax
@@ -236,10 +303,16 @@ ExtInfoWindow.prototype.redraw = function(force) {
   this.wrapperParts.b.h = this.wrapperParts.bl.h;
   this.wrapperParts.br.l = this.wrapperParts.b.w + this.wrapperParts.bl.w;
   this.wrapperParts.br.t = contentHeight + this.wrapperParts.tr.h;
-  this.wrapperParts.close.l = this.wrapperParts.tr.l +this.wrapperParts.tr.w - this.wrapperParts.close.w - this.borderSize_;
-  this.wrapperParts.close.t = this.borderSize_;
   this.wrapperParts.beak.l = this.borderSize_ + (this.contentWidth / 2) - (this.wrapperParts.beak.w / 2);
   this.wrapperParts.beak.t = this.wrapperParts.bl.t + this.wrapperParts.bl.h - this.borderSize_;
+  this.wrapperParts.close.l = this.wrapperParts.tr.l +this.wrapperParts.tr.w - this.wrapperParts.close.w - this.borderSize_;
+  this.wrapperParts.close.t = this.borderSize_;
+  if( this.maximizeEnabled_ ){
+    this.wrapperParts.max.l = this.wrapperParts.close.l - this.wrapperParts.max.w - 5;
+    this.wrapperParts.max.t = this.wrapperParts.close.t;
+    this.wrapperParts.min.l = this.wrapperParts.max.l;
+    this.wrapperParts.min.t = this.wrapperParts.max.t;
+  }
 
   //create the decoration wrapper DOM objects
   //append the styled info window to the container
@@ -264,7 +337,7 @@ ExtInfoWindow.prototype.redraw = function(force) {
     this.wrapperParts[i].domElement = wrapperPartsDiv;
   }
 
-  //add event handler for the close box
+  //add event handler for the close icon
   var currentMarker = this.marker_;
   var thisMap = this.map_;
   GEvent.addDomListener(this.wrapperParts.close.domElement, 'click', 
@@ -272,7 +345,9 @@ ExtInfoWindow.prototype.redraw = function(force) {
       thisMap.closeExtInfoWindow();
     }
   );
-
+  
+  
+  
   //position the container on the map, over the marker
   var pixelLocation = this.map_.fromLatLngToDivPixel(this.marker_.getPoint());
   this.container_.style.position = 'absolute';
@@ -300,6 +375,18 @@ ExtInfoWindow.prototype.redraw = function(force) {
   }
 };
 
+ExtInfoWindow.prototype.toggleMaxMin_ = function(){
+  if( this.wrapperParts.max.domElement != null && this.wrapperParts.min.domElement != null ){
+    if (this.isMaximized_) {
+      this.wrapperParts.max.domElement.style.display = 'none';
+      this.wrapperParts.min.domElement.style.display = 'block';
+    }else{
+      this.wrapperParts.max.domElement.style.display = 'block';
+      this.wrapperParts.min.domElement.style.display = 'none';
+    }
+  }
+}
+
 /**
  * Determine the dimensions of the contents to recalculate and reposition the 
  * wrapping decorator elements accordingly.
@@ -320,7 +407,7 @@ ExtInfoWindow.prototype.resize = function(){
   //Set the new height to eliminate visual defects that can be caused by font resizing in browser
   this.contentDiv_.style.height = contentHeight + 'px';
 
-  var contentWidth = this.contentDiv_.offsetWidth;
+  var contentWidth = this.container_.offsetWidth;
   var pixelLocation = this.map_.fromLatLngToDivPixel(this.marker_.getPoint());
 
   var oldWindowHeight = this.wrapperParts.t.domElement.offsetHeight + this.wrapperParts.l.domElement.offsetHeight + this.wrapperParts.b.domElement.offsetHeight;	
