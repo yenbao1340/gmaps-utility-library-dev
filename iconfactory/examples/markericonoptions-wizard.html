@@ -6,7 +6,7 @@
  <script src="../src/iconfactory.js" type="text/javascript"></script>
  <script src="colorselector/colorselector.js" type="text/javascript"></script>
 <script type="text/javascript">
-var markerOptions = {
+var iconOptions = {
   width: "32",
   height: "32",
   primaryColor: "ff0000",
@@ -15,12 +15,12 @@ var markerOptions = {
 };
 var map = null;
 function changeColor(colorHex) {
-  markerOptions.primaryColor = colorHex;
+  iconOptions.primaryColor = colorHex;
   updateImage();
 }
 
 function changeCornerColor(colorHex) {
-  markerOptions.cornerColor = colorHex;
+  iconOptions.cornerColor = colorHex;
   updateImage();
 }
 
@@ -36,12 +36,12 @@ function load() {
 
 function updateImage() {
   map.clearOverlays();
-  markerOptions.width = document.getElementById("markerWidth").value;
-  markerOptions.height = document.getElementById("markerHeight").value;
-  markerOptions.primaryColor = document.getElementById("primaryColor").value + "FF";
-  markerOptions.cornerColor = document.getElementById("cornerColor").value + "FF";
-  markerOptions.strokeColor = document.getElementById("strokeColor").value + "FF";
-  var icon = IconFactory.createMarkerIcon({width:markerOptions.width, height:markerOptions.height, primaryColor: markerOptions.primaryColor, strokeColor: markerOptions.strokeColor, cornerColor: markerOptions.cornerColor});
+  iconOptions.width = document.getElementById("markerWidth").value;
+  iconOptions.height = document.getElementById("markerHeight").value;
+  iconOptions.primaryColor = document.getElementById("primaryColor").value + "FF";
+  iconOptions.cornerColor = document.getElementById("cornerColor").value + "FF";
+  iconOptions.strokeColor = document.getElementById("strokeColor").value + "FF";
+  var icon = IconFactory.createMarkerIcon(iconOptions);
 
   document.getElementById("marker").innerHTML = "";
   var img = document.createElement("img");
@@ -72,6 +72,8 @@ function createMarker(point, icon) {
 <body style="font-family: Arial, sans serif" onload="load()">
 
 <h2>MarkerIconOptions Wizard</h2>
+
+<h3><img src="http://www.google.com/uds/solutions/wizards/img/1b.gif" style="vertical-align: middle;"> Specify size and color options</h3>
 
 <table>
 <tr>
@@ -106,5 +108,15 @@ Stroke color:
 </td>
 </tr>
 </table>
+<h3><img src="http://www.google.com/uds/solutions/wizards/img/2b.gif" style="vertical-align: middle;"> Get the Code</h3>
+<pre>
+  var iconOptions = {};
+  iconOptions.width = document.getElementById("markerWidth").value;
+  iconOptions.height = document.getElementById("markerHeight").value;
+  iconOptions.primaryColor = document.getElementById("primaryColor").value + "FF";
+  iconOptions.cornerColor = document.getElementById("cornerColor").value + "FF";
+  iconOptions.strokeColor = document.getElementById("strokeColor").value + "FF";
+  var icon = IconFactory.createMarkerIcon(iconOptions);
+</pre>
 </body>
 </html>
