@@ -10,7 +10,7 @@ function load() {
   if (GBrowserIsCompatible()) {
     var map = new GMap2(document.getElementById("map"));
     map.setCenter(new GLatLng(37.441944, -122.141944), 13);
-    var newIcon = IconFactory.createMarkerIcon({width: 16, height: 16, primaryColor: "#00ff00"});
+    var newIcon = IconFactory.createMarkerIcon({width: 64, height: 64, primaryColor: "#00ff00"});
     var marker = new GMarker(map.getCenter(), {icon: newIcon});
     map.addOverlay(marker);
   }
