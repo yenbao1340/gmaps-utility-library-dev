@@ -6,6 +6,9 @@
   td {
     border: 0px none;
   }
+  table {
+    border: 0px none;
+  }
  </style>
  <script type="text/javascript"  src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxQGj0PqsCtxKvarsoS-iqLdqZSKfxRdmoPmGl7Y9335WLC36wIGYa6o5Q">
  </script>
@@ -124,13 +127,13 @@ Stroke color:
 </tr>
 </table>
 <h3><img src="http://www.google.com/uds/solutions/wizards/img/2b.gif" style="vertical-align: middle;"> Get the Code</h3>
-<pre class="code" style="width: 500px; overflow-x: scroll;">
+<pre class="code" style="width: 700px; overflow-x: scroll;">
   var iconOptions = {};
   iconOptions.width = <span id="p_width"></span>;
   iconOptions.height = <span id="p_height"></span>;
-  iconOptions.primaryColor = <span id="p_primaryColor"></span>;
-  iconOptions.cornerColor = <span id="p_cornerColor"></span>;
-  iconOptions.strokeColor = <span id="p_strokeColor"></span>;
+  iconOptions.primaryColor = "<span id="p_primaryColor"></span>";
+  iconOptions.cornerColor = "<span id="p_cornerColor"></span>";
+  iconOptions.strokeColor = "<span id="p_strokeColor"></span>";
   var icon = IconFactory.createMarkerIcon(iconOptions);
 </pre>
 </body>
