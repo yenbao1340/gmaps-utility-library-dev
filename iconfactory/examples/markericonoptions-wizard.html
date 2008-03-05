@@ -44,10 +44,19 @@ function updateImage() {
   iconOptions.strokeColor = document.getElementById("strokeColor").value + "FF";
   var icon = IconFactory.createMarkerIcon(iconOptions);
 
+  // Make an image from the foreground of the marker
   document.getElementById("marker").innerHTML = "";
   var img = document.createElement("img");
   img.setAttribute("src", icon.image);
   document.getElementById("marker").appendChild(img);
+
+  // Modify the generated code with the new options
+  document.getElementById("p_width").innerHTML = width;
+  document.getElementById("p_height").innerHTML = height;
+  document.getElementById("p_primaryColor").innerHTML = primaryColor;
+  document.getElementById("p_strokeColor").innerHTML = strokeColor;
+  document.getElementById("p_cornerColor").innerHTML = cornerColor;
+
   // Add 10 markers to the map at random locations
   var bounds = map.getBounds();
   var southWest = bounds.getSouthWest();
@@ -112,11 +121,11 @@ Stroke color:
 <h3><img src="http://www.google.com/uds/solutions/wizards/img/2b.gif" style="vertical-align: middle;"> Get the Code</h3>
 <pre class="code" style="width: 500px; overflow-x: scroll;">
   var iconOptions = {};
-  iconOptions.width = document.getElementById("markerWidth").value;
-  iconOptions.height = document.getElementById("markerHeight").value;
-  iconOptions.primaryColor = document.getElementById("primaryColor").value + "FF";
-  iconOptions.cornerColor = document.getElementById("cornerColor").value + "FF";
-  iconOptions.strokeColor = document.getElementById("strokeColor").value + "FF";
+  iconOptions.width = <span id="p_width"></span>;
+  iconOptions.height = <span id="p_height"></span>;
+  iconOptions.primaryColor = <span id="p_primaryColor"></span>;
+  iconOptions.cornerColor = <span id="p_cornerColor"></span>;
+  iconOptions.strokeColor = <span id="p_strokeColor"></span>;
   var icon = IconFactory.createMarkerIcon(iconOptions);
 </pre>
 </body>
