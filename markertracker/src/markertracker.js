@@ -15,7 +15,7 @@
  * limitations under the License. 
  *
  *
- * Author: Dan Rummel
+ * Author: Dan Rummel (www.seero.com)
  *
  *  This ulitily displays directional indicators for "important" markers
  *  on that are out of your maps view.
