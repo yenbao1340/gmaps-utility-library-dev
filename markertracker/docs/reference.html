@@ -68,6 +68,8 @@
 <td class="code"> Number</td>
 <td>
        Scales the icon size by this value, 0 = no icon.
+		<br/>
+		[ default = 0.6]
 </td>
 </tr>
 <tr class="even">
@@ -75,6 +77,8 @@
 <td class="code"> Number</td>
 <td>
        The number of pixels between the arrow and the edge of the map.
+		<br/>
+		[ default = 25]
 </td>
 </tr>
 <tr class="odd">
@@ -82,12 +86,16 @@
 <td class="code"> String</td>
 <td>
         Specifies the color of the arrow.
+		<br/>
+		[ default = '#ff0000']
 </td>
 </tr><tr class="even">
 <td class="code">weight</td>
 <td class="code"> Number</td>
 <td>
        Thickness of the lines that make up the arrows.
+		<br/>
+		[ default = 20]
 </td>
 </tr>
 <tr class="odd">
@@ -95,12 +103,15 @@
 <td class="code"> Number</td>
 <td>
         Specifies the length of the arrow.
+		<br/>
+		[ default = 20]
 </td>
 </tr><tr class="even">
 <td class="code">opacity</td>
 <td class="code"> Number</td>
 <td>
 		Specifies the opacity of the arrow.
+		<br/> [ default = 0.8 ]
 </td>
 </tr>
 <tr class="odd">
@@ -108,7 +119,9 @@
 <td class="code"> String</td>
 <td>
         This parameter changes the GMap2 event name that triggers the arrows to update, 
-        ( ie 'moveend' is reduces processing when using many MarkerTrackers).
+        ( i.e. using 'moveend' reduces processing when using many MarkerTrackers).
+		<br/>
+		[ default = 'move']
 </td>
 </tr>
 <tr class="even">
@@ -117,8 +130,22 @@
 <td>
 		This parameter specifies a GMarker event name that triggers a quick zoom to the tracked marker.
 		Setting this value to false will disable auto-panning.
+		<br/>
+		[ default = 'click']
 </td>
 </tr>
 </tbody></table>
 </body>
 </html>
+
+
+
+//Default Arrow Constants
+MarkerTracker.DEFAULT_EDGE_PADDING_ = 25;
+MarkerTracker.DEFAULT_ICON_SCALE_ = 0.6;
+MarkerTracker.DEFAULT_ARROW_COLOR_ = '#ff0000';
+MarkerTracker.DEFAULT_ARROW_WEIGHT_ = 20;
+MarkerTracker.DEFAULT_ARROW_LENGTH_ = 20;
+MarkerTracker.DEFAULT_ARROW_OPACITY_ = 0.8;
+MarkerTracker.DEFAULT_UPDATE_EVENT_ = 'move';
+MarkerTracker.DEFAULT_PAN_EVENT_ = 'click';
