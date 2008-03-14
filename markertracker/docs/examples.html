@@ -10,7 +10,7 @@
   <body onload="prettyPrint()">
 <h1><a name="Marker_Tracker_Examples" id="Marker_Tracker_Examples"></a>Marker Tracker Examples</h1>
 
-<p>To use a marker tracker, create a <code>MarkerTracker</code> object by passing the marker to be tracked and the map.</p>
+<p>To use a marker tracker, create a <a href="reference.html#MarkerTracker"><code>MarkerTracker</code></a> object by passing the marker to be tracked and the map.</p>
 <pre class="prettyprint">
 var map = new GMap2(document.getElementById("map"));
 map.setCenter(new GLatLng(37, -122), 13);
@@ -24,7 +24,7 @@ is fully outlined in the <a href="reference.html">reference documentation</a>.
 The <code>MarkerTrackerOptions</code> object is an object literal, so you 
 simply declare the object without a constructor. In this example the 
 <code>padding</code> from the edge of the maps is set to 30 pixels, the arrow 
-color is modified and the icon is replicated at 30% of the original size.
+<code>color</code> is modified and the icon is replicated at 30% of the original size using <code>iconScale</code>.
 </p>
 <pre class="prettyprint">
 var map = new GMap2(document.getElementById("map"));
