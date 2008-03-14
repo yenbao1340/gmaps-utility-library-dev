@@ -24,13 +24,13 @@ is fully outlined in the <a href="reference.html#MarkerTrackerOptions">reference
 The <code>MarkerTrackerOptions</code> object is an object literal, so you 
 simply declare the object without a constructor. In this example the 
 <code>padding</code> from the edge of the maps is set to 30 pixels, the arrow 
-<code>color</code> is modified and the icon is replicated at 30% of the original size using <code>iconScale</code>.
+<code>color</code> is modified and the original icon is replicated at 30% of the original size using <code>iconScale</code>.
 </p>
 <pre class="prettyprint">
 var map = new GMap2(document.getElementById("map"));
 map.setCenter(new GLatLng(37, -122), 13);
 var mtOptions = { padding: 30, color: '#aaaaaa', iconScale: 0.3 };
-var mt = new MarkerTracker(marker map, mtOptions);
+var mt = new MarkerTracker(marker, map, mtOptions);
 </pre>
 
 <h2><a name="Marker_Tracker_Simple" id="Marker_Tracker_Simple"></a>Simple MarkerTracker Examples</h2>
@@ -98,13 +98,13 @@ function loadMap() {
     // setup the trackers w/ options
     var mt1 = new MarkerTracker(marker1, map);
     
-    opt2 = { 'color': '#00A300', 'weight': 9, 'length': 20};
+    opt2 = { color: '#00A300', weight: 9, length: 20 };
     var mt2 = new MarkerTracker(marker2, map, opt2);  
     
-    opt3 = { 'color': '#E0E000', 'weight': 5, 'length': 10, 'padding': 50, 'panEvent': 'mouseover'};
+    opt3 = { color: '#E0E000', weight: 5, length: 10, padding: 50, panEvent: 'mouseover' };
     var mt3 = new MarkerTracker(marker3, map, opt3);
     
-    opt4 = { 'color': '#00E0E0', 'weight': 30, 'length': 40, 'quickPanEnabled': false};
+    opt4 = { color: '#00E0E0', weight: 30, length: 40, quickPanEnabled: false };
     var mt4 = new MarkerTracker(marker4, map, opt4);
   }
 }

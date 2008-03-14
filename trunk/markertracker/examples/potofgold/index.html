@@ -53,12 +53,12 @@ type="text/javascript"></script>
 	  map.disableDoubleClickZoom();
 	
 	  // leprechaun marker
-	  ireland = new GLatLng(53.41291,-8.24389);
+	  ireland = new GLatLng(53.41291, -8.24389);
       lepMarker = new GMarker( ireland, lepIcon );
       map.addOverlay(lepMarker);
 
       //pot o gold marker (dont add overlay just yet)
-      potOgold = new GMarker( ireland, potOgoldIcon);
+      potOgold = new GMarker(ireland, potOgoldIcon);
 
       // here's where we add the marker tracker
       // first change some of the options
@@ -69,10 +69,10 @@ type="text/javascript"></script>
 	      'iconScale': 0.5,
 	      'quickPanEnabled':false };
 	
-      var tracker = new MarkerTracker(lepMarker,map,opt);
+      var tracker = new MarkerTracker(lepMarker, map, opt);
 
       // add an event listener to the leperchaun
-      GEvent.bind(lepMarker, 'click', this, scoreCatch );
+      GEvent.bind(lepMarker, 'click', this, scoreCatch);
     }
   }  
 
@@ -107,7 +107,7 @@ type="text/javascript"></script>
 	  var lat = Math.random()*140-70; // not quite to the poles
     }
 
-    var latlng = new GLatLng(lat,lng);
+    var latlng = new GLatLng(lat, lng);
     lepMarker.setLatLng(latlng);
   }
 
@@ -171,7 +171,7 @@ type="text/javascript"></script>
   <body style="font-family:arial,sans-serif; font-size:11px;text-align:center;" onload="load()" onunload="GUnload()">
      
   <div style="border:2px solid green;background-color:#94DB94;width:850px;">
-     <table style="width:500px;margin:auto;">
+  <table style="width:500px;margin:auto;">
   
   <h1><i>
     Top of the mornin'!!!!<br/>
