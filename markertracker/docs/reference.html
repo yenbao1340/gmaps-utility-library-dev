@@ -16,7 +16,7 @@
 <th>Description</th>
 </tr>
 <tr class="odd">
-<td class="code">MarkerTracker(<span class="type" title="type:  GMap">marker</span>, <span class="type" title="type:  GMap">map</span>, <span class="type" title="type:  MarkerTrackerOptions"> opts?</span>)</td>
+<td class="code">MarkerTracker(<span class="type" title="type:  GMarker">marker</span>, <span class="type" title="type:  GMap">map</span>, <span class="type" title="type:  MarkerTrackerOptions"> opts?</span>)</td>
 
 <td>
   Creates a MarkerTracker for the given marker and displays it on the map as needed.
@@ -107,14 +107,14 @@
 <td class="code">updateEvent</td>
 <td class="code"> String</td>
 <td>
-  This parameter changes the GMap2 event name that triggers the arrows to update, ( i.e. using 'moveend' reduces processing when using many MarkerTrackers).The default value is 'move'.
+  This parameter changes the <a href='http://code.google.com/apis/maps/documentation/reference.html#GMap2'>GMap2</a> event name that triggers the arrows to update, ( i.e. using 'moveend' reduces processing when using many MarkerTrackers).The default value is 'move'.
 </td>
 </tr>
 <tr class="even">
 <td class="code">panEvent</td>
 <td class="code"> String</td>
 <td>
-  This parameter specifies a GMarker event name that triggers a quick zoom to the tracked marker. The default value is 'click'.
+  This parameter specifies a <a href='http://code.google.com/apis/maps/documentation/reference.html#GMarker'>GMarker</a> event name that triggers a quick zoom to the tracked marker. The default value is 'click'.
 </td>
 </tr>
 <tr class="even">
