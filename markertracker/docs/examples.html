@@ -10,30 +10,26 @@
   <body onload="prettyPrint()">
 <h1><a name="Marker_Tracker_Examples" id="Marker_Tracker_Examples"></a>Marker Tracker Examples</h1>
 
-<p>To use a marker tracker, create a <code>MarkerTracker</code> object. In the simplest case, just pass the marker you wish to track and the map to it.</p>
+<p>To use a marker tracker, create a <code>MarkerTracker</code> object by passing the marker to be tracked and the map.</p>
 <pre class="prettyprint">
-var mt = new MarkerTracker(marker,map);
+var map = new GMap2(document.getElementById("map"));
+map.setCenter(new GLatLng(37, -122), 13);
+var mt = new MarkerTracker(marker, map);
 </pre>
 
-<p>You may also specify a number of options to customize. These options are passed via a <code>MarkerTrackerOptions</code> object, which contains the following fields:</p>
-
-<ul>
-  <li><code>iconScale</code>: Scales the original icon size by this value, 0 = no icon.</li>
-  <li><code>padding</code>: Specifies the padding between the arrow and the edge of the map.</li>
-  <li><code>color</code>: Color of the arrow.</li>
-  <li><code>weight</code>: Thickness of the lines that make up the arrow.</li>
-  <li><code>length</code>: Length of the arrow.</li>
-  <li><code>opacity</code>: Opacity of the arrow.</li>
-  <li><code>updateEvent</code>: The GMap2 event name that triggers the arrows to update.</li>
-  <li><code>panEvent</code>: The GMarker event name that triggers a quick zoom to the tracked marker.</li>
-</ul>
+<p>You may also specify a number of options to customize. 
+These options are passed via a  <a href="reference.html#MarkerTrackerOptions"><code>MarkerTrackerOptions</code></a> object which 
+is fully outlined in the <a href="reference.html">reference documentation</a>.
 <p>
-The <code>MarkerTrackerOptions</code> object is an object literal, so you simply declare the object without a constructor:
+The <code>MarkerTrackerOptions</code> object is an object literal, so you 
+simply declare the object without a constructor. In this example the 
+<code>padding</code> from the edge of the maps is set to 30 pixels, the arrow 
+color is modified and the icon is replicated at 30% of the original size.
 </p>
 <pre class="prettyprint">
 var map = new GMap2(document.getElementById("map"));
-map.setCenter(new GLatLng(37.4419, -122.1419), 13);
-var mtOptions = { padding: 30, colors: '#aaaaaa', iconScale: 0.3 };
+map.setCenter(new GLatLng(37, -122), 13);
+var mtOptions = { padding: 30, color: '#aaaaaa', iconScale: 0.3 };
 var mt = new MarkerTracker(marker map, mtOptions);
 </pre>
 
@@ -44,108 +40,76 @@ var mt = new MarkerTracker(marker map, mtOptions);
 <h3> An example with one MarkerTracker:</h3>
 <pre class="prettyprint">
 function loadMap() {
-    if (GBrowserIsCompatible()) {
-        map = new GMap2(document.getElementById("map"));
-        map.setCenter(new GLatLng(36, -115), 4 );        
-		map.addControl(new GMapTypeControl());
-		map.addControl(new GSmallZoomControl());
-		
-		var point = new GLatLng(30, -120);
-		marker = new GMarker(point);
-		map.addOverlay(marker);
-		
-		var mt = new MarkerTracker(marker,map);
-	}
+  if (GBrowserIsCompatible()) {
+    map = new GMap2(document.getElementById("map"));
+    map.setCenter(new GLatLng(36, -115), 4);        
+    map.addControl(new GMapTypeControl());
+    map.addControl(new GSmallZoomControl());
+    
+    var latlng = new GLatLng(42, -71);
+    marker = new GMarker(latlng);
+    map.addOverlay(marker);
+    
+    var mt = new MarkerTracker(marker, map);
+  }
 }
 </pre>
-<p><a href="../examples/example1.html">View example (example1.html)</a></p>
-
-<h3> An example with two MarkerTrackers:</h3>
-<pre class="prettyprint">
-function loadMap() {
-    if (GBrowserIsCompatible()) {
-        map = new GMap2(document.getElementById("map"));
-        map.setCenter(new GLatLng(36, -115), 4, G_HYBRID_MAP);        
-		map.addControl(new GMapTypeControl());
-		map.addControl(new GSmallZoomControl());
-		
-		var point1 = new GLatLng(31, -120);
-		marker1 = new GMarker(point1);
-		map.addOverlay(marker1);
-		
-		
-		var point2 = new GLatLng(30, 20);
-		marker2 = new GMarker(point2);
-		map.addOverlay(marker2);
-		
-		var mt1 = new MarkerTracker(marker1,map);
-		var mt2 = new MarkerTracker(marker2,map);
-	}
-}
-</pre>
-<p><a href="../examples/example2.html">View example (example2.html)</a></p>
+<p><a href="../examples/onetracker.html">View example (onetracker.html)</a></p>
 
 <h2><a name="Marker_Tracker_Custom" id="Marker_Tracker_Custom"></a>Customizing the MarkerTracker</h2>
 
 <p>There are quite a few options available for customizing how the MarkerTracker looks and behaves. 
-Below is an example of how to customize the marker tracker to your needs. Notice how the GIcon used for the original GMarker is inherited by the MarkerTracker. 
-
+Below is an example of how to customize the marker tracker to your needs. 
+Notice how the GIcon used for the original GMarker is inherited by the MarkerTracker.
 
 <pre class="prettyprint">
 function loadMap() {
-    if (GBrowserIsCompatible()) {
-        map = new GMap2(document.getElementById("map"));
-        map.setCenter(new GLatLng(36.0078125, -115.95703125), 4);        
-		map.addControl(new GMapTypeControl());
-		map.addControl(new GSmallZoomControl());
-		
-		var point1 = new GLatLng(37.419799,-122.064972);
-		marker1 = new GMarker(point1);
-		map.addOverlay(marker1);
-		
-		
-		var lepIcon = new GIcon(marker1.getIcon());
-		lepIcon.image = 'Animated-Leprechaun-1.gif';
-		lepIcon.iconSize = new GSize(38,50);
-		var point2 = new GLatLng(53.41291,-8.24389);
-		marker2 = new GMarker( point2, lepIcon );
-		map.addOverlay(marker2);
-		
-		
-		
-		var barIcon = new GIcon(marker1.getIcon());
-		barIcon.image = 'bar.png';
-		barIcon.iconSize = new GSize(32,32);
-		var point3 = new GLatLng(-33.861293,151.208096);
-		marker3 = new GMarker(point3, barIcon);
-		map.addOverlay(marker3);
-		
-		
-		
-		var snowIcon = new GIcon(marker1.getIcon());
-		snowIcon.image = 'snowflake_simple.png';
-		snowIcon.iconSize = new GSize(32,32);
-		var point4 = new GLatLng(-54.252389,-69.279785);
-		marker4 = new GMarker(point4, snowIcon);
-		map.addOverlay(marker4);
-		
-		
-		// setup the trackers w/ options
-		var mt1 = new MarkerTracker(marker1,map);
-		
-		opt2 = { 'color':'#00A300', 'weight':9, 'length': 20 };
-		var mt2 = new MarkerTracker(marker2,map,opt2);	
-		
-		opt3 = { 'color':'#E0E000', 'weight':5, 'length': 10, 'padding':50, 'panEvent':'mouseover' };
-		var mt3 = new MarkerTracker(marker3,map,opt3);
-		
-		opt4 = { 'color':'#00E0E0', 'weight':30, 'length': 40 };
-		var mt4 = new MarkerTracker(marker4,map,opt4);
-	}
-}
+  if (GBrowserIsCompatible()) {
+    map = new GMap2(document.getElementById("map"));
+    map.setCenter(new GLatLng(36.0078125, -115.95703125), 4);        
+    map.addControl(new GMapTypeControl());
+    map.addControl(new GSmallZoomControl());
+    
+    var latlng1 = new GLatLng(37.419799, -122.064972);
+    marker1 = new GMarker(latlng1);
+    map.addOverlay(marker1);
+    
+    var lepIcon = new GIcon(marker1.getIcon());
+    lepIcon.image = 'images/Animated-Leprechaun-1.gif';
+    lepIcon.iconSize = new GSize(38, 50);
+    var latlng2 = new GLatLng(53.41291, -8.24389);
+    marker2 = new GMarker(latlng2, lepIcon );
+    map.addOverlay(marker2);
+    
+    var barIcon = new GIcon(marker1.getIcon());
+    barIcon.image = 'images/bar.png';
+    barIcon.iconSize = new GSize(32, 32);
+    var latlng3 = new GLatLng(-33.861293, 151.208096);
+    marker3 = new GMarker(latlng3, barIcon);
+    map.addOverlay(marker3);
+    
+    var snowIcon = new GIcon(marker1.getIcon());
+    snowIcon.image = 'images/snowflake_simple.png';
+    snowIcon.iconSize = new GSize(32, 32);
+    var latlng4 = new GLatLng(-54.252389, -69.279785);
+    marker4 = new GMarker(latlng4, snowIcon);
+    map.addOverlay(marker4);
 
+    // setup the trackers w/ options
+    var mt1 = new MarkerTracker(marker1, map);
+    
+    opt2 = { 'color': '#00A300', 'weight': 9, 'length': 20 };
+    var mt2 = new MarkerTracker(marker2, map, opt2);  
+    
+    opt3 = { 'color': '#E0E000', 'weight': 5, 'length': 10, 'padding': 50, 'panEvent': 'mouseover' };
+    var mt3 = new MarkerTracker(marker3, map, opt3);
+    
+    opt4 = { 'color': '#00E0E0', 'weight': 30, 'length': 40, 'quickPanEnabled': false };
+    var mt4 = new MarkerTracker(marker4, map, opt4);
+  }
+}
 </pre>
-<p><a href="../examples/example3.html">View example (example3.html)</a></p>
+<p><a href="../examples/customtrackers.html">View example (customtrackers.html)</a></p>
 
 
 <h2><a name="Feeling_Lucky" id="Feeling_Lucky"></a>Feeling Lucky?</h2>

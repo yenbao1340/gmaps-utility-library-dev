@@ -38,6 +38,7 @@
  *   {Number} opacity opacity of the arrow.
  *   {String} updateEvent The GMap2 event name that triggers the arrows to update.
  *   {String} panEvent The GMarker event name that triggers a quick zoom to the tracked marker.
+ *   {Boolean} quickPanEnabled The GMarker event name that triggers a quick zoom to the tracked marker.
  */
 
 function MarkerTracker(marker,map,opt) {
@@ -51,57 +52,61 @@ function MarkerTracker(marker,map,opt) {
   
   // setup the options
   opt = opt || {};
-  this.iconScale = MarkerTracker.DEFAULT_ICON_SCALE_;
+  this.iconScale_ = MarkerTracker.DEFAULT_ICON_SCALE_;
   if ( opt.iconScale != undefined ) {
-    this.iconScale = opt.iconScale;
+    this.iconScale_ = opt.iconScale;
   }
-  this.padding = MarkerTracker.DEFAULT_EDGE_PADDING_;
+  this.padding_ = MarkerTracker.DEFAULT_EDGE_PADDING_;
   if ( opt.padding != undefined ) {
-    this.padding = opt.padding;
+    this.padding_ = opt.padding;
   }
-  this.color = MarkerTracker.DEFAULT_ARROW_COLOR_;
+  this.color_ = MarkerTracker.DEFAULT_ARROW_COLOR_;
   if ( opt.color != undefined ) {
-    this.color = opt.color;
+    this.color_ = opt.color;
   }
-  this.weight = MarkerTracker.DEFAULT_ARROW_WEIGHT_;
+  this.weight_ = MarkerTracker.DEFAULT_ARROW_WEIGHT_;
   if ( opt.weight != undefined ) {
-    this.weight = opt.weight;
+    this.weight_ = opt.weight;
   }
-  this.length = MarkerTracker.DEFAULT_ARROW_LENGTH_;
+  this.length_ = MarkerTracker.DEFAULT_ARROW_LENGTH_;
   if ( opt.length != undefined ) {
-    this.length = opt.length;
+    this.length_ = opt.length;
   }
-  this.opacity = MarkerTracker.DEFAULT_ARROW_OPACITY_;
+  this.opacity_ = MarkerTracker.DEFAULT_ARROW_OPACITY_;
   if ( opt.opacity != undefined ) {
-    this.opacity = opt.opacity;
+    this.opacity_ = opt.opacity;
   }
-  this.updateEvent = MarkerTracker.DEFAULT_UPDATE_EVENT_;
+  this.updateEvent_ = MarkerTracker.DEFAULT_UPDATE_EVENT_;
   if ( opt.updateEvent != undefined ) {
-    this.updateEvent = opt.updateEvent;
+    this.updateEvent_ = opt.updateEvent;
   }
-  this.panEvent = MarkerTracker.DEFAULT_PAN_EVENT_;
+  this.panEvent_ = MarkerTracker.DEFAULT_PAN_EVENT_;
   if ( opt.panEvent != undefined ) {
-    this.panEvent = opt.panEvent;
+    this.panEvent_ = opt.panEvent;
+  }
+  this.quickPanEnabled_ = MarkerTracker.DEFAULT_QUICK_PAN_ENABLED_;
+  if ( opt.quickPanEnabled != undefined ) {
+    this.quickPanEnabled_ = opt.quickPanEnabled;
   }
   
   //replicate a different sized icon 
   var babyIcon = new GIcon ( marker.getIcon() );
   babyIcon.iconSize = new GSize( 
-    marker.getIcon().iconSize.width*this.iconScale,
-    marker.getIcon().iconSize.height*this.iconScale );
+    marker.getIcon().iconSize.width*this.iconScale_,
+    marker.getIcon().iconSize.height*this.iconScale_ );
   babyIcon.iconAnchor = new GPoint( 
-    marker.getIcon().iconAnchor.x*this.iconScale,
-    marker.getIcon().iconAnchor.y*this.iconScale/2);
+    marker.getIcon().iconAnchor.x*this.iconScale_,
+    marker.getIcon().iconAnchor.y*this.iconScale_/2);
   // kill the shadow
   babyIcon.shadow = null;
   this.babyMarker_ = new GMarker( new GPoint(0,0), babyIcon);
   
   //bind the update task to the event trigger
-  GEvent.bind(this.map_, this.updateEvent, this, this.updateArrow_ );
+  GEvent.bind(this.map_, this.updateEvent_, this, this.updateArrow_ );
   //update the arrow if the marker moves
   GEvent.bind(this.marker_,'changed', this, this.updateArrow_ );
-  if (this.panEvent) {
-    GEvent.bind(this.babyMarker_, this.panEvent, this, this.panToMarker_ );
+  if (this.quickPanEnabled_) {
+    GEvent.bind(this.babyMarker_, this.panEvent_, this, this.panToMarker_ );
   }
   
   //do an inital check
@@ -118,6 +123,7 @@ MarkerTracker.DEFAULT_ARROW_LENGTH_ = 20;
 MarkerTracker.DEFAULT_ARROW_OPACITY_ = 0.8;
 MarkerTracker.DEFAULT_UPDATE_EVENT_ = 'move';
 MarkerTracker.DEFAULT_PAN_EVENT_ = 'click';
+MarkerTracker.DEFAULT_QUICK_PAN_ENABLED_ = true;
 
 //Default Control Constants
 
@@ -164,10 +170,10 @@ MarkerTracker.prototype.drawArrow_ = function() {
   var SE = this.map_.fromLatLngToDivPixel( bounds.getSouthWest() );
   var NE = this.map_.fromLatLngToDivPixel( bounds.getNorthEast() );
   //include the padding while deciding on the arrow location
-  var minX =  SE.x + this.padding;
-  var minY =  NE.y + this.padding;
-  var maxX =  NE.x - this.padding;
-  var maxY =  SE.y - this.padding;
+  var minX =  SE.x + this.padding_;
+  var minY =  NE.y + this.padding_;
+  var maxX =  NE.x - this.padding_;
+  var maxY =  SE.y - this.padding_;
   
   // find the geometric info for the marker realative to the center of the map
   var center = this.map_.fromLatLngToDivPixel( this.map_.getCenter() );
@@ -203,15 +209,15 @@ MarkerTracker.prototype.drawArrow_ = function() {
   } 
   
   // define the point of the arrow
-  var arrowLoc = this.map_.fromDivPixelToLatLng( new GPoint(x,y) );
+  var arrowLoc = this.map_.fromDivPixelToLatLng( new GPoint(x, y));
   
   // left side of marker is at -1,1
   var arrowLeft = this.map_.fromDivPixelToLatLng( 
-            this.getRotatedPoint_( (-1)*this.length , this.length , ang , x , y) );
+            this.getRotatedPoint_( (-1)*this.length_, this.length_, ang, x, y) );
             
   // right side of marker is at -1,-1
   var arrowRight = this.map_.fromDivPixelToLatLng( 
-            this.getRotatedPoint_( (-1)*this.length , (-1)*this.length, ang, x , y));
+            this.getRotatedPoint_( (-1)*this.length_, (-1)*this.length_, ang, x, y));
   
   
   var center = this.map_.getCenter();
@@ -219,12 +225,12 @@ MarkerTracker.prototype.drawArrow_ = function() {
   
   this.oldArrow_ = this.arrow_;
   this.arrow_ = new GPolyline( [ arrowLeft, arrowLoc, arrowRight] ,
-                this.color,this.weight,this.opacity) ;
+                this.color_,this.weight_,this.opacity_) ;
   this.map_.addOverlay( this.arrow_ );
   
   // move the babyMarker to -1,0
   this.babyMarker_.setLatLng(this.map_.fromDivPixelToLatLng( 
-            this.getRotatedPoint_( (-2)*this.length , 0 , ang , x , y) ) );
+            this.getRotatedPoint_( (-2)*this.length_ , 0, ang, x, y) ) );
           
   if (!this.arrowDisplayed_) {
     this.map_.addOverlay(this.babyMarker_);
@@ -275,7 +281,7 @@ MarkerTracker.prototype.panToMarker_ = function() {
 MarkerTracker.prototype.getRotatedPoint_ = function(x,y,ang,xoffset,yoffset) {
   var newx = y*Math.sin(ang) - x*Math.cos(ang) + xoffset;
   var newy = x*Math.sin(ang) + y*Math.cos(ang) + yoffset;
-  var rotatedPoint = new GPoint( newx , newy );
+  var rotatedPoint = new GPoint( newx, newy );
   return(rotatedPoint);
 };
 
