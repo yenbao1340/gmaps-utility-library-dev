@@ -22,14 +22,14 @@ type="text/javascript"></script>
   lepIcon.shadow = '';
   lepIcon.iconSize = new GSize(80, 110);
   lepIcon.shadowSize = new GSize(0, 0);
-  lepIcon.iconAnchor = new GPoint(30,110);
+  lepIcon.iconAnchor = new GPoint(30, 110);
 
   var potOgoldIcon = new GIcon(); 
   potOgoldIcon.image = 'potogold.gif';
   potOgoldIcon.shadow = '';
   potOgoldIcon.iconSize = new GSize(75, 75);
   potOgoldIcon.shadowSize = new GSize(0, 0);
-  potOgoldIcon.iconAnchor = new GPoint(25,25);
+  potOgoldIcon.iconAnchor = new GPoint(25, 25);
 
   var gameTimer;
   var markers = [];
@@ -48,7 +48,7 @@ type="text/javascript"></script>
   function load() {
     if (GBrowserIsCompatible()) {
       map = new GMap2(document.getElementById("map"));
-	  map.setCenter(new GLatLng(53.41291,-8.24389), defaultzoom);
+	  map.setCenter(new GLatLng(53.41291, -8.24389), defaultzoom);
 	  map.setMapType(G_HYBRID_MAP);
 	  map.disableDoubleClickZoom();
 	
@@ -63,10 +63,10 @@ type="text/javascript"></script>
       // here's where we add the marker tracker
       // first change some of the options
       // green color, 9pt line weight, 20px length , smaller icon and no auto pan
-      opt = { 'color':'#00A300',
-          'weight':12,
+      opt = { 'color': '#00A300',
+          'weight': 12,
 	      'length': 25,
-	      'iconScale':0.5,
+	      'iconScale': 0.5,
 	      'quickPanEnabled':false };
 	
       var tracker = new MarkerTracker(lepMarker,map,opt);
@@ -118,7 +118,7 @@ type="text/javascript"></script>
      map.removeOverlay(potOgold);
      clearInterval(gameTimer);
      moveToRandomLocation();
-     gameTimer = setInterval(cycleClock,1000);
+     gameTimer = setInterval(cycleClock, 1000);
      updateScoreAndTime();
   }
 

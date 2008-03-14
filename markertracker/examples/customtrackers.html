@@ -26,7 +26,7 @@ function loadMap() {
     lepIcon.image = 'images/Animated-Leprechaun-1.gif';
     lepIcon.iconSize = new GSize(38, 50);
     var latlng2 = new GLatLng(53.41291, -8.24389);
-    marker2 = new GMarker(latlng2, lepIcon );
+    marker2 = new GMarker(latlng2, lepIcon);
     map.addOverlay(marker2);
     
     var barIcon = new GIcon(marker1.getIcon());
@@ -47,13 +47,13 @@ function loadMap() {
     // setup the trackers w/ options
     var mt1 = new MarkerTracker(marker1, map);
     
-    opt2 = { 'color': '#00A300', 'weight': 9, 'length': 20 };
+    opt2 = { 'color': '#00A300', 'weight': 9, 'length': 20};
     var mt2 = new MarkerTracker(marker2, map, opt2);  
     
-    opt3 = { 'color': '#E0E000', 'weight': 5, 'length': 10, 'padding': 50, 'panEvent': 'mouseover' };
+    opt3 = { 'color': '#E0E000', 'weight': 5, 'length': 10, 'padding': 50, 'panEvent': 'mouseover'};
     var mt3 = new MarkerTracker(marker3, map, opt3);
     
-    opt4 = { 'color': '#00E0E0', 'weight': 30, 'length': 40, 'quickPanEnabled': false };
+    opt4 = { 'color': '#00E0E0', 'weight': 30, 'length': 40, 'quickPanEnabled': false};
     var mt4 = new MarkerTracker(marker4, map, opt4);
   }
 }
