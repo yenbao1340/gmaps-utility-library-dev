@@ -4,13 +4,9 @@
       xmlns:v="urn:schemas-microsoft-com:vml"><head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title>Example Custom Markers</title>
-</head>
-<body onload="loadMap()" onunload="GUnload()">
 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxT8bemrB74QmF-ljSt0r6xw5vxKjRRisAno3SZU83rSdUS3zR_JADzEUA" type="text/javascript"></script>
 <script src="../src/markertracker.js" type="text/javascript"></script>
-<div id="map" style="width: 700px; height: 400px;border: 3px solid rgb(85, 85, 85);"></div>
- 
-<script/>
+<script type="text/javascript">
 function loadMap() {
   if (GBrowserIsCompatible()) {
     map = new GMap2(document.getElementById("map"));
@@ -59,5 +55,8 @@ function loadMap() {
 }
 
 </script>
+</head>
+<body onload="loadMap()" onunload="GUnload()">
+<div id="map" style="width: 700px; height: 400px;border: 3px solid rgb(85, 85, 85);"></div>
 </body>
 </html>

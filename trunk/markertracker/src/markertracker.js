@@ -28,7 +28,7 @@
  * @constructor
  * @param {Map} map The map that will display the MarkerTracker. 
  * @param {GMarker} marker the marker to be tracked.
- * @param {Object} optss? Object that contains the options for coustomizing the 
+ * @param {Object} opts? Object that contains the options for coustomizing the 
  *                  look and behavior of arrows:
  *   {Number} iconScale Scales the icon size by this value, 0 = no icon.
  *   {Number} padding The padding between the arrow and the edge of the map.
@@ -41,7 +41,7 @@
  *   {Boolean} quickPanEnabled The GMarker event name that triggers a quick zoom to the tracked marker.
  */
 
-function MarkerTracker(marker, map, optss) {
+function MarkerTracker(marker, map, opts) {
   this.map_ = map;
   this.marker_ = marker;
   this.enabled_ = true;
@@ -51,7 +51,7 @@ function MarkerTracker(marker, map, optss) {
   this.control_ = null;
   
   // setup the options
-  opts = opt || {};
+  opts = opts || {};
   this.iconScale_ = MarkerTracker.DEFAULT_ICON_SCALE_;
   if (opts.iconScale != undefined ) {
     this.iconScale_ = opts.iconScale;
