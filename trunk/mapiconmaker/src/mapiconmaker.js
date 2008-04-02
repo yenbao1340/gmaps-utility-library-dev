@@ -73,7 +73,7 @@ MapIconMaker.createFlatIcon = function(opts) {
   var textColor = opts.textColor || "#000000";
   var textSize = opts.textSize || 0;
   var type = opts.type ||  "circle";
-  var typeCode = (type == "circle") : "it" ? "itr";
+  var typeCode = (type == "circle") ? "it" : "itr";
 
   var baseUrl = "http://chart.apis.google.com/chart?cht=" + typeCode;
   var iconUrl = baseUrl + "&chs=" + width + "x" + height + 
