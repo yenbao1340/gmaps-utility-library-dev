@@ -37,3 +37,10 @@ http://s3.amazonaws.com/seerowww/nunchuckers.jpg
   * Created: [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/ DragZoomControl]
 
 ----
+
+*Joe Monahan*
+
+  * Employed by [http://www.orbitz.com/ Orbitz Worldwide] as a UI Engineer
+  * Created: [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/ ExtInfoWindow]
+
+----
