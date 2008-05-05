@@ -16,3 +16,9 @@
   * Working on: New Clusterer class to aggregate adjacent and coincident markers.
 
 ----
+
+*Randy Becker*
+  * Student
+  * Worked on: [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/ ExtMapTypeControl] ([http://code.google.com/p/gmaps-utility-library-dev/issues/list?q=owner%3Alemnar&can=1 mostly])
+
+----
