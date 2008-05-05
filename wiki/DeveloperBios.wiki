@@ -9,3 +9,10 @@
   * Personal website: [http://imagine-it.org]
 
 ---- 
+
+*Gabriel Sjoberg*
+  * Employed by Prairie Interactive Messaging as Software Development Engineer
+  * Created: Nothing yet!
+  * Working on: New Clusterer object to aggregate adjacent and coincident markers.
+
+----
