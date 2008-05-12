@@ -27,7 +27,7 @@
 
 http://s3.amazonaws.com/seerowww/nunchuckers.jpg
   * Employed by [http://www.seero.com/ Seero.com] as Alpha Technology Nerd
-  * Worked on: [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/ MarkerTracker]
+  * Created: [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/ MarkerTracker]
 
 ----
 
