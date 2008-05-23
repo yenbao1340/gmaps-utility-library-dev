@@ -11,7 +11,7 @@ All Javascript files must follow these coding conventions before they can be com
   * All JS expressions must end with a semi-colon.
   * Method definitions should look like:
 {{{
- Foo.prototype.bar = function() {
+Foo.prototype.bar = function() {
   /* ... */
 };
 }}}
@@ -40,6 +40,4 @@ All Javascript files must follow these coding conventions before they can be com
   * Each function must be commented (purpose, @param, @return).
   * Inline comments useful if code is unclear.
   * Copyright, author, license, plus short description of file at top of code.
-
-
 
