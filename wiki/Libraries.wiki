@@ -20,7 +20,7 @@ This is the open-source version of GMarkerManager, with improvements.
 
 This class extends the Maps API's standard GMarker class with the ability to support markers with textual labels. 
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/ Link to Release (1.0) Version]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/ Link to Release (1.1) Version]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/docs/examples.html Examples]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/docs/reference.html Reference]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/src/labeledmarker.js Javascript include]
@@ -33,7 +33,7 @@ This class extends the Maps API's standard GMarker class with the ability to sup
 
 This is a control created by Andre Lewis that allows you to select an area on the map by dragging a rectangle and the map will then zoom to that area.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/ Link to Release (1.0) Version]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/ Link to Release (1.2) Version]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/docs/examples.html Examples]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/docs/reference.html Reference]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/src/dragzoom.js Javascript include]
@@ -45,7 +45,7 @@ This is a control created by Andre Lewis that allows you to select an area on th
 
 This is a control that mimics MapTypeControl and optionally has a Traffic button with drop down legend.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/ Link to Release (1.1) Version]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/ Link to Release (1.2) Version]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/docs/examples.html Examples]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/docs/reference.html Reference]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/src/extmaptypecontrol.js Javascript include]
@@ -62,5 +62,22 @@ This is an extension that lets you create custom styled info windows with CSS an
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/src/extmaptypecontrol.js Javascript include]
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extinfowindow/ Link to Development Version]
- 
- 
+
+== MapIconMaker ==
+
+This gives you static function(s) for creating dynamically sized and colored marker icons using the Charts API marker output.
+
+[http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/ Link to Release (1.0) Version]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/docs/examples.html Examples]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/docs/reference.html Reference]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/src/mapiconmaker.js Javascript include]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/src/mapiconmaker_packed.js Javascript include (packed)]
+
+== MarkerTracker ==
+
+This ulitily displays directional indicators for "important" markers on that are out of your maps view.
+
+[http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/ Link to Release (1.0) Version]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/docs/examples.html Examples]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/docs/reference.html Reference]
+  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/src/markertracker.js Javascript include]
