@@ -2,24 +2,41 @@
 
 = Introduction =
 
-This is the release process for pushing a new library. Right now, only pamela.fox can do this. 
+This is the release process for pushing stuff out to the release library. Right now, only pamela.fox can do this. 
 
-= Steps =
-
-  * Test each of the files in gmaps-utility-library-dev/library/release/examples to make sure they work as intended in IE, FF, Safari.
+= Pushing out new versions of an existing library =
   * Verify that examples exist that test all the introduced changes since last release.
-  * Copy files from gmaps-utility-library-dev/library/ to gmaps-utility-library/library/release"
+  * Test each of the files in gmaps-utility-library-dev.googlecode.com/library/examples to make sure they work as intended in IE, FF, Safari.
+  * Do an svn update on local gmaps-utility-library-dev
 {{{
-svn export /home/pamelafox/www/gmaps-utility-library-dev/labeledmarker/ . --force
+svn update
 }}}
-  * Run svn status on the release/ folder to check if any files need to be added. Run svn add/svn propset on missing files.
+  * Create new folder in gmaps-utility-library/library/ for the new release (e.g. 1.2) Export files from gmaps-utility-library-dev/library/ to gmaps-utility-library/library/NN
 {{{
-svn status
-svn add newfile.html 
-svn propset svn:mime-type text/html *.html 
+cd ~/www/gmaps-utility-library/labeledmarker/
+mkdir 1.2
+svn export ~/www/gmaps-utility-library-dev/labeledmarker/ 1.2/ --force
 }}}
-  * Run svn diff between the gmaps-utility-library-dev/library/ and release/ folder. Make sure you recognize all changes.
+  * Run svn add on the new folder. Run svn propset on all files (for HTML/CSS)
+{{{
+svn add 1.2
+find . -name '*.html' | xargs svn propset svn:mime-type text/html
+find . -name '*.css' | xargs svn propset svn:mime-type text/css
+find . -name '*.js' | xargs svn propset svn:mime-type text/javascript
+find . -name '*.xml' | xargs svn propset svn:mime-type text/xml
+find . -name '*.png' | xargs svn propset svn:mime-type image/png
+find . -name '*.gif' | xargs svn propset svn:mime-type image/gif
+}}}
+  * Run a svn diff between the folder for the last version with the folder for the new version. Make sure you recognize all changes. (TODO: Showing 100% diff for some reason now).
 {{{
 svn diff ~/www/gmaps-utility-library-dev/labeledmarker/ .
+//or, if that fails, diff the JS files
+diff 1.1/labeledmarker.js 1.2/labeledmarker.js
 }}}
   * Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
+
+= Pushing out new versions to release folder =
+  * // Fill in
+
+= Pushing out new libraries =
+  * // Fill in
