@@ -4,14 +4,22 @@
 
 This is the release process for pushing a new library. Right now, only pamela.fox can do this. 
 
-= Details =
+= Steps =
 
-Add your content here.  Format your content with:
+  * Test each of the files in gmaps-utility-library-dev/library/release/examples to make sure they work as intended in IE, FF, Safari.
   * Verify that examples exist that test all the introduced changes since last release.
   * Copy files from gmaps-utility-library-dev/library/ to gmaps-utility-library/library/release"
 {{{
 svn export /home/pamelafox/www/gmaps-utility-library-dev/labeledmarker/ . --force
 }}}
   * Run svn status on the release/ folder to check if any files need to be added. Run svn add/svn propset on missing files.
+{{{
+svn status
+svn add newfile.html 
+svn propset svn:mime-type text/html *.html 
+}}}
   * Run svn diff between the gmaps-utility-library-dev/library/ and release/ folder. Make sure you recognize all changes.
+{{{
+svn diff ~/www/gmaps-utility-library-dev/labeledmarker/ .
+}}}
   * Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
