@@ -5,8 +5,8 @@
 This is the release process for pushing stuff out to the release library. Right now, only pamela.fox can do this. 
 
 = Pushing out new versions of an existing library =
-  * Verify that examples exist that test all the introduced changes since last release.
-  * Test each of the files in gmaps-utility-library-dev.googlecode.com/library/examples to make sure they work as intended in IE, FF, Safari.
+  * Verify that examples exist that test all the introduced changes since last release. To see what's new since last release, compare http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/library to http://code.google.com/p/gmaps-utility-library/source/list?path=/trunk/library
+  * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/library/examples to make sure they work as intended in IE, FF, Safari.
   * Do an svn update on local gmaps-utility-library-dev
 {{{
 svn update
@@ -26,6 +26,7 @@ find . -name '*.js' | xargs svn propset svn:mime-type text/javascript
 find . -name '*.xml' | xargs svn propset svn:mime-type text/xml
 find . -name '*.png' | xargs svn propset svn:mime-type image/png
 find . -name '*.gif' | xargs svn propset svn:mime-type image/gif
+find . -name '*.jpg' | xargs svn propset svn:mime-type image/jpeg
 }}}
   * Run a svn diff between the folder for the last version with the folder for the new version. Make sure you recognize all changes. (TODO: Showing 100% diff for some reason now).
 {{{
