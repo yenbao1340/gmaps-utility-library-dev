@@ -75,7 +75,7 @@ This gives you static function(s) for creating dynamically sized and colored mar
 
 == MarkerTracker ==
 
-This ulitily displays directional indicators for "important" markers on that are out of your maps view.
+This utility displays directional indicators for "important" markers on that are out of your maps view.
 
 [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/ Link to Release (1.0) Version]
   * [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/docs/examples.html Examples]
