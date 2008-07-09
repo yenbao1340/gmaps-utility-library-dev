@@ -44,7 +44,21 @@ diff 1.1/labeledmarker.js 1.2/labeledmarker.js
   * Email the mailing list about the new version. Push to release a week after.
 
 = Pushing out new versions to release folder =
-  * // Fill in
+ * Export files from gmaps-utility-library-dev/library/N/ to gmaps-utility-library/library/NN
+{{{
+cd ~/www/gmaps-utility-library/labeledmarker/
+svn export 1.2/ release/ --force
+}}}
+ * Run svn status and svn diff on the release folder and check that the changes are expected.
+{{{
+cd release
+svn status
+svn diff
+}}}
+ * Run svn commit on the new folder. In the message, indicate what version is being pushed as the release version.
+{{{
+svn commit -m "Pushing LabeledMarker 1.2 as the release version"
+}}}
 
 = Pushing out new libraries =
   * // Fill in
