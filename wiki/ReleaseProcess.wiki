@@ -42,9 +42,8 @@ diff 1.1/src/labeledmarker.js 1.2/src/labeledmarker.js
 }}}
   * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/NN/examples to make sure API keys work, mime-types are correct, etc. Browser issues should be worked out by now.
   * Email the mailing list about the new version. 
-  * Update the [Libraries] wiki page
   * Push to release a week after.
-  *
+
 = Pushing out new versions to release folder =
  * Export files from gmaps-utility-library-dev/library/N/ to gmaps-utility-library/library/NN
 {{{
@@ -61,6 +60,7 @@ svn diff
 {{{
 svn commit -m "Pushing LabeledMarker 1.2 as the release version"
 }}}
+  * Update the [Libraries] wiki page
 
 = Pushing out new libraries =
   * // Fill in
