@@ -32,7 +32,7 @@ find . -name '*.jpg' | xargs svn propset svn:mime-type image/jpeg
 {{{
 svn diff ~/www/gmaps-utility-library-dev/labeledmarker/ .
 //or, if that fails, diff the JS files
-diff 1.1/labeledmarker.js 1.2/labeledmarker.js
+diff 1.1/src/labeledmarker.js 1.2/src/labeledmarker.js
 }}}
   * Change version number in the comments of the .js file to reflect new version number.
   * Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
@@ -41,8 +41,10 @@ diff 1.1/labeledmarker.js 1.2/labeledmarker.js
  svn commit -m "Adding LabeledMarker v1.2. Represents versions 589 through 631 of the development library. See http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/labeledmarker/" 1.2/
 }}}
   * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/NN/examples to make sure API keys work, mime-types are correct, etc. Browser issues should be worked out by now.
-  * Email the mailing list about the new version. Push to release a week after.
-
+  * Email the mailing list about the new version. 
+  * Update the [Libraries] wiki page
+  * Push to release a week after.
+  *
 = Pushing out new versions to release folder =
  * Export files from gmaps-utility-library-dev/library/N/ to gmaps-utility-library/library/NN
 {{{
