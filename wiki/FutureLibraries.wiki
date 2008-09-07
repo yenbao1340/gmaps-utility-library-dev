@@ -2,10 +2,10 @@
 
 = Ideas =
 
-  * MyMapsControl: MyMaps-like control using the poly editing classes. I did something similar in geodatastore.
-  * SlideshowControl: Code is almost done, just need to put it in here.
-  * ProjectedOverlay: John Coryat was working on this, should check in with hm.
-  * OverviewMapControl: Gabriel is working on open-sourcing our internal code for this.
-  * LargeMapControl: Would be great to have some kind of slider zoom control here.
-  * ZMarker: Esa has been working on this, we should get it in here.
-  * ExtPolyGraph: An abstraction for GPolyline- and GMarker-based [http://en.wikipedia.org/wiki/Graph_%28mathematics%29 graphs].  I did an undirected implementation for creating and editing [http://xkcd.com/85/ sidewalk] data.
+  * !MyMapsControl: !MyMaps-like control using the poly editing classes. I did something similar in geodatastore.
+  * !SlideshowControl: Code is almost done, just need to put it in here.
+  * !ProjectedOverlay: John Coryat was working on this, should check in with hm.
+  * !OverviewMapControl: Gabriel is working on open-sourcing our internal code for this.
+  * !LargeMapControl: Would be great to have some kind of slider zoom control here.
+  * !ZMarker: Esa has been working on this, we should get it in here.
+  * !ExtPolyGraph: An abstraction for !GPolyline- and !GMarker-based [http://en.wikipedia.org/wiki/Graph_%28mathematics%29 graphs].  I did an undirected implementation for creating and editing [http://xkcd.com/85/ sidewalk] data.
