@@ -43,4 +43,13 @@ http://s3.amazonaws.com/seerowww/nunchuckers.jpg
   * Employed by [http://www.orbitz.com/ Orbitz Worldwide] as a UI Engineer
   * Created: [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/ ExtInfoWindow]
 
+
+----
+
+*Björn Brala*
+
+  * Employed by [http://www.swis.nl/ SWIS B.V.] as webdeveloper and lead developer of [http://www.geostart.nl/ GeoStart].
+  * Created: [http://demo.geostart.nl/cPreloader.html cPreloader] (adding to library) and part of [http://demo.geostart.nl/cSnapToRouteDemo.html cSnapToRoute] (soon to come)
+  * Worked on: Nothing else yet
+
 ----
