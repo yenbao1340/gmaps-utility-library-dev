@@ -53,3 +53,11 @@ http://s3.amazonaws.com/seerowww/nunchuckers.jpg
   * Worked on: Nothing else yet
 
 ----
+
+----
+
+*Chris Marx*
+
+http://mail.google.com/mail/photos/static/eDArZmeb4v8egz_nkdSU49GLPoy7e_SFrbPSkHm4mm08Q5LZrDOfzyQ7VeUVJWVA
+  * Employed by [http://birds.cornell.edu Cornell Lab of Ornithology] as an application developer and GIS analyst
+  * Created: [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/geometrycontrols/ GeometryControls] 
