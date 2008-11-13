@@ -23,7 +23,7 @@ Links to the release versions of each library are listed on the [http://code.goo
 We welcome developers with previous experience programming with the Maps API to join the project, and we especially love for developers who have already written API extensions to open-source them in our project.
 
 To join the project, follow these steps:
-  #1 Sign the [http://code.google.com/legal/individual-cla-v1.0.html Google CLA] and fax to the number shown. 
+  #1 Sign the [http://code.google.com/legal/individual-cla-v1.0.html Google CLA] -  scroll down for the easy to sign digital version, no faxing necessary.
   #2 Email Pamela ([mailto:api.pamelafox@google.com api.pamelafox@google.com]) with links to code you've developed, and a brief paragraph about why you'd like to contribute to the library.
   #3 Wait for Pamela to respond that she's added you to the project (or to indicate she's missing something).
   #4 If you haven't used SVN or a versioning system in the past, read up on SVN (check [http://code.google.com/p/gmaps-utility-library-dev/wiki/SVNQuickTips SVNQuickTips] page here).
