@@ -1,4 +1,4 @@
-#How to realease a new version or new library
+#summary How to release a new version or new library
 
 = Introduction =
 
