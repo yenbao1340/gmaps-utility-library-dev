@@ -63,4 +63,39 @@ svn commit -m "Pushing LabeledMarker 1.2 as the release version"
   * Update the [Libraries] wiki page
 
 = Pushing out new libraries =
-  * // Fill in
+  * Do an svn update on local gmaps-utility-library-dev
+  * Make sure the library has everything needed before proceeding: examples (with packed option), developer's guide, reference, and javascript (and packed version).
+    * Check that the Javascript in both the source and examples follows the JavascriptCodingConventions.
+    * Make sure that the packed Javascript is up-to-date (execute ant all-pack).
+    * Make sure that the class reference is up-to-date (execute ant all-docs).
+  * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/library/examples to make sure they work as intended in IE, FF, Safari.
+  * Do an svn commit of any changes made.
+  * Create new folder in release project for library and first release (1.0): gmaps-utility-library/library/1.0/. Export files from gmaps-utility-library-dev/library/ to gmaps-utility-library/library/1.0/
+{{{
+cd ~/www/gmaps-utility-library/
+mkdir progressbarcontrol
+cd progressbarcontrol
+mkdir 1.0
+svn export ~/www/gmaps-utility-library-dev/labeledmarker/ 1.0/ --force
+}}}
+  * Run svn add on the new folder. Run svn propset on all files (for HTML/CSS)
+{{{
+svn add progressbarcontrol
+cd progressbarcontrol
+find . -name '*.html' | xargs svn propset svn:mime-type text/html
+find . -name '*.css' | xargs svn propset svn:mime-type text/css
+find . -name '*.js' | xargs svn propset svn:mime-type text/javascript
+find . -name '*.xml' | xargs svn propset svn:mime-type text/xml
+find . -name '*.png' | xargs svn propset svn:mime-type image/png
+find . -name '*.gif' | xargs svn propset svn:mime-type image/gif
+find . -name '*.jpg' | xargs svn propset svn:mime-type image/jpeg
+}}}
+  * Change version number in the comments of the .js file to reflect version number (1.0).
+  * Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
+  * Run svn commit on the new folder. In the message, reference which revisions this release represents.
+{{{
+ svn commit -m "Adding ProgressBarControl 1.0. Represents versions 589 through 631 of the development library. See http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/progressbarcontrol/" progressbarcontrol/
+}}}
+  * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/1.0/examples to make sure API keys work, mime-types are correct, etc. Browser issues should be worked out by now.
+  * Email the mailing list about the new version.
+  * Publish a blog post announcing the new library.
