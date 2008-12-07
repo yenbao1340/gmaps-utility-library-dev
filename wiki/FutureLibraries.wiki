@@ -10,3 +10,4 @@
   * ZMarker: Esa has been working on this, we should get it in here.
   * !ExtPolyGraph: An abstraction for GPolyline- and GMarker-based [http://en.wikipedia.org/wiki/Graph_%28mathematics%29 graphs].  I did an undirected implementation for creating and editing [http://xkcd.com/85/ sidewalk] data.
   * !OpacityControl: See [http://code.google.com/apis/maps/documentation/demogallery.html demo].
+  * !ExtLargeMapControl: See [http://googlemaps.googlermania.com/gmapkit/example/GMapKitMapControls3d.html demo]. The author's given permission.
