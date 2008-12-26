@@ -1,84 +1,63 @@
-#summary List of libraries here and quick links to relevant source and examples files.
+#summary List of libraries here and quick links to them
 #labels Featured
 
-Below is a list of the libraries being worked on in this project. Each project should have the following folders: docs (for documentation), src (for javascript source), examples. 
+Below is a list of the libraries being worked on in this project, with links to their final released versions and their in-development version. 
 
 
 == MarkerManager ==
 
 This is the open-source version of GMarkerManager, with improvements.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/ Link to Release (1.0) Version]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/docs/examples.html Examples]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/src/markermanager.js Javascript include]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/ Released Versions]
 
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ Link to Development Version]
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ Development Version]
 
 
 == LabeledMarker ==
 
 This class extends the Maps API's standard GMarker class with the ability to support markers with textual labels. 
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/ Link to Release (1.1) Version]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/docs/examples.html Examples]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/src/labeledmarker.js Javascript include]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/release/src/labeledmarker_packed.js Javascript include (packed)]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/ Released Versions]
 
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Link to Development Version]
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Development Version]
 
 
 == DragZoom ==
 
 This is a control created by Andre Lewis that allows you to select an area on the map by dragging a rectangle and the map will then zoom to that area.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/ Link to Release (1.2) Version]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/docs/examples.html Examples]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/src/dragzoom.js Javascript include]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/release/src/dragzoom_packed.js Javascript include (packed)]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/ Released Versions]
 
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/dragzoom/ Link to Development Version]
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/dragzoom/ Development Version]
 
 == ExtMapTypeControl ==
 
 This is a control that mimics MapTypeControl and optionally has a Traffic button with drop down legend.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/ Link to Release (1.2) Version]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/docs/examples.html Examples]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/src/extmaptypecontrol.js Javascript include]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/ Released Versions]
 
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extmaptypecontrol/ Link to Development Version]
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extmaptypecontrol/ Development Version]
 
 == ExtInfoWindow ==
 
 This is an extension that lets you create custom styled info windows with CSS and makes it easy to load in AJAX content or tabs.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/ Link to Release (1.0) Version]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/docs/examples.html Examples]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/src/extinfowindow.js Javascript include]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/release/src/extinfowindow_packed.js Javascript include (packed)]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/ Released Versions]
 
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extinfowindow/ Link to Development Version]
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extinfowindow/ Development Version]
 
 == MapIconMaker ==
 
 This gives you static function(s) for creating dynamically sized and colored marker icons using the Charts API marker output.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/ Link to Release (1.0) Version]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/docs/examples.html Examples]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/src/mapiconmaker.js Javascript include]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/release/src/mapiconmaker_packed.js Javascript include (packed)]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/ Released Versions]
+
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapiconmaker/ Development Version]
 
 == MarkerTracker ==
 
 This utility displays directional indicators for "important" markers on that are out of your maps view.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/ Link to Release (1.0) Version]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/docs/examples.html Examples]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/docs/reference.html Reference]
-  * [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/release/src/markertracker.js Javascript include]
+[http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/ Released Versions]
+
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markertracker/ Development Version]
