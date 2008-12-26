@@ -6,7 +6,7 @@ This is the release process for pushing stuff out to the release library. Right 
 
 = Pushing out new versions of an existing library =
   * Verify that examples exist that test all the introduced changes since last release. To see what's new since last release, compare http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/library to http://code.google.com/p/gmaps-utility-library/source/list?path=/trunk/library
-  * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/library/examples to make sure they work as intended in IE, FF, Safari.
+  * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/svn/trunk/library/examples to make sure they work as intended in IE, FF, Safari.
   * Do an svn update on local gmaps-utility-library-dev
 {{{
 svn update
