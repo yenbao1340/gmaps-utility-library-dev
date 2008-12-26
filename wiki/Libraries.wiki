@@ -4,7 +4,7 @@
 Below is a list of the libraries being worked on in this project, with links to their final released versions and their in-development version. 
 
 
-== MarkerManager ==
+== !MarkerManager ==
 
 This is the open-source version of GMarkerManager, with improvements.
 
@@ -13,7 +13,7 @@ This is the open-source version of GMarkerManager, with improvements.
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ Development Version]
 
 
-== LabeledMarker ==
+== !LabeledMarker ==
 
 This class extends the Maps API's standard GMarker class with the ability to support markers with textual labels. 
 
@@ -22,7 +22,7 @@ This class extends the Maps API's standard GMarker class with the ability to sup
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Development Version]
 
 
-== DragZoom ==
+== !DragZoom ==
 
 This is a control created by Andre Lewis that allows you to select an area on the map by dragging a rectangle and the map will then zoom to that area.
 
@@ -30,15 +30,15 @@ This is a control created by Andre Lewis that allows you to select an area on th
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/dragzoom/ Development Version]
 
-== ExtMapTypeControl ==
+== !ExtMapTypeControl ==
 
-This is a control that mimics MapTypeControl and optionally has a Traffic button with drop down legend.
+This is a control that mimics !MapTypeControl and optionally has a Traffic button with drop down legend.
 
 [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/ Released Versions]
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extmaptypecontrol/ Development Version]
 
-== ExtInfoWindow ==
+== !ExtInfoWindow ==
 
 This is an extension that lets you create custom styled info windows with CSS and makes it easy to load in AJAX content or tabs.
 
@@ -46,7 +46,7 @@ This is an extension that lets you create custom styled info windows with CSS an
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extinfowindow/ Development Version]
 
-== MapIconMaker ==
+== !MapIconMaker ==
 
 This gives you static function(s) for creating dynamically sized and colored marker icons using the Charts API marker output.
 
@@ -54,7 +54,7 @@ This gives you static function(s) for creating dynamically sized and colored mar
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapiconmaker/ Development Version]
 
-== MarkerTracker ==
+== !MarkerTracker ==
 
 This utility displays directional indicators for "important" markers on that are out of your maps view.
 
