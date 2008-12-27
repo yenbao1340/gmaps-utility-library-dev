@@ -98,4 +98,5 @@ find . -name '*.jpg' | xargs svn propset svn:mime-type image/jpeg
 }}}
   * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/1.0/examples to make sure API keys work, mime-types are correct, etc. Browser issues should be worked out by now.
   * Email the mailing list about the new version.
+  * Add the library to the front page of the release project and the Libraries wiki of the dev project.
   * Publish a blog post announcing the new library.
