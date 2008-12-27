@@ -61,3 +61,11 @@ This utility displays directional indicators for "important" markers on that are
 [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/ Released Versions]
 
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markertracker/ Development Version]
+
+== !ExtLargeMapControl ==
+
+This reates a control with buttons to pan in four directions, and zoom in and zoom out, and a zoom slider. The UI is based on the LargeMapControl from Google Maps (circa December 2008).
+
+[http://gmaps-utility-library.googlecode.com/svn/trunk/extlargemapcontrol/ Released Versions]
+
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extlargemapcontrol/ Development Version]
