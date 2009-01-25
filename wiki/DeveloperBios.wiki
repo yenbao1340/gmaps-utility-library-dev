@@ -46,13 +46,19 @@ http://s3.amazonaws.com/seerowww/nunchuckers.jpg
 
 ----
 
-*Björn Brala*
+*Bjorn Brala*
 
   * Employed by [http://www.swis.nl/ SWIS B.V.] as lead developer of [http://www.geostart.nl/english/ GeoStart].
   * Created: [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/progressbarcontrol/ Progressbar Control] and part of [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/snaptoroute/ Snap to Route]
   * Worked on: [http://gmaps-utility-library.googlecode.com/svn/trunk/extlargemapcontrol/1.0/ ExtLargeMapControl]
 
 ----
+*Masashi Katsumata*
+
+http://googlemaps.googlermania.com/uploads/3805640_3499623391.jpg
+  * Employed by [http://www.systemaid.jp System Aid] as Software Development Engineer
+  * Created: [http://gmaps-utility-library.googlecode.com/svn/trunk/extlargemapcontrol/ ExtLargeMapControl] 
+  * Personal website: [http://googlemaps.googlermania.com/]
 
 ----
 
