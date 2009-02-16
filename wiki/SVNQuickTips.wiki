@@ -50,6 +50,24 @@ In this project, we're actually storing HTML, CSS, and JS files so we want them 
 
 Those are the most common mime-types we'll use in this project.
 
+== Set Auto Prop ==
+
+You maybe able to set mime-type automatically by pre-config the SVN client. For example, in TortoiseSVN, right click any SVN folder, choose TortoiseSVN >> Settings. In "General", find "Subvsion configuration file", click the "Edit" button. Notepad will open the config file, find "enable-auto-props", set it as "enable-auto-props = yes". Then in [auto-props] section, add the following lines:
+{{{
+enable-auto-props = yes
+
+
+*.png = svn:mime-type=image/png
+*.jpg = svn:mime-type=image/jpeg
+*.gif = svn:mime-type=image/gif
+*.xml = svn:mime-type=text/xml
+*.js = svn:mime-type=text/javascript
+*.xml = svn:mime-type=text/xml
+*.css= svn:mime-type=text/css
+*.html= svn:mime-type=text/html
+*.htm= svn:mime-type=text/html
+}}}
+Save and close. After that, mime-type for any new files you added will be automatically set. 
 
 == Code Conflicts ==
 There are no fine-grained permissions in googlecode SVN, so please be very careful to not commit changes to something that someone else is also working on. If you're both working on the same file, you may want to create separate versions or merge your changes.
