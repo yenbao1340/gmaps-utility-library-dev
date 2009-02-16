@@ -26,6 +26,10 @@ These are libraries that are in the development project but aren't yet ready for
     * Code: Needs comments, needs to pass jslint.
     * Docs: None so far. Reference needs to be auto-generated, examples page needs to be made.
     * Examples: 1 so far. It'd help to have one more example showing different usage.
+  * !SnapShotControl: Library to make it easy to create printable version of a map. Masashi is working on it.
+    * Code: Needs comments, needs to pass jslint.
+    * Docs: None so far. Reference needs to be auto-generated, examples page needs to be made.
+    * Examples: Done
   * !TabbedMaxContent: Library to make it easy to put tabs inside a mega-infowindow, like on Google Maps. Nianwei is working on it.
     * Code: Done.
     * Docs: Just need some editing for grammar/spelling.
