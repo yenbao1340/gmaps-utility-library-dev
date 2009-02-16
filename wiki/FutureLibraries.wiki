@@ -1,11 +1,46 @@
-#summary Ideas for future libraries to add here
+#summary Ideas for future libraries to add here, and notes about libraries in the pre-release state.
 
-= Ideas =
+= Pre-Release = 
 
-  * !GeometryControl: !MyMaps-like control using the poly editing classes. Chris Marx is working on it, and it's nearly ready for release.
-  * !SlideshowControl: Code is almost done, just need to put it in here.
-  * !ProjectedOverlay: Code is done for this, it needs docs/example.
+These are libraries that are in the development project but aren't yet ready for release.
+
+  * ArcGISLink: Library to connect ArcGIS Server/Services with Google Maps. Nianwei developed this.
+    * Code: Done.
+    * Docs: Done, but awaiting a round of edits from the Maps API tech writer.
+    * Examples: Done.
+  * !ExtStreetviewControl: Library that creates a mini-streetview in the corner of the map, similar to the overview map. Masashi is working on this.
+    * Code: Need to make sure it's not doing DOM hacking or using undocumented API functions. Need to generate packed version.
+    * Docs: None. Need to auto-generate reference and have how-to page with examples.
+    * Examples: There are enough examples, but the files need to be renamed to something more descriptive.
+  * !GeometryControl: !MyMaps-like control using the poly editing classes. Chris Marx is working on it, and it's nearly ready for release. 
+  * !MultiIconMaker: Library to make it easier to do markers with hover states. We're debating whether it's worth it to offer this as a standalone library.
+  * !PopUpMarker: Library that creates mini-infowindow markers, using the Chart API output. Masashi is working on it.
+    * Code: Needs proper JSDoc.
+    * Docs: Reference needs to be auto-generated from JSDoc. The how-to needs more description and code snippets.
+    * Examples: File names need to be more descriptive.
+  * !ProjectedOverlay: Like GGroundOverlay, but assumes a pre-projected image, so it doesn't try to re-project it using CSS. John Coryat authored this.
+    * Code: Needs comments, needs to pass jslint.
+    * Docs: None so far. Reference needs to be auto-generated, examples page needs to be made.
+    * Examples: None checked in. Several available from John, however. Need to be checked in, script tag adjusted to enable ?packed checking.
+  * !SlideshowControl: Control for automatically playing through all markers on a map. Pamela authored this.
+    * Code: Needs comments, needs to pass jslint.
+    * Docs: None so far. Reference needs to be auto-generated, examples page needs to be made.
+    * Examples: 1 so far. It'd help to have one more example showing different usage.
+  * !TabbedMaxContent: Library to make it easy to put tabs inside a mega-infowindow, like on Google Maps. Nianwei is working on it.
+    * Code: Done.
+    * Docs: Just need some editing for grammar/spelling.
+    * Examples: Done.
+
+
+= Pre-Dev =
+
+These are libraries that are somewhere on the web/in the ether, but haven't been checked in yet to the development project. In some cases, we may need to contact the author about joining the project.
+
   * !OverviewMapControl: Gabriel is working on open-sourcing our internal code for this.
   * ZMarker: Esa has been working on this, we should get it in here.
   * !ExtPolyGraph: An abstraction for GPolyline- and GMarker-based [http://en.wikipedia.org/wiki/Graph_%28mathematics%29 graphs].  I did an undirected implementation for creating and editing [http://xkcd.com/85/ sidewalk] data.
   * !OpacityControl: See [http://code.google.com/apis/maps/documentation/demogallery.html demo].
+
+= Ideas =
+
+Any ideas of completely non-existent libraries can go here...
