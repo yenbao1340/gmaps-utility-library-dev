@@ -35,6 +35,7 @@ svn diff ~/www/gmaps-utility-library-dev/labeledmarker/ .
 diff 1.1/src/labeledmarker.js 1.2/src/labeledmarker.js
 }}}
   * Change version number in the comments of the .js file to reflect new version number.
+  * Change path in the reference.html for the local_extensions.css
   * Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
   * Run svn commit on the new folder. In the message, reference which revisions this release represents.
 {{{
