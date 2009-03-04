@@ -17,7 +17,7 @@ These are libraries that are in the development project but aren't yet ready for
   * !PopUpMarker: Library that creates mini-infowindow markers, using the Chart API output. Masashi is working on it.
     * Code: Done.
     * Docs: Done.
-    * Examples: Chartstylemarker.html isn't working consistently anymore. 
+    * Examples: Done.
   * !ProjectedOverlay: Like GGroundOverlay, but assumes a pre-projected image, so it doesn't try to re-project it using CSS. John Coryat authored this.
     * Code: Needs comments, needs to pass jslint.
     * Docs: None so far. Reference needs to be auto-generated, examples page needs to be made.
@@ -30,10 +30,6 @@ These are libraries that are in the development project but aren't yet ready for
     * Code: Needs comments, needs to pass jslint.
     * Docs: None so far. Reference needs to be auto-generated, examples page needs to be made.
     * Examples: Done
-  * !TabbedMaxContent: Library to make it easy to put tabs inside a mega-infowindow, like on Google Maps. Nianwei is working on it.
-    * Code: Done.
-    * Docs: Done.
-    * Examples: Done.
 
 
 = Pre-Dev =
