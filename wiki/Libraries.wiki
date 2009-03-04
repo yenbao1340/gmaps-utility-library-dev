@@ -8,64 +8,76 @@ Below is a list of the libraries being worked on in this project, with links to 
 
 This is the open-source version of GMarkerManager, with improvements.
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/ Released Versions]
-
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ Development Version]
+Browse [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/ Released Versions] or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ Development Version].
 
 
 == !LabeledMarker ==
 
 This class extends the Maps API's standard GMarker class with the ability to support markers with textual labels. 
 
+Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/ Released Versions]
-
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Development Version]
-
+or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Development Version].
 
 == !DragZoom ==
 
 This is a control created by Andre Lewis that allows you to select an area on the map by dragging a rectangle and the map will then zoom to that area.
 
+Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/ Released Versions]
-
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/dragzoom/ Development Version]
+or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/dragzoom/ Development Version].
 
 == !ExtMapTypeControl ==
 
 This is a control that mimics !MapTypeControl and optionally has a Traffic button with drop down legend.
 
+Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/ Released Versions]
-
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extmaptypecontrol/ Development Version]
+or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extmaptypecontrol/ Development Version].
 
 == !ExtInfoWindow ==
 
 This is an extension that lets you create custom styled info windows with CSS and makes it easy to load in AJAX content or tabs.
 
+Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/ Released Versions]
-
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extinfowindow/ Development Version]
+or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extinfowindow/ Development Version].
 
 == !MapIconMaker ==
 
 This gives you static function(s) for creating dynamically sized and colored marker icons using the Charts API marker output.
 
+Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/ Released Versions]
-
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapiconmaker/ Development Version]
+or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapiconmaker/ Development Version].
 
 == !MarkerTracker ==
 
 This utility displays directional indicators for "important" markers on that are out of your maps view.
 
+Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/ Released Versions]
-
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markertracker/ Development Version]
+or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markertracker/ Development Version].
 
 == !ExtLargeMapControl ==
 
 This reates a control with buttons to pan in four directions, and zoom in and zoom out, and a zoom slider. The UI is based on the LargeMapControl from Google Maps (circa December 2008).
 
-[http://gmaps-utility-library.googlecode.com/svn/trunk/extlargemapcontrol/ Released Versions]
+Browse [http://gmaps-utility-library.googlecode.com/svn/trunk/extlargemapcontrol/ Released Versions] 
+or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extlargemapcontrol/ Development Version].
 
-[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extlargemapcontrol/ Development Version]
+== !TabbedMaxContent ==
+
+This lets developers easily create maximized info windows with tabs inside them (similar to the Google Maps local business info windows).
+
+Browse
+[http://gmaps-utility-library.googlecode.com/svn/trunk/tabbedmaxcontent/ Released Versions]
+or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/tabbedmaxcontent/ Development Version].
