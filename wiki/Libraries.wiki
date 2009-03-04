@@ -81,3 +81,11 @@ This lets developers easily create maximized info windows with tabs inside them 
 Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/tabbedmaxcontent/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/tabbedmaxcontent/ Development Version].
+
+== !PopupMarker ==
+
+This lets developers attach mini info bubbles to their markers that can contain icons, HTML, custom colors, and more.
+
+Browse
+[http://gmaps-utility-library.googlecode.com/svn/trunk/popupmarker/ Released Versions]
+or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/popupmarker/ Development Version].
