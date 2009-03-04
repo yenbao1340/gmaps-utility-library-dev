@@ -31,8 +31,8 @@ These are libraries that are in the development project but aren't yet ready for
     * Docs: None so far. Reference needs to be auto-generated, examples page needs to be made.
     * Examples: Done
   * !TabbedMaxContent: Library to make it easy to put tabs inside a mega-infowindow, like on Google Maps. Nianwei is working on it.
-    * Code: Using undocumented GInfoWindowTab properties.
-    * Docs: Just need some editing for grammar/spelling.
+    * Code: Done.
+    * Docs: Done.
     * Examples: Done.
 
 
