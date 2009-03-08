@@ -42,6 +42,10 @@ These are libraries that are in the development project but aren't yet ready for
     * Code: Needs comments, needs to pass jslint.
     * Docs: None so far. Reference needs to be auto-generated, examples page needs to be made.
     * Examples: Done
+  * KeyDragZoom: Library to drag-zoom using keys. Nianwei added.
+    * Code: Done.
+    * Docs: Both docs just need grammar + style edits.
+    * Examples: Issue 93 raised for multimap example. Rest are good.
 
 
 = Pre-Dev =
