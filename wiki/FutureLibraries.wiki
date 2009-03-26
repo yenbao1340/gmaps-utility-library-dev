@@ -24,6 +24,10 @@ These are libraries that are in the development project but aren't yet ready for
     * Code: Done.
     * Docs: Done, but awaiting a round of edits from the Maps API tech writer.
     * Examples: Done.
+  * CarouselMapTypeControl: Library to switch between map types in a carousel UI.
+    * Code: Done
+    * Docs: Done
+    * Examples: Done
   * !ExtStreetviewControl: Library that creates a mini-streetview in the corner of the map, similar to the overview map. Masashi is working on this.
     * Code: Need to make sure it's not doing DOM hacking or using undocumented API functions. Need to generate packed version.
     * Docs: None. Need to auto-generate reference and have how-to page with examples.
