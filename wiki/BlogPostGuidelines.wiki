@@ -18,7 +18,7 @@ Please write your post in a Google document and share it with Pamela Fox. She'll
 
 Check out the following examples of past guest blog posts.
 
-[http://googlegeodevelopers.blogspot.com/2008/11/2-more-libraries-released.html Bjorn Brala: ProgressBarControl & SnapToRoute]
+[http://googlegeodevelopers.blogspot.com/2008/11/2-more-libraries-released.html Björn Brala: ProgressBarControl & SnapToRoute]
 
 [http://googlemapsapi.blogspot.com/2007/12/extinfowindow-10-ajax-powered-css.html Joe Monahan: ExtInfoWindow]
 
