@@ -89,3 +89,12 @@ This lets developers attach mini info bubbles to their markers that can contain 
 Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/popupmarker/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/popupmarker/ Development Version].
+
+== !MarkerClusterer ==
+
+This library creates and manages per-zoom-level clusters for large amounts of markers (hundreds or thousands). This library was inspired by the Maptimize hosted clustering solution. 
+
+
+Browse
+[http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/ Released Versions]
+or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markerclusterer/ Development Version].
