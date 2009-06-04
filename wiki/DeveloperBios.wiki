@@ -71,6 +71,8 @@ http://chrismarx.googlepages.com/chrismarx_profile.jpg
 ----
 
 *Giuseppe Sollazzo*
+
+http://puntofisso.net/me.jpg
   * Employed by St. George's University of London as Systems Developers and Administrator
   * Working on: [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markerclusterer/]
   * Personal website: [http://puntofisso.net]
