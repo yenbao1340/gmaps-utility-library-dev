@@ -67,3 +67,10 @@ http://googlemaps.googlermania.com/uploads/3805640_3499623391.jpg
 http://chrismarx.googlepages.com/chrismarx_profile.jpg
   * Employed by [http://birds.cornell.edu Cornell Lab of Ornithology] as an application developer and GIS analyst
   * Created: [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/geometrycontrols/ GeometryControls] 
+
+----
+
+*Giuseppe Sollazzo*
+  * Employed by St. George's University of London as Systems Developers and Administrator
+  * Working on: [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markerclusterer/]
+  * Personal website: [http://puntofisso.net]
