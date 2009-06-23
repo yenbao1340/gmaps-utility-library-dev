@@ -42,26 +42,8 @@ diff 1.1/src/labeledmarker.js 1.2/src/labeledmarker.js
  svn commit -m "Adding LabeledMarker v1.2. Represents versions 589 through 631 of the development library. See http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/labeledmarker/" 1.2/
 }}}
   * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/NN/examples to make sure API keys work, mime-types are correct, etc. Browser issues should be worked out by now.
+  * Update release_notes.txt in the /library/ folder to indicate changes and changed issues.
   * Email the mailing list about the new version. 
-  * Push to release a week after.
-
-= Pushing out new versions to release folder =
- * Export files from gmaps-utility-library-dev/library/N/ to gmaps-utility-library/library/NN
-{{{
-cd ~/www/gmaps-utility-library/labeledmarker/
-svn export 1.2/ release/ --force
-}}}
- * Run svn status and svn diff on the release folder and check that the changes are expected.
-{{{
-cd release
-svn status
-svn diff
-}}}
- * Run svn commit on the new folder. In the message, indicate what version is being pushed as the release version.
-{{{
-svn commit -m "Pushing LabeledMarker 1.2 as the release version"
-}}}
-  * Update the [Libraries] wiki page
 
 = Pushing out new libraries =
   * Do an svn update on local gmaps-utility-library-dev
@@ -102,3 +84,23 @@ find . -name '*.jpg' | xargs svn propset svn:mime-type image/jpeg
   * Add the library to the front page of the release project and the Libraries wiki of the dev project.
   * Add examples to the Google Maps API demo gallery.
   * Publish a blog post announcing the new library.
+
+
+= Pushing out new versions to release folder =
+_We have deprecated the notion of release folders, this is no longer relevant_
+ * Export files from gmaps-utility-library-dev/library/N/ to gmaps-utility-library/library/NN
+{{{
+cd ~/www/gmaps-utility-library/labeledmarker/
+svn export 1.2/ release/ --force
+}}}
+ * Run svn status and svn diff on the release folder and check that the changes are expected.
+{{{
+cd release
+svn status
+svn diff
+}}}
+ * Run svn commit on the new folder. In the message, indicate what version is being pushed as the release version.
+{{{
+svn commit -m "Pushing LabeledMarker 1.2 as the release version"
+}}}
+  * Update the [Libraries] wiki page
