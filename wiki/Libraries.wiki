@@ -48,6 +48,17 @@ Browse
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extinfowindow/ Development Version].
 
+
+== !KeyDragZoom ==
+
+This is a lightweight alternative to DragZoomControl. When the user presses a key (CTRL is default), they can drag a box and the map will zoom to fit that box. There is no control for triggering the zoom, as in DragZoomControl.
+
+
+Browse
+[http://gmaps-utility-library.googlecode.com/svn/trunk/keydragzoom/ Released Versions]
+or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/keydragzoom/ Development Version].
+
+
 == !MapIconMaker ==
 
 This gives you static function(s) for creating dynamically sized and colored marker icons using the Charts API marker output.
@@ -56,6 +67,15 @@ Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/ Released Versions]
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapiconmaker/ Development Version].
+
+== !MarkerClusterer ==
+
+This library creates and manages per-zoom-level clusters for large amounts of markers (hundreds or thousands). This library was inspired by the Maptimize hosted clustering solution. 
+
+
+Browse
+[http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/ Released Versions]
+or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markerclusterer/ Development Version].
 
 == !MarkerTracker ==
 
@@ -89,12 +109,3 @@ This lets developers attach mini info bubbles to their markers that can contain 
 Browse
 [http://gmaps-utility-library.googlecode.com/svn/trunk/popupmarker/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/popupmarker/ Development Version].
-
-== !MarkerClusterer ==
-
-This library creates and manages per-zoom-level clusters for large amounts of markers (hundreds or thousands). This library was inspired by the Maptimize hosted clustering solution. 
-
-
-Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/ Released Versions]
-or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markerclusterer/ Development Version].
