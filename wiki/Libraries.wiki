@@ -32,8 +32,6 @@ or
 
 == !ContextMenuControl ==
 
-ContextMenuControl
-
 This lets you add a comfortable context menu with just one line of code.
 
 Browse
