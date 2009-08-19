@@ -30,6 +30,17 @@ Browse
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/dragzoom/ Development Version].
 
+== !ContextMenuControl ==
+
+ContextMenuControl
+
+This lets you add a comfortable context menu with just one line of code.
+
+Browse
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/contextmenucontrol/ Development Version].
+
+
+
 == !ExtMapTypeControl ==
 
 This is a control that mimics !MapTypeControl and optionally has a Traffic button with drop down legend.
