@@ -4,47 +4,6 @@
 
 This is the release process for pushing stuff out to the release library. Right now, only pamela.fox can do this. 
 
-= Pushing out new versions of an existing library =
-  * Verify that examples exist that test all the introduced changes since last release. To see what's new since last release, compare http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/library to http://code.google.com/p/gmaps-utility-library/source/list?path=/trunk/library
-  * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/svn/trunk/library/examples to make sure they work as intended in IE, FF, Safari.
-  * Do an svn update on local gmaps-utility-library-dev
-{{{
-svn update
-}}}
-  * Create new folder in gmaps-utility-library/library/ for the new release (e.g. 1.2) Export files from gmaps-utility-library-dev/library/ to gmaps-utility-library/library/NN
-{{{
-cd ~/www/gmaps-utility-library/labeledmarker/
-mkdir 1.2
-svn export ~/www/gmaps-utility-library-dev/labeledmarker/ 1.2/ --force
-}}}
-  * Run svn add on the new folder. Run svn propset on all files (for HTML/CSS)
-{{{
-svn add 1.2
-find . -name '*.html' | xargs svn propset svn:mime-type text/html
-find . -name '*.css' | xargs svn propset svn:mime-type text/css
-find . -name '*.js' | xargs svn propset svn:mime-type text/javascript
-find . -name '*.xml' | xargs svn propset svn:mime-type text/xml
-find . -name '*.png' | xargs svn propset svn:mime-type image/png
-find . -name '*.gif' | xargs svn propset svn:mime-type image/gif
-find . -name '*.jpg' | xargs svn propset svn:mime-type image/jpeg
-}}}
-  * Run a svn diff between the folder for the last version with the folder for the new version. Make sure you recognize all changes. (TODO: Showing 100% diff for some reason now).
-{{{
-svn diff ~/www/gmaps-utility-library-dev/labeledmarker/ .
-//or, if that fails, diff the JS files
-diff 1.1/src/labeledmarker.js 1.2/src/labeledmarker.js
-}}}
-  * Change version number in the comments of the .js file to reflect new version number.
-  * Change path in the reference.html for the local_extensions.css
-  * Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
-  * Run svn commit on the new folder. In the message, reference which revisions this release represents.
-{{{
- svn commit -m "Adding LabeledMarker v1.2. Represents versions 589 through 631 of the development library. See http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/labeledmarker/" 1.2/
-}}}
-  * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/NN/examples to make sure API keys work, mime-types are correct, etc. Browser issues should be worked out by now.
-  * Update release_notes.txt in the /library/ folder to indicate changes and changed issues.
-  * Email the mailing list about the new version. 
-
 = Pushing out new libraries =
   * Do an svn update on local gmaps-utility-library-dev
   * Make sure the library has everything needed before proceeding: examples (with packed option), developer's guide, reference, and javascript (and packed version).
@@ -53,18 +12,25 @@ diff 1.1/src/labeledmarker.js 1.2/src/labeledmarker.js
     * Make sure that the class reference is up-to-date (execute ant all-docs).
   * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/library/examples to make sure they work as intended in IE, FF, Safari.
   * Do an svn commit of any changes made.
-  * Create new folder in release project for library and first release (1.0): gmaps-utility-library/library/1.0/. Export files from gmaps-utility-library-dev/library/ to gmaps-utility-library/library/1.0/
+  * Follow the steps below for pushing out new versions. The only difference for a new library is that you need to create a folder for the library in /tags/ first.
+
+
+= Pushing out new versions =
+  * Verify that examples exist that test all the introduced changes since last release. (TODO: How to know what's new?)
+  * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/svn/trunk/library/examples to make sure they work as intended in IE, FF, Safari.
+  * Do an svn update on local gmaps-utility-library-dev
 {{{
-cd ~/www/gmaps-utility-library/
-mkdir progressbarcontrol
-cd progressbarcontrol
-mkdir 1.0
-svn export ~/www/gmaps-utility-library-dev/labeledmarker/ 1.0/ --force
+svn update
 }}}
-  * Run svn add on the new folder. Run svn propset on all files (for HTML/CSS)
+  * Change version number in the comments of the .js file to reflect new version number.
+  * Check examples and docs to make sure they don't reference any relative files that will have a different relative location once in the tagged folder (e.g. CSS).
+  * Make sure you have the /tags/ directory checked out - the default source checkout only gets the /trunk/. If you need to, do a new checkout of /svn/. 
+  * Do an svn copy to a tagged folder for the release version. If needed, you can specify a revision to do it from with "-r NNN".
 {{{
-svn add progressbarcontrol
-cd progressbarcontrol
+svn copy trunk/library tags/library/N.N
+}}}
+  * Run svn propset on all files (for HTML/CSS). This makes sure they show up in the browser:
+{{{
 find . -name '*.html' | xargs svn propset svn:mime-type text/html
 find . -name '*.css' | xargs svn propset svn:mime-type text/css
 find . -name '*.js' | xargs svn propset svn:mime-type text/javascript
@@ -73,34 +39,24 @@ find . -name '*.png' | xargs svn propset svn:mime-type image/png
 find . -name '*.gif' | xargs svn propset svn:mime-type image/gif
 find . -name '*.jpg' | xargs svn propset svn:mime-type image/jpeg
 }}}
-  * Change version number in the comments of the .js file to reflect version number (1.0).
+  * Run a svn diff between the folder for the last version with the folder for the new version. Make sure you recognize all changes. 
+{{{
+svn diff tags/labeledmarker/1.1 tags/labeledmarker/1.2
+//or, if that fails, diff the JS files
+diff tags/1.1/src/labeledmarker.js tags/1.2/src/labeledmarker.js
+}}}
   * Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
   * Run svn commit on the new folder. In the message, reference which revisions this release represents.
 {{{
- svn commit -m "Adding ProgressBarControl 1.0. Represents versions 589 through 631 of the development library. See http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/progressbarcontrol/" progressbarcontrol/
+ svn commit -m "Adding LabeledMarker v1.2. Represents versions 589 through 631 of the development library. See http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/labeledmarker/" tags/1.2/
 }}}
-  * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/1.0/examples to make sure API keys work, mime-types are correct, etc. Browser issues should be worked out by now.
+  * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/NN/examples to make sure API keys work, mime-types are correct, etc. Browser bugs should be worked out by now.
+  * Update release_notes.txt in the /library/ folder to indicate changes and changed issues. (TODO: Is that where it should go?)
+
+
+== After committing ==
   * Email the mailing list about the new version.
-  * Add the library to the front page of the release project and the Libraries wiki of the dev project.
-  * Add examples to the Google Maps API demo gallery.
-  * Publish a blog post announcing the new library.
-
-
-= Pushing out new versions to release folder =
-_We have deprecated the notion of release folders, this is no longer relevant_
- * Export files from gmaps-utility-library-dev/library/N/ to gmaps-utility-library/library/NN
-{{{
-cd ~/www/gmaps-utility-library/labeledmarker/
-svn export 1.2/ release/ --force
-}}}
- * Run svn status and svn diff on the release folder and check that the changes are expected.
-{{{
-cd release
-svn status
-svn diff
-}}}
- * Run svn commit on the new folder. In the message, indicate what version is being pushed as the release version.
-{{{
-svn commit -m "Pushing LabeledMarker 1.2 as the release version"
-}}}
-  * Update the [Libraries] wiki page
+  * Add the library to the front page to the Libraries wiki.
+  * Go to Administer->Issues and add a label for your class (e.g. Class-KeyDragZoom).
+  * Add examples to the Google Maps API demo gallery. (Ask Pamela)
+  * Publish a blog post announcing the new library. See BlogPostGuidelines.
