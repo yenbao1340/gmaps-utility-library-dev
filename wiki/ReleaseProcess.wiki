@@ -2,7 +2,7 @@
 
 = Introduction =
 
-This is the release process for pushing stuff out to the release library. Right now, only pamela.fox can do this. 
+This is the release process for pushing stuff out to the release library. 
 
 = Pushing out new libraries =
   * Do an svn update on local gmaps-utility-library-dev
