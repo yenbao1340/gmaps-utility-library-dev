@@ -60,7 +60,7 @@ or
 
 == !KeyDragZoom ==
 
-This is a lightweight alternative to DragZoomControl. When the user presses a key (CTRL is default), they can drag a box and the map will zoom to fit that box. There is no control for triggering the zoom, as in DragZoomControl.
+This is a lightweight alternative to DragZoomControl. When the user presses a key (SHIFT is default), they can drag a box and the map will zoom to fit that box. There is no control for triggering the zoom, as in DragZoomControl.
 
 
 Browse
