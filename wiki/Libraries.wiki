@@ -1,14 +1,14 @@
 #summary List of libraries here and quick links to them
 #labels Featured
 
-Below is a list of the libraries being worked on in this project, with links to their final released versions and their in-development version. 
+Below is a list of the libraries being worked on in this project, with links to their final released versions and their in-development version. We generally recommend downloading the JS to your server for maximal stability.
 
 
 == !MarkerManager ==
 
 This is the open-source version of GMarkerManager, with improvements.
 
-Browse [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/ Released Versions] or
+Browse [http://gmaps-utility-library-dev.googlecode.com/svn/tags/markermanager/ Released Versions] or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/ Development Version].
 
 
@@ -17,7 +17,7 @@ Browse [http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/ Rel
 This class extends the Maps API's standard GMarker class with the ability to support markers with textual labels. 
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/labeledmarker/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/labeledmarker/ Released Versions]
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ Development Version].
 
@@ -26,7 +26,7 @@ or
 This is a control created by Andre Lewis that allows you to select an area on the map by dragging a rectangle and the map will then zoom to that area.
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/dragzoom/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/dragzoom/ Released Versions]
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/dragzoom/ Development Version].
 
@@ -44,7 +44,7 @@ Browse
 This is a control that mimics !MapTypeControl and optionally has a Traffic button with drop down legend.
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/extmaptypecontrol/release/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/extmaptypecontrol/ Released Versions]
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extmaptypecontrol/ Development Version].
 
@@ -53,7 +53,7 @@ or
 This is an extension that lets you create custom styled info windows with CSS and makes it easy to load in AJAX content or tabs.
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/extinfowindow/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/extinfowindow/ Released Versions]
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extinfowindow/ Development Version].
 
@@ -64,7 +64,7 @@ This is a lightweight alternative to DragZoomControl. When the user presses a ke
 
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/keydragzoom/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/keydragzoom/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/keydragzoom/ Development Version].
 
 
@@ -73,7 +73,7 @@ or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/keydragzoom/ Devel
 This gives you static function(s) for creating dynamically sized and colored marker icons using the Charts API marker output.
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/mapiconmaker/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/mapiconmaker/ Released Versions]
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapiconmaker/ Development Version].
 
@@ -83,7 +83,7 @@ This library creates and manages per-zoom-level clusters for large amounts of ma
 
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markerclusterer/ Development Version].
 
 == !MarkerTracker ==
@@ -91,7 +91,7 @@ or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markerclusterer/ D
 This utility displays directional indicators for "important" markers on that are out of your maps view.
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/markertracker/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/markertracker/ Released Versions]
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markertracker/ Development Version].
 
@@ -99,7 +99,7 @@ or
 
 This reates a control with buttons to pan in four directions, and zoom in and zoom out, and a zoom slider. The UI is based on the LargeMapControl from Google Maps (circa December 2008).
 
-Browse [http://gmaps-utility-library.googlecode.com/svn/trunk/extlargemapcontrol/ Released Versions] 
+Browse [http://gmaps-utility-library-dev.googlecode.com/svn/tags/extlargemapcontrol/ Released Versions] 
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/extlargemapcontrol/ Development Version].
 
@@ -108,7 +108,7 @@ or
 This lets developers easily create maximized info windows with tabs inside them (similar to the Google Maps local business info windows).
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/tabbedmaxcontent/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/tabbedmaxcontent/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/tabbedmaxcontent/ Development Version].
 
 == !PopupMarker ==
@@ -116,5 +116,5 @@ or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/tabbedmaxcontent/ 
 This lets developers attach mini info bubbles to their markers that can contain icons, HTML, custom colors, and more.
 
 Browse
-[http://gmaps-utility-library.googlecode.com/svn/trunk/popupmarker/ Released Versions]
+[http://gmaps-utility-library.googlecode-dev.com/svn/tags/popupmarker/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/popupmarker/ Development Version].
