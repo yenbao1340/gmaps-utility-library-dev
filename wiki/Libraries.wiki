@@ -116,5 +116,5 @@ or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/tabbedmaxcontent/ 
 This lets developers attach mini info bubbles to their markers that can contain icons, HTML, custom colors, and more.
 
 Browse
-[http://gmaps-utility-library.googlecode-dev.com/svn/tags/popupmarker/ Released Versions]
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/popupmarker/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/popupmarker/ Development Version].
