@@ -4,7 +4,7 @@
 
 This is the release process for pushing stuff out to the release library. Anyone can make the releases, but if you do not feel comfortable with SVN or SVN tags, please email the list and request that a release engineer push it out.
 
-Current release engineers are: pamela.fox, nianwei.
+Current release engineers are: pamela.fox, nianwei, wf9a5m75.
 
 = Pushing out new libraries =
   * Do an svn update on local gmaps-utility-library-dev
