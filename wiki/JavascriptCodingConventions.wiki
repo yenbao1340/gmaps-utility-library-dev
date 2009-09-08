@@ -36,6 +36,7 @@ Foo.prototype.bar = function() {
 }}}
   
 == Comments ==
+  * Usually easiest to follow an example, like [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/snapshotcontrol/src/snapshotcontrol.js SnapshotControl].
   * Should generally follow [http://jsdoc.sourceforge.net/ JSDoc] conventions.
   * Inline comments are useful if the code is unclear.
   * Each function must be commented (purpose, @param, @return):
@@ -52,15 +53,6 @@ Foo.prototype.bar = function() {
   * Copyright, author, license, plus short description of file at top of code:
 {{{
 /**
- * @name MapIconMaker
- * @version 1.1
- * @author Pamela Fox
- * @copyright (c) 2008 Pamela Fox
- * @fileoverview This gives you static functions for creating dynamically
- *     sized and colored marker icons using the Charts API marker output.
- */
-
-/*
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -73,4 +65,14 @@ Foo.prototype.bar = function() {
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  */
+
+/**
+ * @name MapIconMaker
+ * @version 1.1
+ * @author Pamela Fox
+ * @copyright (c) 2008 Pamela Fox
+ * @fileoverview This gives you static functions for creating dynamically
+ *     sized and colored marker icons using the Charts API marker output.
+ */
+
 }}}
