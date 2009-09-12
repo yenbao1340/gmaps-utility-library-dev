@@ -19,18 +19,11 @@ Current release engineers are: pamela.fox, nianwei, wf9a5m75.
 
 = Pushing out new versions =
   # Verify that examples exist that test all the introduced changes since last release. You can see what revision a tag represents by clicking "diff" on the revision that created the tag. The revision will be on the left side. For example:
-
-http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/tags/markerclusterer
-
-http://code.google.com/p/gmaps-utility-library-dev/source/detail?r=1048&path=/tags/markerclusterer
-
-http://code.google.com/p/gmaps-utility-library-dev/source/diff?spec=svn1048&r=1048&format=side&path=/tags/markerclusterer/1.0&old_path=/trunk/markerclusterer&old=987
-
+    * http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/tags/markerclusterer
+    * http://code.google.com/p/gmaps-utility-library-dev/source/detail?r=1048&path=/tags/markerclusterer
+    * http://code.google.com/p/gmaps-utility-library-dev/source/diff?spec=svn1048&r=1048&format=side&path=/tags/markerclusterer/1.0&old_path=/trunk/markerclusterer&old=987
   # Test each of the files in http://gmaps-utility-library-dev.googlecode.com/svn/trunk/library/examples to make sure they work as intended in IE, FF, Safari.
-  * Do an svn update on local gmaps-utility-library-dev
-{{{
-svn update
-}}}
+  # Do an svn update on local gmaps-utility-library-dev
   # Change version number in the comments of the .js file to reflect new version number.
   # Check examples and docs to make sure they don't reference any relative files that will have a different relative location once in the tagged folder (e.g. CSS).
   # Make sure you have the /tags/ directory checked out - the default source checkout only gets the /trunk/. If you need to, do a new checkout of /svn/. 
