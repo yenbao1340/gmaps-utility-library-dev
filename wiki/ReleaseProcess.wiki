@@ -7,18 +7,18 @@ This is the release process for pushing stuff out to the release library. Anyone
 Current release engineers are: pamela.fox, nianwei, wf9a5m75.
 
 = Pushing out new libraries =
-  * Do an svn update on local gmaps-utility-library-dev
-  * Make sure the library has everything needed before proceeding: examples (with packed option), developer's guide, reference, and javascript (and packed version).
+  # Do an svn update on local gmaps-utility-library-dev
+  # Make sure the library has everything needed before proceeding: examples (with packed option), developer's guide, reference, and javascript (and packed version).
     * Check that the Javascript in both the source and examples follows the JavascriptCodingConventions.
     * Make sure that the packed Javascript is up-to-date (execute ant all-pack).
     * Make sure that the class reference is up-to-date (execute ant all-docs).
-  * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/library/examples to make sure they work as intended in IE, FF, Safari.
-  * Do an svn commit of any changes made.
-  * Follow the steps below for pushing out new versions. The only difference for a new library is that you need to create a folder for the library in /tags/ first.
+  # Test each of the files in http://gmaps-utility-library-dev.googlecode.com/library/examples to make sure they work as intended in IE, FF, Safari.
+  # Do an svn commit of any changes made (any fixes to issues you found).
+  # Follow the steps below for pushing out new versions. The only difference for a new library is that you need to create a folder for the library in /tags/ first.
 
 
 = Pushing out new versions =
-  * Verify that examples exist that test all the introduced changes since last release. You can see what revision a tag represents by clicking "diff" on the revision that created the tag. The revision will be on the left side. For example:
+  # Verify that examples exist that test all the introduced changes since last release. You can see what revision a tag represents by clicking "diff" on the revision that created the tag. The revision will be on the left side. For example:
 
 http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/tags/markerclusterer
 
@@ -26,19 +26,19 @@ http://code.google.com/p/gmaps-utility-library-dev/source/detail?r=1048&path=/ta
 
 http://code.google.com/p/gmaps-utility-library-dev/source/diff?spec=svn1048&r=1048&format=side&path=/tags/markerclusterer/1.0&old_path=/trunk/markerclusterer&old=987
 
-  * Test each of the files in http://gmaps-utility-library-dev.googlecode.com/svn/trunk/library/examples to make sure they work as intended in IE, FF, Safari.
+  # Test each of the files in http://gmaps-utility-library-dev.googlecode.com/svn/trunk/library/examples to make sure they work as intended in IE, FF, Safari.
   * Do an svn update on local gmaps-utility-library-dev
 {{{
 svn update
 }}}
-  * Change version number in the comments of the .js file to reflect new version number.
-  * Check examples and docs to make sure they don't reference any relative files that will have a different relative location once in the tagged folder (e.g. CSS).
-  * Make sure you have the /tags/ directory checked out - the default source checkout only gets the /trunk/. If you need to, do a new checkout of /svn/. 
-  * Do an svn copy to a tagged folder for the release version. If needed, you can specify a revision to do it from with "-r NNN".
+  # Change version number in the comments of the .js file to reflect new version number.
+  # Check examples and docs to make sure they don't reference any relative files that will have a different relative location once in the tagged folder (e.g. CSS).
+  # Make sure you have the /tags/ directory checked out - the default source checkout only gets the /trunk/. If you need to, do a new checkout of /svn/. 
+  # Do an svn copy to a tagged folder for the release version. If needed, you can specify a revision to do it from with "-r NNN".
 {{{
 svn copy trunk/library tags/library/N.N
 }}}
-  * Run svn propset on all files (for HTML/CSS). This makes sure they show up in the browser:
+  # Run svn propset on all files (for HTML/CSS). This makes sure they show up in the browser:
 {{{
 find . -name '*.html' | xargs svn propset svn:mime-type text/html
 find . -name '*.css' | xargs svn propset svn:mime-type text/css
@@ -48,24 +48,24 @@ find . -name '*.png' | xargs svn propset svn:mime-type image/png
 find . -name '*.gif' | xargs svn propset svn:mime-type image/gif
 find . -name '*.jpg' | xargs svn propset svn:mime-type image/jpeg
 }}}
-  * Run a svn diff between the folder for the last version with the folder for the new version. Make sure you recognize all changes. 
+  # Run a svn diff between the folder for the last version with the folder for the new version. Make sure you recognize all changes. 
 {{{
 svn diff tags/labeledmarker/1.1 tags/labeledmarker/1.2
 //or, if that fails, diff the JS files
 diff tags/1.1/src/labeledmarker.js tags/1.2/src/labeledmarker.js
 }}}
-  * Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
-  * Run svn commit on the new folder. In the message, reference which revisions this release represents.
+  # Test each of the files in release/examples to make sure they work as intended in IE, FF, Safari.
+  # Run svn commit on the new folder. In the message, reference which revisions this release represents.
 {{{
  svn commit -m "Adding LabeledMarker v1.2. Represents versions 589 through 631 of the development library. See http://code.google.com/p/gmaps-utility-library-dev/source/list?path=/trunk/labeledmarker/" tags/1.2/
 }}}
-  * Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/NN/examples to make sure API keys work, mime-types are correct, etc. Browser bugs should be worked out by now.
-  * Update release_notes.txt in the /library/ folder to indicate changes and changed issues. (TODO: Is that where it should go?)
+  # Test each of the files in http://gmaps-utility-library.googlecode.com/svn/trunk/library/NN/examples to make sure API keys work, mime-types are correct, etc. Browser bugs should be worked out by now.
+  # Update release_notes.txt in the /library/ folder to indicate changes and changed issues. (TODO: Is that where it should go?)
 
 
 == After committing ==
-  * Email the mailing list about the new version.
-  * Add the library to the front page to the Libraries wiki.
-  * Go to Administer->Issues and add a label for your class (e.g. Class-KeyDragZoom).
-  * Add examples to the Google Maps API demo gallery. (Ask Pamela)
-  * Publish a blog post announcing the new library. See BlogPostGuidelines.
+  # Email the mailing list about the new version.
+  # Add the library to the front page to the Libraries wiki.
+  # Go to Administer->Issues and add a label for your class (e.g. Class-KeyDragZoom).
+  # Add examples to the Google Maps API demo gallery. (Ask Pamela)
+  # Publish a blog post announcing the new library. See BlogPostGuidelines.
