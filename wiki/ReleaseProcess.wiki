@@ -10,6 +10,7 @@ Current release engineers are: pamela.fox, nianwei, wf9a5m75.
   # Do an svn update on local gmaps-utility-library-dev
   # Check the library meets the release requirements:
     * examples/:
+      * Each example should have an API key for http://googlecode.com.
       * Each example should work in our supported browsers (IE6+,FF2+,Chrome,Safari3+).
       * Each example should follow our conventions. See JavascriptCodingConventions.
       * There should be an example that covers each API option/function (a wizard can be a good way to do this, for a complex constructor).
