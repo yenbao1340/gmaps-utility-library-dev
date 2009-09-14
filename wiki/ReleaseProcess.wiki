@@ -24,7 +24,7 @@ Current release engineers are: pamela.fox, nianwei, wf9a5m75.
         * Make sure the code snippets are all up-to-date, if you changed any of the example code.
     * src/:
       * The code should follow our conventions. See JavascriptCodingConventions.
-      * There should be no use of undocumented API options or methods (e.g. C[0], a[0]), and no hacking of the DOM. Basically, the library should be future-proof.
+      * There should be no use of undocumented API options or methods, and no hacking of the DOM. Basically, the library should be future-proof.
       * There should be an up-to-date packed version of the code, generated using the "all-pack" ant target. See UsingUtilities.
   # If you made any changes while checking that the requirements were met, commit those changes.
   # Email [http://groups.google.com/group/google-maps-utility-library the group] and tell them that the library is nearly ready to release. Ask them to report on any issues found, and ask for approval to release (generally from pamela.fox).
