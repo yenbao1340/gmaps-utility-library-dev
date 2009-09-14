@@ -78,7 +78,7 @@ Browse
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapiconmaker/ Development Version].
 
-== !Mapsicle ==
+== Mapsicle ==
 
 A library to augment a Street View panorama with image markers and HTML content that track a real-world location.
 
