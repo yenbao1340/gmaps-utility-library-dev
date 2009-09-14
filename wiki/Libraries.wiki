@@ -78,6 +78,15 @@ Browse
 or
 [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapiconmaker/ Development Version].
 
+== !Mapsicle ==
+
+A library to augment a Street View panorama with image markers and HTML content that track a real-world location.
+
+Browse
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/mapsicle/ Released Versions]
+or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/mapsicle/ Development Version].
+
 == !MarkerClusterer ==
 
 This library creates and manages per-zoom-level clusters for large amounts of markers (hundreds or thousands). This library was inspired by the Maptimize hosted clustering solution. 
