@@ -128,3 +128,12 @@ This lets developers attach mini info bubbles to their markers that can contain 
 Browse
 [http://gmaps-utility-library-dev.googlecode.com/svn/tags/popupmarker/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/popupmarker/ Development Version].
+
+
+== !SnapShotControl ==
+
+This library makes it easy to generate an image "snapshot" of your interactive map, using the Google Static Maps API.
+
+Browse
+[http://gmaps-utility-library-dev.googlecode.com/svn/tags/snapshotcontrol/ Released Versions]
+or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/snapshotcontrol/ Development Version].
