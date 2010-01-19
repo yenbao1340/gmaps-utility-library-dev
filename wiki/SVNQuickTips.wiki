@@ -23,15 +23,17 @@ If you've checked out the code with your username and password, then it's easy t
 
 If you want to add files are not a part of the latest project revision, you'll use the add command:
 
-`svn add foldername  // will add everything in folder recursively`
-`svn add filename `
-
+{{{
+svn add foldername  // will add everything in folder recursively
+svn add filename
+}}}
 
 If you want to delete files that are a part of the latest project revision, you'll use the delete command:
 
-`svn delete foldername`
-`svn delete filename`
-
+{{{
+svn delete foldername
+svn delete filename
+}}}
 
 Issuing add's and delete's will not actually affect the repository immediately. 
 If you're happy with your file edits, adds, or deletes, and want to submit to the repository, you'll use the commit command:
@@ -44,9 +46,11 @@ It's important to append a descriptive message to every commit, as it helps othe
 
 In this project, we're actually storing HTML, CSS, and JS files so we want them to be rendered by the browser as their proper mime-type. SVN submits ASCII files as plain text by default, so we need to manually set the mime-type on certain files. To do that, we use the propset command:
 
-`svn propset svn:mime-type text/html *.html`
-`svn propset svn:mime-type text/javascript *.js`
-`svn propset svn:mime-type text/css *.css`
+{{{
+svn propset svn:mime-type text/html *.html
+svn propset svn:mime-type text/javascript *.js
+svn propset svn:mime-type text/css *.css
+}}}
 
 Those are the most common mime-types we'll use in this project.
 
