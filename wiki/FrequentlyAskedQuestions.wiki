@@ -24,8 +24,8 @@ We welcome developers with previous experience programming with the Maps API to 
 
 To join the project, follow these steps:
   #1 Sign the [http://code.google.com/legal/individual-cla-v1.0.html Google CLA] -  scroll down for the easy to sign digital version, no faxing necessary.
-  #2 Email Pamela ([mailto:api.pamelafox@google.com api.pamelafox@google.com]) with links to code you've developed, and a brief paragraph about why you'd like to contribute to the library.
-  #3 Wait for Pamela to respond that she's added you to the project (or to indicate she's missing something).
+  #2 Email Maps API support ([mailto:maps-api-support@google.com maps-api-support@google.com]) with links to code you've developed, and a brief paragraph about why you'd like to contribute to the library.
+  #3 Wait for someone to respond that you have been the project (or to indicate that something is missing).
   #4 If you haven't used SVN or a versioning system in the past, read up on SVN (check [http://code.google.com/p/gmaps-utility-library-dev/wiki/SVNQuickTips SVNQuickTips] page here).
   #5 Start contributing!
 
@@ -42,7 +42,7 @@ Since our project is currently all javascript code, we'd like to have an online 
 Google project hosting offers an online version of each project repository's latest version that can be linked to, but we need a way of guaranteeing that the "release" folder in a project won't be accidentally overwritten with non stable code.
 The googlecode implementation of SVN gives all members the same permissions to change every directory/file, which means we can't just restrict the permissions so that only Google employees can modify the release directory.
 
-We decided the best solution was to have a separate project that will only hold release versions (and previous release versions) of each library.  New versions will be released only when the developer community has decided that it's bug-free, and a Google employee (Pamela or Chris) will commit the new versions to the release project.
+We decided the best solution was to have a separate project that will only hold release versions (and previous release versions) of each library.  New versions will be released only when the developer community has decided that it's bug-free, and a Google employee will commit the new versions to the release project.
 
 
 === Where can project contributors discuss code revisions/project ideas? ===
