@@ -12,7 +12,7 @@ Your guest blog post could contain the following:
   * Screenshots of examples, with links to the actual HTML files
   * Photo of yourself
 
-Please write your post in a Google document and share it with Pamela Fox. She'll send feedback or do grammar edits as needed, and then send it around for internal review @ Google, and post it when it's done and ready.
+Please write your post in a Google document and share it with the Maps API support team (maps-api-support@google.com). We'll send feedback or do grammar edits as needed, and then send it around for internal review @ Google, and post it when it's done and ready.
 
 = Examples =
 
