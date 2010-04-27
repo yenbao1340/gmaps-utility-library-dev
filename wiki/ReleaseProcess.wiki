@@ -4,8 +4,6 @@
 
 This is the release process for pushing stuff out to the release library. Anyone can make the releases, but if you do not feel comfortable with SVN or SVN tags, please email the list and request that a release engineer push it out. The pre-release and post-release process is common across all releases, but there are slightly different steps for version 1.0 of a library versus later versions.
 
-Current release engineers are: pamela.fox, nianwei, wf9a5m75.
-
 
 == Pre-Release Requirements ==
   # Do an svn update on local gmaps-utility-library-dev
@@ -30,7 +28,7 @@ Current release engineers are: pamela.fox, nianwei, wf9a5m75.
       * There should be no use of undocumented API options or methods, and no hacking of the DOM. Basically, the library should be future-proof.
       * There should be an up-to-date packed version of the code, generated using the "all-pack" ant target. See UsingUtilities.
   # If you made any changes while checking that the requirements were met, commit those changes.
-  # Email [http://groups.google.com/group/google-maps-utility-library the group] and tell them that the library is nearly ready to release. Ask them to report on any issues found, and ask for approval to release (generally from pamela.fox).
+  # Email [http://groups.google.com/group/google-maps-utility-library the group] and maps-api-support@google.com to tell them that the library is nearly ready to release. Ask them to report on any issues found, and ask for approval to release.
 
 
 == Pushing out version 1.0 ==
@@ -117,5 +115,5 @@ diff tags/1.1/src/labeledmarker.js tags/1.2/src/labeledmarker.js
   # Email the mailing list about the new version.
   # Add the library to the front page to the Libraries wiki.
   # Go to Administer->Issues and add a label for your class (e.g. Class-KeyDragZoom).
-  # Add examples to the Google Maps API demo gallery. (Ask Pamela)
+  # Add examples to the Google Maps API demo gallery.
   # Publish a blog post announcing the new library. See BlogPostGuidelines.
