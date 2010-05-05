@@ -137,3 +137,11 @@ This library makes it easy to generate an image "snapshot" of your interactive m
 Browse
 [http://gmaps-utility-library-dev.googlecode.com/svn/tags/snapshotcontrol/ Released Versions]
 or [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/snapshotcontrol/ Development Version].
+
+== !RouteBoxer ==
+
+This class creates a set of LatLngBounds that are guaranteed to enclose every point within a given distance of a Polyline. It is intended to support adding Search along a route to an application backed by a spatial database that supports bounds queries (such as the Google Maps Data API).
+
+
+Browse [http://gmaps-utility-library-dev.googlecode.com/svn/tags/routeboxer/ Released Versions] or
+[http://gmaps-utility-library-dev.googlecode.com/svn/trunk/routeboxer/ Development Versions].
