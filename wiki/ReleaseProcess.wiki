@@ -47,9 +47,10 @@ mkdir tags/labeledmarker
 svn add tags/labeledmarker
 svn commit tags/labeledmarker
 }}}
-  # Ue svn copy to create the new tag from the trunk
+  # Use svn copy to create the new tag from the trunk
 {{{
-svn copy https://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ https://gmaps-utility-library-dev.googlecode.com/svn/tags/labeledmarker/1.0 -m "Tagging 1.0 release of LabeledMarker"}}}
+svn copy https://gmaps-utility-library-dev.googlecode.com/svn/trunk/labeledmarker/ https://gmaps-utility-library-dev.googlecode.com/svn/tags/labeledmarker/1.0 -m "Tagging 1.0 release of LabeledMarker"
+}}}
   # Test each of the files in http://gmaps-utility-library-dev.googlecode.com/svn/tags/library/1.0/examples to make sure API keys work, mime-types are correct, etc. Browser bugs should be worked out by now.
   # Update release_notes.txt in the /library/ folder to indicate changes and changed issues. (TODO: Decide if that is best place for changelogs).
   # Proceed to post-release festivities (below).
