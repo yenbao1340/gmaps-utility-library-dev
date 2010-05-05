@@ -95,4 +95,4 @@ http://puntofisso.net/me.jpg
 
 *Thor Mitchell*
   * Employed by Google as Maps API Product Manager
-  * Created: [http://gmaps-utility-library.googlecode.com/svn/trunk/routeboxer/ RouteBoxer], 
+  * Created: [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/routeboxer/ RouteBoxer], 
