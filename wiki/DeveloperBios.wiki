@@ -90,3 +90,9 @@ http://puntofisso.net/me.jpg
   * Created the [http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/ InfoBox] class for Google Maps API v3
   * Worked on the [http://gmaps-utility-library-dev.googlecode.com/svn/trunk/keydragzoom/ KeyDragZoom] class for Google Maps API v2/v3
   * Personal website: [http://www.garylittle.ca/ www.garylittle.ca]
+
+----
+
+*Thor Mitchell*
+  * Employed by Google as Maps API Product Manager
+  * Created: [http://gmaps-utility-library.googlecode.com/svn/trunk/routeboxer/ RouteBoxer], 
