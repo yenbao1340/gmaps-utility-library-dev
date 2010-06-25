@@ -61,7 +61,7 @@ or
 
 == !KeyDragZoom ==
 
-This is a lightweight alternative to !DragZoomControl. When the user presses a hot key (Shift is the default), he/she can drag a box around an area of interest and the map will zoom to fit that box. There is no visual control for triggering the zoom, as in !DragZoomControl, although this feature has recently been added to the Development Version.
+This is a lightweight alternative to !DragZoomControl. When the user presses a hot key (Shift is the default), he/she can drag a box around an area of interest and the map will zoom to fit that box. Version 2.0 adds an optional visual control for turning drag zoom mode on and off.
 
 
 Browse
